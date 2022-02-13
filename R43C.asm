@@ -7171,7 +7171,7 @@ ObjIndex:       dc.l ObjSonic
                 dc.l ClearObject
                 dc.l ClearObject
                 dc.l ObjTTZBoss
-                dc.l sub_20C130
+                dc.l ObjTTZBossHead
                 dc.l sub_20C3CE
                 dc.l sub_20C8D4
                 dc.l sub_20CF82
@@ -21667,16 +21667,16 @@ locret_20C12E:                          ; CODE XREF: sub_20C0E6+2E↑j
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_20C130:                             ; DATA XREF: ROM:00203EFC↑o
+ObjTTZBossHead:                         ; DATA XREF: ROM:00203EFC↑o
                 moveq   #0,d0
                 move.b  $24(a0),d0
                 move.w  off_20C13E(pc,d0.w),d0
                 jmp     off_20C13E(pc,d0.w)
-; End of function sub_20C130
+; End of function ObjTTZBossHead
 
 ; ---------------------------------------------------------------------------
-off_20C13E:     dc.w loc_20C144-*       ; CODE XREF: sub_20C130+A↑j
-                                        ; DATA XREF: sub_20C130+6↑r ...
+off_20C13E:     dc.w loc_20C144-*       ; CODE XREF: ObjTTZBossHead+A↑j
+                                        ; DATA XREF: ObjTTZBossHead+6↑r ...
                 dc.w loc_20C172-off_20C13E
                 dc.w loc_20C1C6-off_20C13E
 ; ---------------------------------------------------------------------------
@@ -21688,7 +21688,7 @@ loc_20C144:                             ; DATA XREF: ROM:off_20C13E↑o
                 move.b  #$24,$19(a0) ; '$'
                 move.b  #$38,$16(a0) ; '8'
                 move.w  #$31E,2(a0)
-                move.l  #unk_20C3A2,4(a0)
+                move.l  #MapBossHead,4(a0)
                 bsr.w   sub_20C014
 
 loc_20C172:                             ; DATA XREF: ROM:0020C140↑o
@@ -21713,7 +21713,7 @@ loc_20C19C:                             ; CODE XREF: ROM:0020C176↑j
                 move.w  8(a1),8(a0)
                 move.w  $C(a1),$C(a0)
                 move.b  $22(a1),$22(a0)
-                lea     (unk_20C394).l,a1
+                lea     (off_20C394).l,a1
                 jsr     AnimateObect
                 jsr     DrawObject
                 rts
@@ -22130,41 +22130,37 @@ unk_20C36A:     dc.b   8                ; DATA XREF: ROM:0020C23C↑o
                 dc.b $57 ; W
                 dc.b $EC
                 dc.b   0
-unk_20C394:     dc.b   0                ; DATA XREF: ROM:0020C1B2↑o
-                dc.b   4
+off_20C394:     dc.w unk_20C398-*       ; DATA XREF: ROM:0020C1B2↑o
+                                        ; ROM:0020C396↓o
+                dc.w unk_20C39B-off_20C394
+unk_20C398:     dc.b $FF                ; DATA XREF: ROM:off_20C394↑o
                 dc.b   0
-                dc.b   7
                 dc.b $FF
-                dc.b   0
-                dc.b $FF
-                dc.b   3
+unk_20C39B:     dc.b   3                ; DATA XREF: ROM:0020C396↑o
                 dc.b   2
                 dc.b   1
                 dc.b   3
                 dc.b   1
                 dc.b $FF
                 dc.b   0
-unk_20C3A2:     dc.b   0                ; DATA XREF: ROM:0020C166↑o
-                dc.b   8
-                dc.b   0
-                dc.b  $E
-                dc.b   0
-                dc.b $14
-                dc.b   0
-                dc.b $20
-                dc.b   1
+MapBossHead:    dc.w unk_20C3AA-*       ; DATA XREF: ROM:0020C166↑o
+                                        ; ROM:0020C3A4↓o ...
+                dc.w unk_20C3B0-MapBossHead
+                dc.w unk_20C3B6-MapBossHead
+                dc.w unk_20C3C2-MapBossHead
+unk_20C3AA:     dc.b   1                ; DATA XREF: ROM:MapBossHead↑o
                 dc.b $E4
                 dc.b  $D
                 dc.b   0
                 dc.b $3F ; ?
                 dc.b $F4
-                dc.b   1
+unk_20C3B0:     dc.b   1                ; DATA XREF: ROM:0020C3A4↑o
                 dc.b $E4
                 dc.b  $D
                 dc.b   0
                 dc.b $47 ; G
                 dc.b $F4
-                dc.b   2
+unk_20C3B6:     dc.b   2                ; DATA XREF: ROM:0020C3A6↑o
                 dc.b $E4
                 dc.b  $D
                 dc.b   0
@@ -22176,7 +22172,7 @@ unk_20C3A2:     dc.b   0                ; DATA XREF: ROM:0020C166↑o
                 dc.b $5F ; _
                 dc.b $F4
                 dc.b   0
-                dc.b   2
+unk_20C3C2:     dc.b   2                ; DATA XREF: ROM:0020C3A8↑o
                 dc.b $E4
                 dc.b  $D
                 dc.b   0
