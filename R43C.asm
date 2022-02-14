@@ -24525,7 +24525,7 @@ loc_20D91A:                             ; DATA XREF: ROM:off_20D916↑o
                 move.w  #$100,d2
                 tst.b   $28(a0)
                 beq.s   loc_20D97E
-                lea     unk_20DAAE(pc),a1
+                lea     off_20DAAE(pc),a1
                 move.l  #$FFFF8000,d0
                 move.w  #1,d1
                 move.w  #$200,d2
@@ -24761,13 +24761,11 @@ unk_20DA70:     dc.b  $C                ; DATA XREF: ROM:0020D9F4↑o
                 dc.b $18
                 dc.b  $A
                 dc.b   0
-unk_20DAAE:     dc.b   0                ; DATA XREF: ROM:0020D96C↑o
-                dc.b   6
-                dc.b   0
-                dc.b $3E ; >
-                dc.b   0
-                dc.b $76 ; v
-                dc.b  $B
+off_20DAAE:     dc.w unk_20DAB4-*       ; DATA XREF: ROM:0020D96C↑o
+                                        ; ROM:0020DAB0↓o ...
+                dc.w unk_20DAEC-off_20DAAE
+                dc.w unk_20DB24-off_20DAAE
+unk_20DAB4:     dc.b  $B                ; DATA XREF: ROM:off_20DAAE↑o
                 dc.b $F4
                 dc.b   8
                 dc.b   0
@@ -24823,7 +24821,7 @@ unk_20DAAE:     dc.b   0                ; DATA XREF: ROM:0020D96C↑o
                 dc.b   0
                 dc.b $18
                 dc.b  $A
-                dc.b  $B
+unk_20DAEC:     dc.b  $B                ; DATA XREF: ROM:0020DAB0↑o
                 dc.b $F4
                 dc.b   8
                 dc.b   0
@@ -24879,7 +24877,7 @@ unk_20DAAE:     dc.b   0                ; DATA XREF: ROM:0020D96C↑o
                 dc.b   0
                 dc.b $1D
                 dc.b  $A
-                dc.b  $B
+unk_20DB24:     dc.b  $B                ; DATA XREF: ROM:0020DAB2↑o
                 dc.b $F4
                 dc.b   8
                 dc.b   0
@@ -29701,8 +29699,139 @@ locret_20FDA4:                          ; CODE XREF: ROM:0020FD78↑j
                 dc.b $22 ; "
                 dc.b $F4
                 dc.b $F2
-TTZChuncks:     dcb.l $21,0             ; DATA XREF: sub_200E80+20↑o
+TTZChuncks:     dc.b   0                ; DATA XREF: sub_200E80+20↑o
                                         ; sub_201068+4↑o ...
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
                 dc.l $6E, $6F0000
                 dcb.l 6,0
                 dc.l $A6E0071
