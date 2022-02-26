@@ -107,7 +107,7 @@ unk_20002A:     dc.b   0                ; DATA XREF: ROM:off_206374↓o
                 dc.b   0
                 dc.b   0
                 dc.b   0
-unk_200076:     dc.b   0                ; DATA XREF: ROM:0020694C↓o
+                dc.b   0
                 dc.b   0
                 dc.b   0
                 dc.b   0
@@ -11196,7 +11196,7 @@ off_206810:     dc.w loc_206814-*       ; CODE XREF: ROM:00206806↑p
 loc_206814:                             ; DATA XREF: ROM:off_206810↑o
                 ori.b   #4,1(a0)
                 move.w  #$8280,2(a0)
-                move.l  #$2068A0,4(a0)
+                move.l  #off_2068A0,4(a0)
                 addq.b  #2,$24(a0)
 
 loc_20682C:                             ; DATA XREF: ROM:00206812↑o
@@ -11217,48 +11217,413 @@ loc_206844:                             ; CODE XREF: ROM:00206840↑j
                 move.w  d0,8(a0)
                 move.w  ($FFF646).w,$C(a0)
                 addq.w  #2,$C(a0)
-                lea     (dword_20686C).l,a1
+                lea     (off_20686C).l,a1
                 jmp     AnimateObect
 ; ---------------------------------------------------------------------------
 byte_20686A:    dc.b $A0                ; DATA XREF: ROM:00206848↑r
                 dc.b $60
-dword_20686C:   dc.l $20100             ; DATA XREF: ROM:0020685E↑o
-                dcb.l 2,$1000100
-                dc.l $1000102
-                dcb.l 2,$3020302
-                dc.l $3020304
-                dcb.l 2,$5040504
-                dc.l $5040506
-                dcb.l 2,$7060706
-                dc.l $70607FF, $100010, $300030, $500050, $700070, $6F80D00
-                dc.l $A0F80D, $E0F8, $D000020, $F80D0008, $C0F80D00, $800F80D
-                dc.l $84000, $6F80D00, $8A0F80D, $8E0F8, $D000820, $F80D0010
-                dc.l $C0F80D00, $1000F80D, $104000, $6F80D00, $10A0F80D
-                dc.l $10E0F8, $D001020, $F80D0008, $C0F80D00, $800F80D
-                dc.l $84000, $6F80D00, $8A0F80D, $8E0F8, $D000820, $F80D0000
-                dc.l $C0F80D00, $F80D, $4000, $70001028, $24303B, $124EBB
-                dc.l $E4EB9
-                dc.l DrawObject
+off_20686C:     dc.w unk_20686E-*       ; DATA XREF: ROM:0020685E↑o
+unk_20686E:     dc.b   1                ; DATA XREF: ROM:off_20686C↑o
+                dc.b   0
+                dc.b   1
+                dc.b   0
+                dc.b   1
+                dc.b   0
+                dc.b   1
+                dc.b   0
+                dc.b   1
+                dc.b   0
+                dc.b   1
+                dc.b   0
+                dc.b   1
+                dc.b   2
+                dc.b   3
+                dc.b   2
+                dc.b   3
+                dc.b   2
+                dc.b   3
+                dc.b   2
+                dc.b   3
+                dc.b   2
+                dc.b   3
+                dc.b   2
+                dc.b   3
+                dc.b   4
+                dc.b   5
+                dc.b   4
+                dc.b   5
+                dc.b   4
+                dc.b   5
+                dc.b   4
+                dc.b   5
+                dc.b   4
+                dc.b   5
+                dc.b   4
+                dc.b   5
+                dc.b   6
+                dc.b   7
+                dc.b   6
+                dc.b   7
+                dc.b   6
+                dc.b   7
+                dc.b   6
+                dc.b   7
+                dc.b   6
+                dc.b   7
+                dc.b   6
+                dc.b   7
+                dc.b $FF
+off_2068A0:     dc.w unk_2068B0-*       ; DATA XREF: ROM:00206820↑o
+                                        ; ROM:002068A2↓o ...
+                dc.w unk_2068B0-off_2068A0
+                dc.w unk_2068D0-off_2068A0
+                dc.w unk_2068D0-off_2068A0
+                dc.w unk_2068F0-off_2068A0
+                dc.w unk_2068F0-off_2068A0
+                dc.w unk_206910-off_2068A0
+                dc.w unk_206910-off_2068A0
+unk_2068B0:     dc.b   6                ; DATA XREF: ROM:off_2068A0↑o
+                                        ; ROM:002068A2↑o
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   0
+                dc.b $A0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   0
+                dc.b $E0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   0
+                dc.b $20
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $C0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b   0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $40 ; @
+                dc.b   0
+unk_2068D0:     dc.b   6                ; DATA XREF: ROM:002068A4↑o
+                                        ; ROM:002068A6↑o
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $A0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $E0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $20
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b $10
+                dc.b $C0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b $10
+                dc.b   0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b $10
+                dc.b $40 ; @
+                dc.b   0
+unk_2068F0:     dc.b   6                ; DATA XREF: ROM:002068A8↑o
+                                        ; ROM:002068AA↑o
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b $10
+                dc.b $A0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b $10
+                dc.b $E0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b $10
+                dc.b $20
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $C0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b   0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $40 ; @
+                dc.b   0
+unk_206910:     dc.b   6                ; DATA XREF: ROM:002068AC↑o
+                                        ; ROM:002068AE↑o
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $A0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $E0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   8
+                dc.b $20
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   0
+                dc.b $C0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b $F8
+                dc.b  $D
+                dc.b   0
+                dc.b   0
+                dc.b $40 ; @
+                dc.b   0
+                dc.b $70 ; p
+                dc.b   0
+                dc.b $10
+                dc.b $28 ; (
+                dc.b   0
+                dc.b $24 ; $
+                dc.b $30 ; 0
+                dc.b $3B ; ;
+                dc.b   0
+                dc.b $12
+                dc.b $4E ; N
+                dc.b $BB
+                dc.b   0
+                dc.b  $E
+                dc.b $4E ; N
+                dc.b $B9
+                dc.b   0
+                dc.b $20
+                dc.b $3A ; :
+                dc.b $92
+                dc.b $4E ; N
+                dc.b $F9
+                dc.b   0
+                dc.b $20
+                dc.b $78 ; x
+                dc.b $FC
+                dc.b   0
+                dc.b   8
+                dc.b   0
+                dc.b $20
+                dc.b   0
+                dc.b $76 ; v
+                dc.b   0
+                dc.b $D6
+                dc.b   0
+                dc.b $28 ; (
+                dc.b   0
+                dc.b   4
+                dc.b   0
+                dc.b   1
 ; ---------------------------------------------------------------------------
-                jmp     loc_2078FC
+                move.w  #$42F8,2(a0)
+                move.l  #off_206A5C,4(a0)
+                addq.b  #2,$24(a0)
+                bsr.w   sub_206A22
+                beq.s   locret_2069BE
+                bset    #0,$2C(a1)
+                move.w  8(a0),8(a1)
+                moveq   #0,d1
+                move.w  #$18,d0
+                tst.w   $10(a1)
+                bpl.s   loc_20698C
+                moveq   #1,d1
+                neg.w   d0
+
+loc_20698C:                             ; CODE XREF: ROM:00206986↑j
+                andi.b  #$FE,$22(a1)
+                or.b    d1,$22(a1)
+                or.b    d1,1(a0)
+                add.w   d0,8(a1)
+                move.b  #$11,$1C(a1)
+                move.w  #$B4,$2A(a0)
+                tst.b   $28(a0)
+                beq.s   loc_2069B6
+                move.w  #$3C,$2A(a0) ; '<'
+
+loc_2069B6:                             ; CODE XREF: ROM:002069AE↑j
+                move.l  a1,$2C(a0)
+                addq.b  #2,$24(a0)
+
+locret_2069BE:                          ; CODE XREF: ROM:0020696E↑j
+                rts
 ; ---------------------------------------------------------------------------
-                dc.w 8
-                dc.l unk_200076
-                dc.l $D60028, $40001, $317C42F8, $2217C, $206A5C, $45428
-                dc.l $246100, $B6674E, $8E90000, $2C3368, $80008, $7200303C
-                dc.l $184A69, $106A04, $72014440, $22900FE, $228329, $228328
-                dc.l $1D169, $8137C, $11001C, $317C00B4, $2A4A28, $286706
-                dc.l $317C003C, $2A2149, $2C5428, $244E75, $2268002C, $5368002A
-                dc.l $67463038, $F6043200, $2000070, $663A3028, $CE049
-                dc.l $8010000, $67145369, $C0440, $18B069, $C6530, $3340000C
-                dc.l $602A0801, $16724, $5269000C, $6400018, $B069000C
-                dc.l $64163340, $C6010, $8A90000, $2C117C, $1001A, $54280024
-                dc.l $4E7543F8, $D0004A39, $FF1906, $662A3028, $89069
-                dc.l $85840, $6B1E0C40, $86418, $3028000C, $9069000C, $6400018
-                dc.l $6B0A0C40, $306404, $70014E75, $70004E75, $40024
-                dc.l $6D20110, $FCE001, $2FCF0, $10002FC, $10002, $FC100100
-                dc.l $2FC1E01, $FC00, $6D20110, $FCE001, $2FCF0, $51004FC
-                dc.l $50004, $FC100100, $2FC1E01, $FC00
+                movea.l $2C(a0),a1
+                subq.w  #1,$2A(a0)
+                beq.s   loc_206A10
+                move.w  ($FFF604).w,d0
+                move.w  d0,d1
+                andi.b  #$70,d0 ; 'p'
+                bne.s   loc_206A10
+                move.w  $C(a0),d0
+                lsr.w   #8,d1
+                btst    #0,d1
+                beq.s   loc_2069F6
+                subq.w  #1,$C(a1)
+                subi.w  #$18,d0
+                cmp.w   $C(a1),d0
+                bcs.s   locret_206A20
+                move.w  d0,$C(a1)
+                bra.s   locret_206A20
+; ---------------------------------------------------------------------------
+
+loc_2069F6:                             ; CODE XREF: ROM:002069E0↑j
+                btst    #1,d1
+                beq.s   locret_206A20
+                addq.w  #1,$C(a1)
+                addi.w  #$18,d0
+                cmp.w   $C(a1),d0
+                bcc.s   locret_206A20
+                move.w  d0,$C(a1)
+                bra.s   locret_206A20
+; ---------------------------------------------------------------------------
+
+loc_206A10:                             ; CODE XREF: ROM:002069C8↑j
+                                        ; ROM:002069D4↑j
+                bclr    #0,$2C(a1)
+                move.b  #1,$1A(a0)
+                addq.b  #2,$24(a0)
+
+locret_206A20:                          ; CODE XREF: ROM:002069EE↑j
+                                        ; ROM:002069F4↑j ...
+                rts
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_206A22:                             ; CODE XREF: ROM:0020696A↑p
+                lea     ($FFD000).w,a1
+                tst.b   ($FF1906).l
+                bne.s   loc_206A58
+                move.w  8(a0),d0
+                sub.w   8(a1),d0
+                addq.w  #4,d0
+                bmi.s   loc_206A58
+                cmpi.w  #8,d0
+                bcc.s   loc_206A58
+                move.w  $C(a0),d0
+                sub.w   $C(a1),d0
+                addi.w  #$18,d0
+                bmi.s   loc_206A58
+                cmpi.w  #$30,d0 ; '0'
+                bcc.s   loc_206A58
+                moveq   #1,d0
+                rts
+; ---------------------------------------------------------------------------
+
+loc_206A58:                             ; CODE XREF: sub_206A22+A↑j
+                                        ; sub_206A22+16↑j ...
+                moveq   #0,d0
+                rts
+; End of function sub_206A22
+
+; ---------------------------------------------------------------------------
+off_206A5C:     dc.w unk_206A60-*       ; DATA XREF: ROM:0020695E↑o
+                                        ; ROM:00206A5E↓o
+                dc.w unk_206A80-off_206A5C
+unk_206A60:     dc.b   6                ; DATA XREF: ROM:off_206A5C↑o
+                dc.b $D2
+                dc.b   1
+                dc.b $10
+                dc.b   0
+                dc.b $FC
+                dc.b $E0
+                dc.b   1
+                dc.b   0
+                dc.b   2
+                dc.b $FC
+                dc.b $F0
+                dc.b   1
+                dc.b   0
+                dc.b   2
+                dc.b $FC
+                dc.b   0
+                dc.b   1
+                dc.b   0
+                dc.b   2
+                dc.b $FC
+                dc.b $10
+                dc.b   1
+                dc.b   0
+                dc.b   2
+                dc.b $FC
+                dc.b $1E
+                dc.b   1
+                dc.b   0
+                dc.b   0
+                dc.b $FC
+                dc.b   0
+unk_206A80:     dc.b   6                ; DATA XREF: ROM:00206A5E↑o
+                dc.b $D2
+                dc.b   1
+                dc.b $10
+                dc.b   0
+                dc.b $FC
+                dc.b $E0
+                dc.b   1
+                dc.b   0
+                dc.b   2
+                dc.b $FC
+                dc.b $F0
+                dc.b   5
+                dc.b $10
+                dc.b   4
+                dc.b $FC
+                dc.b   0
+                dc.b   5
+                dc.b   0
+                dc.b   4
+                dc.b $FC
+                dc.b $10
+                dc.b   1
+                dc.b   0
+                dc.b   2
+                dc.b $FC
+                dc.b $1E
+                dc.b   1
+                dc.b   0
+                dc.b   0
+                dc.b $FC
+                dc.b   0
 ; [00000002 BYTES: COLLAPSED FUNCTION nullsub_4. PRESS CTRL-NUMPAD+ TO EXPAND]
 ; ---------------------------------------------------------------------------
 ; START OF FUNCTION CHUNK FOR sub_206B74
@@ -12656,7 +13021,7 @@ locret_2078FA:                          ; CODE XREF: Create_New_Sprite3+10↑j
 ;   ADDITIONAL PARENT FUNCTION sub_20D1DC
 
 loc_2078FC:                             ; CODE XREF: ROM:00205E4A↑j
-                                        ; ROM:00206944↑j ...
+                                        ; ROM:00207F8A↓j ...
                 move.w  8(a0),d0
 ; END OF FUNCTION CHUNK FOR sub_20B394
 ; START OF FUNCTION CHUNK FOR ObjTTZTonBon2
@@ -27424,7 +27789,7 @@ loc_20E8EA:                             ; CODE XREF: ROM:0020E8E0↑j
 
 loc_20E8F0:                             ; CODE XREF: ROM:0020E8CC↑j
                                         ; ROM:0020E8E8↑j
-                lea     unk_20E964(pc),a1
+                lea     off_20E964(pc),a1
                 jsr     loc_205CFC+4
                 jmp     loc_203AA4+2
 ; ---------------------------------------------------------------------------
@@ -27453,17 +27818,15 @@ loc_20E93A:                             ; CODE XREF: ROM:0020E92E↑j
                 bchg    #0,$22(a0)
 
 loc_20E94E:                             ; CODE XREF: ROM:0020E938↑j
-                lea     unk_20E964(pc),a1
+                lea     off_20E964(pc),a1
                 jsr     loc_205CFC+4
                 jsr     loc_203AA4+2
                 jmp     loc_2078A2+2
 ; ---------------------------------------------------------------------------
-unk_20E964:     dc.b   0                ; DATA XREF: ROM:loc_20E8F0↑o
-                                        ; ROM:loc_20E94E↑o
-                dc.b   4
-                dc.b   0
-                dc.b $22 ; "
-                dc.b   0
+off_20E964:     dc.w unk_20E968-*       ; DATA XREF: ROM:loc_20E8F0↑o
+                                        ; ROM:loc_20E94E↑o ...
+                dc.w unk_20E986-off_20E964
+unk_20E968:     dc.b   0                ; DATA XREF: ROM:off_20E964↑o
                 dc.b   0
                 dc.b   0
                 dc.b   2
@@ -27493,7 +27856,7 @@ unk_20E964:     dc.b   0                ; DATA XREF: ROM:loc_20E8F0↑o
                 dc.b   2
                 dc.b   2
                 dc.b $FF
-                dc.b $13
+unk_20E986:     dc.b $13                ; DATA XREF: ROM:0020E966↑o
                 dc.b   0
                 dc.b   1
                 dc.b $FF
