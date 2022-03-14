@@ -24,13 +24,35 @@
 
 ; Segment type: Pure code
 ; segment "ROM"
-dword_200000:   dcb.l 2,0               ; DATA XREF: ROM:002206C8↓o
+word_200000:    dc.w 0                  ; DATA XREF: ROM:002206C8↓o
                                         ; ROM:0022E44C↓o ...
+                dc.l 0
+                dc.w 0
                 dc.l loc_200100
                 dc.l loc_20010C
                 dc.l loc_200112
-                dcb.l 5,0
-                dcb.b 2,0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
 unk_20002A:     dc.b   0                ; DATA XREF: ROM:off_206374↓o
                 dc.b   0
                 dc.b   0
@@ -35783,7 +35805,7 @@ dword_220000:   dcb.l 2,0               ; DATA XREF: sub_205BCE+46↑o
                 dc.l $AAB02BA, $AB002BB, $6686803B, $68666023, $89888023
                 dc.l $8888024, $1880240, $240, $2400
                 dcb.l 2,0
-                dc.l dword_200000
+                dc.l word_200000
                 dc.l $2200000, $23333000, $44443333, $55554444, $55444444
                 dc.l $44444322, $665443AA, $666443AA, $6654432A, $6644332B
                 dc.l $54443222, $44443222, $33332222, $B3332222, $B3322222
@@ -39594,7 +39616,7 @@ a333333:        dc.b '3333"#33""""',0
                 dc.l $33330000, $34443330, $23444443, $AA334544, $BAAA3555
                 dc.l $BB445555
                 dcb.l 3,0
-                dc.l dword_200000
+                dc.l word_200000
                 dc.l $30200000, $43220000, $44320000, $54430000
                 dcb.l 6,0
                 dc.l $9777, $97976, $99696, $98968, $99891, $9990
@@ -45100,7 +45122,7 @@ dword_236954:   dcb.l $D,0              ; DATA XREF: ROM:002067EC↑o
                 dc.l $50000000, $30000000, $35
                 dcb.l $E,0
                 dc.l $53000000, 0
-                dc.l dword_200000
+                dc.l word_200000
                 dc.l 0
                 dc.l $50, $300565, $20500050, $600000, $5650000, $66666556
                 dc.l $5650000, $605000, $556500, $305000, 0
@@ -45135,7 +45157,7 @@ dword_236954:   dcb.l $D,0              ; DATA XREF: ROM:002067EC↑o
                 dcb.l 2,0
                 dc.l $50000000, $65000000, $50000000
                 dcb.l 3,0
-                dc.l dword_200000
+                dc.l word_200000
                 dc.l $53030000, $50000, $60000, $565000, $56666653
 dword_236DD4:   dc.l $40000000, $5400000, $4550000, $565000, $56544, $5654
                                         ; DATA XREF: ROM:002067F0↑o
