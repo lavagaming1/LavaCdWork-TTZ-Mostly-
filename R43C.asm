@@ -7226,7 +7226,7 @@ ObjSonic:                               ; DATA XREF: ROM:ObjIndex↑o
                 beq.s   loc_203F9E
                 tst.b   ($FF1906).l
                 beq.s   loc_203F9E
-                jmp     loc_20749A
+                jmp     DebugMode
 ; ---------------------------------------------------------------------------
 
 loc_203F9E:                             ; CODE XREF: ROM:00203F88↑j
@@ -7484,7 +7484,7 @@ loc_2041F2:                             ; CODE XREF: sub_204162+82↑j
                 bmi.s   loc_20420A
                 cmpi.b  #$2B,$1C(a0) ; '+'
                 beq.s   loc_20420A
-                jsr     sub_207044
+                jsr     Touchresponse
 
 loc_20420A:                             ; CODE XREF: sub_204162+98↑j
                                         ; sub_204162+A0↑j
@@ -12173,7 +12173,7 @@ locret_207042:                          ; CODE XREF: ROM:0020703C↑j
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_207044:                             ; CODE XREF: sub_204162+A2↑p
+Touchresponse:                          ; CODE XREF: sub_204162+A2↑p
 
 ; FUNCTION CHUNK AT 0020732E SIZE 000000EE BYTES
 
@@ -12190,31 +12190,31 @@ sub_207044:                             ; CODE XREF: sub_204162+A2↑p
                 addi.w  #$C,d3
                 moveq   #$A,d5
 
-loc_207068:                             ; CODE XREF: sub_207044+1C↑j
+loc_207068:                             ; CODE XREF: Touchresponse+1C↑j
                 move.w  #$10,d4
                 add.w   d5,d5
                 lea     ($FFD800).w,a1
                 move.w  #$5F,d6 ; '_'
 
-loc_207076:                             ; CODE XREF: sub_207044+42↓j
+loc_207076:                             ; CODE XREF: Touchresponse+42↓j
                 tst.b   1(a1)
                 bpl.s   loc_207082
                 move.b  $20(a1),d0
                 bne.s   loc_20708E
 
-loc_207082:                             ; CODE XREF: sub_207044+36↑j
-                                        ; sub_207044+6E↓j ...
+loc_207082:                             ; CODE XREF: Touchresponse+36↑j
+                                        ; Touchresponse+6E↓j ...
                 lea     $40(a1),a1
                 dbf     d6,loc_207076
                 moveq   #0,d0
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_20708E:                             ; CODE XREF: sub_207044+3C↑j
+loc_20708E:                             ; CODE XREF: Touchresponse+3C↑j
                 andi.w  #$3F,d0 ; '?'
                 add.w   d0,d0
-                lea     ($20741C).l,a2
-                lea     locret_20741A-dword_20741C(a2,d0.w),a2
+                lea     (byte_20741C).l,a2
+                lea     locret_20741A-byte_20741C(a2,d0.w),a2
                 moveq   #0,d1
                 move.b  (a2)+,d1
                 move.w  8(a1),d0
@@ -12227,11 +12227,11 @@ loc_20708E:                             ; CODE XREF: sub_207044+3C↑j
                 bra.w   loc_207082
 ; ---------------------------------------------------------------------------
 
-loc_2070B6:                             ; CODE XREF: sub_207044+66↑j
+loc_2070B6:                             ; CODE XREF: Touchresponse+66↑j
                 cmp.w   d4,d0
                 bhi.w   loc_207082
 
-loc_2070BC:                             ; CODE XREF: sub_207044+6C↑j
+loc_2070BC:                             ; CODE XREF: Touchresponse+6C↑j
                 moveq   #0,d1
                 move.b  (a2)+,d1
                 move.w  $C(a1),d0
@@ -12244,11 +12244,11 @@ loc_2070BC:                             ; CODE XREF: sub_207044+6C↑j
                 bra.w   loc_207082
 ; ---------------------------------------------------------------------------
 
-loc_2070D4:                             ; CODE XREF: sub_207044+84↑j
+loc_2070D4:                             ; CODE XREF: Touchresponse+84↑j
                 cmp.w   d5,d0
                 bhi.w   loc_207082
 
-loc_2070DA:                             ; CODE XREF: sub_207044+8A↑j
+loc_2070DA:                             ; CODE XREF: Touchresponse+8A↑j
                 move.b  $20(a1),d1
                 andi.b  #$C0,d1
                 beq.w   sub_20714E
@@ -12264,11 +12264,11 @@ loc_2070DA:                             ; CODE XREF: sub_207044+8A↑j
                 bcc.w   locret_207110
                 addq.b  #2,$24(a1)
 
-locret_207110:                          ; CODE XREF: sub_207044+C4↑j
+locret_207110:                          ; CODE XREF: Touchresponse+C4↑j
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_207112:                             ; CODE XREF: sub_207044+BC↑j
+loc_207112:                             ; CODE XREF: Touchresponse+BC↑j
                 tst.w   $12(a0)
                 bpl.s   loc_20713C
                 move.w  $C(a0),d0
@@ -12283,23 +12283,23 @@ loc_207112:                             ; CODE XREF: sub_207044+BC↑j
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_20713C:                             ; CODE XREF: sub_207044+D2↑j
+loc_20713C:                             ; CODE XREF: Touchresponse+D2↑j
                 cmpi.b  #2,$1C(a0)
                 bne.s   locret_20714C
                 neg.w   $12(a0)
                 addq.b  #2,$24(a1)
 
-locret_20714C:                          ; CODE XREF: sub_207044+E0↑j
-                                        ; sub_207044+F0↑j ...
+locret_20714C:                          ; CODE XREF: Touchresponse+E0↑j
+                                        ; Touchresponse+F0↑j ...
                 rts
-; End of function sub_207044
+; End of function Touchresponse
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_20714E:                             ; CODE XREF: sub_207044+9E↑j
-                                        ; sub_207044+346↓p
+sub_20714E:                             ; CODE XREF: Touchresponse+9E↑j
+                                        ; Touchresponse+346↓p
                 tst.b   ($FF1521).l
                 bne.s   loc_207168
                 tst.b   ($FF151F).l
@@ -12369,12 +12369,16 @@ loc_207202:                             ; CODE XREF: sub_20714E+A4↑j
 
 ; ---------------------------------------------------------------------------
 word_20720A:    dc.w $A                 ; DATA XREF: sub_20714E+60↑r
-                dc.l $140032, $6408E9, $70022
+                dc.w $14
+                dc.w $32
+                dc.w $64
+; ---------------------------------------------------------------------------
+                bset    #7,$22(a1)
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_207218:                             ; CODE XREF: sub_207044+AC↑j
+sub_207218:                             ; CODE XREF: Touchresponse+AC↑j
                                         ; sub_20714E+16↑j ...
                 tst.b   ($FF1521).l
                 bne.s   loc_207228
@@ -12467,9 +12471,9 @@ loc_20732A:                             ; CODE XREF: sub_2072D6+6↑j
 ; End of function sub_2072D6
 
 ; ---------------------------------------------------------------------------
-; START OF FUNCTION CHUNK FOR sub_207044
+; START OF FUNCTION CHUNK FOR Touchresponse
 
-loc_20732E:                             ; CODE XREF: sub_207044+A6↑j
+loc_20732E:                             ; CODE XREF: Touchresponse+A6↑j
                 move.b  $20(a1),d1
                 andi.b  #$3F,d1 ; '?'
                 cmpi.b  #$1F,d1
@@ -12491,7 +12495,7 @@ loc_20732E:                             ; CODE XREF: sub_207044+A6↑j
                 cmpi.b  #5,($FFF7AA).w
                 beq.s   loc_2073AE
 
-loc_20737E:                             ; CODE XREF: sub_207044+328↑j
+loc_20737E:                             ; CODE XREF: Touchresponse+328↑j
                 cmpi.b  #$3C,d1 ; '<'
                 blt.s   locret_2073B4
                 cmpi.b  #$3F,d1 ; '?'
@@ -12501,12 +12505,12 @@ loc_20737E:                             ; CODE XREF: sub_207044+328↑j
                 bne.s   loc_207398
                 addq.b  #3,$21(a1)
 
-loc_207398:                             ; CODE XREF: sub_207044+34E↑j
+loc_207398:                             ; CODE XREF: Touchresponse+34E↑j
                 clr.b   $20(a1)
                 bra.w   loc_2073B6
 ; ---------------------------------------------------------------------------
 
-loc_2073A0:                             ; CODE XREF: sub_207044+330↑j
+loc_2073A0:                             ; CODE XREF: Touchresponse+330↑j
                 cmpi.b  #$3F,d1 ; '?'
                 beq.s   loc_2073C2
                 cmpi.b  #$3E,d1 ; '>'
@@ -12514,28 +12518,28 @@ loc_2073A0:                             ; CODE XREF: sub_207044+330↑j
                 bra.s   locret_2073B4
 ; ---------------------------------------------------------------------------
 
-loc_2073AE:                             ; CODE XREF: sub_207044+338↑j
+loc_2073AE:                             ; CODE XREF: Touchresponse+338↑j
                 cmpi.b  #$3D,d1 ; '='
                 beq.s   loc_2073BC
 
-locret_2073B4:                          ; CODE XREF: sub_207044+31E↑j
-                                        ; sub_207044+33E↑j ...
+locret_2073B4:                          ; CODE XREF: Touchresponse+31E↑j
+                                        ; Touchresponse+33E↑j ...
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_2073B6:                             ; CODE XREF: sub_207044+2F6↑j
-                                        ; sub_207044+2FE↑j ...
+loc_2073B6:                             ; CODE XREF: Touchresponse+2F6↑j
+                                        ; Touchresponse+2FE↑j ...
                 addq.b  #1,$21(a1)
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_2073BC:                             ; CODE XREF: sub_207044+366↑j
-                                        ; sub_207044+36E↑j
+loc_2073BC:                             ; CODE XREF: Touchresponse+366↑j
+                                        ; Touchresponse+36E↑j
                 bsr.w   sub_207218
                 bra.s   loc_2073B6
 ; ---------------------------------------------------------------------------
 
-loc_2073C2:                             ; CODE XREF: sub_207044+360↑j
+loc_2073C2:                             ; CODE XREF: Touchresponse+360↑j
                 move.b  $22(a0),d0
                 andi.b  #$14,d0
                 beq.s   locret_20740C
@@ -12553,50 +12557,168 @@ loc_2073C2:                             ; CODE XREF: sub_207044+360↑j
                 bcs.s   locret_20740C
                 neg.w   $10(a0)
 
-locret_20740C:                          ; CODE XREF: sub_207044+386↑j
-                                        ; sub_207044+3C2↑j
+locret_20740C:                          ; CODE XREF: Touchresponse+386↑j
+                                        ; Touchresponse+3C2↑j
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_20740E:                             ; CODE XREF: sub_207044+306↑j
-                                        ; sub_207044+30E↑j ...
+loc_20740E:                             ; CODE XREF: Touchresponse+306↑j
+                                        ; Touchresponse+30E↑j ...
                 cmpi.b  #2,$1C(a0)
                 bne.s   locret_20741A
                 addq.b  #1,$21(a1)
 
-locret_20741A:                          ; CODE XREF: sub_207044+3D0↑j
-                                        ; DATA XREF: sub_207044+56↑o
+locret_20741A:                          ; CODE XREF: Touchresponse+3D0↑j
+                                        ; DATA XREF: Touchresponse+56↑o
                 rts
-; END OF FUNCTION CHUNK FOR sub_207044
+; END OF FUNCTION CHUNK FOR Touchresponse
 ; ---------------------------------------------------------------------------
-dword_20741C:   dc.l $1414120C, $C100410, $C121010, $606180C, $C10100C
-                                        ; DATA XREF: sub_207044+56↑o
-                dc.l $8081410, $14080E0E, $18182810, $10180810, $20704020
-                dc.l $80202020, $8080404, $20080C0C, $8041804, $28040408
-                dc.l $4180428, $4201818, $C184808, $80C1008, $20102010
-                dc.l $C0C0000, $1808, $14080202, $180C0E13, $C080404, $16120000
-                dcb.l 2,0
-                dc.l $2824, $12112014, $20180303
-                dcb.b 2,4
+byte_20741C:    dc.b $14                ; DATA XREF: Touchresponse+50↑o
+                                        ; Touchresponse+56↑o
+                dc.b $14
+                dc.b $12
+                dc.b  $C
+                dc.b  $C
+                dc.b $10
+                dc.b   4
+                dc.b $10
+                dc.b  $C
+                dc.b $12
+                dc.b $10
+                dc.b $10
+                dc.b   6
+                dc.b   6
+                dc.b $18
+                dc.b  $C
+                dc.b  $C
+                dc.b $10
+                dc.b $10
+                dc.b  $C
+                dc.b   8
+                dc.b   8
+                dc.b $14
+                dc.b $10
+                dc.b $14
+                dc.b   8
+                dc.b  $E
+                dc.b  $E
+                dc.b $18
+                dc.b $18
+                dc.b $28 ; (
+                dc.b $10
+                dc.b $10
+                dc.b $18
+                dc.b   8
+                dc.b $10
+                dc.b $20
+                dc.b $70 ; p
+                dc.b $40 ; @
+                dc.b $20
+                dc.b $80
+                dc.b $20
+                dc.b $20
+                dc.b $20
+                dc.b   8
+                dc.b   8
+                dc.b   4
+                dc.b   4
+                dc.b $20
+                dc.b   8
+                dc.b  $C
+                dc.b  $C
+                dc.b   8
+                dc.b   4
+                dc.b $18
+                dc.b   4
+                dc.b $28 ; (
+                dc.b   4
+                dc.b   4
+                dc.b   8
+                dc.b   4
+                dc.b $18
+                dc.b   4
+                dc.b $28 ; (
+                dc.b   4
+                dc.b $20
+                dc.b $18
+                dc.b $18
+                dc.b  $C
+                dc.b $18
+                dc.b $48 ; H
+                dc.b   8
+                dc.b   8
+                dc.b  $C
+                dc.b $10
+                dc.b   8
+                dc.b $20
+                dc.b $10
+                dc.b $20
+                dc.b $10
+                dc.b  $C
+                dc.b  $C
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b $18
+                dc.b   8
+                dc.b $14
+                dc.b   8
+                dc.b   2
+                dc.b   2
+                dc.b $18
+                dc.b  $C
+                dc.b  $E
+                dc.b $13
+                dc.b  $C
+                dc.b   8
+                dc.b   4
+                dc.b   4
+                dc.b $16
+                dc.b $12
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b $28 ; (
+                dc.b $24 ; $
+                dc.b $12
+                dc.b $11
+                dc.b $20
+                dc.b $14
+                dc.b $20
+                dc.b $18
+                dc.b   3
+                dc.b   3
+                dc.b   4
+                dc.b   4
 ; ---------------------------------------------------------------------------
 
-loc_20749A:                             ; CODE XREF: ROM:00203F98↑j
+DebugMode:                              ; CODE XREF: ROM:00203F98↑j
                 move.b  ($FFF604).w,d0
                 andi.b  #$F,d0
                 bne.s   loc_2074B0
-                move.l  #$4000,(dword_20762A).l
+                move.l  #$4000,(DebugVel).l
                 bra.s   loc_2074D0
 ; ---------------------------------------------------------------------------
 
 loc_2074B0:                             ; CODE XREF: ROM:002074A2↑j
-                addi.l  #$2000,(dword_20762A).l
-                cmpi.l  #$80000,(dword_20762A).l
+                addi.l  #$2000,(DebugVel).l
+                cmpi.l  #$80000,(DebugVel).l
                 bls.s   loc_2074D0
-                move.l  #$80000,(dword_20762A).l
+                move.l  #$80000,(DebugVel).l
 
 loc_2074D0:                             ; CODE XREF: ROM:002074AE↑j
                                         ; ROM:002074C4↑j
-                move.l  (dword_20762A).l,d0
+                move.l  (DebugVel).l,d0
                 btst    #0,($FFF604).w
                 beq.s   loc_2074E2
                 sub.l   d0,$C(a0)
@@ -12624,7 +12746,7 @@ loc_207506:                             ; CODE XREF: ROM:00207500↑j
                 move.w  8(a0),d3
                 jsr     sub_200E80
                 move.w  (a1),($FF194E).l
-                lea     (word_20762E).l,a2
+                lea     (DebugList).l,a2
                 btst    #6,($FFF605).w
                 beq.s   loc_207548
                 moveq   #0,d1
@@ -12695,19 +12817,98 @@ loc_2075F4:                             ; CODE XREF: ROM:002075AC↑j
 loc_207624:                             ; CODE XREF: ROM:002075FA↑j
                 jmp     DrawObject
 ; ---------------------------------------------------------------------------
-dword_20762A:   dc.l $4000              ; DATA XREF: ROM:002074A4↑w
+DebugVel:       dc.l $4000              ; DATA XREF: ROM:002074A4↑w
                                         ; ROM:loc_2074B0↑w ...
-word_20762E:    dc.w $A00               ; DATA XREF: ROM:00207522↑o
-                dc.l $2F010020, $B5822450, 0
-                dc.l $2F010020, $B5AA2450, $1000001, $2B010020, $B2282416
-                dc.l 0
-                dc.l $2B010020, $B2E62416, $1000000, $34010020, $B650446A
-                dc.l 0
-                dc.l $20040023, $98BE848A, $82000000, $A010020, $852C0520
-                dc.l 0
-                dc.l $A010020, $852C0520, $20000, $A010020, $85320520
-                dc.l $4000000, $A010020, $85320520, $4010000, $19040020
-                dc.l $921805A8, 0
+DebugList:      dc.b  $A                ; DATA XREF: ROM:00207522↑o
+                dc.b   0
+                dc.b $2F ; /
+                dc.b   1
+                dc.l off_20B582
+                dc.w $2450
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b $2F ; /
+                dc.b   1
+                dc.l off_20B5AA
+                dc.w $2450
+                dc.b   1
+                dc.b   0
+                dc.b   0
+                dc.b   1
+                dc.b $2B ; +
+                dc.b   1
+                dc.l off_20B228
+                dc.w $2416
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b $2B ; +
+                dc.b   1
+                dc.l off_20B2E6
+                dc.w $2416
+                dc.b   1
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b $34 ; 4
+                dc.b   1
+                dc.l off_20B650
+                dc.w $446A
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b $20
+                dc.b   4
+                dc.l off_2398BE
+                dc.w $848A
+                dc.b $82
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b  $A
+                dc.b   1
+                dc.l off_20852C
+                dc.w $520
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b  $A
+                dc.b   1
+                dc.l off_20852C
+                dc.w $520
+                dc.b   0
+                dc.b   2
+                dc.b   0
+                dc.b   0
+                dc.b  $A
+                dc.b   1
+                dc.l off_208532
+                dc.w $520
+                dc.b   4
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b  $A
+                dc.b   1
+                dc.l off_208532
+                dc.w $520
+                dc.b   4
+                dc.b   1
+                dc.b   0
+                dc.b   0
+                dc.b $19
+                dc.b   4
+                dc.l off_209218
+                dc.w $5A8
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -14424,13 +14625,112 @@ sub_2084A2:                             ; DATA XREF: ROM:002081C2↑o
 ; End of function sub_2084A2
 
 ; ---------------------------------------------------------------------------
-                dc.l $40010, 0
-                dc.l $2020202, $20200FC, $40303, $5050505, $50503FC, $C0017
-                dc.l $1D002D, $330039, $2F80C00, $F0000C, $4F001, $C0000
-                dc.l $F003E80C, $F0F0, $50008F8, $C000C, $F001F007, $F801
-                dc.l $F0030004, $F804F003, $410F8, $90008F8, $F0000000
-                dc.l $F8080000
-                dc.b 3, $F8
+                dc.b   0
+                dc.b   4
+                dc.b   0
+                dc.b $10
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b   2
+                dc.b   2
+                dc.b   2
+                dc.b   2
+                dc.b   2
+                dc.b   2
+                dc.b   0
+                dc.b $FC
+                dc.b   0
+                dc.b   4
+                dc.b   3
+                dc.b   3
+                dc.b   5
+                dc.b   5
+                dc.b   5
+                dc.b   5
+                dc.b   5
+                dc.b   5
+                dc.b   3
+                dc.b $FC
+                dc.b   0
+                dc.b  $C
+                dc.b   0
+                dc.b $17
+                dc.b   0
+                dc.b $1D
+                dc.b   0
+                dc.b $2D ; -
+                dc.b   0
+                dc.b $33 ; 3
+                dc.b   0
+                dc.b $39 ; 9
+                dc.b   2
+                dc.b $F8
+                dc.b  $C
+                dc.b   0
+                dc.b   0
+                dc.b $F0
+                dc.b   0
+                dc.b  $C
+                dc.b   0
+                dc.b   4
+                dc.b $F0
+                dc.b   1
+                dc.b   0
+                dc.b  $C
+                dc.b   0
+                dc.b   0
+                dc.b $F0
+                dc.b   3
+                dc.b $E8
+                dc.b  $C
+                dc.b   0
+                dc.b   0
+                dc.b $F0
+                dc.b $F0
+                dc.b   5
+                dc.b   0
+                dc.b   8
+                dc.b $F8
+                dc.b   0
+                dc.b  $C
+                dc.b   0
+                dc.b  $C
+                dc.b $F0
+                dc.b   1
+                dc.b $F0
+                dc.b   7
+                dc.b   0
+                dc.b   0
+                dc.b $F8
+                dc.b   1
+                dc.b $F0
+                dc.b   3
+                dc.b   0
+                dc.b   4
+                dc.b $F8
+                dc.b   4
+                dc.b $F0
+                dc.b   3
+                dc.b   0
+                dc.b   4
+                dc.b $10
+                dc.b $F8
+                dc.b   9
+                dc.b   0
+                dc.b   8
+                dc.b $F8
+                dc.b $F0
+                dc.b   0
+                dc.b   0
+                dc.b   0
+                dc.b $F8
+                dc.b   8
+                dc.b   0
+                dc.b   0
+                dc.b   3
+                dc.b $F8
 off_20851E:     dc.w unk_208520-*       ; DATA XREF: sub_2082C8↑o
                                         ; sub_208370↑o ...
 unk_208520:     dc.b   0                ; DATA XREF: ROM:off_20851E↑o
@@ -14445,12 +14745,12 @@ unk_208520:     dc.b   0                ; DATA XREF: ROM:off_20851E↑o
                 dc.b   2
                 dc.b   1
                 dc.b $FC
-off_20852C:     dc.w unk_208538-*       ; DATA XREF: ROM:loc_2080FE↑o
-                                        ; ROM:002081C8↑o ...
+off_20852C:     dc.w unk_208538-*       ; DATA XREF: ROM:0020767A↑o
+                                        ; ROM:00207686↑o ...
                 dc.w unk_208544-off_20852C
                 dc.w unk_20854A-off_20852C
-off_208532:     dc.w unk_20855A-*       ; DATA XREF: ROM:00208210↑o
-                                        ; ROM:00208534↓o ...
+off_208532:     dc.w unk_20855A-*       ; DATA XREF: ROM:00207692↑o
+                                        ; ROM:0020769E↑o ...
                 dc.w unk_208566-off_208532
                 dc.w unk_20856C-off_208532
 unk_208538:     dc.b   2                ; DATA XREF: ROM:off_20852C↑o
@@ -14667,32 +14967,48 @@ loc_20860A:                             ; DATA XREF: ROM:00203E10↑o
                 move.w  off_208618(pc,d0.w),d1
                 jmp     off_208618(pc,d1.w)
 ; ---------------------------------------------------------------------------
-off_208618:     dc.w loc_208642-*       ; CODE XREF: ROM:00208614↑j
+off_208618:     dc.w CheckObjDespawnTime_Despawn-*
+                                        ; CODE XREF: ROM:00208614↑j
                                         ; DATA XREF: ROM:00208610↑r ...
                 dc.w loc_2087F6-off_208618
                 dc.w loc_20882E-off_208618
                 dc.w loc_208886-off_208618
                 dc.w loc_208894-off_208618
-off_208622:     dc.w loc_209618-off_208618 ; DATA XREF: sub_20868A+16↓o
-                dc.w loc_209E16+2-off_208618
-                dc.w unk_20A618-off_208618
-off_208628:     dc.w off_208628-off_208618 ; DATA XREF: ROM:off_208628↓o
-                dc.w off_208630-off_208618
-                dc.w off_208638-off_208618
-                dc.w loc_209628-off_208618
-off_208630:     dc.w loc_209E30-off_208618 ; DATA XREF: ROM:0020862A↑o
-                dc.w unk_20A638-off_208618
-                dc.w dword_217620+8-off_208618
-                dc.w dword_216E18+$18-off_208618
-off_208638:     dc.w dword_216620+$18-off_208618
-                                        ; DATA XREF: ROM:0020862C↑o
-                dc.w UpdateHUD-off_208618
-                dc.w loc_209E28-off_208618
-                dc.w dword_217620-off_208618
-                dc.w dword_216E18+$10-off_208618
+unk_208622:     dc.b $10                ; DATA XREF: sub_20868A+16↓o
+                dc.b   0
+                dc.b $18
+                dc.b   0
+                dc.b $20
+                dc.b   0
+                dc.b   0
+                dc.b $10
+                dc.b   0
+                dc.b $18
+                dc.b   0
+                dc.b $20
+                dc.b $10
+                dc.b $10
+                dc.b $18
+                dc.b $18
+                dc.b $20
+                dc.b $20
+                dc.b $F0
+                dc.b $10
+                dc.b $E8
+                dc.b $18
+                dc.b $E0
+                dc.b $20
+                dc.b $10
+                dc.b   8
+                dc.b $18
+                dc.b $10
+                dc.b $F0
+                dc.b   8
+                dc.b $E8
+                dc.b $10
 ; ---------------------------------------------------------------------------
 
-loc_208642:                             ; DATA XREF: ROM:off_208618↑o
+CheckObjDespawnTime_Despawn:            ; DATA XREF: ROM:off_208618↑o
                 lea     ($FF1200).l,a2
                 moveq   #0,d0
                 move.b  $23(a0),d0
@@ -14741,7 +15057,7 @@ loc_208696:                             ; CODE XREF: sub_20868A+8↑j
                 move.w  #1,d1
                 lsr.b   #4,d0
                 add.w   d0,d0
-                lea     (off_208622).l,a1
+                lea     (unk_208622).l,a1
                 move.b  (a1,d0.w),d5
                 ext.w   d5
                 move.b  1(a1,d0.w),d6
@@ -14815,7 +15131,7 @@ loc_20873C:                             ; CODE XREF: sub_20868A+6C↑j
                 move.w  d2,8(a1)
                 move.w  8(a0),$32(a1)
                 move.w  d3,$C(a1)
-                move.l  #$208A86,4(a1)
+                move.l  #off_208A86,4(a1)
                 move.w  #$A7AE,2(a1)
                 move.b  #2,$18(a1)
                 cmpi.b  #6,($FF1506).l
@@ -15057,73 +15373,65 @@ unk_208A80:     dc.b   5                ; DATA XREF: ROM:off_208A7E↑o
                 dc.b   6
                 dc.b   7
                 dc.b $FC
-                dc.b   0
-                dc.b $12
-                dc.b   0
-                dc.b $18
-                dc.b   0
-                dc.b $1E
-                dc.b   0
-                dc.b $24 ; $
-                dc.b   0
-                dc.b $2A ; *
-                dc.b   0
-                dc.b $30 ; 0
-                dc.b   0
-                dc.b $36 ; 6
-                dc.b   0
-                dc.b $3C ; <
-                dc.b   0
-                dc.b $42 ; B
-                dc.b   1
+off_208A86:     dc.w unk_208A98-*       ; DATA XREF: sub_20868A+CC↑o
+                                        ; ROM:00208A88↓o ...
+                dc.w unk_208A9E-off_208A86
+                dc.w unk_208AA4-off_208A86
+                dc.w unk_208AAA-off_208A86
+                dc.w unk_208AB0-off_208A86
+                dc.w unk_208AB6-off_208A86
+                dc.w unk_208ABC-off_208A86
+                dc.w unk_208AC2-off_208A86
+                dc.w unk_208AC8-off_208A86
+unk_208A98:     dc.b   1                ; DATA XREF: ROM:off_208A86↑o
                 dc.b $F8
                 dc.b   5
                 dc.b   0
                 dc.b   0
                 dc.b $F8
-                dc.b   1
+unk_208A9E:     dc.b   1                ; DATA XREF: ROM:00208A88↑o
                 dc.b $F8
                 dc.b   5
                 dc.b   0
                 dc.b   4
                 dc.b $F8
-                dc.b   1
+unk_208AA4:     dc.b   1                ; DATA XREF: ROM:00208A8A↑o
                 dc.b $F8
                 dc.b   1
                 dc.b   0
                 dc.b   8
                 dc.b $FC
-                dc.b   1
+unk_208AAA:     dc.b   1                ; DATA XREF: ROM:00208A8C↑o
                 dc.b $F8
                 dc.b   5
                 dc.b   8
                 dc.b   4
                 dc.b $F8
-                dc.b   1
+unk_208AB0:     dc.b   1                ; DATA XREF: ROM:00208A8E↑o
                 dc.b $F8
                 dc.b   5
                 dc.b   0
                 dc.b  $A
                 dc.b $F8
-                dc.b   1
+unk_208AB6:     dc.b   1                ; DATA XREF: ROM:00208A90↑o
                 dc.b $F8
                 dc.b   5
                 dc.b $18
                 dc.b  $A
                 dc.b $F8
-                dc.b   1
+unk_208ABC:     dc.b   1                ; DATA XREF: ROM:00208A92↑o
                 dc.b $F8
                 dc.b   5
                 dc.b $10
                 dc.b  $A
                 dc.b $F8
-                dc.b   1
+unk_208AC2:     dc.b   1                ; DATA XREF: ROM:00208A94↑o
                 dc.b $F8
                 dc.b   5
                 dc.b   8
                 dc.b  $A
                 dc.b $F8
-                dc.b   0
+unk_208AC8:     dc.b   0                ; DATA XREF: ROM:00208A96↑o
                 dc.b   0
                 dc.b   0
                 dc.b   8
@@ -16093,8 +16401,8 @@ unk_20920E:     dc.b   1                ; DATA XREF: ROM:002091A2↑o
                 dc.b  $F
                 dc.b  $E
                 dc.b $FF
-off_209218:     dc.w unk_209240-*       ; DATA XREF: sub_208C3E+8↑o
-                                        ; ROM:00208CBE↑o ...
+off_209218:     dc.w unk_209240-*       ; DATA XREF: ROM:002076AA↑o
+                                        ; sub_208C3E+8↑o ...
                 dc.w unk_209256-off_209218
                 dc.w unk_20926C-off_209218
                 dc.w unk_209282-off_209218
@@ -16890,8 +17198,6 @@ loc_2095F4:                             ; CODE XREF: AddPoints+18↑j
                 addq.b  #1,($FF1508).l
                 addq.b  #1,($FF150E).l
                 move.w  #$7A,d0 ; 'z'
-
-loc_209618:                             ; DATA XREF: ROM:off_208622↑o
                 jmp     PlaySoundSubCpu
 ; ---------------------------------------------------------------------------
 
@@ -16903,11 +17209,8 @@ locret_20961E:                          ; CODE XREF: AddPoints+24↑j
 ; START OF FUNCTION CHUNK FOR sub_20208A
 
 UpdateHUD:                              ; CODE XREF: sub_20208A+8↑j
-                                        ; DATA XREF: ROM:0020863A↑o
                 tst.w   ($FF1588).l
                 beq.s   loc_209676
-
-loc_209628:                             ; DATA XREF: ROM:0020862E↑o
                 bsr.w   HudDb_XY
                 move.l  #$73600002,d0
                 moveq   #0,d1
@@ -17118,7 +17421,7 @@ word_20986E:    dc.w $FFFF              ; DATA XREF: sub_209808+A↑o
 ; =============== S U B R O U T I N E =======================================
 
 
-HudDb_XY:                               ; CODE XREF: sub_20208A:loc_209628↑p
+HudDb_XY:                               ; CODE XREF: sub_20208A+759E↑p
                 move.l  #$70E00002,d0
                 moveq   #0,d1
                 move.w  ($FFD008).w,d1
@@ -17753,19 +18056,13 @@ loc_209DEC:                             ; DATA XREF: ROM:off_209DE0↑o
                 move.w  #$2481,2(a0)
                 move.b  #$20,$17(a0) ; ' '
                 move.b  #$20,$19(a0) ; ' '
-
-loc_209E16:                             ; DATA XREF: ROM:00208624↑o
                 move.b  #$18,$16(a0)
 
 loc_209E1C:                             ; DATA XREF: ROM:00209DE2↑o
                 lea     ($23D970).l,a1
                 jsr     AnimateObect
-
-loc_209E28:                             ; DATA XREF: ROM:0020863C↑o
                 lea     ($FFD000).w,a6
                 bsr.w   sub_209FA6
-
-loc_209E30:                             ; DATA XREF: ROM:off_208630↑o
                 beq.s   locret_209E7E
                 clr.b   ($FF1510).l
                 move.b  #2,$1A(a0)
@@ -17795,7 +18092,7 @@ loc_209E72:                             ; CODE XREF: ROM:00209E5C↑j
                 asr.w   #2,d0
                 move.w  d0,($FFD010).w
 
-locret_209E7E:                          ; CODE XREF: ROM:loc_209E30↑j
+locret_209E7E:                          ; CODE XREF: ROM:00209E30↑j
                 rts
 
 ; =============== S U B R O U T I N E =======================================
@@ -18720,7 +19017,7 @@ unk_20A600:     dc.b   6                ; DATA XREF: ROM:0020A4E2↑o
                 dc.b   8
                 dc.b   1
                 dc.b $18
-unk_20A618:     dc.b   3                ; DATA XREF: ROM:00208626↑o
+                dc.b   3
                 dc.b $F8
                 dc.b $18
                 dc.b   8
@@ -18752,7 +19049,7 @@ unk_20A620:     dc.b $11                ; DATA XREF: ROM:0020A4E4↑o
                 dc.b   0
                 dc.b   4
                 dc.b $10
-unk_20A638:     dc.b $47 ; G            ; DATA XREF: ROM:00208632↑o
+                dc.b $47 ; G
                 dc.b $10
                 dc.b   8
                 dc.b   9
@@ -20789,8 +21086,8 @@ unk_20B224:     dc.b   4                ; DATA XREF: ROM:0020B21E↑o
                 dc.b   0
                 dc.b   2
                 dc.b $FF
-off_20B228:     dc.w unk_20B22E-*       ; DATA XREF: ROM:0020B18C↑o
-                                        ; ROM:0020B22A↓o ...
+off_20B228:     dc.w unk_20B22E-*       ; DATA XREF: ROM:0020764A↑o
+                                        ; ROM:0020B18C↑o ...
                 dc.w unk_20B26B-off_20B228
                 dc.w unk_20B2A8-off_20B228
 unk_20B22E:     dc.b  $C                ; DATA XREF: ROM:off_20B228↑o
@@ -20977,8 +21274,8 @@ unk_20B2A8:     dc.b  $C                ; DATA XREF: ROM:0020B22C↑o
                 dc.b $18
                 dc.b  $A
                 dc.b   0
-off_20B2E6:     dc.w unk_20B2EC-*       ; DATA XREF: ROM:0020B1A4↑o
-                                        ; ROM:0020B2E8↓o ...
+off_20B2E6:     dc.w unk_20B2EC-*       ; DATA XREF: ROM:00207656↑o
+                                        ; ROM:0020B1A4↑o ...
                 dc.w unk_20B324-off_20B2E6
                 dc.w unk_20B35C-off_20B2E6
 unk_20B2EC:     dc.b  $B                ; DATA XREF: ROM:off_20B2E6↑o
@@ -21329,8 +21626,8 @@ unk_20B57E:     dc.b $13                ; DATA XREF: ROM:0020B55E↑o
                 dc.b   0
                 dc.b   1
                 dc.b $FF
-off_20B582:     dc.w unk_20B588-*       ; DATA XREF: sub_20B394:loc_20B3EE↑o
-                                        ; ROM:0020B584↓o ...
+off_20B582:     dc.w unk_20B588-*       ; DATA XREF: ROM:00207632↑o
+                                        ; sub_20B394:loc_20B3EE↑o ...
                 dc.w unk_20B598-off_20B582
                 dc.w unk_20B5A8-off_20B582
 unk_20B588:     dc.b   3                ; DATA XREF: ROM:off_20B582↑o
@@ -21367,8 +21664,8 @@ unk_20B598:     dc.b   3                ; DATA XREF: ROM:0020B584↑o
                 dc.b $F8
 unk_20B5A8:     dc.b   0                ; DATA XREF: ROM:0020B586↑o
                 dc.b   0
-off_20B5AA:     dc.w unk_20B5B0-*       ; DATA XREF: sub_20B394+66↑o
-                                        ; ROM:0020B5AC↓o ...
+off_20B5AA:     dc.w unk_20B5B0-*       ; DATA XREF: ROM:0020763E↑o
+                                        ; sub_20B394+66↑o ...
                 dc.w unk_20B5C0-off_20B5AA
                 dc.w unk_20B5D0-off_20B5AA
 unk_20B5B0:     dc.b   3                ; DATA XREF: ROM:off_20B5AA↑o
@@ -21464,8 +21761,8 @@ byte_20B642:    dc.b $10                ; DATA XREF: sub_20B5E8+30↑o
                 dc.b $10
                 dc.b $10
                 dc.b $40 ; @
-off_20B650:     dc.w unk_20B65E-*       ; DATA XREF: sub_20B5E8+1C↑o
-                                        ; ROM:0020B652↓o ...
+off_20B650:     dc.w unk_20B65E-*       ; DATA XREF: ROM:00207662↑o
+                                        ; sub_20B5E8+1C↑o ...
                 dc.w unk_20B664-off_20B650
                 dc.w unk_20B66A-off_20B650
                 dc.w unk_20B675-off_20B650
@@ -25004,13 +25301,13 @@ word_20D252:    dc.w $A                 ; DATA XREF: ROM:0020D226↑o
                 dc.w $AD00
                 dc.l NemMonitors        ; 6
                 dc.w $B500
-                dc.l $237CE6            ; 7
+                dc.l unk_237CE6         ; 7
                 dc.w $D000
-                dc.l $23416C            ; 8
+                dc.l unk_23416C         ; 8
                 dc.w $D8C0
-                dc.l $238EF8            ; 9
+                dc.l unk_238EF8         ; 9
                 dc.w $DAE0
-                dc.l $2381CE            ; A
+                dc.l unk_2381CE         ; A
                 dc.w $F5C0
 word_20D296:    dc.w 6                  ; DATA XREF: ROM:0020D228↑o
                                         ; ROM:0020D22E↑o ...
@@ -25032,10 +25329,10 @@ word_20D2C2:    dc.w 0                  ; DATA XREF: ROM:0020D22C↑o
                 dc.l word_23EF62
                 dc.w $63C0
 word_20D2CA:    dc.w 0                  ; DATA XREF: ROM:0020D244↑o
-                dc.l unk_23541E
+                dc.l NemSonicGotthrough
                 dc.w $7880
 word_20D2D2:    dc.w 0                  ; DATA XREF: ROM:0020D248↑o
-                dc.l unk_2341D0
+                dc.l NemCapsule
                 dc.w $9020
                 dc.b $F8
                 dc.b $BA
@@ -33091,7 +33388,7 @@ a32_0:          dc.b '`3 2',0
                 dcb.l 2,0
                 dc.l $20462805, $200102F7, $2001280A, $20276071
                 dcb.l 4,0
-dword_216620:   dc.l $461801, $10021802, $10021804, $31407B
+                dc.l $461801, $10021802, $10021804, $31407B
                 dcb.l 4,0
                 dc.l $160801, $1080A, $20804, $4642EF
                 dcb.l 4,0
@@ -33189,7 +33486,7 @@ aXxPX:          dc.b '@XX',8,'P&`X',0
                 dcb.l 3,$50045804
                 dc.l $50047819, $20046, $334048
                 dcb.l 4,0
-dword_216E18:   dc.l $40460090, $200020, $3462EC, $40346031
+                dc.l $40460090, $200020, $3462EC, $40346031
                 dcb.l 4,0
                 dc.l $50051801, $10011808, $464031
                 dcb.l 3,0
@@ -33322,9 +33619,7 @@ aPF:            dc.b 'P=@F',0
                 dcb.l $40,0
 a3224_0:        dc.b ' 3 2 > > 2 4',0
                 align $20
-dword_217620:   dc.l $10B20267, $910091, $27118B2
-                                        ; DATA XREF: ROM:0020863E↑o
-                                        ; ROM:00208634↑o
+                dc.l $10B20267, $910091, $27118B2
                 dcb.l $19,0
 a3224_1:        dc.b ' 3 2 > > 2 4',0
                 align $10
@@ -45782,7 +46077,7 @@ word_233A26:    dc.w $178               ; DATA XREF: sub_205BCE+16↑o
                 dc.b $55 ; U
                 dc.b $29 ; )
                 dc.b $61 ; a
-                dc.b   0
+unk_23416C:     dc.b   0                ; DATA XREF: ROM:0020D284↑o
                 dc.b   5
                 dc.b $80
                 dc.b   4
@@ -45882,7 +46177,7 @@ word_233A26:    dc.w $178               ; DATA XREF: sub_205BCE+16↑o
                 dc.b $B7
                 dc.b $FF
                 dc.b $10
-unk_2341D0:     dc.b $80                ; DATA XREF: ROM:0020D2D4↑o
+NemCapsule:     dc.b $80                ; DATA XREF: ROM:0020D2D4↑o
                 dc.b $68 ; h
                 dc.b $80
                 dc.b   3
@@ -46582,7 +46877,7 @@ unk_2341D0:     dc.b $80                ; DATA XREF: ROM:0020D2D4↑o
                 dc.l $D379999E, $D3DB7FEE
                 dc.b $6F ; o
                 dc.b   0
-unk_23541E:     dc.b $80                ; DATA XREF: ROM:0020D2CC↑o
+NemSonicGotthrough:dc.b $80             ; DATA XREF: ROM:0020D2CC↑o
                 dc.b $78 ; x
                 dc.b $80
                 dc.b   5
@@ -49472,124 +49767,2318 @@ NemMonitors:    dc.w $8052              ; DATA XREF: ROM:0020D278↑o
                 dc.l $54C8EA15, $229F6CA7, $98AA398A, $A27A9EB3, $52D453FD
                 dc.l $94FF7E41, $53A954EA, $454E19F, $CF86BC1, $502FCEE1
                 dc.l $DFB293BF, $9E4EA854, $C8EA158E, $7CE66A3D
-                dc.l $5D981CA6, $A39110EF, $E14728E5, $1CC0F74C, $D5CA39F3
-                dc.l $A9D4AA7, $50E79C60, $6A38C8C3, $38C8D44E, $95A93A5A
-                dc.l $97C8D4ED, $C619BB92, $8E7CF38D, $42A64750, $A95F6887
-                dc.l $6983FBCA, $3BCAF096, $510DD7D8, $82A752A9, $D40B2BF7
-                dc.l $B522DBDA, $97D0A453, $EF784FB0, $46C57D42, $A64750A9
-                dc.l $47F5B387, $747D672F, $D6CF4EE8, $FACFF7B3, $FD9CFF7C
-                dc.l $4153A954, $EA05FAD8, $F747D63F, $AD8F7427, $EB1FD6CA
-                dc.l $7DDA4FD4, $A350A9A9, $FD7C9073, $FD684070, $D0B0A7A2
-                dc.l $FA30808, $7EA98226, $F5C3900, $9BC52165, $E006006E
-                dc.l $78847009, $C1218BD1, $F37883D7, $96ACFD53, $4FD7DB3D
-                dc.l $7FDFF9DF, $EFA037F2, $817E4E0, $5EAFC098, $83D20D81
-                dc.l $31682FF, $55DE0EC0, $B00B1AD, $41D804D, $4418C4DA
-                dc.l $FC3B1C, $B0BF7EAE, $AEAFFC0F, $271E0C20, $6270606D
-                dc.l $618145B3, $F5C18080, $86BE402F, $60832C1B, $B39160D6
-                dc.l $1483598F, $98E585, $9B70C7BF, $566CF6E9, $A26B67F4
-                dc.l $147AF1E0, $BB1DEFE0, $F38DA073, $7B40E7E4, $65C9D813
-                dc.l $84DB4081, $BBD0E7FA, $A8FF5D7F, $DFD36D3F, $9EF41FDF
-                dc.l $EB05FEA0, $1E0EC1B4, $10706C02, $90B406CC, $60D04078
-                dc.l $E83CA08F, $649A4368, $A4347182, $11C768B, $C20F5E5A
-                dc.l $F6D534FD, $7DB37FEF, $C33686BF, $AF78BE0F, $F00147A2
-                dc.l $CF501063, $17C00430, $BC1B8DD8, $70604F57, $AFBD68E7
-                dc.l $A6386A0E, $81C10430, $827DE62, $60BF271F, $BF5756BF
-                dc.l $EFD5BFB0, $9C00E781, $39E18D78, $7584DB07, $A8A2D168
-                dc.l $29814D41, $CCB4169B, $584041F8, $E42C0787, $791FBF57
-                dc.l $F7F44FEF, $8A7F6089, $D8A6278D, $50792D91, $9E10C083
-                dc.l $3C1A9065, $80EBA22F, $3AE9DF, $37E9AB18, $9FA6ACE3
-                dc.l $6798F5FE, $6D7FDFD3, $6D3F7EDA, $A63F3B9C, $20B0830
-                dc.l $A39006C, $38010210, $84406138, $44C10970, $8D93804C
-                dc.l $2F358405, $592C053F, $5E20D9BD, $B3680E7A, $20C05073
-                dc.l $1409B0A4, $E1301045, $8708081C, $E0978243, $4B2C0500
-                dc.l $9664B40B, $E16477E7, $6C9031E9, $DE101D36, $1CE1F9B4
-                dc.l $72A04444, $44444444, $57E8CEE3, $FA8FD0D2, $D96E0EEB
-                dc.l $7E9E56CB, $753D32EE, $F4CB77ED, $32DC14B6, $5DDFA7DD
-                dc.l $69065BBD, $256CB704, $AD96EFDA, $65BADBAD, $97ECEDFA
-                dc.l $70CB75A4, $41BAD905, $2D96ECBF, $69904B2F, $EA6ECAD4
-                dc.l $DDD7BBA, $F704BAF7, $5B765DC1, $FB3B4837, $5B2B6EB7
-                dc.l $E9E596EB, $75FECC25, $6CAD4FD0, $DDFA9A39, $15C3F53A
-                dc.l $5F75F72B, $428ED9DF, $72888A28, $AD088888, $88888A79
-                dc.l $BE93D57B, $399F4521, $399F4BB8, $6D7ED7ED, $7ED7ED7E
-                dc.l $D7ED7ED7, $ED7ED7ED, $7ED7ED7E, $D7ED30DF, $84D7A043
-                dc.l $C961F95C, $7EA57FA1, $DE1BFF95, $A9EA0046, $80040615
-                dc.l $10251335, $18463356, $38663574, $5860402, $15122634
-                dc.l $36364776, $57776778, $87040015, $11263238, $F658F788
-                dc.l $4011516, $27758905, $15176E28, $F28B0404, $162E2773
-                dc.l $8C040716, $2F277A8D, $76F8E08, $F38F0403, $15142772
-                dc.l $3774FF55, $5D5354E1, $F843E10, $F843E10F, $54D51555
-                dc.l $67FCF6FE, $7CBA6DCB, $B72ED4EF, $4EF4EF4E, $F4EFCBB7
-                dc.l $2EC9CB66, $4E9285DD, $31FBB555, $5D4978FC, $AD75AEB
-                dc.l $5D7F03A9, $EA798B1C, $CA027826, $B2AAC054, $66250B35
-                dc.l $24C3D1A5, $D0864643, $21EC256D, $2463DCF, $B8190F63
-                dc.l $F07DC158, $751E2D01, $815A02D2, $A59A41D3, $40FE7F60
-                dc.l $190696D0, $8076020, $1DB21901, $146594B, $220D2C12
-                dc.l $5525562, $E259CA05, $32102C01, $E604038, $D067B0C
-                dc.l $C2403320, $B600833D, $161A62B1, $2C572C0E, $58EA18AF
-                dc.l $5CEB6CED, $5C5B74C6, $35E2D9D, $B81E0556, $7FF62890
-                dc.l $6D91069E, $C512B7BF, $5018FF20, $43FD01F, $811ADB2D
-                dc.l $C1F81F21, $A8547F23, $B82AC30F, $280C0751, $D4555575
-                dc.l $8E712C46, $580D261B, $4C0A2530, $9014C369, $C7486520
-                dc.l $6C8726FF, $BFF9F191, $423B3464, $128C8348, $94748947
-                dc.l $4FE3C80B, $FCF2F797, $F9CB22CA, $41A4641B, $4483C47C
-                dc.l $7B1658DA, $2C1FF6FF, $B7FD8834, $90780D3, $22897FDE
-                dc.l $DEF6F7FE, $4147F912, $8F50D3DE, $43912E59, $EC13EC10
-                dc.l $EE0DE1BC, $780F11F, $11EF96C1, $6FE3B05B, $D98BDDA5
-                dc.l $91037B6D, $EDB0C651, $21896443, $12C88625, $91544251
-                dc.l $2A884A24, $D58964D5, $B7B42BD4, $61E5D73, $F2555D82
-                dc.l $43B06C1F, $F6F01E23, $DE3DF2EF, $6C880807, $22CAD12A
-                dc.l $8E560AFF, $A2BFE8DD, $FD86FF4A, $AAAAAF16, $CEC18B46
-                dc.l $7688CED1, $19DA233F, $E44EC151, $C0F9401A, $DBA02D6D
-                dc.l $D01061DC, $D60618B0, $C6020C39, $35458726, $DCC31106
-                dc.l $AB0C4615, $55D4338A, $85821161, $F76080E0, $58058623
-                dc.l $3B45B730, $C47C9BF7, $1E4D686E, $C03575AA, $8406359D
-                dc.l $472185BD, $85BAE42D, $5EBB861F, $B9EB9FEE, $260ADFF7
-                dc.l $FF3E3210, $60980E01, $AD006101, $561D4071, $D5815BF8
-                dc.l $F0B4467F, $C86DCDD6, $1FC980B6, $E80375DC, $C0D1B567
-                dc.l $90EE6A88, $5AB0188E, $E875FDCE, $3F72AAAA, $AAAC2AB3
-                dc.l $1806621C, $F1FC89D, $96BC0AB6, $EE372EA0, $C38A8B0E
-                dc.l $2AB56160, $9D555738, $A8402610, $5E05807, $2BBB3DD
-                dc.l $B42B3B4, $2B983555, $41558731, $CC185AB3, $AB0CEAD5
-                dc.l $51558B46, $D18470, $10106098, $2CC15566, $33056068
-                dc.l $E06033EB, $3DCB56AC, $7306150, $55556AB5, $71585555
-                dc.l $5558978F, $C0AF9EBE, $7AF9EBF8, $1D4F53CD, $D8E65073
-                dc.l $C133F9AA, $AC1D5E6E, $50BDA926, $73B8D8B9, $D09E49B3
-                dc.l $997295E6, $5CC8DCEE, $FF79508C, $9F948CB9, $1191E949
-                dc.l $2B3EAFC5, $F07815F0, $76952F62, $34E9234E, $45CB447A
-                dc.l $21CAF392, $1239C8D0, $91E54E6F, $4434234A, $7391DC68
-                dc.l $72BD288A, $A4AAC5C1, $1E647029, $9BA1610D, $F34247C2
-                dc.l $1C9E7493, $CD288F3B, $AFC23A66, $686B02F3, $3C5E8787
-                dc.l $B8F17A1E, $37BDD87D, $EE99FE75, $F3BF7E2F, $DFE73783
-                dc.l $EFE2FCEF, $E1F87559, $D08F637A, $767A7647, $A6868E9C
-                dc.l $88C91EEA, $5C69E6F7, $3F37F374, $DEFBEFE7, $F9E4FDEB
-                dc.l $EF4DEFFB, $D4DECF0F, $D6C1E1BF, $5DFAEF55, $55D6ECEE
-                dc.l $3C5D4C21, $91CD0E47, $343B8A6F, $4429BF49, $BA7287AA
-                dc.l $235DFBC4, $6FE5BA37, $FAF09EA1, $7D2E6BA8, $9447A250
-                dc.l $91CEE392, $39BA191D, $CF7510D2, $FFDD91A5, $FCC8EEF5
-                dc.l $71F33E74, $4E5711A1, $C8EE3B8F, $43247E52, $A23DC7CF
-                dc.l $1D2E64DB, $A76E4542, $E446865D, $10CBF9E9, $CB99DC7F
-                dc.l $FBFFDFEB, $7F77BFD6, $F43BBF3B, $7EF2347F, $D6A191FF
-                dc.l $6E8FCCD7, $9E7D127A, $5121B511, $BB51BB9A, $1F634A6C
-                dc.l $77534A5D, $FDFE7D13, $7FFAFF5B, $FCB3FEDB, $5399A33F
-                dc.l $3E97DC7A, $5E94742B, $D0D1D0AF, $434743BD, $D1D0EF4
-                dc.l $A3A1B5E6, $579B5E87, $7A43D25F, $DFFCC9F, $E77D71F9
-                dc.l $D555D0DE, $894234E8, $92A4B976, $343DA8E8, $7A51D285
-                dc.l $C91D3FBE, $FFBB243F
-                dc.l $571F3FDE, $1DE9EAED, $FEB7DE9F, $9DBF7DE8, $DFCDBE7F
-                dc.l $BD70000E, $80063D15, $19251834, $A440955, $1A651C76
-                dc.l $3A860408, $163B28FA, $377C8C03, $3140B38, $FB8D0302
-                dc.l $163C8E02, $151BFF, $94E30BEF, $2AD6FD13, $4606A84C
-                dc.l $A2E47123, $891C48A1, $C8E244E1, $D09FD636, $AE7F5DF5
-                dc.l $3FACEF1B, $4FBADAEE, $47122712, $3891C48E, $24BA1354
-                dc.l $AF02B5EC, $7EB3CCDA, $DE3F5DD6, $3C95749A, $309A2932
-                dc.l $868A1A91, $A91A91A9, $1A246A47, $E496A44F, $5BBD5C3A
-                dc.l $13874271, $29C3A143
-                dcb.l 2,$A138A138
-                dc.l $A142A566, $4D63CB3, $17BADF5E, $DCBEDE17, $C595F165
-                dc.l $7C595F16, $53EDACA7, $DB593ECC, $9F664568, $C8AD193F
-                dc.l $7A64FDE9, $83C277C3, $8B8F4414, $2847A27F, $4D64508A
-                dc.l $20D3E2E1, $A5A4D697, $5D747168, $6604E1A3, $3326170
-                dc.l $EB471686, $6970EBAE
+                dc.b $5D ; ]
+                dc.b $98
+                dc.b $1C
+                dc.b $A6
+                dc.b $A3
+                dc.b $91
+                dc.b $10
+                dc.b $EF
+                dc.b $E1
+                dc.b $47 ; G
+                dc.b $28 ; (
+                dc.b $E5
+                dc.b $1C
+                dc.b $C0
+                dc.b $F7
+                dc.b $4C ; L
+                dc.b $D5
+                dc.b $CA
+                dc.b $39 ; 9
+                dc.b $F3
+                dc.b  $A
+                dc.b $9D
+                dc.b $4A ; J
+                dc.b $A7
+                dc.b $50 ; P
+                dc.b $E7
+                dc.b $9C
+                dc.b $60 ; `
+                dc.b $6A ; j
+                dc.b $38 ; 8
+                dc.b $C8
+                dc.b $C3
+                dc.b $38 ; 8
+                dc.b $C8
+                dc.b $D4
+                dc.b $4E ; N
+                dc.b $95
+                dc.b $A9
+                dc.b $3A ; :
+                dc.b $5A ; Z
+                dc.b $97
+                dc.b $C8
+                dc.b $D4
+                dc.b $ED
+                dc.b $C6
+                dc.b $19
+                dc.b $BB
+                dc.b $92
+                dc.b $8E
+                dc.b $7C ; |
+                dc.b $F3
+                dc.b $8D
+                dc.b $42 ; B
+                dc.b $A6
+                dc.b $47 ; G
+                dc.b $50 ; P
+                dc.b $A9
+                dc.b $5F ; _
+                dc.b $68 ; h
+                dc.b $87
+                dc.b $69 ; i
+                dc.b $83
+                dc.b $FB
+                dc.b $CA
+                dc.b $3B ; ;
+                dc.b $CA
+                dc.b $F0
+                dc.b $96
+                dc.b $51 ; Q
+                dc.b  $D
+                dc.b $D7
+                dc.b $D8
+                dc.b $82
+                dc.b $A7
+                dc.b $52 ; R
+                dc.b $A9
+                dc.b $D4
+                dc.b  $B
+                dc.b $2B ; +
+                dc.b $F7
+                dc.b $B5
+                dc.b $22 ; "
+                dc.b $DB
+                dc.b $DA
+                dc.b $97
+                dc.b $D0
+                dc.b $A4
+                dc.b $53 ; S
+                dc.b $EF
+                dc.b $78 ; x
+                dc.b $4F ; O
+                dc.b $B0
+                dc.b $46 ; F
+                dc.b $C5
+                dc.b $7D ; }
+                dc.b $42 ; B
+                dc.b $A6
+                dc.b $47 ; G
+                dc.b $50 ; P
+                dc.b $A9
+                dc.b $47 ; G
+                dc.b $F5
+                dc.b $B3
+                dc.b $87
+                dc.b $74 ; t
+                dc.b $7D ; }
+                dc.b $67 ; g
+                dc.b $2F ; /
+                dc.b $D6
+                dc.b $CF
+                dc.b $4E ; N
+                dc.b $E8
+                dc.b $FA
+                dc.b $CF
+                dc.b $F7
+                dc.b $B3
+                dc.b $FD
+                dc.b $9C
+                dc.b $FF
+                dc.b $7C ; |
+                dc.b $41 ; A
+                dc.b $53 ; S
+                dc.b $A9
+                dc.b $54 ; T
+                dc.b $EA
+                dc.b   5
+                dc.b $FA
+                dc.b $D8
+                dc.b $F7
+                dc.b $47 ; G
+                dc.b $D6
+                dc.b $3F ; ?
+                dc.b $AD
+                dc.b $8F
+                dc.b $74 ; t
+                dc.b $27 ; '
+                dc.b $EB
+                dc.b $1F
+                dc.b $D6
+                dc.b $CA
+                dc.b $7D ; }
+                dc.b $DA
+                dc.b $4F ; O
+                dc.b $D4
+                dc.b $A3
+                dc.b $50 ; P
+                dc.b $A9
+                dc.b $A9
+                dc.b $FD
+                dc.b $7C ; |
+                dc.b $90
+                dc.b $73 ; s
+                dc.b $FD
+                dc.b $68 ; h
+                dc.b $40 ; @
+                dc.b $70 ; p
+                dc.b $D0
+                dc.b $B0
+                dc.b $A7
+                dc.b $A2
+                dc.b  $F
+                dc.b $A3
+                dc.b   8
+                dc.b   8
+                dc.b $7E ; ~
+                dc.b $A9
+                dc.b $82
+                dc.b $26 ; &
+                dc.b  $F
+                dc.b $5C ; \
+                dc.b $39 ; 9
+                dc.b   0
+                dc.b $9B
+                dc.b $C5
+                dc.b $21 ; !
+                dc.b $65 ; e
+                dc.b $E0
+                dc.b   6
+                dc.b   0
+                dc.b $6E ; n
+                dc.b $78 ; x
+                dc.b $84
+                dc.b $70 ; p
+                dc.b   9
+                dc.b $C1
+                dc.b $21 ; !
+                dc.b $8B
+                dc.b $D1
+                dc.b $F3
+                dc.b $78 ; x
+                dc.b $83
+                dc.b $D7
+                dc.b $96
+                dc.b $AC
+                dc.b $FD
+                dc.b $53 ; S
+                dc.b $4F ; O
+                dc.b $D7
+                dc.b $DB
+                dc.b $3D ; =
+                dc.b $7F ; 
+                dc.b $DF
+                dc.b $F9
+                dc.b $DF
+                dc.b $EF
+                dc.b $A0
+                dc.b $37 ; 7
+                dc.b $F2
+                dc.b   8
+                dc.b $17
+                dc.b $E4
+                dc.b $E0
+                dc.b $5E ; ^
+                dc.b $AF
+                dc.b $C0
+                dc.b $98
+                dc.b $83
+                dc.b $D2
+                dc.b  $D
+                dc.b $81
+                dc.b   3
+                dc.b $16
+                dc.b $82
+                dc.b $FF
+                dc.b $55 ; U
+                dc.b $DE
+                dc.b  $E
+                dc.b $C0
+                dc.b  $B
+                dc.b   0
+                dc.b $B1
+                dc.b $AD
+                dc.b   4
+                dc.b $1D
+                dc.b $80
+                dc.b $4D ; M
+                dc.b $44 ; D
+                dc.b $18
+                dc.b $C4
+                dc.b $DA
+                dc.b   0
+                dc.b $FC
+                dc.b $3B ; ;
+                dc.b $1C
+                dc.b $B0
+                dc.b $BF
+                dc.b $7E ; ~
+                dc.b $AE
+                dc.b $AE
+                dc.b $AF
+                dc.b $FC
+                dc.b  $F
+                dc.b $27 ; '
+                dc.b $1E
+                dc.b  $C
+                dc.b $20
+                dc.b $62 ; b
+                dc.b $70 ; p
+                dc.b $60 ; `
+                dc.b $6D ; m
+                dc.b $61 ; a
+                dc.b $81
+                dc.b $45 ; E
+                dc.b $B3
+                dc.b $F5
+                dc.b $C1
+                dc.b $80
+                dc.b $80
+                dc.b $86
+                dc.b $BE
+                dc.b $40 ; @
+                dc.b $2F ; /
+                dc.b $60 ; `
+                dc.b $83
+                dc.b $2C ; ,
+                dc.b $1B
+                dc.b $B3
+                dc.b $91
+                dc.b $60 ; `
+                dc.b $D6
+                dc.b $14
+                dc.b $83
+                dc.b $59 ; Y
+                dc.b $8F
+                dc.b   0
+                dc.b $98
+                dc.b $E5
+                dc.b $85
+                dc.b $9B
+                dc.b $70 ; p
+                dc.b $C7
+                dc.b $BF
+                dc.b $56 ; V
+                dc.b $6C ; l
+                dc.b $F6
+                dc.b $E9
+                dc.b $A2
+                dc.b $6B ; k
+                dc.b $67 ; g
+                dc.b $F4
+                dc.b $14
+                dc.b $7A ; z
+                dc.b $F1
+                dc.b $E0
+                dc.b $BB
+                dc.b $1D
+                dc.b $EF
+                dc.b $E0
+                dc.b $F3
+                dc.b $8D
+                dc.b $A0
+                dc.b $73 ; s
+                dc.b $7B ; {
+                dc.b $40 ; @
+                dc.b $E7
+                dc.b $E4
+                dc.b $65 ; e
+                dc.b $C9
+                dc.b $D8
+                dc.b $13
+                dc.b $84
+                dc.b $DB
+                dc.b $40 ; @
+                dc.b $81
+                dc.b $BB
+                dc.b $D0
+                dc.b $E7
+                dc.b $FA
+                dc.b $A8
+                dc.b $FF
+                dc.b $5D ; ]
+                dc.b $7F ; 
+                dc.b $DF
+                dc.b $D3
+                dc.b $6D ; m
+                dc.b $3F ; ?
+                dc.b $9E
+                dc.b $F4
+                dc.b $1F
+                dc.b $DF
+                dc.b $EB
+                dc.b   5
+                dc.b $FE
+                dc.b $A0
+                dc.b $1E
+                dc.b  $E
+                dc.b $C1
+                dc.b $B4
+                dc.b $10
+                dc.b $70 ; p
+                dc.b $6C ; l
+                dc.b   2
+                dc.b $90
+                dc.b $B4
+                dc.b   6
+                dc.b $CC
+                dc.b $60 ; `
+                dc.b $D0
+                dc.b $40 ; @
+                dc.b $78 ; x
+                dc.b $E8
+                dc.b $3C ; <
+                dc.b $A0
+                dc.b $8F
+                dc.b $64 ; d
+                dc.b $9A
+                dc.b $43 ; C
+                dc.b $68 ; h
+                dc.b $A4
+                dc.b $34 ; 4
+                dc.b $71 ; q
+                dc.b $82
+                dc.b   1
+                dc.b $1C
+                dc.b $76 ; v
+                dc.b $8B
+                dc.b $C2
+                dc.b  $F
+                dc.b $5E ; ^
+                dc.b $5A ; Z
+                dc.b $F6
+                dc.b $D5
+                dc.b $34 ; 4
+                dc.b $FD
+                dc.b $7D ; }
+                dc.b $B3
+                dc.b $7F ; 
+                dc.b $EF
+                dc.b $C3
+                dc.b $36 ; 6
+                dc.b $86
+                dc.b $BF
+                dc.b $AF
+                dc.b $78 ; x
+                dc.b $BE
+                dc.b  $F
+                dc.b $F0
+                dc.b   1
+                dc.b $47 ; G
+                dc.b $A2
+                dc.b $CF
+                dc.b $50 ; P
+                dc.b $10
+                dc.b $63 ; c
+                dc.b $17
+                dc.b $C0
+                dc.b   4
+                dc.b $30 ; 0
+                dc.b $BC
+                dc.b $1B
+                dc.b $8D
+                dc.b $D8
+                dc.b $70 ; p
+                dc.b $60 ; `
+                dc.b $4F ; O
+                dc.b $57 ; W
+                dc.b $AF
+                dc.b $BD
+                dc.b $68 ; h
+                dc.b $E7
+                dc.b $A6
+                dc.b $38 ; 8
+                dc.b $6A ; j
+                dc.b  $E
+                dc.b $81
+                dc.b $C1
+                dc.b   4
+                dc.b $30 ; 0
+                dc.b   8
+                dc.b $27 ; '
+                dc.b $DE
+                dc.b $62 ; b
+                dc.b $60 ; `
+                dc.b $BF
+                dc.b $27 ; '
+                dc.b $1F
+                dc.b $BF
+                dc.b $57 ; W
+                dc.b $56 ; V
+                dc.b $BF
+                dc.b $EF
+                dc.b $D5
+                dc.b $BF
+                dc.b $B0
+                dc.b $9C
+                dc.b   0
+                dc.b $E7
+                dc.b $81
+                dc.b $39 ; 9
+                dc.b $E1
+                dc.b $8D
+                dc.b $78 ; x
+                dc.b $75 ; u
+                dc.b $84
+                dc.b $DB
+                dc.b   7
+                dc.b $A8
+                dc.b $A2
+                dc.b $D1
+                dc.b $68 ; h
+                dc.b $29 ; )
+                dc.b $81
+                dc.b $4D ; M
+                dc.b $41 ; A
+                dc.b $CC
+                dc.b $B4
+                dc.b $16
+                dc.b $9B
+                dc.b $58 ; X
+                dc.b $40 ; @
+                dc.b $41 ; A
+                dc.b $F8
+                dc.b $E4
+                dc.b $2C ; ,
+                dc.b   7
+                dc.b $87
+                dc.b $79 ; y
+                dc.b $1F
+                dc.b $BF
+                dc.b $57 ; W
+                dc.b $F7
+                dc.b $F4
+                dc.b $4F ; O
+                dc.b $EF
+                dc.b $8A
+                dc.b $7F ; 
+                dc.b $60 ; `
+                dc.b $89
+                dc.b $D8
+                dc.b $A6
+                dc.b $27 ; '
+                dc.b $8D
+                dc.b $50 ; P
+                dc.b $79 ; y
+                dc.b $2D ; -
+                dc.b $91
+                dc.b $9E
+                dc.b $10
+                dc.b $C0
+                dc.b $83
+                dc.b $3C ; <
+                dc.b $1A
+                dc.b $90
+                dc.b $65 ; e
+                dc.b $80
+                dc.b $EB
+                dc.b $A2
+                dc.b $2F ; /
+                dc.b   0
+                dc.b $3A ; :
+                dc.b $E9
+                dc.b $DF
+                dc.b $37 ; 7
+                dc.b $E9
+                dc.b $AB
+                dc.b $18
+                dc.b $9F
+                dc.b $A6
+                dc.b $AC
+                dc.b $E3
+                dc.b $67 ; g
+                dc.b $98
+                dc.b $F5
+                dc.b $FE
+                dc.b $6D ; m
+                dc.b $7F ; 
+                dc.b $DF
+                dc.b $D3
+                dc.b $6D ; m
+                dc.b $3F ; ?
+                dc.b $7E ; ~
+                dc.b $DA
+                dc.b $A6
+                dc.b $3F ; ?
+                dc.b $3B ; ;
+                dc.b $9C
+                dc.b   2
+                dc.b  $B
+                dc.b   8
+                dc.b $30 ; 0
+                dc.b  $A
+                dc.b $39 ; 9
+                dc.b   0
+                dc.b $6C ; l
+                dc.b $38 ; 8
+                dc.b   1
+                dc.b   2
+                dc.b $10
+                dc.b $84
+                dc.b $40 ; @
+                dc.b $61 ; a
+                dc.b $38 ; 8
+                dc.b $44 ; D
+                dc.b $C1
+                dc.b   9
+                dc.b $70 ; p
+                dc.b $8D
+                dc.b $93
+                dc.b $80
+                dc.b $4C ; L
+                dc.b $2F ; /
+                dc.b $35 ; 5
+                dc.b $84
+                dc.b   5
+                dc.b $59 ; Y
+                dc.b $2C ; ,
+                dc.b   5
+                dc.b $3F ; ?
+                dc.b $5E ; ^
+                dc.b $20
+                dc.b $D9
+                dc.b $BD
+                dc.b $B3
+                dc.b $68 ; h
+                dc.b  $E
+                dc.b $7A ; z
+                dc.b $20
+                dc.b $C0
+                dc.b $50 ; P
+                dc.b $73 ; s
+                dc.b $14
+                dc.b   9
+                dc.b $B0
+                dc.b $A4
+                dc.b $E1
+                dc.b $30 ; 0
+                dc.b $10
+                dc.b $45 ; E
+                dc.b $87
+                dc.b   8
+                dc.b   8
+                dc.b $1C
+                dc.b $E0
+                dc.b $97
+                dc.b $82
+                dc.b $43 ; C
+                dc.b $4B ; K
+                dc.b $2C ; ,
+                dc.b   5
+                dc.b   0
+                dc.b $96
+                dc.b $64 ; d
+                dc.b $B4
+                dc.b  $B
+                dc.b $E1
+                dc.b $64 ; d
+                dc.b $77 ; w
+                dc.b $E7
+                dc.b $6C ; l
+                dc.b $90
+                dc.b $31 ; 1
+                dc.b $E9
+                dc.b $DE
+                dc.b $10
+                dc.b $1D
+                dc.b $36 ; 6
+                dc.b $1C
+                dc.b $E1
+                dc.b $F9
+                dc.b $B4
+                dc.b $72 ; r
+                dc.b $A0
+                dc.b $44 ; D
+                dc.b $44 ; D
+                dc.b $44 ; D
+                dc.b $44 ; D
+                dc.b $44 ; D
+                dc.b $44 ; D
+                dc.b $57 ; W
+                dc.b $E8
+                dc.b $CE
+                dc.b $E3
+                dc.b $FA
+                dc.b $8F
+                dc.b $D0
+                dc.b $D2
+                dc.b $D9
+                dc.b $6E ; n
+                dc.b  $E
+                dc.b $EB
+                dc.b $7E ; ~
+                dc.b $9E
+                dc.b $56 ; V
+                dc.b $CB
+                dc.b $75 ; u
+                dc.b $3D ; =
+                dc.b $32 ; 2
+                dc.b $EE
+                dc.b $F4
+                dc.b $CB
+                dc.b $77 ; w
+                dc.b $ED
+                dc.b $32 ; 2
+                dc.b $DC
+                dc.b $14
+                dc.b $B6
+                dc.b $5D ; ]
+                dc.b $DF
+                dc.b $A7
+                dc.b $DD
+                dc.b $69 ; i
+                dc.b   6
+                dc.b $5B ; [
+                dc.b $BD
+                dc.b $25 ; %
+                dc.b $6C ; l
+                dc.b $B7
+                dc.b   4
+                dc.b $AD
+                dc.b $96
+                dc.b $EF
+                dc.b $DA
+                dc.b $65 ; e
+                dc.b $BA
+                dc.b $DB
+                dc.b $AD
+                dc.b $97
+                dc.b $EC
+                dc.b $ED
+                dc.b $FA
+                dc.b $70 ; p
+                dc.b $CB
+                dc.b $75 ; u
+                dc.b $A4
+                dc.b $41 ; A
+                dc.b $BA
+                dc.b $D9
+                dc.b   5
+                dc.b $2D ; -
+                dc.b $96
+                dc.b $EC
+                dc.b $BF
+                dc.b $69 ; i
+                dc.b $90
+                dc.b $4B ; K
+                dc.b $2F ; /
+                dc.b $EA
+                dc.b $6E ; n
+                dc.b $CA
+                dc.b $D4
+                dc.b  $D
+                dc.b $DD
+                dc.b $7B ; {
+                dc.b $BA
+                dc.b $F7
+                dc.b   4
+                dc.b $BA
+                dc.b $F7
+                dc.b $5B ; [
+                dc.b $76 ; v
+                dc.b $5D ; ]
+                dc.b $C1
+                dc.b $FB
+                dc.b $3B ; ;
+                dc.b $48 ; H
+                dc.b $37 ; 7
+                dc.b $5B ; [
+                dc.b $2B ; +
+                dc.b $6E ; n
+                dc.b $B7
+                dc.b $E9
+                dc.b $E5
+                dc.b $96
+                dc.b $EB
+                dc.b $75 ; u
+                dc.b $FE
+                dc.b $CC
+                dc.b $25 ; %
+                dc.b $6C ; l
+                dc.b $AD
+                dc.b $4F ; O
+                dc.b $D0
+                dc.b $DD
+                dc.b $FA
+                dc.b $9A
+                dc.b $39 ; 9
+                dc.b $15
+                dc.b $C3
+                dc.b $F5
+                dc.b $3A ; :
+                dc.b $5F ; _
+                dc.b $75 ; u
+                dc.b $F7
+                dc.b $2B ; +
+                dc.b $42 ; B
+                dc.b $8E
+                dc.b $D9
+                dc.b $DF
+                dc.b $72 ; r
+                dc.b $88
+                dc.b $8A
+                dc.b $28 ; (
+                dc.b $AD
+                dc.b   8
+                dc.b $88
+                dc.b $88
+                dc.b $88
+                dc.b $88
+                dc.b $8A
+                dc.b $79 ; y
+                dc.b $BE
+                dc.b $93
+                dc.b $D5
+                dc.b $7B ; {
+                dc.b $39 ; 9
+                dc.b $9F
+                dc.b $45 ; E
+                dc.b $21 ; !
+                dc.b $39 ; 9
+                dc.b $9F
+                dc.b $4B ; K
+                dc.b $B8
+                dc.b $6D ; m
+                dc.b $7E ; ~
+                dc.b $D7
+                dc.b $ED
+                dc.b $7E ; ~
+                dc.b $D7
+                dc.b $ED
+                dc.b $7E ; ~
+                dc.b $D7
+                dc.b $ED
+                dc.b $7E ; ~
+                dc.b $D7
+                dc.b $ED
+                dc.b $7E ; ~
+                dc.b $D7
+                dc.b $ED
+                dc.b $7E ; ~
+                dc.b $D7
+                dc.b $ED
+                dc.b $7E ; ~
+                dc.b $D7
+                dc.b $ED
+                dc.b $30 ; 0
+                dc.b $DF
+                dc.b $84
+                dc.b $D7
+                dc.b $A0
+                dc.b $43 ; C
+                dc.b $C9
+                dc.b $61 ; a
+                dc.b $F9
+                dc.b $5C ; \
+                dc.b $7E ; ~
+                dc.b $A5
+                dc.b $7F ; 
+                dc.b $A1
+                dc.b $DE
+                dc.b $1B
+                dc.b $FF
+                dc.b $95
+                dc.b $A9
+                dc.b $EA
+unk_237CE6:     dc.b   0                ; DATA XREF: ROM:0020D27E↑o
+                dc.b $46 ; F
+                dc.b $80
+                dc.b   4
+                dc.b   6
+                dc.b $15
+                dc.b $10
+                dc.b $25 ; %
+                dc.b $13
+                dc.b $35 ; 5
+                dc.b $18
+                dc.b $46 ; F
+                dc.b $33 ; 3
+                dc.b $56 ; V
+                dc.b $38 ; 8
+                dc.b $66 ; f
+                dc.b $35 ; 5
+                dc.b $74 ; t
+                dc.b   5
+                dc.b $86
+                dc.b   4
+                dc.b   2
+                dc.b $15
+                dc.b $12
+                dc.b $26 ; &
+                dc.b $34 ; 4
+                dc.b $36 ; 6
+                dc.b $36 ; 6
+                dc.b $47 ; G
+                dc.b $76 ; v
+                dc.b $57 ; W
+                dc.b $77 ; w
+                dc.b $67 ; g
+                dc.b $78 ; x
+                dc.b $87
+                dc.b   4
+                dc.b   0
+                dc.b $15
+                dc.b $11
+                dc.b $26 ; &
+                dc.b $32 ; 2
+                dc.b $38 ; 8
+                dc.b $F6
+                dc.b $58 ; X
+                dc.b $F7
+                dc.b $88
+                dc.b   4
+                dc.b   1
+                dc.b $15
+                dc.b $16
+                dc.b $27 ; '
+                dc.b $75 ; u
+                dc.b $89
+                dc.b   5
+                dc.b $15
+                dc.b $17
+                dc.b $6E ; n
+                dc.b $28 ; (
+                dc.b $F2
+                dc.b $8B
+                dc.b   4
+                dc.b   4
+                dc.b $16
+                dc.b $2E ; .
+                dc.b $27 ; '
+                dc.b $73 ; s
+                dc.b $8C
+                dc.b   4
+                dc.b   7
+                dc.b $16
+                dc.b $2F ; /
+                dc.b $27 ; '
+                dc.b $7A ; z
+                dc.b $8D
+                dc.b   7
+                dc.b $6F ; o
+                dc.b $8E
+                dc.b   8
+                dc.b $F3
+                dc.b $8F
+                dc.b   4
+                dc.b   3
+                dc.b $15
+                dc.b $14
+                dc.b $27 ; '
+                dc.b $72 ; r
+                dc.b $37 ; 7
+                dc.b $74 ; t
+                dc.b $FF
+                dc.b $55 ; U
+                dc.b $5D ; ]
+                dc.b $53 ; S
+                dc.b $54 ; T
+                dc.b $E1
+                dc.b  $F
+                dc.b $84
+                dc.b $3E ; >
+                dc.b $10
+                dc.b $F8
+                dc.b $43 ; C
+                dc.b $E1
+                dc.b  $F
+                dc.b $54 ; T
+                dc.b $D5
+                dc.b $15
+                dc.b $55 ; U
+                dc.b $67 ; g
+                dc.b $FC
+                dc.b $F6
+                dc.b $FE
+                dc.b $7C ; |
+                dc.b $BA
+                dc.b $6D ; m
+                dc.b $CB
+                dc.b $B7
+                dc.b $2E ; .
+                dc.b $D4
+                dc.b $EF
+                dc.b $4E ; N
+                dc.b $F4
+                dc.b $EF
+                dc.b $4E ; N
+                dc.b $F4
+                dc.b $EF
+                dc.b $CB
+                dc.b $B7
+                dc.b $2E ; .
+                dc.b $C9
+                dc.b $CB
+                dc.b $66 ; f
+                dc.b $4E ; N
+                dc.b $92
+                dc.b $85
+                dc.b $DD
+                dc.b $31 ; 1
+                dc.b $FB
+                dc.b $B5
+                dc.b $55 ; U
+                dc.b $5D ; ]
+                dc.b $49 ; I
+                dc.b $78 ; x
+                dc.b $FC
+                dc.b  $A
+                dc.b $D7
+                dc.b $5A ; Z
+                dc.b $EB
+                dc.b $5D ; ]
+                dc.b $7F ; 
+                dc.b   3
+                dc.b $A9
+                dc.b $EA
+                dc.b $79 ; y
+                dc.b $8B
+                dc.b $1C
+                dc.b $CA
+                dc.b   2
+                dc.b $78 ; x
+                dc.b $26 ; &
+                dc.b $B2
+                dc.b $AA
+                dc.b $C0
+                dc.b $54 ; T
+                dc.b $66 ; f
+                dc.b $25 ; %
+                dc.b  $B
+                dc.b $35 ; 5
+                dc.b $24 ; $
+                dc.b $C3
+                dc.b $D1
+                dc.b $A5
+                dc.b $D0
+                dc.b $86
+                dc.b $46 ; F
+                dc.b $43 ; C
+                dc.b $21 ; !
+                dc.b $EC
+                dc.b $25 ; %
+                dc.b $6D ; m
+                dc.b   2
+                dc.b $46 ; F
+                dc.b $3D ; =
+                dc.b $CF
+                dc.b $B8
+                dc.b $19
+                dc.b  $F
+                dc.b $63 ; c
+                dc.b $F0
+                dc.b $7D ; }
+                dc.b $C1
+                dc.b $58 ; X
+                dc.b $75 ; u
+                dc.b $1E
+                dc.b $2D ; -
+                dc.b   1
+                dc.b $81
+                dc.b $5A ; Z
+                dc.b   2
+                dc.b $D2
+                dc.b $A5
+                dc.b $9A
+                dc.b $41 ; A
+                dc.b $D3
+                dc.b $40 ; @
+                dc.b $FE
+                dc.b $7F ; 
+                dc.b $60 ; `
+                dc.b $19
+                dc.b   6
+                dc.b $96
+                dc.b $D0
+                dc.b   8
+                dc.b   7
+                dc.b $60 ; `
+                dc.b $20
+                dc.b $1D
+                dc.b $B2
+                dc.b $19
+                dc.b   1
+                dc.b   1
+                dc.b $46 ; F
+                dc.b $59 ; Y
+                dc.b $4B ; K
+                dc.b $22 ; "
+                dc.b  $D
+                dc.b $2C ; ,
+                dc.b $12
+                dc.b   5
+                dc.b $52 ; R
+                dc.b $55 ; U
+                dc.b $62 ; b
+                dc.b $E2
+                dc.b $59 ; Y
+                dc.b $CA
+                dc.b   5
+                dc.b $32 ; 2
+                dc.b $10
+                dc.b $2C ; ,
+                dc.b   1
+                dc.b  $E
+                dc.b $60 ; `
+                dc.b $40 ; @
+                dc.b $38 ; 8
+                dc.b  $D
+                dc.b   6
+                dc.b $7B ; {
+                dc.b  $C
+                dc.b $C2
+                dc.b $40 ; @
+                dc.b $33 ; 3
+                dc.b $20
+                dc.b $B6
+                dc.b   0
+                dc.b $83
+                dc.b $3D ; =
+                dc.b $16
+                dc.b $1A
+                dc.b $62 ; b
+                dc.b $B1
+                dc.b $2C ; ,
+                dc.b $57 ; W
+                dc.b $2C ; ,
+                dc.b  $E
+                dc.b $58 ; X
+                dc.b $EA
+                dc.b $18
+                dc.b $AF
+                dc.b $5C ; \
+                dc.b $EB
+                dc.b $6C ; l
+                dc.b $ED
+                dc.b $5C ; \
+                dc.b $5B ; [
+                dc.b $74 ; t
+                dc.b $C6
+                dc.b   3
+                dc.b $5E ; ^
+                dc.b $2D ; -
+                dc.b $9D
+                dc.b $B8
+                dc.b $1E
+                dc.b   5
+                dc.b $56 ; V
+                dc.b $7F ; 
+                dc.b $F6
+                dc.b $28 ; (
+                dc.b $90
+                dc.b $6D ; m
+                dc.b $91
+                dc.b   6
+                dc.b $9E
+                dc.b $C5
+                dc.b $12
+                dc.b $B7
+                dc.b $BF
+                dc.b $50 ; P
+                dc.b $18
+                dc.b $FF
+                dc.b $20
+                dc.b   4
+                dc.b $3F ; ?
+                dc.b $D0
+                dc.b $1F
+                dc.b $81
+                dc.b $1A
+                dc.b $DB
+                dc.b $2D ; -
+                dc.b $C1
+                dc.b $F8
+                dc.b $1F
+                dc.b $21 ; !
+                dc.b $A8
+                dc.b $54 ; T
+                dc.b $7F ; 
+                dc.b $23 ; #
+                dc.b $B8
+                dc.b $2A ; *
+                dc.b $C3
+                dc.b  $F
+                dc.b $28 ; (
+                dc.b  $C
+                dc.b   7
+                dc.b $51 ; Q
+                dc.b $D4
+                dc.b $55 ; U
+                dc.b $55 ; U
+                dc.b $75 ; u
+                dc.b $8E
+                dc.b $71 ; q
+                dc.b $2C ; ,
+                dc.b $46 ; F
+                dc.b $58 ; X
+                dc.b  $D
+                dc.b $26 ; &
+                dc.b $1B
+                dc.b $4C ; L
+                dc.b  $A
+                dc.b $25 ; %
+                dc.b $30 ; 0
+                dc.b $90
+                dc.b $14
+                dc.b $C3
+                dc.b $69 ; i
+                dc.b $C7
+                dc.b $48 ; H
+                dc.b $65 ; e
+                dc.b $20
+                dc.b $6C ; l
+                dc.b $87
+                dc.b $26 ; &
+                dc.b $FF
+                dc.b $BF
+                dc.b $F9
+                dc.b $F1
+                dc.b $91
+                dc.b $42 ; B
+                dc.b $3B ; ;
+                dc.b $34 ; 4
+                dc.b $64 ; d
+                dc.b $12
+                dc.b $8C
+                dc.b $83
+                dc.b $48 ; H
+                dc.b $94
+                dc.b $74 ; t
+                dc.b $89
+                dc.b $47 ; G
+                dc.b $4F ; O
+                dc.b $E3
+                dc.b $C8
+                dc.b  $B
+                dc.b $FC
+                dc.b $F2
+                dc.b $F7
+                dc.b $97
+                dc.b $F9
+                dc.b $CB
+                dc.b $22 ; "
+                dc.b $CA
+                dc.b $41 ; A
+                dc.b $A4
+                dc.b $64 ; d
+                dc.b $1B
+                dc.b $44 ; D
+                dc.b $83
+                dc.b $C4
+                dc.b $7C ; |
+                dc.b $7B ; {
+                dc.b $16
+                dc.b $58 ; X
+                dc.b $DA
+                dc.b $2C ; ,
+                dc.b $1F
+                dc.b $F6
+                dc.b $FF
+                dc.b $B7
+                dc.b $FD
+                dc.b $88
+                dc.b $34 ; 4
+                dc.b   9
+                dc.b   7
+                dc.b $80
+                dc.b $D3
+                dc.b $22 ; "
+                dc.b $89
+                dc.b $7F ; 
+                dc.b $DE
+                dc.b $DE
+                dc.b $F6
+                dc.b $F7
+                dc.b $FE
+                dc.b $41 ; A
+                dc.b $47 ; G
+                dc.b $F9
+                dc.b $12
+                dc.b $8F
+                dc.b $50 ; P
+                dc.b $D3
+                dc.b $DE
+                dc.b $43 ; C
+                dc.b $91
+                dc.b $2E ; .
+                dc.b $59 ; Y
+                dc.b $EC
+                dc.b $13
+                dc.b $EC
+                dc.b $10
+                dc.b $EE
+                dc.b  $D
+                dc.b $E1
+                dc.b $BC
+                dc.b   7
+                dc.b $80
+                dc.b $F1
+                dc.b $1F
+                dc.b $11
+                dc.b $EF
+                dc.b $96
+                dc.b $C1
+                dc.b $6F ; o
+                dc.b $E3
+                dc.b $B0
+                dc.b $5B ; [
+                dc.b $D9
+                dc.b $8B
+                dc.b $DD
+                dc.b $A5
+                dc.b $91
+                dc.b   3
+                dc.b $7B ; {
+                dc.b $6D ; m
+                dc.b $ED
+                dc.b $B0
+                dc.b $C6
+                dc.b $51 ; Q
+                dc.b $21 ; !
+                dc.b $89
+                dc.b $64 ; d
+                dc.b $43 ; C
+                dc.b $12
+                dc.b $C8
+                dc.b $86
+                dc.b $25 ; %
+                dc.b $91
+                dc.b $54 ; T
+                dc.b $42 ; B
+                dc.b $51 ; Q
+                dc.b $2A ; *
+                dc.b $88
+                dc.b $4A ; J
+                dc.b $24 ; $
+                dc.b $D5
+                dc.b $89
+                dc.b $64 ; d
+                dc.b $D5
+                dc.b $B7
+                dc.b $B4
+                dc.b $2B ; +
+                dc.b $D4
+                dc.b   6
+                dc.b $1E
+                dc.b $5D ; ]
+                dc.b $73 ; s
+                dc.b $F2
+                dc.b $55 ; U
+                dc.b $5D ; ]
+                dc.b $82
+                dc.b $43 ; C
+                dc.b $B0
+                dc.b $6C ; l
+                dc.b $1F
+                dc.b $F6
+                dc.b $F0
+                dc.b $1E
+                dc.b $23 ; #
+                dc.b $DE
+                dc.b $3D ; =
+                dc.b $F2
+                dc.b $EF
+                dc.b $6C ; l
+                dc.b $88
+                dc.b   8
+                dc.b   7
+                dc.b $22 ; "
+                dc.b $CA
+                dc.b $D1
+                dc.b $2A ; *
+                dc.b $8E
+                dc.b $56 ; V
+                dc.b  $A
+                dc.b $FF
+                dc.b $A2
+                dc.b $BF
+                dc.b $E8
+                dc.b $DD
+                dc.b $FD
+                dc.b $86
+                dc.b $FF
+                dc.b $4A ; J
+                dc.b $AA
+                dc.b $AA
+                dc.b $AF
+                dc.b $16
+                dc.b $CE
+                dc.b $C1
+                dc.b $8B
+                dc.b $46 ; F
+                dc.b $76 ; v
+                dc.b $88
+                dc.b $CE
+                dc.b $D1
+                dc.b $19
+                dc.b $DA
+                dc.b $23 ; #
+                dc.b $3F ; ?
+                dc.b $E4
+                dc.b $4E ; N
+                dc.b $C1
+                dc.b $51 ; Q
+                dc.b $C0
+                dc.b $F9
+                dc.b $40 ; @
+                dc.b $1A
+                dc.b $DB
+                dc.b $A0
+                dc.b $2D ; -
+                dc.b $6D ; m
+                dc.b $D0
+                dc.b $10
+                dc.b $61 ; a
+                dc.b $DC
+                dc.b $D6
+                dc.b   6
+                dc.b $18
+                dc.b $B0
+                dc.b $C6
+                dc.b   2
+                dc.b  $C
+                dc.b $39 ; 9
+                dc.b $35 ; 5
+                dc.b $45 ; E
+                dc.b $87
+                dc.b $26 ; &
+                dc.b $DC
+                dc.b $C3
+                dc.b $11
+                dc.b   6
+                dc.b $AB
+                dc.b  $C
+                dc.b $46 ; F
+                dc.b $15
+                dc.b $55 ; U
+                dc.b $D4
+                dc.b $33 ; 3
+                dc.b $8A
+                dc.b $85
+                dc.b $82
+                dc.b $11
+                dc.b $61 ; a
+                dc.b $F7
+                dc.b $60 ; `
+                dc.b $80
+                dc.b $E0
+                dc.b $58 ; X
+                dc.b   5
+                dc.b $86
+                dc.b $23 ; #
+                dc.b $3B ; ;
+                dc.b $45 ; E
+                dc.b $B7
+                dc.b $30 ; 0
+                dc.b $C4
+                dc.b $7C ; |
+                dc.b $9B
+                dc.b $F7
+                dc.b $1E
+                dc.b $4D ; M
+                dc.b $68 ; h
+                dc.b $6E ; n
+                dc.b $C0
+                dc.b $35 ; 5
+                dc.b $75 ; u
+                dc.b $AA
+                dc.b $84
+                dc.b   6
+                dc.b $35 ; 5
+                dc.b $9D
+                dc.b $47 ; G
+                dc.b $21 ; !
+                dc.b $85
+                dc.b $BD
+                dc.b $85
+                dc.b $BA
+                dc.b $E4
+                dc.b $2D ; -
+                dc.b $5E ; ^
+                dc.b $BB
+                dc.b $86
+                dc.b $1F
+                dc.b $B9
+                dc.b $EB
+                dc.b $9F
+                dc.b $EE
+                dc.b $26 ; &
+                dc.b  $A
+                dc.b $DF
+                dc.b $F7
+                dc.b $FF
+                dc.b $3E ; >
+                dc.b $32 ; 2
+                dc.b $10
+                dc.b $60 ; `
+                dc.b $98
+                dc.b  $E
+                dc.b   1
+                dc.b $AD
+                dc.b   0
+                dc.b $61 ; a
+                dc.b   1
+                dc.b $56 ; V
+                dc.b $1D
+                dc.b $40 ; @
+                dc.b $71 ; q
+                dc.b $D5
+                dc.b $81
+                dc.b $5B ; [
+                dc.b $F8
+                dc.b $F0
+                dc.b $B4
+                dc.b $46 ; F
+                dc.b $7F ; 
+                dc.b $C8
+                dc.b $6D ; m
+                dc.b $CD
+                dc.b $D6
+                dc.b $1F
+                dc.b $C9
+                dc.b $80
+                dc.b $B6
+                dc.b $E8
+                dc.b   3
+                dc.b $75 ; u
+                dc.b $DC
+                dc.b $C0
+                dc.b $D1
+                dc.b $B5
+                dc.b $67 ; g
+                dc.b $90
+                dc.b $EE
+                dc.b $6A ; j
+                dc.b $88
+                dc.b $5A ; Z
+                dc.b $B0
+                dc.b $18
+                dc.b $8E
+                dc.b $E8
+                dc.b $75 ; u
+                dc.b $FD
+                dc.b $CE
+                dc.b $3F ; ?
+                dc.b $72 ; r
+                dc.b $AA
+                dc.b $AA
+                dc.b $AA
+                dc.b $AC
+                dc.b $2A ; *
+                dc.b $B3
+                dc.b $18
+                dc.b   6
+                dc.b $62 ; b
+                dc.b $1C
+                dc.b  $F
+                dc.b $1F
+                dc.b $C8
+                dc.b $9D
+                dc.b $96
+                dc.b $BC
+                dc.b  $A
+                dc.b $B6
+                dc.b $EE
+                dc.b $37 ; 7
+                dc.b $2E ; .
+                dc.b $A0
+                dc.b $C3
+                dc.b $8A
+                dc.b $8B
+                dc.b  $E
+                dc.b $2A ; *
+                dc.b $B5
+                dc.b $61 ; a
+                dc.b $60 ; `
+                dc.b $9D
+                dc.b $55 ; U
+                dc.b $57 ; W
+                dc.b $38 ; 8
+                dc.b $A8
+                dc.b $40 ; @
+                dc.b $26 ; &
+                dc.b $10
+                dc.b   5
+                dc.b $E0
+                dc.b $58 ; X
+                dc.b   7
+                dc.b   2
+                dc.b $BB
+                dc.b $B3
+                dc.b $DD
+                dc.b  $B
+                dc.b $42 ; B
+                dc.b $B3
+                dc.b $B4
+                dc.b $2B ; +
+                dc.b $98
+                dc.b $35 ; 5
+                dc.b $55 ; U
+                dc.b $41 ; A
+                dc.b $55 ; U
+                dc.b $87
+                dc.b $31 ; 1
+                dc.b $CC
+                dc.b $18
+                dc.b $5A ; Z
+                dc.b $B3
+                dc.b $AB
+                dc.b  $C
+                dc.b $EA
+                dc.b $D5
+                dc.b $51 ; Q
+                dc.b $55 ; U
+                dc.b $8B
+                dc.b $46 ; F
+                dc.b   0
+                dc.b $D1
+                dc.b $84
+                dc.b $70 ; p
+                dc.b $10
+                dc.b $10
+                dc.b $60 ; `
+                dc.b $98
+                dc.b $2C ; ,
+                dc.b $C1
+                dc.b $55 ; U
+                dc.b $66 ; f
+                dc.b $33 ; 3
+                dc.b   5
+                dc.b $60 ; `
+                dc.b $68 ; h
+                dc.b $E0
+                dc.b $60 ; `
+                dc.b $33 ; 3
+                dc.b $EB
+                dc.b $3D ; =
+                dc.b $CB
+                dc.b $56 ; V
+                dc.b $AC
+                dc.b   7
+                dc.b $30 ; 0
+                dc.b $61 ; a
+                dc.b $50 ; P
+                dc.b $55 ; U
+                dc.b $55 ; U
+                dc.b $6A ; j
+                dc.b $B5
+                dc.b $71 ; q
+                dc.b $58 ; X
+                dc.b $55 ; U
+                dc.b $55 ; U
+                dc.b $55 ; U
+                dc.b $58 ; X
+                dc.b $97
+                dc.b $8F
+                dc.b $C0
+                dc.b $AF
+                dc.b $9E
+                dc.b $BE
+                dc.b $7A ; z
+                dc.b $F9
+                dc.b $EB
+                dc.b $F8
+                dc.b $1D
+                dc.b $4F ; O
+                dc.b $53 ; S
+                dc.b $CD
+                dc.b $D8
+                dc.b $E6
+                dc.b $50 ; P
+                dc.b $73 ; s
+                dc.b $C1
+                dc.b $33 ; 3
+                dc.b $F9
+                dc.b $AA
+                dc.b $AC
+                dc.b $1D
+                dc.b $5E ; ^
+                dc.b $6E ; n
+                dc.b $50 ; P
+                dc.b $BD
+                dc.b $A9
+                dc.b $26 ; &
+                dc.b $73 ; s
+                dc.b $B8
+                dc.b $D8
+                dc.b $B9
+                dc.b $D0
+                dc.b $9E
+                dc.b $49 ; I
+                dc.b $B3
+                dc.b $99
+                dc.b $72 ; r
+                dc.b $95
+                dc.b $E6
+                dc.b $5C ; \
+                dc.b $C8
+                dc.b $DC
+                dc.b $EE
+                dc.b $FF
+                dc.b $79 ; y
+                dc.b $50 ; P
+                dc.b $8C
+                dc.b $9F
+                dc.b $94
+                dc.b $8C
+                dc.b $B9
+                dc.b $11
+                dc.b $91
+                dc.b $E9
+                dc.b $49 ; I
+                dc.b $2B ; +
+                dc.b $3E ; >
+                dc.b $AF
+                dc.b $C5
+                dc.b $F0
+                dc.b $78 ; x
+                dc.b $15
+                dc.b $F0
+                dc.b $76 ; v
+                dc.b $95
+                dc.b $2F ; /
+                dc.b $62 ; b
+                dc.b $34 ; 4
+                dc.b $E9
+                dc.b $23 ; #
+                dc.b $4E ; N
+                dc.b $45 ; E
+                dc.b $CB
+                dc.b $44 ; D
+                dc.b $7A ; z
+                dc.b $21 ; !
+                dc.b $CA
+                dc.b $F3
+                dc.b $92
+                dc.b $12
+                dc.b $39 ; 9
+                dc.b $C8
+                dc.b $D0
+                dc.b $91
+                dc.b $E5
+                dc.b $4E ; N
+                dc.b $6F ; o
+                dc.b $44 ; D
+                dc.b $34 ; 4
+                dc.b $23 ; #
+                dc.b $4A ; J
+                dc.b $73 ; s
+                dc.b $91
+                dc.b $DC
+                dc.b $68 ; h
+                dc.b $72 ; r
+                dc.b $BD
+                dc.b $28 ; (
+                dc.b $8A
+                dc.b $A4
+                dc.b $AA
+                dc.b $C5
+                dc.b $C1
+                dc.b $1E
+                dc.b $64 ; d
+                dc.b $70 ; p
+                dc.b $29 ; )
+                dc.b $9B
+                dc.b $A1
+                dc.b $61 ; a
+                dc.b  $D
+                dc.b $F3
+                dc.b $42 ; B
+                dc.b $47 ; G
+                dc.b $C2
+                dc.b $1C
+                dc.b $9E
+                dc.b $74 ; t
+                dc.b $93
+                dc.b $CD
+                dc.b $28 ; (
+                dc.b $8F
+                dc.b $3B ; ;
+                dc.b $AF
+                dc.b $C2
+                dc.b $3A ; :
+                dc.b $66 ; f
+                dc.b $68 ; h
+                dc.b $6B ; k
+                dc.b   2
+                dc.b $F3
+                dc.b $3C ; <
+                dc.b $5E ; ^
+                dc.b $87
+                dc.b $87
+                dc.b $B8
+                dc.b $F1
+                dc.b $7A ; z
+                dc.b $1E
+                dc.b $37 ; 7
+                dc.b $BD
+                dc.b $D8
+                dc.b $7D ; }
+                dc.b $EE
+                dc.b $99
+                dc.b $FE
+                dc.b $75 ; u
+                dc.b $F3
+                dc.b $BF
+                dc.b $7E ; ~
+                dc.b $2F ; /
+                dc.b $DF
+                dc.b $E7
+                dc.b $37 ; 7
+                dc.b $83
+                dc.b $EF
+                dc.b $E2
+                dc.b $FC
+                dc.b $EF
+                dc.b $E1
+                dc.b $F8
+                dc.b $75 ; u
+                dc.b $59 ; Y
+                dc.b $D0
+                dc.b $8F
+                dc.b $63 ; c
+                dc.b $7A ; z
+                dc.b $76 ; v
+                dc.b $7A ; z
+                dc.b $76 ; v
+                dc.b $47 ; G
+                dc.b $A6
+                dc.b $86
+                dc.b $8E
+                dc.b $9C
+                dc.b $88
+                dc.b $C9
+                dc.b $1E
+                dc.b $EA
+                dc.b $5C ; \
+                dc.b $69 ; i
+                dc.b $E6
+                dc.b $F7
+                dc.b $3F ; ?
+                dc.b $37 ; 7
+                dc.b $F3
+                dc.b $74 ; t
+                dc.b $DE
+                dc.b $FB
+                dc.b $EF
+                dc.b $E7
+                dc.b $F9
+                dc.b $E4
+                dc.b $FD
+                dc.b $EB
+                dc.b $EF
+                dc.b $4D ; M
+                dc.b $EF
+                dc.b $FB
+                dc.b $D4
+                dc.b $DE
+                dc.b $CF
+                dc.b  $F
+                dc.b $D6
+                dc.b $C1
+                dc.b $E1
+                dc.b $BF
+                dc.b $5D ; ]
+                dc.b $FA
+                dc.b $EF
+                dc.b $55 ; U
+                dc.b $55 ; U
+                dc.b $D6
+                dc.b $EC
+                dc.b $EE
+                dc.b $3C ; <
+                dc.b $5D ; ]
+                dc.b $4C ; L
+                dc.b $21 ; !
+                dc.b $91
+                dc.b $CD
+                dc.b  $E
+                dc.b $47 ; G
+                dc.b $34 ; 4
+                dc.b $3B ; ;
+                dc.b $8A
+                dc.b $6F ; o
+                dc.b $44 ; D
+                dc.b $29 ; )
+                dc.b $BF
+                dc.b $49 ; I
+                dc.b $BA
+                dc.b $72 ; r
+                dc.b $87
+                dc.b $AA
+                dc.b $23 ; #
+                dc.b $5D ; ]
+                dc.b $FB
+                dc.b $C4
+                dc.b $6F ; o
+                dc.b $E5
+                dc.b $BA
+                dc.b $37 ; 7
+                dc.b $FA
+                dc.b $F0
+                dc.b $9E
+                dc.b $A1
+                dc.b $7D ; }
+                dc.b $2E ; .
+                dc.b $6B ; k
+                dc.b $A8
+                dc.b $94
+                dc.b $47 ; G
+                dc.b $A2
+                dc.b $50 ; P
+                dc.b $91
+                dc.b $CE
+                dc.b $E3
+                dc.b $92
+                dc.b $39 ; 9
+                dc.b $BA
+                dc.b $19
+                dc.b $1D
+                dc.b $CF
+                dc.b $75 ; u
+                dc.b $10
+                dc.b $D2
+                dc.b $FF
+                dc.b $DD
+                dc.b $91
+                dc.b $A5
+                dc.b $FC
+                dc.b $C8
+                dc.b $EE
+                dc.b $F5
+                dc.b $71 ; q
+                dc.b $F3
+                dc.b $3E ; >
+                dc.b $74 ; t
+                dc.b $4E ; N
+                dc.b $57 ; W
+                dc.b $11
+                dc.b $A1
+                dc.b $C8
+                dc.b $EE
+                dc.b $3B ; ;
+                dc.b $8F
+                dc.b $43 ; C
+                dc.b $24 ; $
+                dc.b $7E ; ~
+                dc.b $52 ; R
+                dc.b $A2
+                dc.b $3D ; =
+                dc.b $C7
+                dc.b $CF
+                dc.b $1D
+                dc.b $2E ; .
+                dc.b $64 ; d
+                dc.b $DB
+                dc.b $A7
+                dc.b $6E ; n
+                dc.b $45 ; E
+                dc.b $42 ; B
+                dc.b $E4
+                dc.b $46 ; F
+                dc.b $86
+                dc.b $5D ; ]
+                dc.b $10
+                dc.b $CB
+                dc.b $F9
+                dc.b $E9
+                dc.b $CB
+                dc.b $99
+                dc.b $DC
+                dc.b $7F ; 
+                dc.b $FB
+                dc.b $FF
+                dc.b $DF
+                dc.b $EB
+                dc.b $7F ; 
+                dc.b $77 ; w
+                dc.b $BF
+                dc.b $D6
+                dc.b $F4
+                dc.b $3B ; ;
+                dc.b $BF
+                dc.b $3B ; ;
+                dc.b $7E ; ~
+                dc.b $F2
+                dc.b $34 ; 4
+                dc.b $7F ; 
+                dc.b $D6
+                dc.b $A1
+                dc.b $91
+                dc.b $FF
+                dc.b $6E ; n
+                dc.b $8F
+                dc.b $CC
+                dc.b $D7
+                dc.b $9E
+                dc.b $7D ; }
+                dc.b $12
+                dc.b $7A ; z
+                dc.b $51 ; Q
+                dc.b $21 ; !
+                dc.b $B5
+                dc.b $11
+                dc.b $BB
+                dc.b $51 ; Q
+                dc.b $BB
+                dc.b $9A
+                dc.b $1F
+                dc.b $63 ; c
+                dc.b $4A ; J
+                dc.b $6C ; l
+                dc.b $77 ; w
+                dc.b $53 ; S
+                dc.b $4A ; J
+                dc.b $5D ; ]
+                dc.b $FD
+                dc.b $FE
+                dc.b $7D ; }
+                dc.b $13
+                dc.b $7F ; 
+                dc.b $FA
+                dc.b $FF
+                dc.b $5B ; [
+                dc.b $FC
+                dc.b $B3
+                dc.b $FE
+                dc.b $DB
+                dc.b $53 ; S
+                dc.b $99
+                dc.b $A3
+                dc.b $3F ; ?
+                dc.b $3E ; >
+                dc.b $97
+                dc.b $DC
+                dc.b $7A ; z
+                dc.b $5E ; ^
+                dc.b $94
+                dc.b $74 ; t
+                dc.b $2B ; +
+                dc.b $D0
+                dc.b $D1
+                dc.b $D0
+                dc.b $AF
+                dc.b $43 ; C
+                dc.b $47 ; G
+                dc.b $43 ; C
+                dc.b $BD
+                dc.b  $D
+                dc.b $1D
+                dc.b  $E
+                dc.b $F4
+                dc.b $A3
+                dc.b $A1
+                dc.b $B5
+                dc.b $E6
+                dc.b $57 ; W
+                dc.b $9B
+                dc.b $5E ; ^
+                dc.b $87
+                dc.b $7A ; z
+                dc.b $43 ; C
+                dc.b $D2
+                dc.b $5F ; _
+                dc.b  $D
+                dc.b $FF
+                dc.b $CC
+                dc.b $9F
+                dc.b $E7
+                dc.b $7D ; }
+                dc.b $71 ; q
+                dc.b $F9
+                dc.b $D5
+                dc.b $55 ; U
+                dc.b $D0
+                dc.b $DE
+                dc.b $89
+                dc.b $42 ; B
+                dc.b $34 ; 4
+                dc.b $E8
+                dc.b $92
+                dc.b $A4
+                dc.b $B9
+                dc.b $76 ; v
+                dc.b $34 ; 4
+                dc.b $3D ; =
+                dc.b $A8
+                dc.b $E8
+                dc.b $7A ; z
+                dc.b $51 ; Q
+                dc.b $D2
+                dc.b $85
+                dc.b $C9
+                dc.b $1D
+                dc.b $3F ; ?
+                dc.b $BE
+                dc.b $FF
+                dc.b $BB
+                dc.b $24 ; $
+                dc.b $3F ; ?
+                dc.b $57 ; W
+                dc.b $1F
+                dc.b $3F ; ?
+                dc.b $DE
+                dc.b $1D
+                dc.b $E9
+                dc.b $EA
+                dc.b $ED
+                dc.b $FE
+                dc.b $B7
+                dc.b $DE
+                dc.b $9F
+                dc.b $9D
+                dc.b $BF
+                dc.b $7D ; }
+                dc.b $E8
+                dc.b $DF
+                dc.b $CD
+                dc.b $BE
+                dc.b $7F ; 
+                dc.b $BD
+                dc.b $70 ; p
+unk_2381CE:     dc.b   0                ; DATA XREF: ROM:0020D290↑o
+                dc.b  $E
+                dc.b $80
+                dc.b   6
+                dc.b $3D ; =
+                dc.b $15
+                dc.b $19
+                dc.b $25 ; %
+                dc.b $18
+                dc.b $34 ; 4
+                dc.b  $A
+                dc.b $44 ; D
+                dc.b   9
+                dc.b $55 ; U
+                dc.b $1A
+                dc.b $65 ; e
+                dc.b $1C
+                dc.b $76 ; v
+                dc.b $3A ; :
+                dc.b $86
+                dc.b   4
+                dc.b   8
+                dc.b $16
+                dc.b $3B ; ;
+                dc.b $28 ; (
+                dc.b $FA
+                dc.b $37 ; 7
+                dc.b $7C ; |
+                dc.b $8C
+                dc.b   3
+                dc.b   3
+                dc.b $14
+                dc.b  $B
+                dc.b $38 ; 8
+                dc.b $FB
+                dc.b $8D
+                dc.b   3
+                dc.b   2
+                dc.b $16
+                dc.b $3C ; <
+                dc.b $8E
+                dc.b   2
+                dc.b   0
+                dc.b $15
+                dc.b $1B
+                dc.b $FF
+                dc.b $94
+                dc.b $E3
+                dc.b  $B
+                dc.b $EF
+                dc.b $2A ; *
+                dc.b $D6
+                dc.b $FD
+                dc.b $13
+                dc.b $46 ; F
+                dc.b   6
+                dc.b $A8
+                dc.b $4C ; L
+                dc.b $A2
+                dc.b $E4
+                dc.b $71 ; q
+                dc.b $23 ; #
+                dc.b $89
+                dc.b $1C
+                dc.b $48 ; H
+                dc.b $A1
+                dc.b $C8
+                dc.b $E2
+                dc.b $44 ; D
+                dc.b $E1
+                dc.b $D0
+                dc.b $9F
+                dc.b $D6
+                dc.b $36 ; 6
+                dc.b $AE
+                dc.b $7F ; 
+                dc.b $5D ; ]
+                dc.b $F5
+                dc.b $3F ; ?
+                dc.b $AC
+                dc.b $EF
+                dc.b $1B
+                dc.b $4F ; O
+                dc.b $BA
+                dc.b $DA
+                dc.b $EE
+                dc.b $47 ; G
+                dc.b $12
+                dc.b $27 ; '
+                dc.b $12
+                dc.b $38 ; 8
+                dc.b $91
+                dc.b $C4
+                dc.b $8E
+                dc.b $24 ; $
+                dc.b $BA
+                dc.b $13
+                dc.b $54 ; T
+                dc.b $AF
+                dc.b   2
+                dc.b $B5
+                dc.b $EC
+                dc.b $7E ; ~
+                dc.b $B3
+                dc.b $CC
+                dc.b $DA
+                dc.b $DE
+                dc.b $3F ; ?
+                dc.b $5D ; ]
+                dc.b $D6
+                dc.b $3C ; <
+                dc.b $95
+                dc.b $74 ; t
+                dc.b $9A
+                dc.b $30 ; 0
+                dc.b $9A
+                dc.b $29 ; )
+                dc.b $32 ; 2
+                dc.b $86
+                dc.b $8A
+                dc.b $1A
+                dc.b $91
+                dc.b $A9
+                dc.b $1A
+                dc.b $91
+                dc.b $A9
+                dc.b $1A
+                dc.b $24 ; $
+                dc.b $6A ; j
+                dc.b $47 ; G
+                dc.b $E4
+                dc.b $96
+                dc.b $A4
+                dc.b $4F ; O
+                dc.b $5B ; [
+                dc.b $BD
+                dc.b $5C ; \
+                dc.b $3A ; :
+                dc.b $13
+                dc.b $87
+                dc.b $42 ; B
+                dc.b $71 ; q
+                dc.b $29 ; )
+                dc.b $C3
+                dc.b $A1
+                dc.b $43 ; C
+                dc.b $A1
+                dc.b $38 ; 8
+                dc.b $A1
+                dc.b $38 ; 8
+                dc.b $A1
+                dc.b $38 ; 8
+                dc.b $A1
+                dc.b $38 ; 8
+                dc.b $A1
+                dc.b $42 ; B
+                dc.b $A5
+                dc.b $66 ; f
+                dc.b   4
+                dc.b $D6
+                dc.b $3C ; <
+                dc.b $B3
+                dc.b $17
+                dc.b $BA
+                dc.b $DF
+                dc.b $5E ; ^
+                dc.b $DC
+                dc.b $BE
+                dc.b $DE
+                dc.b $17
+                dc.b $C5
+                dc.b $95
+                dc.b $F1
+                dc.b $65 ; e
+                dc.b $7C ; |
+                dc.b $59 ; Y
+                dc.b $5F ; _
+                dc.b $16
+                dc.b $53 ; S
+                dc.b $ED
+                dc.b $AC
+                dc.b $A7
+                dc.b $DB
+                dc.b $59 ; Y
+                dc.b $3E ; >
+                dc.b $CC
+                dc.b $9F
+                dc.b $66 ; f
+                dc.b $45 ; E
+                dc.b $68 ; h
+                dc.b $C8
+                dc.b $AD
+                dc.b $19
+                dc.b $3F ; ?
+                dc.b $7A ; z
+                dc.b $64 ; d
+                dc.b $FD
+                dc.b $E9
+                dc.b $83
+                dc.b $C2
+                dc.b $77 ; w
+                dc.b $C3
+                dc.b $8B
+                dc.b $8F
+                dc.b $44 ; D
+                dc.b $14
+                dc.b $28 ; (
+                dc.b $47 ; G
+                dc.b $A2
+                dc.b $7F ; 
+                dc.b $4D ; M
+                dc.b $64 ; d
+                dc.b $50 ; P
+                dc.b $8A
+                dc.b $20
+                dc.b $D3
+                dc.b $E2
+                dc.b $E1
+                dc.b $A5
+                dc.b $A4
+                dc.b $D6
+                dc.b $97
+                dc.b $5D ; ]
+                dc.b $74 ; t
+                dc.b $71 ; q
+                dc.b $68 ; h
+                dc.b $66 ; f
+                dc.b   4
+                dc.b $E1
+                dc.b $A3
+                dc.b   3
+                dc.b $32 ; 2
+                dc.b $61 ; a
+                dc.b $70 ; p
+                dc.b $EB
+                dc.b $47 ; G
+                dc.b $16
+                dc.b $86
+                dc.b $69 ; i
+                dc.b $70 ; p
+                dc.b $EB
+                dc.b $AE
                 dc.b $A8, 0
 word_2382C2:    dc.w 0                  ; DATA XREF: sub_201A1C+18↑o
                 dc.l $AAA000A, $AAAA00AA, $AAAA0AAA, $4444AAAA, $2333000A
@@ -49883,7 +52372,7 @@ unk_238EE8:     dc.b   3                ; DATA XREF: ROM:00238EAC↑o
                 dc.b   0
                 dc.b $13
                 dc.b $F4
-                dc.b   0
+unk_238EF8:     dc.b   0                ; DATA XREF: ROM:0020D28A↑o
                 dc.b $27 ; '
                 dc.b $80
                 dc.b   5
@@ -50655,8 +53144,8 @@ NemBubblesAndCountDown:dc.l $678003, $1140824, $A351645, $1A563C66, $37740683
                 dc.l $F13DB99C, $BECF197C, $BC3F4F59, $F56F4CDE
                 dc.b   0
                 dc.b   0
-off_2398BE:     dc.w unk_2398EC-*       ; DATA XREF: ROM:002398C0↓o
-                                        ; ROM:002398C2↓o ...
+off_2398BE:     dc.w unk_2398EC-*       ; DATA XREF: ROM:0020766E↑o
+                                        ; ROM:002398C0↓o ...
                 dc.w unk_2398F2-off_2398BE
                 dc.w unk_2398F8-off_2398BE
                 dc.w unk_2398FE-off_2398BE
@@ -53573,21 +56062,15 @@ unk_23D58C:     dc.b   3                ; DATA XREF: ROM:0023D57C↑o
                 dc.b   6
                 dc.b   5
                 dc.b $FC
-                dc.b   0
-                dc.b  $E
-                dc.b   0
-                dc.b $1A
-                dc.b   0
-                dc.b $26 ; &
-                dc.b   0
-                dc.b $2C ; ,
-                dc.b   0
-                dc.b $42 ; B
-                dc.b   0
-                dc.b $58 ; X
-                dc.b   0
-                dc.b $5E ; ^
-                dc.b   2
+off_23D590:     dc.w unk_23D59E-*       ; DATA XREF: ROM:0023D592↓o
+                                        ; ROM:0023D594↓o ...
+                dc.w unk_23D5AA-off_23D590
+                dc.w unk_23D5B6-off_23D590
+                dc.w unk_23D5BC-off_23D590
+                dc.w unk_23D5D2-off_23D590
+                dc.w unk_23D5E8-off_23D590
+                dc.w unk_23D5EE-off_23D590
+unk_23D59E:     dc.b   2                ; DATA XREF: ROM:off_23D590↑o
                 dc.b $F0
                 dc.b   5
                 dc.b   0
@@ -53599,7 +56082,7 @@ unk_23D58C:     dc.b   3                ; DATA XREF: ROM:0023D57C↑o
                 dc.b   4
                 dc.b $F4
                 dc.b   0
-                dc.b   2
+unk_23D5AA:     dc.b   2                ; DATA XREF: ROM:0023D592↑o
                 dc.b $E0
                 dc.b   0
                 dc.b   0
@@ -53611,13 +56094,13 @@ unk_23D58C:     dc.b   3                ; DATA XREF: ROM:0023D57C↑o
                 dc.b   6
                 dc.b $F0
                 dc.b   0
-                dc.b   1
+unk_23D5B6:     dc.b   1                ; DATA XREF: ROM:0023D594↑o
                 dc.b $E0
                 dc.b  $F
                 dc.b   0
                 dc.b $12
                 dc.b $F0
-                dc.b   4
+unk_23D5BC:     dc.b   4                ; DATA XREF: ROM:0023D596↑o
                 dc.b $D0
                 dc.b   6
                 dc.b   0
@@ -53639,7 +56122,7 @@ unk_23D58C:     dc.b   3                ; DATA XREF: ROM:0023D57C↑o
                 dc.b $2A ; *
                 dc.b $F0
                 dc.b   0
-                dc.b   4
+unk_23D5D2:     dc.b   4                ; DATA XREF: ROM:0023D598↑o
                 dc.b $C0
                 dc.b   0
                 dc.b   0
@@ -53661,13 +56144,13 @@ unk_23D58C:     dc.b   3                ; DATA XREF: ROM:0023D57C↑o
                 dc.b $3E ; >
                 dc.b $F0
                 dc.b   0
-                dc.b   1
+unk_23D5E8:     dc.b   1                ; DATA XREF: ROM:0023D59A↑o
                 dc.b $F0
                 dc.b   9
                 dc.b   0
                 dc.b $4E ; N
                 dc.b $F4
-                dc.b   1
+unk_23D5EE:     dc.b   1                ; DATA XREF: ROM:0023D59C↑o
                 dc.b $F8
                 dc.b   4
                 dc.b   0
