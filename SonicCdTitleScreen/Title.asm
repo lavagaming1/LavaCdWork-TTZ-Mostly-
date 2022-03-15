@@ -12,9 +12,9 @@
 ; Input MD5    : 2B66DC5E6A39F32175218DDAE1F83A66
 ; Input CRC32  : 73AB422E
 
-; File Name   : C:\Users\lavag\Downloads\TITLEM.MMD
+; File Name   : C:\Users\lavag\OneDrive\Desktop\CdTidalTempist\LavaCdWork-TTZ-Mostly-\SonicCdTitleScreen\TITLEM.MMD
 ; Format      : Binary file
-; Base Address: 0000h Range: 200000h - 206A8Eh Loaded length: 6A8Eh
+; Base Address: 0000h Range: FF1F00h - FF898Eh Loaded length: 6A8Eh
 
 ; Processor       : 68000
 ; Target assembler: 680x0 Assembler in MRI compatible mode
@@ -29,7 +29,7 @@
 ; ---------------------------------------------------------------------------
                 move.w  #$8134,($FF0F16).l
                 move.w  ($FF0F16).l,($C00004).l
-                move.l  #$FF2296,($FFFD08).w
+                move.l  #sub_FF2296,($FFFD08).w
                 move.l  #$FFFFFFFF,($FFFB00).w
                 moveq   #0,d0
                 move.l  d0,($A12010).l
@@ -43,172 +43,176 @@
                 lea     ($FFA000).w,a0
                 move.w  #$16BF,d7
 
-loc_200156:                             ; CODE XREF: ROM:00200158↓j
+loc_FF2056:                             ; CODE XREF: ROM:00FF2058↓j
                 clr.l   (a0)+
-                dbf     d7,loc_200156
-                bsr.w   sub_200848
-                bsr.w   sub_20088C
-                bsr.w   sub_20086A
-                bsr.w   sub_2008E2
-                bsr.w   sub_200F08
-                bsr.w   sub_200ED4
-                bsr.w   sub_201ABE
+                dbf     d7,loc_FF2056
+                bsr.w   sub_FF2748
+                bsr.w   sub_FF278C
+                bsr.w   sub_FF276A
+                bsr.w   sub_FF27E2
+                bsr.w   sub_FF2E08
+                bsr.w   sub_FF2DD4
+                bsr.w   sub_FF39BE
                 move.l  #$58000003,($C00004).l
-                lea     word_206900(pc),a0
-                bsr.w   sub_200D10
+                lea     dword_FF8800(pc),a0
+                bsr.w   sub_FF2C10
                 move.l  #$5C000003,($C00004).l
-                lea     word_2069AE(pc),a0
-                bsr.w   sub_200D10
+                lea     word_FF88AE(pc),a0
+                bsr.w   sub_FF2C10
                 move.l  #$5E000003,($C00004).l
-                lea     dword_2069DC(pc),a0
-                bsr.w   sub_200D10
+                lea     dword_FF88DC(pc),a0
+                bsr.w   sub_FF2C10
                 move.l  #$5F200003,($C00004).l
-                lea     dword_206A5C(pc),a0
-                bsr.w   sub_200D10
+                lea     dword_FF895C(pc),a0
+                bsr.w   sub_FF2C10
                 move.l  #$70000003,($C00004).l
-                lea     word_203372(pc),a0
-                bsr.w   sub_200D10
+                lea     word_FF5272(pc),a0
+                bsr.w   sub_FF2C10
                 move.l  #$6D000001,($C00004).l
-                lea     dword_2041E0(pc),a0
-                bsr.w   sub_200D10
-                lea     sub_200FA8(pc),a2
-                bsr.w   sub_200EAE
+                lea     dword_FF60E0(pc),a0
+                bsr.w   sub_FF2C10
+                lea     sub_FF2EA8(pc),a2
+                bsr.w   sub_FF2DAE
                 move.l  #$7C200002,($C00004).l
-                lea     word_206462(pc),a0
-                bsr.w   sub_200D10
-                bsr.w   sub_2007BE
-                bsr.w   sub_20037E
+                lea     word_FF8362(pc),a0
+                bsr.w   sub_FF2C10
+                bsr.w   sub_FF26BE
+                bsr.w   sub_FF227E
                 move.b  #1,($FFFA26).w
                 move.w  #4,($FFFA40).w
-                bsr.w   sub_20037E
+                bsr.w   sub_FF227E
                 move.l  #0,($FFFB00).w
-                jsr     sub_200E50
+                jsr     sub_FF2D50
                 move.w  #5,($FFFA40).w
-                bsr.w   sub_20037E
-                lea     ($FF2980).l,a1
+                bsr.w   sub_FF227E
+                lea     (dword_FF2980).l,a1
                 lea     ($FFF9E0).w,a2
                 movem.l (a1)+,d0-d7
                 movem.l d0-d7,(a2)
                 move.w  #$600F,($FFFA02).w
-                bsr.w   sub_200B8E
+                bsr.w   sub_FF2A8E
 
-loc_200248:                             ; CODE XREF: ROM:00200268↓j
+loc_FF2148:                             ; CODE XREF: ROM:00FF2168↓j
                 move.b  #1,($FFFA04).w
-                jsr     sub_200F08
-                jsr     sub_200E50
+                jsr     sub_FF2E08
+                jsr     sub_FF2D50
                 btst    #7,($FFFA04).w
-                bne.s   loc_20026C
+                bne.s   loc_FF216C
                 move.w  #5,($FFFA40).w
-                bsr.w   sub_20037E
-                bra.w   loc_200248
+                bsr.w   sub_FF227E
+                bra.w   loc_FF2148
 ; ---------------------------------------------------------------------------
 
-loc_20026C:                             ; CODE XREF: ROM:0020025C↑j
+loc_FF216C:                             ; CODE XREF: ROM:00FF215C↑j
                 bclr    #7,($FFFA04).w
                 move.l  #$6D800001,($C00004).l
-                lea     dword_2027B4(pc),a0
-                bsr.w   sub_200D10
-                lea     ($FF2920).l,a1
+                lea     dword_FF46B4(pc),a0
+                bsr.w   sub_FF2C10
+                lea     (dword_FF2920).l,a1
                 lea     ($FFF980).w,a2
-                bsr.w   sub_200AFE
+                bsr.w   sub_FF29FE
                 move.w  #$2F,($FFFA02).w ; '/'
-                bsr.w   sub_200C0C
-                lea     unk_2013E8(pc),a2
-                bsr.w   sub_200EAE
-                lea     ($FF33B4).l,a2
-                bsr.w   sub_200EAE
-                lea     loc_201A58(pc),a2
-                bsr.w   sub_200EAE
-                lea     loc_201A90(pc),a2
-                bsr.w   sub_200EAE
+                bsr.w   sub_FF2B0C
+                lea     loc_FF32E8(pc),a2
+                bsr.w   sub_FF2DAE
+                lea     (loc_FF33B4).l,a2
+                bsr.w   sub_FF2DAE
+                lea     loc_FF3958(pc),a2
+                bsr.w   sub_FF2DAE
+                lea     loc_FF3990(pc),a2
+                bsr.w   sub_FF2DAE
 
-loc_2002BE:                             ; CODE XREF: ROM:00200348↓j
+loc_FF21BE:                             ; CODE XREF: ROM:00FF2248↓j
                 move.b  #2,($FFFA04).w
-                bsr.w   sub_200808
-                jsr     sub_200F08
-                jsr     sub_200E50
-                bsr.w   sub_200770
-                bsr.w   sub_2006DC
+                bsr.w   sub_FF2708
+                jsr     sub_FF2E08
+                jsr     sub_FF2D50
+                bsr.w   sub_FF2670
+                bsr.w   sub_FF25DC
                 move.w  #0,($FFFA40).w
-                bsr.w   sub_20037E
-                jsr     sub_200F08
-                jsr     sub_200E50
+                bsr.w   sub_FF227E
+                jsr     sub_FF2E08
+                jsr     sub_FF2D50
                 move.w  #1,($FFFA40).w
-                bsr.w   sub_20037E
-                bsr.w   sub_2008C0
-                bsr.w   sub_200ACA
-                bsr.w   sub_20088C
+                bsr.w   sub_FF227E
+                bsr.w   sub_FF27C0
+                bsr.w   sub_FF29CA
+                bsr.w   sub_FF278C
                 tst.b   ($FFFA0E).w
-                bne.s   loc_20034C
-                jsr     sub_200F08
-                jsr     sub_200E50
-                bsr.w   sub_200770
-                bsr.w   sub_200808
-                bsr.w   sub_20069C
+                bne.s   loc_FF224C
+                jsr     sub_FF2E08
+                jsr     sub_FF2D50
+                bsr.w   sub_FF2670
+                bsr.w   sub_FF2708
+                bsr.w   sub_FF259C
                 move.w  #2,($FFFA40).w
-                bsr.w   sub_20037E
-                jsr     sub_200F08
-                jsr     sub_200E50
+                bsr.w   sub_FF227E
+                jsr     sub_FF2E08
+                jsr     sub_FF2D50
                 move.w  #3,($FFFA40).w
-                bsr.w   sub_20037E
-                bsr.w   sub_2008C0
-                bsr.w   sub_200ACA
-                bsr.w   sub_20088C
+                bsr.w   sub_FF227E
+                bsr.w   sub_FF27C0
+                bsr.w   sub_FF29CA
+                bsr.w   sub_FF278C
                 tst.b   ($FFFA0E).w
-                bne.s   loc_20034C
-                bra.w   loc_2002BE
+                bne.s   loc_FF224C
+                bra.w   loc_FF21BE
 ; ---------------------------------------------------------------------------
 
-loc_20034C:                             ; CODE XREF: ROM:00200304↑j
-                                        ; ROM:00200346↑j
+loc_FF224C:                             ; CODE XREF: ROM:00FF2204↑j
+                                        ; ROM:00FF2246↑j
                 bset    #0,($A1200E).l
 
-loc_200354:                             ; CODE XREF: ROM:0020035C↓j
+loc_FF2254:                             ; CODE XREF: ROM:00FF225C↓j
                 btst    #0,($A1200F).l
-                beq.s   loc_200354
+                beq.s   loc_FF2254
                 bclr    #0,($A1200E).l
                 move.w  #5,($FFFA40).w
-                bsr.w   sub_200B2A
+                bsr.w   sub_FF2A2A
                 moveq   #0,d1
                 move.b  ($FFFA0E).w,d1
-                bmi.s   loc_20037A
+                bmi.s   loc_FF227A
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_20037A:                             ; CODE XREF: ROM:00200376↑j
+loc_FF227A:                             ; CODE XREF: ROM:00FF2276↑j
                 moveq   #0,d1
                 rts
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_20037E:                             ; CODE XREF: ROM:00200202↑p
-                                        ; ROM:00200212↑p ...
+sub_FF227E:                             ; CODE XREF: ROM:00FF2102↑p
+                                        ; ROM:00FF2112↑p ...
                 bset    #0,($FF0F00).l
                 move    #$2500,sr
 
-loc_20038A:                             ; CODE XREF: sub_20037E+14↓j
+loc_FF228A:                             ; CODE XREF: sub_FF227E+14↓j
                 btst    #0,($FF0F00).l
-                bne.s   loc_20038A
+                bne.s   loc_FF228A
                 rts
-; End of function sub_20037E
+; End of function sub_FF227E
 
-; ---------------------------------------------------------------------------
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF2296:                             ; DATA XREF: ROM:00FF2012↑o
                 movem.l d0-d7/a0-a6,-(sp)
                 move.b  #1,($A12000).l
                 bclr    #0,($FF0F00).l
-                beq.w   loc_200642
+                beq.w   loc_FF2542
                 tst.b   ($FFFA26).w
-                beq.s   loc_2003CA
+                beq.s   loc_FF22CA
                 bset    #6,($FF0F17).l
                 move.w  ($FF0F16).l,($C00004).l
                 clr.b   ($FFFA26).w
 
-loc_2003CA:                             ; CODE XREF: ROM:002003B2↑j
+loc_FF22CA:                             ; CODE XREF: sub_FF2296+1C↑j
                 lea     ($C00004).l,a1
                 lea     ($C00000).l,a2
                 move.w  (a1),d0
-                jsr     sub_200AA0
+                jsr     sub_FF29A0
                 lea     ($C00004).l,a6
                 move.l  #$93409400,(a6)
                 move.l  #$958096FC,(a6)
@@ -229,19 +233,19 @@ loc_2003CA:                             ; CODE XREF: ROM:002003B2↑j
                 move.w  ($FFD000).w,($C00000).l
                 move.w  ($FFFA40).w,d0
                 add.w   d0,d0
-                move.w  off_200446(pc,d0.w),d0
-                jmp     off_200446(pc,d0.w)
+                move.w  off_FF2346(pc,d0.w),d0
+                jmp     off_FF2346(pc,d0.w)
 ; ---------------------------------------------------------------------------
-off_200446:     dc.w loc_200452-*       ; CODE XREF: ROM:00200442↑j
-                                        ; DATA XREF: ROM:0020043E↑r ...
-                dc.w loc_2004B6-off_200446
-                dc.w loc_20051A-off_200446
-                dc.w loc_20057E-off_200446
-                dc.w loc_2005E2-off_200446
-                dc.w loc_2005E6-off_200446
+off_FF2346:     dc.w loc_FF2352-*       ; CODE XREF: sub_FF2296+AC↑j
+                                        ; DATA XREF: sub_FF2296+A8↑r ...
+                dc.w loc_FF23B6-off_FF2346
+                dc.w loc_FF241A-off_FF2346
+                dc.w loc_FF247E-off_FF2346
+                dc.w loc_FF24E2-off_FF2346
+                dc.w loc_FF24E6-off_FF2346
 ; ---------------------------------------------------------------------------
 
-loc_200452:                             ; DATA XREF: ROM:off_200446↑o
+loc_FF2352:                             ; DATA XREF: sub_FF2296:off_FF2346↑o
                 lea     ($C00004).l,a6
                 move.l  #$93409401,(a6)
                 move.l  #$950096EA,(a6)
@@ -260,11 +264,11 @@ loc_200452:                             ; DATA XREF: ROM:off_200446↑o
                 move.w  (sp)+,(a6)
                 move.l  #$40200000,(a6)
                 move.w  ($FFA000).w,($C00000).l
-                jsr     sub_200720
-                bra.w   loc_200618
+                jsr     sub_FF2620
+                bra.w   loc_FF2518
 ; ---------------------------------------------------------------------------
 
-loc_2004B6:                             ; DATA XREF: ROM:00200448↑o
+loc_FF23B6:                             ; DATA XREF: sub_FF2296+B2↑o
                 lea     ($C00004).l,a6
                 move.l  #$93409401,(a6)
                 move.l  #$950096EA,(a6)
@@ -283,11 +287,11 @@ loc_2004B6:                             ; DATA XREF: ROM:00200448↑o
                 move.w  (sp)+,(a6)
                 move.l  #$58200000,(a6)
                 move.w  ($FFB800).w,($C00000).l
-                jsr     sub_200720
-                bra.w   loc_200618
+                jsr     sub_FF2620
+                bra.w   loc_FF2518
 ; ---------------------------------------------------------------------------
 
-loc_20051A:                             ; DATA XREF: ROM:0020044A↑o
+loc_FF241A:                             ; DATA XREF: sub_FF2296+B4↑o
                 lea     ($C00004).l,a6
                 move.l  #$93409401,(a6)
                 move.l  #$950096EA,(a6)
@@ -306,11 +310,11 @@ loc_20051A:                             ; DATA XREF: ROM:0020044A↑o
                 move.w  (sp)+,(a6)
                 move.l  #$70200000,(a6)
                 move.w  ($FFA000).w,($C00000).l
-                jsr     sub_200720
-                bra.w   loc_200618
+                jsr     sub_FF2620
+                bra.w   loc_FF2518
 ; ---------------------------------------------------------------------------
 
-loc_20057E:                             ; DATA XREF: ROM:0020044C↑o
+loc_FF247E:                             ; DATA XREF: sub_FF2296+B6↑o
                 lea     ($C00004).l,a6
                 move.l  #$93409401,(a6)
                 move.l  #$950096EA,(a6)
@@ -329,15 +333,15 @@ loc_20057E:                             ; DATA XREF: ROM:0020044C↑o
                 move.w  (sp)+,(a6)
                 move.l  #$48200001,(a6)
                 move.w  ($FFB800).w,($C00000).l
-                jsr     sub_200720
-                bra.w   loc_200618
+                jsr     sub_FF2620
+                bra.w   loc_FF2518
 ; ---------------------------------------------------------------------------
 
-loc_2005E2:                             ; DATA XREF: ROM:0020044E↑o
-                bra.w   loc_200618
+loc_FF24E2:                             ; DATA XREF: sub_FF2296+B8↑o
+                bra.w   loc_FF2518
 ; ---------------------------------------------------------------------------
 
-loc_2005E6:                             ; DATA XREF: ROM:00200450↑o
+loc_FF24E6:                             ; DATA XREF: sub_FF2296+BA↑o
                 lea     ($C00004).l,a6
                 move.l  #$93409401,(a6)
                 move.l  #$950096EA,(a6)
@@ -347,47 +351,49 @@ loc_2005E6:                             ; DATA XREF: ROM:00200450↑o
                 move.w  (sp)+,(a6)
                 move.l  #$54000003,(a6)
                 move.w  ($FFD400).w,($C00000).l
-                jsr     sub_200720
+                jsr     sub_FF2620
 
-loc_200618:                             ; CODE XREF: ROM:002004B2↑j
-                                        ; ROM:00200516↑j ...
+loc_FF2518:                             ; CODE XREF: sub_FF2296+11C↑j
+                                        ; sub_FF2296+180↑j ...
                 tst.b   ($FFFA1E).w
-                beq.s   loc_20062A
+                beq.s   loc_FF252A
                 move.b  ($FFFA1E).w,($A01C0A).l
                 clr.b   ($FFFA1E).w
 
-loc_20062A:                             ; CODE XREF: ROM:0020061C↑j
-                bsr.w   sub_200ABC
+loc_FF252A:                             ; CODE XREF: sub_FF2296+286↑j
+                bsr.w   sub_FF29BC
                 tst.w   ($FFFA42).w
-                beq.s   loc_200638
+                beq.s   loc_FF2538
                 subq.w  #1,($FFFA42).w
 
-loc_200638:                             ; CODE XREF: ROM:00200632↑j
+loc_FF2538:                             ; CODE XREF: sub_FF2296+29C↑j
                 addq.w  #1,($FFFA44).w
                 movem.l (sp)+,d0-d7/a0-a6
                 rte
 ; ---------------------------------------------------------------------------
 
-loc_200642:                             ; CODE XREF: ROM:002003AA↑j
+loc_FF2542:                             ; CODE XREF: sub_FF2296+14↑j
                 cmpi.l  #$FFFFFFFF,($FFFB00).w
-                beq.s   loc_200656
+                beq.s   loc_FF2556
                 addq.l  #1,($FFFB00).w
                 move.b  ($FFFA41).w,($FFFB00).w
 
-loc_200656:                             ; CODE XREF: ROM:0020064A↑j
+loc_FF2556:                             ; CODE XREF: sub_FF2296+2B4↑j
                 movem.l (sp)+,d0-d7/a0-a6
                 rte
+; End of function sub_FF2296
+
 ; ---------------------------------------------------------------------------
                 move.w  #$8F20,(a1)
                 move.l  #$50020003,($C00004).l
                 moveq   #0,d0
-                bra.s   loc_200680
+                bra.s   loc_FF2580
 ; ---------------------------------------------------------------------------
                 move.w  #$8F20,(a1)
                 move.l  #$50020003,($C00004).l
                 move.w  #$100,d0
 
-loc_200680:                             ; CODE XREF: ROM:0020066C↑j
+loc_FF2580:                             ; CODE XREF: ROM:00FF256C↑j
                 move.w  d0,(a2)
                 move.w  d0,(a2)
                 move.w  d0,(a2)
@@ -405,90 +411,90 @@ loc_200680:                             ; CODE XREF: ROM:0020066C↑j
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_20069C:                             ; CODE XREF: ROM:00200316↑p
+sub_FF259C:                             ; CODE XREF: ROM:00FF2216↑p
                 lea     ($FFD000).w,a1
                 moveq   #$57,d1 ; 'W'
 
-loc_2006A2:                             ; CODE XREF: sub_20069C+8↓j
+loc_FF25A2:                             ; CODE XREF: sub_FF259C+8↓j
                 clr.l   (a1)+
-                dbf     d1,loc_2006A2
+                dbf     d1,loc_FF25A2
                 lea     ($FFD680).w,a2
                 moveq   #$3F,d2 ; '?'
                 move.l  #$1000,d1
                 move.l  #$4000,d0
 
-loc_2006BA:                             ; CODE XREF: sub_20069C+22↓j
+loc_FF25BA:                             ; CODE XREF: sub_FF259C+22↓j
                 add.l   d0,(a2)+
                 add.l   d1,d0
-                dbf     d2,loc_2006BA
+                dbf     d2,loc_FF25BA
                 lea     ($FFD680).w,a2
                 lea     ($FFD280).w,a1
                 moveq   #$3F,d2 ; '?'
                 moveq   #0,d0
 
-loc_2006CE:                             ; CODE XREF: sub_20069C+3A↓j
+loc_FF25CE:                             ; CODE XREF: sub_FF259C+3A↓j
                 move.w  (a2),d0
                 move.l  d0,(a1)+
                 lea     4(a2),a2
-                dbf     d2,loc_2006CE
+                dbf     d2,loc_FF25CE
                 rts
-; End of function sub_20069C
+; End of function sub_FF259C
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_2006DC:                             ; CODE XREF: ROM:002002D4↑p
+sub_FF25DC:                             ; CODE XREF: ROM:00FF21D4↑p
                 lea     ($FFD000).w,a1
                 moveq   #$57,d1 ; 'W'
 
-loc_2006E2:                             ; CODE XREF: sub_2006DC+C↓j
+loc_FF25E2:                             ; CODE XREF: sub_FF25DC+C↓j
                 move.l  #$100,(a1)+
-                dbf     d1,loc_2006E2
+                dbf     d1,loc_FF25E2
                 lea     ($FFD680).w,a2
                 moveq   #$3F,d2 ; '?'
                 move.l  #$1000,d1
                 move.l  #$4000,d0
 
-loc_2006FE:                             ; CODE XREF: sub_2006DC+26↓j
+loc_FF25FE:                             ; CODE XREF: sub_FF25DC+26↓j
                 add.l   d0,(a2)+
                 add.l   d1,d0
-                dbf     d2,loc_2006FE
+                dbf     d2,loc_FF25FE
                 lea     ($FFD680).w,a2
                 lea     ($FFD280).w,a1
                 moveq   #$3F,d2 ; '?'
                 moveq   #0,d0
 
-loc_200712:                             ; CODE XREF: sub_2006DC+3E↓j
+loc_FF2612:                             ; CODE XREF: sub_FF25DC+3E↓j
                 move.w  (a2),d0
                 move.l  d0,(a1)+
                 lea     4(a2),a2
-                dbf     d2,loc_200712
+                dbf     d2,loc_FF2612
                 rts
-; End of function sub_2006DC
+; End of function sub_FF25DC
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200720:                             ; CODE XREF: ROM:002004AE↑p
-                                        ; ROM:00200512↑p ...
+sub_FF2620:                             ; CODE XREF: sub_FF2296+118↑p
+                                        ; sub_FF2296+17C↑p ...
                 lea     ($FFFA1A).w,a0
                 lea     ($A10003).l,a1
-                bsr.s   sub_200744
+                bsr.s   sub_FF2644
                 lea     ($FFFA18).w,a0
                 lea     ($A10005).l,a1
                 tst.b   ($FFFA1C).w
-                beq.s   sub_200744
+                beq.s   sub_FF2644
                 move.w  ($FFFA18).w,($A1201E).l
-; End of function sub_200720
+; End of function sub_FF2620
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200744:                             ; CODE XREF: sub_200720+A↑p
-                                        ; sub_200720+1A↑j
+sub_FF2644:                             ; CODE XREF: sub_FF2620+A↑p
+                                        ; sub_FF2620+1A↑j
                 move.b  #0,(a1)
                 tst.w   (a0)
                 move.b  (a1),d0
@@ -507,30 +513,30 @@ sub_200744:                             ; CODE XREF: sub_200720+A↑p
                 and.b   d1,d0
                 move.b  d0,(a0)+
                 rts
-; End of function sub_200744
+; End of function sub_FF2644
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200770:                             ; CODE XREF: ROM:002002D0↑p
-                                        ; ROM:0020030E↑p
+sub_FF2670:                             ; CODE XREF: ROM:00FF21D0↑p
+                                        ; ROM:00FF220E↑p
                 addi.b  #$40,($FFFA0D).w ; '@'
-                bcs.s   loc_20077A
+                bcs.s   loc_FF267A
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_20077A:                             ; CODE XREF: sub_200770+6↑j
+loc_FF267A:                             ; CODE XREF: sub_FF2670+6↑j
                 moveq   #0,d0
                 move.b  ($FFFA0C).w,d0
                 addq.b  #1,d0
                 cmpi.b  #3,d0
-                bcs.s   loc_20078A
+                bcs.s   loc_FF268A
                 clr.b   d0
 
-loc_20078A:                             ; CODE XREF: sub_200770+16↑j
+loc_FF268A:                             ; CODE XREF: sub_FF2670+16↑j
                 move.b  d0,($FFFA0C).w
-                lea     word_2007A6(pc),a1
+                lea     word_FF26A6(pc),a1
                 lea     ($FFF90A).w,a2
                 add.b   d0,d0
                 add.b   d0,d0
@@ -539,200 +545,191 @@ loc_20078A:                             ; CODE XREF: sub_200770+16↑j
                 move.l  (a1)+,(a2)+
                 move.l  (a1)+,(a2)+
                 rts
-; End of function sub_200770
+; End of function sub_FF2670
 
 ; ---------------------------------------------------------------------------
-word_2007A6:    dc.w $ECC               ; DATA XREF: sub_200770+1E↑o
-                dc.w $ECA
-                dc.w $EEE
-                dc.w $EA8
-                dc.w $EA8
-                dc.w $ECC
-                dc.w $ECC
-                dc.w $ECA
-                dc.w $ECA
-                dc.w $EA8
-                dc.w $ECA
-                dc.w $ECC
+word_FF26A6:    dc.w $ECC               ; DATA XREF: sub_FF2670+1E↑o
+                dc.l $ECA0EEE, $EA80EA8, $ECC0ECC, $ECA0ECA, $EA80ECA
+                dc.b $E, $CC
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_2007BE:                             ; CODE XREF: ROM:002001FE↑p
+sub_FF26BE:                             ; CODE XREF: ROM:00FF20FE↑p
                 lea     ($C00004).l,a2
                 lea     ($C00000).l,a3
                 move.w  #$8001,d6
                 move.l  #$60000003,d0
                 moveq   #$1F,d1
                 moveq   #$B,d2
-                bsr.s   sub_2007E8
+                bsr.s   sub_FF26E8
                 move.w  #$8181,d6
                 move.l  #$60400003,d0
                 moveq   #$1F,d1
                 moveq   #$B,d2
-; End of function sub_2007BE
+; End of function sub_FF26BE
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_2007E8:                             ; CODE XREF: sub_2007BE+1A↑p
+sub_FF26E8:                             ; CODE XREF: sub_FF26BE+1A↑p
                 move.l  #$800000,d4
 
-loc_2007EE:                             ; CODE XREF: sub_2007E8+1A↓j
+loc_FF26EE:                             ; CODE XREF: sub_FF26E8+1A↓j
                 move.l  d0,(a2)
                 move.w  d1,d3
                 move.w  d6,d5
 
-loc_2007F4:                             ; CODE XREF: sub_2007E8+12↓j
+loc_FF26F4:                             ; CODE XREF: sub_FF26E8+12↓j
                 move.w  d5,(a3)
                 addi.w  #$C,d5
-                dbf     d3,loc_2007F4
+                dbf     d3,loc_FF26F4
                 add.l   d4,d0
                 addq.w  #1,d6
-                dbf     d2,loc_2007EE
+                dbf     d2,loc_FF26EE
                 rts
-; End of function sub_2007E8
+; End of function sub_FF26E8
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200808:                             ; CODE XREF: ROM:002002C4↑p
-                                        ; ROM:00200312↑p
+sub_FF2708:                             ; CODE XREF: ROM:00FF21C4↑p
+                                        ; ROM:00FF2212↑p
                 cmpi.b  #4,($FFFA24).w
-                bcc.s   loc_200842
+                bcc.s   loc_FF2742
                 move.b  #1,($A12012).l
 
-loc_200818:                             ; CODE XREF: sub_200808+1E↓j
+loc_FF2718:                             ; CODE XREF: sub_FF2708+1E↓j
                 cmpi.b  #1,($A12022).l
-                beq.s   loc_200828
+                beq.s   loc_FF2728
                 addq.w  #1,($FFFA20).w
-                bcc.s   loc_200818
+                bcc.s   loc_FF2718
 
-loc_200828:                             ; CODE XREF: sub_200808+18↑j
+loc_FF2728:                             ; CODE XREF: sub_FF2708+18↑j
                 clr.l   ($FFFA20).w
                 move.b  #0,($A12012).l
 
-loc_200834:                             ; CODE XREF: sub_200808+38↓j
+loc_FF2734:                             ; CODE XREF: sub_FF2708+38↓j
                 tst.b   ($A12022).l
-                beq.s   loc_200842
+                beq.s   loc_FF2742
                 addq.w  #1,($FFFA20).w
-                bcc.s   loc_200834
+                bcc.s   loc_FF2734
 
-loc_200842:                             ; CODE XREF: sub_200808+6↑j
-                                        ; sub_200808+32↑j
+loc_FF2742:                             ; CODE XREF: sub_FF2708+6↑j
+                                        ; sub_FF2708+32↑j
                 clr.l   ($FFFA20).w
                 rts
-; End of function sub_200808
+; End of function sub_FF2708
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200848:                             ; CODE XREF: ROM:0020015C↑p
-                                        ; sub_200848+16↓j
+sub_FF2748:                             ; CODE XREF: ROM:00FF205C↑p
+                                        ; sub_FF2748+16↓j
                 cmpi.b  #4,($FFFA24).w
-                bcc.s   loc_200864
+                bcc.s   loc_FF2764
                 btst    #7,($A1200F).l
-                bne.s   loc_200864
+                bne.s   loc_FF2764
                 addq.w  #1,($FFFA20).w
-                bcc.s   sub_200848
+                bcc.s   sub_FF2748
                 addq.b  #1,($FFFA24).w
 
-loc_200864:                             ; CODE XREF: sub_200848+6↑j
-                                        ; sub_200848+10↑j
+loc_FF2764:                             ; CODE XREF: sub_FF2748+6↑j
+                                        ; sub_FF2748+10↑j
                 clr.l   ($FFFA20).w
                 rts
-; End of function sub_200848
+; End of function sub_FF2748
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_20086A:                             ; CODE XREF: ROM:00200164↑p
-                                        ; sub_20086A+16↓j
+sub_FF276A:                             ; CODE XREF: ROM:00FF2064↑p
+                                        ; sub_FF276A+16↓j
                 cmpi.b  #4,($FFFA24).w
-                bcc.s   loc_200886
+                bcc.s   loc_FF2786
                 btst    #7,($A1200F).l
-                beq.s   loc_200886
+                beq.s   loc_FF2786
                 addq.w  #1,($FFFA20).w
-                bcc.s   sub_20086A
+                bcc.s   sub_FF276A
                 addq.b  #1,($FFFA24).w
 
-loc_200886:                             ; CODE XREF: sub_20086A+6↑j
-                                        ; sub_20086A+10↑j
+loc_FF2786:                             ; CODE XREF: sub_FF276A+6↑j
+                                        ; sub_FF276A+10↑j
                 clr.l   ($FFFA20).w
                 rts
-; End of function sub_20086A
+; End of function sub_FF276A
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_20088C:                             ; CODE XREF: ROM:00200160↑p
-                                        ; ROM:002002FC↑p ...
+sub_FF278C:                             ; CODE XREF: ROM:00FF2060↑p
+                                        ; ROM:00FF21FC↑p ...
                 cmpi.b  #4,($FFFA24).w
-                bcc.s   loc_2008BA
+                bcc.s   loc_FF27BA
                 btst    #1,($A12003).l
-                bne.s   locret_2008BE
+                bne.s   locret_FF27BE
                 bset    #1,($A12003).l
 
-loc_2008A6:                             ; CODE XREF: sub_20088C+28↓j
+loc_FF27A6:                             ; CODE XREF: sub_FF278C+28↓j
                 btst    #1,($A12003).l
-                bne.s   loc_2008BA
+                bne.s   loc_FF27BA
                 addq.w  #1,($FFFA20).w
-                bcc.s   loc_2008A6
+                bcc.s   loc_FF27A6
                 addq.b  #1,($FFFA24).w
 
-loc_2008BA:                             ; CODE XREF: sub_20088C+6↑j
-                                        ; sub_20088C+22↑j
+loc_FF27BA:                             ; CODE XREF: sub_FF278C+6↑j
+                                        ; sub_FF278C+22↑j
                 clr.l   ($FFFA20).w
 
-locret_2008BE:                          ; CODE XREF: sub_20088C+10↑j
+locret_FF27BE:                          ; CODE XREF: sub_FF278C+10↑j
                 rts
-; End of function sub_20088C
+; End of function sub_FF278C
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_2008C0:                             ; CODE XREF: ROM:002002F4↑p
-                                        ; ROM:00200336↑p ...
+sub_FF27C0:                             ; CODE XREF: ROM:00FF21F4↑p
+                                        ; ROM:00FF2236↑p ...
                 cmpi.b  #4,($FFFA24).w
-                bcc.s   loc_2008DC
+                bcc.s   loc_FF27DC
                 btst    #0,($A12003).l
-                bne.s   loc_2008DC
+                bne.s   loc_FF27DC
                 addq.w  #1,($FFFA20).w
-                bcc.s   sub_2008C0
+                bcc.s   sub_FF27C0
                 addq.b  #1,($FFFA24).w
 
-loc_2008DC:                             ; CODE XREF: sub_2008C0+6↑j
-                                        ; sub_2008C0+10↑j
+loc_FF27DC:                             ; CODE XREF: sub_FF27C0+6↑j
+                                        ; sub_FF27C0+10↑j
                 clr.l   ($FFFA20).w
                 rts
-; End of function sub_2008C0
+; End of function sub_FF27C0
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_2008E2:                             ; CODE XREF: ROM:00200168↑p
-                lea     unk_20098C(pc),a0
+sub_FF27E2:                             ; CODE XREF: ROM:00FF2068↑p
+                lea     dword_FF288C(pc),a0
                 move.w  #$8000,d0
                 moveq   #$12,d7
 
-loc_2008EC:                             ; CODE XREF: sub_2008E2+16↓j
+loc_FF27EC:                             ; CODE XREF: sub_FF27E2+16↓j
                 move.b  (a0)+,d0
                 move.w  d0,($C00004).l
                 addi.w  #$100,d0
-                dbf     d7,loc_2008EC
+                dbf     d7,loc_FF27EC
                 moveq   #$40,d0 ; '@'
                 move.b  d0,($A10009).l
                 move.b  d0,($A1000B).l
                 move.b  d0,($A1000D).l
                 move.b  #$C0,($A10003).l
-                jsr     sub_200AA0
+                jsr     sub_FF29A0
                 lea     ($C00004).l,a6
                 move.w  #$8F01,(a6)
                 move.l  #$93FF94FF,(a6)
@@ -740,368 +737,108 @@ loc_2008EC:                             ; CODE XREF: sub_2008E2+16↓j
                 move.l  #$40000080,(a6)
                 move.w  #0,($C00000).l
 
-loc_20093E:                             ; CODE XREF: sub_2008E2+62↓j
+loc_FF283E:                             ; CODE XREF: sub_FF27E2+62↓j
                 btst    #1,1(a6)
-                bne.s   loc_20093E
+                bne.s   loc_FF283E
                 move.l  #$40000000,(a6)
                 move.w  #0,($C00000).l
                 move.w  #$8F02,(a6)
-                lea     unk_2009A0(pc),a0
+                lea     dword_FF28A0(pc),a0
                 lea     ($FFF900).w,a1
                 moveq   #$1F,d7
 
-loc_200962:                             ; CODE XREF: sub_2008E2+84↓j
+loc_FF2862:                             ; CODE XREF: sub_FF27E2+84↓j
                 move.l  (a0)+,d0
                 move.l  d0,(a1)+
-                dbf     d7,loc_200962
+                dbf     d7,loc_FF2862
                 move.l  #$40000010,($C00004).l
                 move.l  #0,($C00000).l
-                jsr     sub_200ABC
+                jsr     sub_FF29BC
                 move.w  #$8134,($FF0F16).l
                 rts
-; End of function sub_2008E2
+; End of function sub_FF27E2
 
 ; ---------------------------------------------------------------------------
-unk_20098C:     dc.b   4                ; DATA XREF: sub_2008E2↑o
-                dc.b $34 ; 4
-                dc.b $30 ; 0
-                dc.b   0
-                dc.b   7
-                dc.b $6A ; j
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b $34 ; 4
-                dc.b   0
-                dc.b   2
-                dc.b   1
-                dc.b   0
-                dc.b   0
-                dc.b   0
-unk_2009A0:     dc.b   0                ; DATA XREF: sub_2008E2+76↑o
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b  $E
-                dc.b $E0
-                dc.b   6
-                dc.b   0
-                dc.b  $E
-                dc.b $44 ; D
-                dc.b  $E
-                dc.b $66 ; f
-                dc.b   0
-                dc.b   0
-                dc.b  $E
-                dc.b $88
-                dc.b  $E
-                dc.b $EE
-                dc.b   0
-                dc.b $AE
-                dc.b   0
-                dc.b $6A ; j
-                dc.b   0
-                dc.b $26 ; &
-                dc.b   0
-                dc.b $EE
-                dc.b  $E
-                dc.b $AA
-                dc.b   0
-                dc.b  $C
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b   2
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b  $E
-                dc.b $66 ; f
-                dc.b  $E
-                dc.b $88
-                dc.b  $E
-                dc.b $CC
-                dc.b  $E
-                dc.b $EE
-                dc.b  $E
-                dc.b $CC
-                dc.b  $E
-                dc.b $CA
-                dc.b  $E
-                dc.b $EE
-                dc.b  $E
-                dc.b $A8
-                dc.b   0
-                dc.b $60 ; `
-                dc.b   0
-                dc.b $A4
-                dc.b   0
-                dc.b $E8
-                dc.b   4
-                dc.b   2
-                dc.b   2
-                dc.b $26 ; &
-                dc.b   0
-                dc.b $6A ; j
-                dc.b   0
-                dc.b $AE
-                dc.b  $E
-                dc.b $E0
-                dc.b   6
-                dc.b   0
-                dc.b  $E
-                dc.b $44 ; D
-                dc.b  $E
-                dc.b $66 ; f
-                dc.b   0
-                dc.b   0
-                dc.b  $E
-                dc.b $88
-                dc.b  $E
-                dc.b $EE
-                dc.b   0
-                dc.b $AE
-                dc.b   0
-                dc.b $6A ; j
-                dc.b   0
-                dc.b $26 ; &
-                dc.b   0
-                dc.b $EE
-                dc.b  $E
-                dc.b $AA
-                dc.b   0
-                dc.b  $C
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b   2
-                dc.b   0
-                dc.b   0
-                dc.b  $E
-                dc.b $20
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   2
-                dc.b   0
-                dc.b $24 ; $
-                dc.b   0
-                dc.b $46 ; F
-                dc.b   0
-                dc.b $88
-                dc.b   0
-                dc.b $CC
-                dc.b   0
-                dc.b $EE
-                dc.b  $E
-                dc.b $EE
-                dc.b   0
-                dc.b   0
-                dc.b  $E
-                dc.b $EE
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b  $A
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b  $E
-                dc.b   0
-                dc.b  $E
-                dc.b $20
-                dc.b  $E
-                dc.b $42 ; B
-                dc.b  $E
-                dc.b $64 ; d
-                dc.b  $E
-                dc.b $AA
-                dc.b   0
-                dc.b   4
-                dc.b   0
-                dc.b $48 ; H
-                dc.b   4
-                dc.b $6A ; j
-                dc.b   8
-                dc.b $AE
-                dc.b  $E
-                dc.b $EE
-                dc.b   4
-                dc.b $44 ; D
-                dc.b   8
-                dc.b $88
-                dc.b  $A
-                dc.b $AA
-                dc.b  $A
-                dc.b $CE
+dword_FF288C:   dc.l $4343000, $76A0000, 3, $340002, $1000000
+                                        ; DATA XREF: sub_FF27E2↑o
+dword_FF28A0:   dcb.l 8,0               ; DATA XREF: sub_FF27E2+76↑o
+                dc.l $EE00600, $E440E66, $E88, $EEE00AE, $6A0026, $EE0EAA
+                dc.l $C0006, $20000
+                dcb.l $10,0
+dword_FF2920:   dc.l $6000E66, $E880ECC, $EEE0ECC, $ECA0EEE, $EA80060
+                                        ; DATA XREF: ROM:00FF2184↑o
+                dc.l $A400E8, $4020226, $6A00AE, $EE00600, $E440E66, $E88
+                dc.l $EEE00AE, $6A0026, $EE0EAA, $C0006, $20000, $E200000
+                dc.l $20024, $460088, $CC00EE
+                dcb.l 2,$EEE0000
+                dcb.l 2,0
+dword_FF2980:   dc.l $A000600, $E000E20, $E420E64, $EAA0004, $48046A, $8AE0EEE
+                                        ; DATA XREF: ROM:00FF212C↑o
+                dc.l $4440888, $AAA0ACE
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200AA0:                             ; CODE XREF: ROM:002003D8↑p
-                                        ; sub_2008E2+36↑p
+sub_FF29A0:                             ; CODE XREF: sub_FF2296+42↑p
+                                        ; sub_FF27E2+36↑p
                 move    sr,($FFFA46).w
                 move    #$2700,sr
                 move.w  #$100,($A11100).l
 
-loc_200AB0:                             ; CODE XREF: sub_200AA0+18↓j
+loc_FF29B0:                             ; CODE XREF: sub_FF29A0+18↓j
                 btst    #0,($A11100).l
-                bne.s   loc_200AB0
+                bne.s   loc_FF29B0
                 rts
-; End of function sub_200AA0
+; End of function sub_FF29A0
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200ABC:                             ; CODE XREF: ROM:loc_20062A↑p
-                                        ; sub_2008E2+9C↑p
+sub_FF29BC:                             ; CODE XREF: sub_FF2296:loc_FF252A↑p
+                                        ; sub_FF27E2+9C↑p
                 move.w  #0,($A11100).l
                 move    ($FFFA46).w,sr
                 rts
-; End of function sub_200ABC
+; End of function sub_FF29BC
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200ACA:                             ; CODE XREF: ROM:002002F8↑p
-                                        ; ROM:0020033A↑p
+sub_FF29CA:                             ; CODE XREF: ROM:00FF21F8↑p
+                                        ; ROM:00FF223A↑p
                 lea     ($21D000).l,a1
                 lea     ($FFA000).w,a2
                 move.w  #5,d7
 
-loc_200AD8:                             ; CODE XREF: sub_200ACA+2E↓j
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                bsr.s   sub_200AFE
-                dbf     d7,loc_200AD8
+loc_FF29D8:                             ; CODE XREF: sub_FF29CA+2E↓j
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                bsr.s   sub_FF29FE
+                dbf     d7,loc_FF29D8
                 rts
-; End of function sub_200ACA
+; End of function sub_FF29CA
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200AFE:                             ; CODE XREF: ROM:0020028E↑p
-                                        ; sub_200ACA:loc_200AD8↑p ...
+sub_FF29FE:                             ; CODE XREF: ROM:00FF218E↑p
+                                        ; sub_FF29CA:loc_FF29D8↑p ...
                 movem.l (a1)+,d0-d5/a3-a4
                 movem.l d0-d5/a3-a4,(a2)
                 movem.l (a1)+,d0-d5/a3-a4
@@ -1112,82 +849,82 @@ sub_200AFE:                             ; CODE XREF: ROM:0020028E↑p
                 movem.l d0-d5/a3-a4,$60(a2)
                 lea     $80(a2),a2
                 rts
-; End of function sub_200AFE
+; End of function sub_FF29FE
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200B2A:                             ; CODE XREF: ROM:0020036C↑p
+sub_FF2A2A:                             ; CODE XREF: ROM:00FF226C↑p
                 move.w  #$3F,($FFFA02).w ; '?'
                 move.w  #$15,d4
 
-loc_200B34:                             ; CODE XREF: sub_200B2A+16↓j
+loc_FF2A34:                             ; CODE XREF: sub_FF2A2A+16↓j
                 move.b  #1,($FFFA01).w
-                bsr.w   sub_20037E
-                bsr.s   sub_200B46
-                dbf     d4,loc_200B34
+                bsr.w   sub_FF227E
+                bsr.s   sub_FF2A46
+                dbf     d4,loc_FF2A34
                 rts
-; End of function sub_200B2A
+; End of function sub_FF2A2A
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200B46:                             ; CODE XREF: sub_200B2A+14↑p
+sub_FF2A46:                             ; CODE XREF: sub_FF2A2A+14↑p
                 moveq   #0,d0
                 lea     ($FFF900).w,a0
                 move.b  ($FFFA02).w,d0
                 adda.w  d0,a0
                 move.b  ($FFFA03).w,d0
 
-loc_200B56:                             ; CODE XREF: sub_200B46+12↓j
-                bsr.s   sub_200B5E
-                dbf     d0,loc_200B56
+loc_FF2A56:                             ; CODE XREF: sub_FF2A46+12↓j
+                bsr.s   sub_FF2A5E
+                dbf     d0,loc_FF2A56
                 rts
-; End of function sub_200B46
+; End of function sub_FF2A46
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200B5E:                             ; CODE XREF: sub_200B46:loc_200B56↑p
+sub_FF2A5E:                             ; CODE XREF: sub_FF2A46:loc_FF2A56↑p
                 move.w  (a0),d2
-                beq.s   loc_200B8A
+                beq.s   loc_FF2A8A
                 move.w  d2,d1
                 andi.w  #$E,d1
-                beq.s   loc_200B6E
+                beq.s   loc_FF2A6E
                 subq.w  #2,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200B6E:                             ; CODE XREF: sub_200B5E+A↑j
+loc_FF2A6E:                             ; CODE XREF: sub_FF2A5E+A↑j
                 move.w  d2,d1
                 andi.w  #$E0,d1
-                beq.s   loc_200B7C
+                beq.s   loc_FF2A7C
                 subi.w  #$20,(a0)+ ; ' '
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200B7C:                             ; CODE XREF: sub_200B5E+16↑j
+loc_FF2A7C:                             ; CODE XREF: sub_FF2A5E+16↑j
                 move.w  d2,d1
                 andi.w  #$E00,d1
-                beq.s   loc_200B8A
+                beq.s   loc_FF2A8A
                 subi.w  #$200,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200B8A:                             ; CODE XREF: sub_200B5E+2↑j
-                                        ; sub_200B5E+24↑j
+loc_FF2A8A:                             ; CODE XREF: sub_FF2A5E+2↑j
+                                        ; sub_FF2A5E+24↑j
                 addq.w  #2,a0
                 rts
-; End of function sub_200B5E
+; End of function sub_FF2A5E
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200B8E:                             ; CODE XREF: ROM:00200244↑p
+sub_FF2A8E:                             ; CODE XREF: ROM:00FF2144↑p
                 moveq   #0,d0
                 lea     ($FFF900).w,a0
                 move.b  ($FFFA02).w,d0
@@ -1195,24 +932,24 @@ sub_200B8E:                             ; CODE XREF: ROM:00200244↑p
                 moveq   #0,d1
                 move.b  ($FFFA03).w,d0
 
-loc_200BA0:                             ; CODE XREF: sub_200B8E+14↓j
+loc_FF2AA0:                             ; CODE XREF: sub_FF2A8E+14↓j
                 move.w  d1,(a0)+
-                dbf     d0,loc_200BA0
+                dbf     d0,loc_FF2AA0
                 move.w  #$15,d4
 
-loc_200BAA:                             ; CODE XREF: sub_200B8E+28↓j
+loc_FF2AAA:                             ; CODE XREF: sub_FF2A8E+28↓j
                 move.b  #1,($FFFA01).w
-                bsr.w   sub_20037E
-                bsr.s   sub_200BBC
-                dbf     d4,loc_200BAA
+                bsr.w   sub_FF227E
+                bsr.s   sub_FF2ABC
+                dbf     d4,loc_FF2AAA
                 rts
-; End of function sub_200B8E
+; End of function sub_FF2A8E
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200BBC:                             ; CODE XREF: sub_200B8E+26↑p
+sub_FF2ABC:                             ; CODE XREF: sub_FF2A8E+26↑p
                 moveq   #0,d0
                 lea     ($FFF900).w,a0
                 lea     ($FFF980).w,a1
@@ -1221,47 +958,47 @@ sub_200BBC:                             ; CODE XREF: sub_200B8E+26↑p
                 adda.w  d0,a1
                 move.b  ($FFFA03).w,d0
 
-loc_200BD2:                             ; CODE XREF: sub_200BBC+18↓j
-                bsr.s   sub_200BDA
-                dbf     d0,loc_200BD2
+loc_FF2AD2:                             ; CODE XREF: sub_FF2ABC+18↓j
+                bsr.s   sub_FF2ADA
+                dbf     d0,loc_FF2AD2
                 rts
-; End of function sub_200BBC
+; End of function sub_FF2ABC
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200BDA:                             ; CODE XREF: sub_200BBC:loc_200BD2↑p
+sub_FF2ADA:                             ; CODE XREF: sub_FF2ABC:loc_FF2AD2↑p
                 move.w  (a1)+,d2
                 move.w  (a0),d3
                 cmp.w   d2,d3
-                beq.s   loc_200C02
+                beq.s   loc_FF2B02
                 move.w  d3,d1
                 addi.w  #$200,d1
                 cmp.w   d2,d1
-                bhi.s   loc_200BF0
+                bhi.s   loc_FF2AF0
                 move.w  d1,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200BF0:                             ; CODE XREF: sub_200BDA+10↑j
+loc_FF2AF0:                             ; CODE XREF: sub_FF2ADA+10↑j
                 move.w  d3,d1
                 addi.w  #$20,d1 ; ' '
                 cmp.w   d2,d1
-                bhi.s   loc_200BFE
+                bhi.s   loc_FF2AFE
                 move.w  d1,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200BFE:                             ; CODE XREF: sub_200BDA+1E↑j
+loc_FF2AFE:                             ; CODE XREF: sub_FF2ADA+1E↑j
                 addq.w  #2,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200C02:                             ; CODE XREF: sub_200BDA+6↑j
+loc_FF2B02:                             ; CODE XREF: sub_FF2ADA+6↑j
                 addq.w  #2,a0
                 rts
-; End of function sub_200BDA
+; End of function sub_FF2ADA
 
 ; ---------------------------------------------------------------------------
                 move.w  #$3F,($FFFA02).w ; '?'
@@ -1269,7 +1006,7 @@ loc_200C02:                             ; CODE XREF: sub_200BDA+6↑j
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200C0C:                             ; CODE XREF: ROM:00200298↑p
+sub_FF2B0C:                             ; CODE XREF: ROM:00FF2198↑p
                 moveq   #0,d0
                 lea     ($FFF900).w,a0
                 move.b  ($FFFA02).w,d0
@@ -1277,28 +1014,28 @@ sub_200C0C:                             ; CODE XREF: ROM:00200298↑p
                 move.w  #$EEE,d1
                 move.b  ($FFFA03).w,d0
 
-loc_200C20:                             ; CODE XREF: sub_200C0C+16↓j
+loc_FF2B20:                             ; CODE XREF: sub_FF2B0C+16↓j
                 move.w  d1,(a0)+
-                dbf     d0,loc_200C20
+                dbf     d0,loc_FF2B20
                 move.w  #0,($FFF95C).w
                 move.w  #$15,d4
 
-loc_200C30:                             ; CODE XREF: sub_200C0C+34↓j
+loc_FF2B30:                             ; CODE XREF: sub_FF2B0C+34↓j
                 move.b  #1,($FFFA01).w
-                bsr.w   sub_20037E
+                bsr.w   sub_FF227E
                 move.l  d4,-(sp)
                 move.l  (sp)+,d4
-                bsr.s   sub_200C4A
-                dbf     d4,loc_200C30
+                bsr.s   sub_FF2B4A
+                dbf     d4,loc_FF2B30
                 clr.b   ($FFFA01).w
                 rts
-; End of function sub_200C0C
+; End of function sub_FF2B0C
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200C4A:                             ; CODE XREF: sub_200C0C+32↑p
+sub_FF2B4A:                             ; CODE XREF: sub_FF2B0C+32↑p
                 moveq   #0,d0
                 lea     ($FFF900).w,a0
                 lea     ($FFF980).w,a1
@@ -1307,217 +1044,217 @@ sub_200C4A:                             ; CODE XREF: sub_200C0C+32↑p
                 adda.w  d0,a1
                 move.b  ($FFFA03).w,d0
 
-loc_200C60:                             ; CODE XREF: sub_200C4A+18↓j
-                bsr.s   sub_200C68
-                dbf     d0,loc_200C60
+loc_FF2B60:                             ; CODE XREF: sub_FF2B4A+18↓j
+                bsr.s   sub_FF2B68
+                dbf     d0,loc_FF2B60
                 rts
-; End of function sub_200C4A
+; End of function sub_FF2B4A
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200C68:                             ; CODE XREF: sub_200C4A:loc_200C60↑p
+sub_FF2B68:                             ; CODE XREF: sub_FF2B4A:loc_FF2B60↑p
                 move.w  (a1)+,d2
                 move.w  (a0),d3
                 cmp.w   d2,d3
-                beq.s   loc_200C94
+                beq.s   loc_FF2B94
                 move.w  d3,d1
                 subi.w  #$200,d1
-                bcs.s   loc_200C80
+                bcs.s   loc_FF2B80
                 cmp.w   d2,d1
-                bcs.s   loc_200C80
+                bcs.s   loc_FF2B80
                 move.w  d1,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200C80:                             ; CODE XREF: sub_200C68+E↑j
-                                        ; sub_200C68+12↑j
+loc_FF2B80:                             ; CODE XREF: sub_FF2B68+E↑j
+                                        ; sub_FF2B68+12↑j
                 move.w  d3,d1
                 subi.w  #$20,d1 ; ' '
-                bcs.s   loc_200C90
+                bcs.s   loc_FF2B90
                 cmp.w   d2,d1
-                bcs.s   loc_200C90
+                bcs.s   loc_FF2B90
                 move.w  d1,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200C90:                             ; CODE XREF: sub_200C68+1E↑j
-                                        ; sub_200C68+22↑j
+loc_FF2B90:                             ; CODE XREF: sub_FF2B68+1E↑j
+                                        ; sub_FF2B68+22↑j
                 subq.w  #2,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200C94:                             ; CODE XREF: sub_200C68+6↑j
+loc_FF2B94:                             ; CODE XREF: sub_FF2B68+6↑j
                 addq.w  #2,a0
                 rts
-; End of function sub_200C68
+; End of function sub_FF2B68
 
 ; ---------------------------------------------------------------------------
                 move.w  #$3F,($FFFA02).w ; '?'
                 move.w  #$15,d4
 
-loc_200CA2:                             ; CODE XREF: ROM:00200CAE↓j
+loc_FF2BA2:                             ; CODE XREF: ROM:00FF2BAE↓j
                 move.b  #1,($FFFA01).w
-                bsr.w   sub_20037E
-                bsr.s   sub_200CB8
-                dbf     d4,loc_200CA2
+                bsr.w   sub_FF227E
+                bsr.s   sub_FF2BB8
+                dbf     d4,loc_FF2BA2
                 clr.b   ($FFFA01).w
                 rts
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200CB8:                             ; CODE XREF: ROM:00200CAC↑p
+sub_FF2BB8:                             ; CODE XREF: ROM:00FF2BAC↑p
                 moveq   #0,d0
                 lea     ($FFF900).w,a0
                 move.b  ($FFFA02).w,d0
                 adda.w  d0,a0
                 move.b  ($FFFA03).w,d0
 
-loc_200CC8:                             ; CODE XREF: sub_200CB8+12↓j
-                bsr.s   sub_200CD0
-                dbf     d0,loc_200CC8
+loc_FF2BC8:                             ; CODE XREF: sub_FF2BB8+12↓j
+                bsr.s   sub_FF2BD0
+                dbf     d0,loc_FF2BC8
                 rts
-; End of function sub_200CB8
+; End of function sub_FF2BB8
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200CD0:                             ; CODE XREF: sub_200CB8:loc_200CC8↑p
+sub_FF2BD0:                             ; CODE XREF: sub_FF2BB8:loc_FF2BC8↑p
                 move.w  (a0),d2
                 cmpi.w  #$EEE,d2
-                beq.s   loc_200D0C
+                beq.s   loc_FF2C0C
                 move.w  d2,d1
                 andi.w  #$E,d1
                 cmpi.w  #$E,d1
-                beq.s   loc_200CE8
+                beq.s   loc_FF2BE8
                 addq.w  #2,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200CE8:                             ; CODE XREF: sub_200CD0+12↑j
+loc_FF2BE8:                             ; CODE XREF: sub_FF2BD0+12↑j
                 move.w  d2,d1
                 andi.w  #$E0,d1
                 cmpi.w  #$E0,d1
-                beq.s   loc_200CFA
+                beq.s   loc_FF2BFA
                 addi.w  #$20,(a0)+ ; ' '
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200CFA:                             ; CODE XREF: sub_200CD0+22↑j
+loc_FF2BFA:                             ; CODE XREF: sub_FF2BD0+22↑j
                 move.w  d2,d1
                 andi.w  #$E00,d1
                 cmpi.w  #$E00,d1
-                beq.s   loc_200D0C
+                beq.s   loc_FF2C0C
                 addi.w  #$200,(a0)+
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200D0C:                             ; CODE XREF: sub_200CD0+6↑j
-                                        ; sub_200CD0+34↑j
+loc_FF2C0C:                             ; CODE XREF: sub_FF2BD0+6↑j
+                                        ; sub_FF2BD0+34↑j
                 addq.w  #2,a0
                 rts
-; End of function sub_200CD0
+; End of function sub_FF2BD0
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200D10:                             ; CODE XREF: ROM:00200186↑p
-                                        ; ROM:00200198↑p ...
+sub_FF2C10:                             ; CODE XREF: ROM:00FF2086↑p
+                                        ; ROM:00FF2098↑p ...
                 movem.l d0-d7/a0-a1/a3-a5,-(sp)
-                lea     ($FF2CD2).l,a3
+                lea     (sub_FF2CD2).l,a3
                 lea     ($C00000).l,a4
-                bra.s   loc_200D2C
+                bra.s   loc_FF2C2C
 ; ---------------------------------------------------------------------------
                 movem.l d0-d7/a0-a1/a3-a5,-(sp)
-                lea     ($FF2CE8).l,a3
+                lea     (loc_FF2CE8).l,a3
 
-loc_200D2C:                             ; CODE XREF: sub_200D10+10↑j
+loc_FF2C2C:                             ; CODE XREF: sub_FF2C10+10↑j
                 lea     ($FFF700).w,a1
                 move.w  (a0)+,d2
                 lsl.w   #1,d2
-                bcc.s   loc_200D3A
+                bcc.s   loc_FF2C3A
                 adda.w  #$A,a3
 
-loc_200D3A:                             ; CODE XREF: sub_200D10+24↑j
+loc_FF2C3A:                             ; CODE XREF: sub_FF2C10+24↑j
                 lsl.w   #2,d2
                 movea.w d2,a5
                 moveq   #8,d3
                 moveq   #0,d2
                 moveq   #0,d4
-                bsr.w   sub_200DFE
+                bsr.w   sub_FF2CFE
                 move.b  (a0)+,d5
                 asl.w   #8,d5
                 move.b  (a0)+,d5
                 move.w  #$10,d6
-                bsr.s   sub_200D5A
+                bsr.s   sub_FF2C5A
                 movem.l (sp)+,d0-d7/a0-a1/a3-a5
                 rts
-; End of function sub_200D10
+; End of function sub_FF2C10
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200D5A:                             ; CODE XREF: sub_200D10+42↑p
-                                        ; sub_200D5A+4A↓j
+sub_FF2C5A:                             ; CODE XREF: sub_FF2C10+42↑p
+                                        ; sub_FF2C5A+4A↓j
                 move.w  d6,d7
                 subq.w  #8,d7
                 move.w  d5,d1
                 lsr.w   d7,d1
                 cmpi.b  #$FC,d1
-                bcc.s   loc_200DA6
+                bcc.s   loc_FF2CA6
                 andi.w  #$FF,d1
                 add.w   d1,d1
                 move.b  (a1,d1.w),d0
                 ext.w   d0
                 sub.w   d0,d6
                 cmpi.w  #9,d6
-                bcc.s   loc_200D82
+                bcc.s   loc_FF2C82
                 addq.w  #8,d6
                 asl.w   #8,d5
                 move.b  (a0)+,d5
 
-loc_200D82:                             ; CODE XREF: sub_200D5A+20↑j
+loc_FF2C82:                             ; CODE XREF: sub_FF2C5A+20↑j
                 move.b  1(a1,d1.w),d1
                 move.w  d1,d0
                 andi.w  #$F,d1
                 andi.w  #$F0,d0
 
-loc_200D90:                             ; CODE XREF: sub_200D5A+6E↓j
-                                        ; sub_200D5A+76↓j
+loc_FF2C90:                             ; CODE XREF: sub_FF2C5A+6E↓j
+                                        ; sub_FF2C5A+76↓j
                 lsr.w   #4,d0
 
-loc_200D92:                             ; CODE XREF: sub_200D5A:loc_200DA0↓j
+loc_FF2C92:                             ; CODE XREF: sub_FF2C5A:loc_FF2CA0↓j
                 lsl.l   #4,d4
                 or.b    d1,d4
                 subq.w  #1,d3
-                bne.s   loc_200DA0
+                bne.s   loc_FF2CA0
                 jmp     (a3)
 ; ---------------------------------------------------------------------------
 
-loc_200D9C:                             ; CODE XREF: ROM:00200DD8↓j
-                                        ; ROM:00200DE4↓j ...
+loc_FF2C9C:                             ; CODE XREF: sub_FF2CD2+6↓j
+                                        ; ROM:00FF2CE4↓j ...
                 moveq   #0,d4
                 moveq   #8,d3
 
-loc_200DA0:                             ; CODE XREF: sub_200D5A+3E↑j
-                dbf     d0,loc_200D92
-                bra.s   sub_200D5A
+loc_FF2CA0:                             ; CODE XREF: sub_FF2C5A+3E↑j
+                dbf     d0,loc_FF2C92
+                bra.s   sub_FF2C5A
 ; ---------------------------------------------------------------------------
 
-loc_200DA6:                             ; CODE XREF: sub_200D5A+C↑j
+loc_FF2CA6:                             ; CODE XREF: sub_FF2C5A+C↑j
                 subq.w  #6,d6
                 cmpi.w  #9,d6
-                bcc.s   loc_200DB4
+                bcc.s   loc_FF2CB4
                 addq.w  #8,d6
                 asl.w   #8,d5
                 move.b  (a0)+,d5
 
-loc_200DB4:                             ; CODE XREF: sub_200D5A+52↑j
+loc_FF2CB4:                             ; CODE XREF: sub_FF2C5A+52↑j
                 subq.w  #7,d6
                 move.w  d5,d1
                 lsr.w   d6,d1
@@ -1525,60 +1262,68 @@ loc_200DB4:                             ; CODE XREF: sub_200D5A+52↑j
                 andi.w  #$F,d1
                 andi.w  #$70,d0 ; 'p'
                 cmpi.w  #9,d6
-                bcc.s   loc_200D90
+                bcc.s   loc_FF2C90
                 addq.w  #8,d6
                 asl.w   #8,d5
                 move.b  (a0)+,d5
-                bra.s   loc_200D90
-; End of function sub_200D5A
+                bra.s   loc_FF2C90
+; End of function sub_FF2C5A
 
-; ---------------------------------------------------------------------------
-                move.l  d4,(a4)         ; lol unused code
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF2CD2:                             ; DATA XREF: sub_FF2C10+4↑o
+                move.l  d4,(a4)
                 subq.w  #1,a5
                 move.w  a5,d4
-                bne.s   loc_200D9C
+                bne.s   loc_FF2C9C
                 rts
+; End of function sub_FF2CD2
+
 ; ---------------------------------------------------------------------------
                 eor.l   d4,d2
                 move.l  d2,(a4)
                 subq.w  #1,a5
                 move.w  a5,d4
-                bne.s   loc_200D9C
+                bne.s   loc_FF2C9C
                 rts
 ; ---------------------------------------------------------------------------
+
+loc_FF2CE8:                             ; DATA XREF: sub_FF2C10+16↑o
                 move.l  d4,(a4)+
                 subq.w  #1,a5
                 move.w  a5,d4
-                bne.s   loc_200D9C
+                bne.s   loc_FF2C9C
                 rts
 ; ---------------------------------------------------------------------------
                 eor.l   d4,d2
                 move.l  d2,(a4)+
                 subq.w  #1,a5
                 move.w  a5,d4
-                bne.s   loc_200D9C
+                bne.s   loc_FF2C9C
                 rts
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200DFE:                             ; CODE XREF: sub_200D10+34↑p
+sub_FF2CFE:                             ; CODE XREF: sub_FF2C10+34↑p
                 move.b  (a0)+,d0
 
-loc_200E00:                             ; CODE XREF: sub_200DFE+12↓j
+loc_FF2D00:                             ; CODE XREF: sub_FF2CFE+12↓j
                 cmpi.b  #$FF,d0
-                bne.s   loc_200E08
+                bne.s   loc_FF2D08
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200E08:                             ; CODE XREF: sub_200DFE+6↑j
+loc_FF2D08:                             ; CODE XREF: sub_FF2CFE+6↑j
                 move.w  d0,d7
 
-loc_200E0A:                             ; CODE XREF: sub_200DFE+38↓j
-                                        ; sub_200DFE+50↓j
+loc_FF2D0A:                             ; CODE XREF: sub_FF2CFE+38↓j
+                                        ; sub_FF2CFE+50↓j
                 move.b  (a0)+,d0
                 cmpi.b  #$80,d0
-                bcc.s   loc_200E00
+                bcc.s   loc_FF2D00
                 move.b  d0,d1
                 andi.w  #$F,d7
                 andi.w  #$70,d1 ; 'p'
@@ -1589,14 +1334,14 @@ loc_200E0A:                             ; CODE XREF: sub_200DFE+38↓j
                 or.w    d1,d7
                 moveq   #8,d1
                 sub.w   d0,d1
-                bne.s   loc_200E38
+                bne.s   loc_FF2D38
                 move.b  (a0)+,d0
                 add.w   d0,d0
                 move.w  d7,(a1,d0.w)
-                bra.s   loc_200E0A
+                bra.s   loc_FF2D0A
 ; ---------------------------------------------------------------------------
 
-loc_200E38:                             ; CODE XREF: sub_200DFE+2E↑j
+loc_FF2D38:                             ; CODE XREF: sub_FF2CFE+2E↑j
                 move.b  (a0)+,d0
                 lsl.w   d1,d0
                 add.w   d0,d0
@@ -1604,110 +1349,116 @@ loc_200E38:                             ; CODE XREF: sub_200DFE+2E↑j
                 lsl.w   d1,d5
                 subq.w  #1,d5
 
-loc_200E44:                             ; CODE XREF: sub_200DFE+4C↓j
+loc_FF2D44:                             ; CODE XREF: sub_FF2CFE+4C↓j
                 move.w  d7,(a1,d0.w)
                 addq.w  #2,d0
-                dbf     d5,loc_200E44
-                bra.s   loc_200E0A
-; End of function sub_200DFE
+                dbf     d5,loc_FF2D44
+                bra.s   loc_FF2D0A
+; End of function sub_FF2CFE
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200E50:                             ; CODE XREF: ROM:0020021E↑p
-                                        ; ROM:00200252↑p ...
+sub_FF2D50:                             ; CODE XREF: ROM:00FF211E↑p
+                                        ; ROM:00FF2152↑p ...
                 lea     ($FFE300).w,a0
                 moveq   #9,d7
 
-loc_200E56:                             ; CODE XREF: sub_200E50+2E↓j
+loc_FF2D56:                             ; CODE XREF: sub_FF2D50+2E↓j
                 tst.b   2(a0)
-                beq.s   loc_200E7A
+                beq.s   loc_FF2D7A
                 move.l  d7,-(sp)
-                jsr     $FF2DA4
+                jsr     sub_FF2DA4
                 move.l  (sp)+,d7
                 btst    #1,3(a0)
-                beq.s   loc_200E7A
+                beq.s   loc_FF2D7A
                 moveq   #0,d0
                 move.w  ($FFFA0A).w,d0
                 swap    d0
                 sub.l   d0,$10(a0)
 
-loc_200E7A:                             ; CODE XREF: sub_200E50+A↑j
-                                        ; sub_200E50+1C↑j
+loc_FF2D7A:                             ; CODE XREF: sub_FF2D50+A↑j
+                                        ; sub_FF2D50+1C↑j
                 lea     $40(a0),a0
-                dbf     d7,loc_200E56
+                dbf     d7,loc_FF2D56
                 lea     ($FFE540).w,a0
                 moveq   #9,d7
 
-loc_200E88:                             ; CODE XREF: sub_200E50+4E↓j
+loc_FF2D88:                             ; CODE XREF: sub_FF2D50+4E↓j
                 tst.b   2(a0)
-                beq.s   loc_200E9A
+                beq.s   loc_FF2D9A
                 btst    #0,3(a0)
-                beq.s   loc_200E9A
-                bsr.w   sub_200F24
+                beq.s   loc_FF2D9A
+                bsr.w   sub_FF2E24
 
-loc_200E9A:                             ; CODE XREF: sub_200E50+3C↑j
-                                        ; sub_200E50+44↑j
+loc_FF2D9A:                             ; CODE XREF: sub_FF2D50+3C↑j
+                                        ; sub_FF2D50+44↑j
                 lea     -$40(a0),a0
-                dbf     d7,loc_200E88
+                dbf     d7,loc_FF2D88
                 rts
-; End of function sub_200E50
+; End of function sub_FF2D50
 
-; ---------------------------------------------------------------------------
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF2DA4:                             ; CODE XREF: sub_FF2D50+E↑p
                 moveq   #$FFFFFFFF,d0
                 move.w  0(a0),d0
                 movea.l d0,a1
                 jmp     (a1)
+; End of function sub_FF2DA4
+
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200EAE:                             ; CODE XREF: ROM:002001E8↑p
-                                        ; ROM:002002A0↑p ...
+sub_FF2DAE:                             ; CODE XREF: ROM:00FF20E8↑p
+                                        ; ROM:00FF21A0↑p ...
                 moveq   #$FFFFFFFF,d0
                 lea     ($FFE300).w,a1
                 moveq   #9,d2
 
-loc_200EB6:                             ; CODE XREF: sub_200EAE+12↓j
+loc_FF2DB6:                             ; CODE XREF: sub_FF2DAE+12↓j
                 tst.b   2(a1)
-                beq.s   loc_200ECA
+                beq.s   loc_FF2DCA
                 lea     $40(a1),a1
-                dbf     d2,loc_200EB6
+                dbf     d2,loc_FF2DB6
                 ori     #1,ccr
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_200ECA:                             ; CODE XREF: sub_200EAE+C↑j
+loc_FF2DCA:                             ; CODE XREF: sub_FF2DAE+C↑j
                 move.b  d0,2(a1)
                 move.w  a2,0(a1)
                 rts
-; End of function sub_200EAE
+; End of function sub_FF2DAE
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200ED4:                             ; CODE XREF: ROM:00200170↑p
+sub_FF2DD4:                             ; CODE XREF: ROM:00FF2070↑p
                 lea     ($FFE300).w,a0
                 move.l  #$9F,d7
 
-loc_200EDE:                             ; CODE XREF: sub_200ED4+C↓j
+loc_FF2DDE:                             ; CODE XREF: sub_FF2DD4+C↓j
                 clr.l   (a0)+
-                dbf     d7,loc_200EDE
+                dbf     d7,loc_FF2DDE
                 rts
-; End of function sub_200ED4
+; End of function sub_FF2DD4
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200EE6:                             ; CODE XREF: sub_200FA8:loc_200FCE↓p
-                                        ; sub_200FA8:loc_200FE2↓p ...
+sub_FF2DE6:                             ; CODE XREF: sub_FF2EA8:loc_FF2ECE↓p
+                                        ; sub_FF2EA8:loc_FF2EE2↓p ...
                 move.l  (sp)+,d0
                 move.w  d0,0(a0)
                 rts
-; End of function sub_200EE6
+; End of function sub_FF2DE6
 
 ; ---------------------------------------------------------------------------
                 move.l  (sp)+,d0
@@ -1720,33 +1471,33 @@ sub_200EE6:                             ; CODE XREF: sub_200FA8:loc_200FCE↓p
 ; ---------------------------------------------------------------------------
                 moveq   #$F,d0
 
-loc_200F00:                             ; CODE XREF: ROM:00200F02↓j
+loc_FF2E00:                             ; CODE XREF: ROM:00FF2E02↓j
                 clr.l   (a0)+
-                dbf     d0,loc_200F00
+                dbf     d0,loc_FF2E00
                 rts
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200F08:                             ; CODE XREF: ROM:0020016C↑p
-                                        ; ROM:0020024E↑p ...
+sub_FF2E08:                             ; CODE XREF: ROM:00FF206C↑p
+                                        ; ROM:00FF214E↑p ...
                 lea     ($FFD400).w,a0
                 moveq   #$7F,d0
 
-loc_200F0E:                             ; CODE XREF: sub_200F08+8↓j
+loc_FF2E0E:                             ; CODE XREF: sub_FF2E08+8↓j
                 clr.l   (a0)+
-                dbf     d0,loc_200F0E
+                dbf     d0,loc_FF2E0E
                 move.b  #1,($FFFA48).w
                 lea     ($FFD400).w,a0
                 move.l  a0,($FFFA4A).w
                 rts
-; End of function sub_200F08
+; End of function sub_FF2E08
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_200F24:                             ; CODE XREF: sub_200E50+46↑p
+sub_FF2E24:                             ; CODE XREF: sub_FF2D50+46↑p
                 move.l  d7,-(sp)
                 move.w  $C(a0),d4
                 move.w  $10(a0),d3
@@ -1761,12 +1512,12 @@ sub_200F24:                             ; CODE XREF: sub_200E50+46↑p
                 lea     (a3,d0.w),a4
                 movea.l ($FFFA4A).w,a5
                 move.b  (a4)+,d7
-                beq.s   loc_200FA0
+                beq.s   loc_FF2EA0
                 subq.b  #1,d7
 
-loc_200F58:                             ; CODE XREF: sub_200F24+78↓j
+loc_FF2E58:                             ; CODE XREF: sub_FF2E24+78↓j
                 cmpi.b  #$40,($FFFA48).w ; '@'
-                bcc.s   loc_200FA0
+                bcc.s   loc_FF2EA0
                 move.b  (a4)+,d0
                 ext.w   d0
                 add.w   d3,d0
@@ -1781,4274 +1532,1158 @@ loc_200F58:                             ; CODE XREF: sub_200F24+78↓j
                 move.w  d0,d6
                 andi.w  #$7FF,d6
                 cmpi.w  #$5E1,d6
-                bne.s   loc_200F8A
+                bne.s   loc_FF2E8A
                 subi.w  #$2000,d0
 
-loc_200F8A:                             ; CODE XREF: sub_200F24+60↑j
+loc_FF2E8A:                             ; CODE XREF: sub_FF2E24+60↑j
                 move.w  d0,(a5)+
                 move.b  (a4)+,d0
                 ext.w   d0
                 add.w   d4,d0
                 andi.w  #$1FF,d0
-                bne.s   loc_200F9A
+                bne.s   loc_FF2E9A
                 addq.w  #1,d0
 
-loc_200F9A:                             ; CODE XREF: sub_200F24+72↑j
+loc_FF2E9A:                             ; CODE XREF: sub_FF2E24+72↑j
                 move.w  d0,(a5)+
-                dbf     d7,loc_200F58
+                dbf     d7,loc_FF2E58
 
-loc_200FA0:                             ; CODE XREF: sub_200F24+30↑j
-                                        ; sub_200F24+3A↑j
+loc_FF2EA0:                             ; CODE XREF: sub_FF2E24+30↑j
+                                        ; sub_FF2E24+3A↑j
                 move.l  a5,($FFFA4A).w
                 move.l  (sp)+,d7
                 rts
-; End of function sub_200F24
+; End of function sub_FF2E24
 
 
 ; =============== S U B R O U T I N E =======================================
 
 ; Attributes: noreturn
 
-sub_200FA8:                             ; DATA XREF: ROM:002001E4↑o
-                move.l  #$FF2F90,6(a0)
+sub_FF2EA8:                             ; DATA XREF: ROM:00FF20E4↑o
+                move.l  #dword_FF2F90,6(a0)
                 move.w  #$E368,4(a0)
                 move.b  #3,3(a0)
                 move.w  #$5B,$C(a0) ; '['
                 move.w  #$F,$10(a0)
                 move.b  #2,$14(a0)
 
-loc_200FCE:                             ; CODE XREF: sub_200FA8+2E↓j
-                bsr.w   sub_200EE6
+loc_FF2ECE:                             ; CODE XREF: sub_FF2EA8+2E↓j
+                bsr.w   sub_FF2DE6
                 subq.b  #1,$14(a0)
-                bne.s   loc_200FCE
+                bne.s   loc_FF2ECE
                 addq.b  #1,$A(a0)
                 move.b  #3,$14(a0)
 
-loc_200FE2:                             ; CODE XREF: sub_200FA8+42↓j
-                bsr.w   sub_200EE6
+loc_FF2EE2:                             ; CODE XREF: sub_FF2EA8+42↓j
+                bsr.w   sub_FF2DE6
                 subq.b  #1,$14(a0)
-                bne.s   loc_200FE2
+                bne.s   loc_FF2EE2
                 move.l  a0,-(sp)
                 move.l  #$60000001,($C00004).l
-                lea     word_20224A(pc),a0
-                bsr.w   sub_200D10
+                lea     word_FF414A(pc),a0
+                bsr.w   sub_FF2C10
                 movea.l (sp)+,a0
                 addq.b  #1,$A(a0)
                 move.b  #2,$14(a0)
 
-loc_20100C:                             ; CODE XREF: sub_200FA8+6C↓j
-                bsr.w   sub_200EE6
+loc_FF2F0C:                             ; CODE XREF: sub_FF2EA8+6C↓j
+                bsr.w   sub_FF2DE6
                 subq.b  #1,$14(a0)
-                bne.s   loc_20100C
+                bne.s   loc_FF2F0C
                 move.l  a0,-(sp)
                 move.l  #$6B000001,($C00004).l
-                lea     dword_20214C(pc),a0
-                bsr.w   sub_200D10
+                lea     dword_FF404C(pc),a0
+                bsr.w   sub_FF2C10
                 movea.l (sp)+,a0
                 addq.b  #1,$A(a0)
                 move.b  #1,$14(a0)
 
-loc_201036:                             ; CODE XREF: sub_200FA8+96↓j
-                bsr.w   sub_200EE6
+loc_FF2F36:                             ; CODE XREF: sub_FF2EA8+96↓j
+                bsr.w   sub_FF2DE6
                 subq.b  #1,$14(a0)
-                bne.s   loc_201036
+                bne.s   loc_FF2F36
                 bset    #7,($FFFA04).w
-                lea     unk_201308(pc),a2
-                bsr.w   sub_200EAE
+                lea     loc_FF3208(pc),a2
+                bsr.w   sub_FF2DAE
                 move.w  a0,$1C(a1)
-                lea     ($FF326E).l,a2
-                bsr.w   sub_200EAE
+                lea     (loc_FF326E).l,a2
+                bsr.w   sub_FF2DAE
                 addq.b  #1,$A(a0)
                 move.b  #$14,$14(a0)
 
-loc_201066:                             ; CODE XREF: sub_200FA8+C6↓j
-                bsr.w   sub_200EE6
+loc_FF2F66:                             ; CODE XREF: sub_FF2EA8+C6↓j
+                bsr.w   sub_FF2DE6
                 subq.b  #1,$14(a0)
-                bne.s   loc_201066
+                bne.s   loc_FF2F66
                 addq.b  #1,$A(a0)
                 move.b  #4,$14(a0)
 
-loc_20107A:                             ; CODE XREF: sub_200FA8+DA↓j
-                bsr.w   sub_200EE6
+loc_FF2F7A:                             ; CODE XREF: sub_FF2EA8+DA↓j
+                bsr.w   sub_FF2DE6
                 subq.b  #1,$14(a0)
-                bne.s   loc_20107A
+                bne.s   loc_FF2F7A
                 move.b  #4,$A(a0)
 
-loc_20108A:                             ; CODE XREF: sub_200FA8+E6↓j
-                bsr.w   sub_200EE6
-                bra.s   loc_20108A
-; End of function sub_200FA8
+loc_FF2F8A:                             ; CODE XREF: sub_FF2EA8+E6↓j
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF2F8A
+; End of function sub_FF2EA8
 
 ; ---------------------------------------------------------------------------
-                dc.b   0
-                dc.b $14
-                dc.b   0
-                dc.b $6A ; j
-                dc.b   0
-                dc.b $C0
-                dc.b   1
-                dc.b   2
-                dc.b   1
-                dc.b $54 ; T
-                dc.b   1
-                dc.b $AA
-                dc.b   2
-                dc.b $14
-                dc.b   2
-                dc.b $2A ; *
-                dc.b   2
-                dc.b $44 ; D
-                dc.b   2
-                dc.b $5E ; ^
-                dc.b $11
-                dc.b   8
-                dc.b  $D
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   8
-                dc.b  $D
-                dc.b   0
-                dc.b   8
-                dc.b $20
-                dc.b   8
-                dc.b   1
-                dc.b   0
-                dc.b $10
-                dc.b $40 ; @
-                dc.b $20
-                dc.b   3
-                dc.b   0
-                dc.b $12
-                dc.b $38 ; 8
-                dc.b $28 ; (
-                dc.b   1
-                dc.b   0
-                dc.b $16
-                dc.b $40 ; @
-                dc.b $18
-                dc.b  $D
-                dc.b   0
-                dc.b $18
-                dc.b   8
-                dc.b $18
-                dc.b   6
-                dc.b   0
-                dc.b $20
-                dc.b $28 ; (
-                dc.b $28 ; (
-                dc.b  $E
-                dc.b   0
-                dc.b $26 ; &
-                dc.b   0
-                dc.b $28 ; (
-                dc.b   0
-                dc.b   0
-                dc.b $32 ; 2
-                dc.b $20
-                dc.b $30 ; 0
-                dc.b   3
-                dc.b   0
-                dc.b $33 ; 3
-                dc.b $30 ; 0
-                dc.b $40 ; @
-                dc.b   1
-                dc.b   0
-                dc.b $37 ; 7
-                dc.b $38 ; 8
-                dc.b $38 ; 8
-                dc.b   7
-                dc.b   0
-                dc.b $39 ; 9
-                dc.b $20
-                dc.b $58 ; X
-                dc.b   3
-                dc.b   0
-                dc.b $41 ; A
-                dc.b $28 ; (
-                dc.b $40 ; @
-                dc.b   5
-                dc.b   0
-                dc.b $45 ; E
-                dc.b $10
-                dc.b $58 ; X
-                dc.b   6
-                dc.b   0
-                dc.b $49 ; I
-                dc.b   8
-                dc.b $50 ; P
-                dc.b   2
-                dc.b   0
-                dc.b $4F ; O
-                dc.b $30 ; 0
-                dc.b $60 ; `
-                dc.b   5
-                dc.b   0
-                dc.b $52 ; R
-                dc.b $38 ; 8
-                dc.b $11
-                dc.b $10
-                dc.b   7
-                dc.b   0
-                dc.b $56 ; V
-                dc.b   0
-                dc.b   8
-                dc.b  $D
-                dc.b   0
-                dc.b $5E ; ^
-                dc.b $18
-                dc.b   8
-                dc.b   5
-                dc.b   0
-                dc.b $66 ; f
-                dc.b $38 ; 8
-                dc.b $18
-                dc.b  $E
-                dc.b   0
-                dc.b $6A ; j
-                dc.b $10
-                dc.b $18
-                dc.b   6
-                dc.b   0
-                dc.b $76 ; v
-                dc.b $30 ; 0
-                dc.b $20
-                dc.b   6
-                dc.b   0
-                dc.b $7C ; |
-                dc.b $40 ; @
-                dc.b $30 ; 0
-                dc.b  $C
-                dc.b   0
-                dc.b $82
-                dc.b   0
-                dc.b $30 ; 0
-                dc.b   8
-                dc.b   0
-                dc.b $86
-                dc.b $20
-                dc.b $38 ; 8
-                dc.b   0
-                dc.b   0
-                dc.b $89
-                dc.b   8
-                dc.b $38 ; 8
-                dc.b  $D
-                dc.b   0
-                dc.b $8A
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b   7
-                dc.b   0
-                dc.b $92
-                dc.b $30 ; 0
-                dc.b $48 ; H
-                dc.b   2
-                dc.b   0
-                dc.b $9A
-                dc.b $40 ; @
-                dc.b $48 ; H
-                dc.b   8
-                dc.b   0
-                dc.b $9D
-                dc.b $18
-                dc.b $50 ; P
-                dc.b  $A
-                dc.b   0
-                dc.b $A0
-                dc.b   8
-                dc.b $68 ; h
-                dc.b  $D
-                dc.b   0
-                dc.b $A9
-                dc.b $10
-                dc.b $78 ; x
-                dc.b   4
-                dc.b   0
-                dc.b $B1
-                dc.b $18
-                dc.b $58 ; X
-                dc.b   5
-                dc.b   0
-                dc.b $B3
-                dc.b $20
-                dc.b  $D
-                dc.b   0
-                dc.b  $C
-                dc.b   0
-                dc.b $B7
-                dc.b $18
-                dc.b   8
-                dc.b  $F
-                dc.b   0
-                dc.b $BB
-                dc.b   0
-                dc.b   8
-                dc.b  $F
-                dc.b   0
-                dc.b $CB
-                dc.b $20
-                dc.b $18
-                dc.b   2
-                dc.b   0
-                dc.b $DB
-                dc.b $40 ; @
-                dc.b $28 ; (
-                dc.b  $D
-                dc.b   0
-                dc.b $DE
-                dc.b   0
-                dc.b $28 ; (
-                dc.b  $F
-                dc.b   0
-                dc.b $E6
-                dc.b $20
-                dc.b $38 ; 8
-                dc.b   8
-                dc.b   0
-                dc.b $F6
-                dc.b   8
-                dc.b $40 ; @
-                dc.b   5
-                dc.b   0
-                dc.b $F9
-                dc.b $10
-                dc.b $48 ; H
-                dc.b  $D
-                dc.b   0
-                dc.b $FD
-                dc.b $20
-                dc.b $40 ; @
-                dc.b   3
-                dc.b   1
-                dc.b   5
-                dc.b $40 ; @
-                dc.b $58 ; X
-                dc.b  $E
-                dc.b   1
-                dc.b   9
-                dc.b $10
-                dc.b $50 ; P
-                dc.b   0
-                dc.b   1
-                dc.b $15
-                dc.b $18
-                dc.b $58 ; X
-                dc.b   1
-                dc.b   1
-                dc.b $16
-                dc.b $30 ; 0
-                dc.b $10
-                dc.b   8
-                dc.b  $D
-                dc.b   1
-                dc.b $18
-                dc.b   0
-                dc.b   0
-                dc.b  $A
-                dc.b   1
-                dc.b $20
-                dc.b $20
-                dc.b   8
-                dc.b   1
-                dc.b   1
-                dc.b $29 ; )
-                dc.b $38 ; 8
-                dc.b $18
-                dc.b  $C
-                dc.b   1
-                dc.b $2B ; +
-                dc.b   8
-                dc.b $18
-                dc.b  $C
-                dc.b   1
-                dc.b $2F ; /
-                dc.b $28 ; (
-                dc.b $20
-                dc.b  $D
-                dc.b   1
-                dc.b $33 ; 3
-                dc.b   0
-                dc.b $20
-                dc.b  $D
-                dc.b   1
-                dc.b $3B ; ;
-                dc.b $20
-                dc.b $20
-                dc.b   5
-                dc.b   1
-                dc.b $43 ; C
-                dc.b $40 ; @
-                dc.b $30 ; 0
-                dc.b  $E
-                dc.b   1
-                dc.b $47 ; G
-                dc.b   8
-                dc.b $30 ; 0
-                dc.b  $A
-                dc.b   1
-                dc.b $53 ; S
-                dc.b $28 ; (
-                dc.b $38 ; 8
-                dc.b   5
-                dc.b   1
-                dc.b $5C ; \
-                dc.b $40 ; @
-                dc.b $48 ; H
-                dc.b   8
-                dc.b   1
-                dc.b $60 ; `
-                dc.b $10
-                dc.b $48 ; H
-                dc.b  $E
-                dc.b   1
-                dc.b $63 ; c
-                dc.b $28 ; (
-                dc.b $58 ; X
-                dc.b  $A
-                dc.b   1
-                dc.b $6F ; o
-                dc.b $10
-                dc.b $70 ; p
-                dc.b   4
-                dc.b   1
-                dc.b $78 ; x
-                dc.b $18
-                dc.b $60 ; `
-                dc.b   5
-                dc.b   1
-                dc.b $7A ; z
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $11
-                dc.b   0
-                dc.b  $C
-                dc.b   1
-                dc.b $7E ; ~
-                dc.b $20
-                dc.b   8
-                dc.b  $F
-                dc.b   1
-                dc.b $82
-                dc.b   0
-                dc.b   8
-                dc.b  $F
-                dc.b   1
-                dc.b $92
-                dc.b $20
-                dc.b   8
-                dc.b   1
-                dc.b   1
-                dc.b $A2
-                dc.b $40 ; @
-                dc.b $18
-                dc.b   7
-                dc.b   1
-                dc.b $A4
-                dc.b $40 ; @
-                dc.b $28 ; (
-                dc.b  $C
-                dc.b   1
-                dc.b $AC
-                dc.b   0
-                dc.b $28 ; (
-                dc.b  $F
-                dc.b   1
-                dc.b $B0
-                dc.b $20
-                dc.b $30 ; 0
-                dc.b  $B
-                dc.b   1
-                dc.b $C0
-                dc.b   8
-                dc.b $38 ; 8
-                dc.b   7
-                dc.b   1
-                dc.b $CC
-                dc.b $40 ; @
-                dc.b $58 ; X
-                dc.b   0
-                dc.b   1
-                dc.b $D4
-                dc.b $48 ; H
-                dc.b $48 ; H
-                dc.b  $F
-                dc.b   1
-                dc.b $D5
-                dc.b $20
-                dc.b $60 ; `
-                dc.b  $E
-                dc.b   1
-                dc.b $E5
-                dc.b   0
-                dc.b $50 ; P
-                dc.b   4
-                dc.b   1
-                dc.b $F1
-                dc.b $10
-                dc.b $58 ; X
-                dc.b   8
-                dc.b   1
-                dc.b $F3
-                dc.b   8
-                dc.b $68 ; h
-                dc.b   9
-                dc.b   1
-                dc.b $F6
-                dc.b $20
-                dc.b $68 ; h
-                dc.b   0
-                dc.b   1
-                dc.b $FC
-                dc.b $38 ; 8
-                dc.b $2E ; .
-                dc.b  $F
-                dc.b   2
-                dc.b $79 ; y
-                dc.b $10
-                dc.b $15
-                dc.b $18
-                dc.b  $E
-                dc.b   2
-                dc.b $52 ; R
-                dc.b   0
-                dc.b $18
-                dc.b   6
-                dc.b   2
-                dc.b $5E ; ^
-                dc.b $20
-                dc.b $30 ; 0
-                dc.b  $E
-                dc.b   2
-                dc.b $64 ; d
-                dc.b   8
-                dc.b $30 ; 0
-                dc.b   2
-                dc.b   1
-                dc.b $B5
-                dc.b $28 ; (
-                dc.b $40 ; @
-                dc.b  $A
-                dc.b   2
-                dc.b $70 ; p
-                dc.b $20
-                dc.b   0
-                dc.b  $C
-                dc.b   1
-                dc.b $7E ; ~
-                dc.b $20
-                dc.b   8
-                dc.b  $F
-                dc.b   1
-                dc.b $82
-                dc.b   0
-                dc.b   8
-                dc.b  $F
-                dc.b   1
-                dc.b $92
-                dc.b $20
-                dc.b   8
-                dc.b   1
-                dc.b   1
-                dc.b $A2
-                dc.b $40 ; @
-                dc.b $18
-                dc.b   7
-                dc.b   1
-                dc.b $A4
-                dc.b $40 ; @
-                dc.b $28 ; (
-                dc.b  $C
-                dc.b   1
-                dc.b $AC
-                dc.b   0
-                dc.b $28 ; (
-                dc.b  $F
-                dc.b   1
-                dc.b $B0
-                dc.b $20
-                dc.b $30 ; 0
-                dc.b  $B
-                dc.b   1
-                dc.b $C0
-                dc.b   8
-                dc.b $38 ; 8
-                dc.b   7
-                dc.b   1
-                dc.b $CC
-                dc.b $40 ; @
-                dc.b $58 ; X
-                dc.b   0
-                dc.b   1
-                dc.b $D4
-                dc.b $48 ; H
-                dc.b $48 ; H
-                dc.b  $F
-                dc.b   1
-                dc.b $D5
-                dc.b $20
-                dc.b $60 ; `
-                dc.b  $E
-                dc.b   1
-                dc.b $E5
-                dc.b   0
-                dc.b $50 ; P
-                dc.b   4
-                dc.b   1
-                dc.b $F1
-                dc.b $10
-                dc.b $58 ; X
-                dc.b   8
-                dc.b   1
-                dc.b $F3
-                dc.b   8
-                dc.b $68 ; h
-                dc.b   9
-                dc.b   1
-                dc.b $F6
-                dc.b $20
-                dc.b $68 ; h
-                dc.b   0
-                dc.b   1
-                dc.b $FC
-                dc.b $38 ; 8
-                dc.b   4
-                dc.b $D4
-                dc.b   0
-                dc.b   1
-                dc.b $FD
-                dc.b $F8
-                dc.b $DC
-                dc.b   4
-                dc.b   1
-                dc.b $FE
-                dc.b $F8
-                dc.b $E4
-                dc.b  $B
-                dc.b   2
-                dc.b   0
-                dc.b $F8
-                dc.b   4
-                dc.b   5
-                dc.b   2
-                dc.b  $C
-                dc.b   0
-                dc.b   0
-                dc.b   5
-                dc.b $D4
-                dc.b   5
-                dc.b   2
-                dc.b $10
-                dc.b   0
-                dc.b $EC
-                dc.b   0
-                dc.b $11
-                dc.b $E6
-                dc.b $F8
-                dc.b $E4
-                dc.b  $B
-                dc.b   2
-                dc.b $14
-                dc.b   0
-                dc.b   4
-                dc.b   8
-                dc.b   2
-                dc.b $20
-                dc.b   0
-                dc.b  $C
-                dc.b   4
-                dc.b   2
-                dc.b $23 ; #
-                dc.b   0
-                dc.b   5
-                dc.b $D4
-                dc.b   5
-                dc.b   2
-                dc.b $25 ; %
-                dc.b   8
-                dc.b $E4
-                dc.b   8
-                dc.b   2
-                dc.b $29 ; )
-                dc.b   0
-                dc.b $EC
-                dc.b  $D
-                dc.b   2
-                dc.b $2C ; ,
-                dc.b   0
-                dc.b $FC
-                dc.b   9
-                dc.b   2
-                dc.b $34 ; 4
-                dc.b   0
-                dc.b  $C
-                dc.b   4
-                dc.b   2
-                dc.b $3A ; :
-                dc.b   0
-                dc.b   5
-                dc.b $D4
-                dc.b   5
-                dc.b   2
-                dc.b $3C ; <
-                dc.b $18
-                dc.b $E4
-                dc.b  $A
-                dc.b   2
-                dc.b $40 ; @
-                dc.b   8
-                dc.b $FC
-                dc.b   6
-                dc.b   2
-                dc.b $49 ; I
-                dc.b   0
-                dc.b $FC
-                dc.b   4
-                dc.b   2
-                dc.b $4F ; O
-                dc.b $10
-                dc.b   4
-                dc.b   0
-                dc.b   2
-                dc.b $51 ; Q
-                dc.b $10
-unk_201308:     dc.b $21 ; !            ; DATA XREF: sub_200FA8+9E↑o
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $FF
-                dc.b $2F ; /
-                dc.b $90
-                dc.b   0
-                dc.b   6
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $E3
-                dc.b $68 ; h
-                dc.b   0
-                dc.b   4
-                dc.b $11
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b   3
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $8C
-                dc.b   0
-                dc.b  $C
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $10
-                dc.b $11
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   9
-                dc.b   0
-                dc.b  $A
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $FB
-                dc.b $B6
-                dc.b   6
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $12
-                dc.b   0
-                dc.b $14
-                dc.b $64 ; d
-                dc.b $F4
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $18
-                dc.b $11
-                dc.b $7B ; {
-                dc.b   0
-                dc.b $1C
-                dc.b   0
-                dc.b  $A
-                dc.b $52 ; R
-                dc.b   0
-                dc.b  $C
-                dc.b   0
-                dc.b   0
-                dc.b $10
-                dc.b $64 ; d
-                dc.b  $A
-                dc.b $11
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $18
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $FB
-                dc.b $92
-                dc.b $60 ; `
-                dc.b $E2
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $FB
-                dc.b $8C
-                dc.b $60 ; `
-                dc.b $FA
-                dc.b   9
-                dc.b   8
-                dc.b   7
-                dc.b   6
-                dc.b   6
-                dc.b   7
-                dc.b   8
-                dc.b   9
-                dc.b   9
-                dc.b   8
-                dc.b   7
-                dc.b   6
-                dc.b   6
-                dc.b   7
-                dc.b   8
-                dc.b   9
-                dc.b $21 ; !
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $FF
-                dc.b $32 ; 2
-                dc.b $94
-                dc.b   0
-                dc.b   6
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $A7
-                dc.b $80
-                dc.b   0
-                dc.b   4
-                dc.b $11
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b   3
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $7F ; 
-                dc.b   0
-                dc.b  $C
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $7F ; 
-                dc.b   0
-                dc.b $10
-                dc.b $4E ; N
-                dc.b $BA
-                dc.b $FB
-                dc.b $56 ; V
-                dc.b $60 ; `
-                dc.b $FA
-                dc.b   0
-                dc.b   2
-                dc.b $10
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b   0
-                dc.b $BC
-                dc.b   0
-                dc.b   3
-                dc.b   8
-                dc.b   0
-                dc.b $3C ; <
-                dc.b $20
-                dc.b  $D
-                dc.b   0
-                dc.b   4
-                dc.b $A4
-                dc.b $20
-                dc.b  $D
-                dc.b   8
-                dc.b   4
-                dc.b $3C ; <
-                dc.b $30 ; 0
-                dc.b  $D
-                dc.b   0
-                dc.b  $C
-                dc.b $AC
-                dc.b $30 ; 0
-                dc.b  $D
-                dc.b   8
-                dc.b  $C
-                dc.b $34 ; 4
-                dc.b $40 ; @
-                dc.b  $D
-                dc.b   0
-                dc.b $14
-                dc.b $A4
-                dc.b $40 ; @
-                dc.b  $D
-                dc.b   8
-                dc.b $14
-                dc.b $3C ; <
-                dc.b   0
-                dc.b  $F
-                dc.b   0
-                dc.b $1C
-                dc.b $C4
-                dc.b   0
-                dc.b  $F
-                dc.b   0
-                dc.b $2C ; ,
-                dc.b $E4
-                dc.b   0
-                dc.b  $F
-                dc.b   0
-                dc.b $3C ; <
-                dc.b   4
-                dc.b   0
-                dc.b  $B
-                dc.b   0
-                dc.b $4C ; L
-                dc.b $24 ; $
-                dc.b $20
-                dc.b  $D
-                dc.b   0
-                dc.b $58 ; X
-                dc.b $C4
-                dc.b $20
-                dc.b  $D
-                dc.b   0
-                dc.b $60 ; `
-                dc.b $E4
-                dc.b $20
-                dc.b  $D
-                dc.b   0
-                dc.b $68 ; h
-                dc.b   4
-                dc.b $20
-                dc.b   9
-                dc.b   0
-                dc.b $70 ; p
-                dc.b $24 ; $
-                dc.b   0
-unk_2013E8:     dc.b $61 ; a            ; DATA XREF: ROM:0020029C↑o
-                dc.b   0
-                dc.b $FA
-                dc.b $FC
-                dc.b $2F ; /
-                dc.b   8
-                dc.b $23 ; #
-                dc.b $FC
-                dc.b $40 ; @
-                dc.b $40 ; @
-                dc.b   0
-                dc.b   2
-                dc.b   0
-                dc.b $C0
-                dc.b   0
-                dc.b   4
-                dc.b $41 ; A
-                dc.b $FA
-                dc.b $25 ; %
-                dc.b $AA
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F9
-                dc.b $12
-                dc.b $20
-                dc.b $5F ; _
-                dc.b $21 ; !
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $FF
-                dc.b $33 ; 3
-                dc.b $74 ; t
-                dc.b   0
-                dc.b   6
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $64 ; d
-                dc.b   2
-                dc.b   0
-                dc.b   4
-                dc.b $11
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   3
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $E2
-                dc.b   0
-                dc.b  $C
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $18
-                dc.b   0
-                dc.b $10
-                dc.b $31 ; 1
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $10
-                dc.b   0
-                dc.b $1A
-                dc.b   6
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $15
-                dc.b $64 ; d
-                dc.b $1E
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $14
-                dc.b $10
-                dc.b $3B ; ;
-                dc.b   0
-                dc.b $1C
-                dc.b $48 ; H
-                dc.b $80
-                dc.b $D1
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $10
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $14
-                dc.b $52 ; R
-                dc.b   0
-                dc.b   2
-                dc.b   0
-                dc.b   0
-                dc.b $1F
-                dc.b $11
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $14
-                dc.b $4E ; N
-                dc.b $BA
-                dc.b $FA
-                dc.b $96
-                dc.b $60 ; `
-                dc.b $D4
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $FF
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $FF
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $FF
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   2
-                dc.b  $C
-                dc.b $CC
-                dc.b  $E
-                dc.b   0
-                dc.b   0
-                dc.b $D8
-                dc.b $CC
-                dc.b  $E
-                dc.b   0
-                dc.b  $C
-                dc.b $F8
-                dc.b $D4
-                dc.b   5
-                dc.b   0
-                dc.b $18
-                dc.b $18
-                dc.b $E4
-                dc.b  $F
-                dc.b   0
-                dc.b $1C
-                dc.b $D0
-                dc.b $E4
-                dc.b  $F
-                dc.b   0
-                dc.b $2C ; ,
-                dc.b $F0
-                dc.b $E4
-                dc.b  $F
-                dc.b   0
-                dc.b $3C ; <
-                dc.b $10
-                dc.b   4
-                dc.b  $F
-                dc.b   0
-                dc.b $4C ; L
-                dc.b $D0
-                dc.b   4
-                dc.b  $F
-                dc.b   0
-                dc.b $5C ; \
-                dc.b $F0
-                dc.b   4
-                dc.b  $F
-                dc.b   0
-                dc.b $6C ; l
-                dc.b $10
-                dc.b $24 ; $
-                dc.b  $D
-                dc.b   0
-                dc.b $7C ; |
-                dc.b $D8
-                dc.b $24 ; $
-                dc.b  $D
-                dc.b   0
-                dc.b $84
-                dc.b $F8
-                dc.b $24 ; $
-                dc.b   4
-                dc.b   0
-                dc.b $8C
-                dc.b $18
-                dc.b   0
-                dc.b $21 ; !
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $FF
-                dc.b $37 ; 7
-                dc.b $BC
-                dc.b   0
-                dc.b   6
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $A6
-                dc.b $C0
-                dc.b   0
-                dc.b   4
-                dc.b $11
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   3
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $53 ; S
-                dc.b   0
-                dc.b  $C
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $B4
-                dc.b   0
-                dc.b $10
-                dc.b $31 ; 1
-                dc.b $FC
-                dc.b   1
-                dc.b $E0
-                dc.b $FA
-                dc.b $42 ; B
-                dc.b   6
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $10
-                dc.b   0
-                dc.b $14
-                dc.b $64 ; d
-                dc.b   6
-                dc.b  $A
-                dc.b $28 ; (
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b  $A
-                dc.b   8
-                dc.b $38 ; 8
-                dc.b   0
-                dc.b   7
-                dc.b $FA
-                dc.b $1B
-                dc.b $66 ; f
-                dc.b $34 ; 4
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   2
-                dc.b $62 ; b
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   2
-                dc.b $AC
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   2
-                dc.b $BC
-                dc.b $4A ; J
-                dc.b   0
-                dc.b $66 ; f
-                dc.b   0
-                dc.b   2
-                dc.b $4A ; J
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   2
-                dc.b $F4
-                dc.b $4A ; J
-                dc.b   0
-                dc.b $66 ; f
-                dc.b   0
-                dc.b   2
-                dc.b $40 ; @
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   3
-                dc.b $2C ; ,
-                dc.b $4A ; J
-                dc.b   0
-                dc.b $66 ; f
-                dc.b   0
-                dc.b   2
-                dc.b $36 ; 6
-                dc.b $4A ; J
-                dc.b $78 ; x
-                dc.b $FA
-                dc.b $42 ; B
-                dc.b $67 ; g
-                dc.b   0
-                dc.b   2
-                dc.b $22 ; "
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F9
-                dc.b $C6
-                dc.b $60 ; `
-                dc.b $B6
-                dc.b $42 ; B
-                dc.b $78 ; x
-                dc.b $FA
-                dc.b $1A
-                dc.b $11
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b  $A
-                dc.b $31 ; 1
-                dc.b $FC
-                dc.b   1
-                dc.b $E0
-                dc.b $FA
-                dc.b $42 ; B
-                dc.b $45 ; E
-                dc.b $F8
-                dc.b $FA
-                dc.b $10
-                dc.b $12
-                dc.b $39 ; 9
-                dc.b   0
-                dc.b $FF
-                dc.b  $F
-                dc.b $1D
-                dc.b $34 ; 4
-                dc.b $FC
-                dc.b $FF
-                dc.b   2
-                dc.b $70 ; p
-                dc.b   1
-                dc.b   8
-                dc.b   1
-                dc.b   0
-                dc.b   6
-                dc.b $67 ; g
-                dc.b   6
-                dc.b $70 ; p
-                dc.b   2
-                dc.b $14
-                dc.b $FC
-                dc.b   0
-                dc.b   3
-                dc.b $11
-                dc.b $C0
-                dc.b $FA
-                dc.b  $F
-                dc.b   8
-                dc.b   1
-                dc.b   0
-                dc.b   5
-                dc.b $67 ; g
-                dc.b   4
-                dc.b $14
-                dc.b $FC
-                dc.b   0
-                dc.b   4
-                dc.b   8
-                dc.b   1
-                dc.b   0
-                dc.b   4
-                dc.b $67 ; g
-                dc.b   4
-                dc.b $14
-                dc.b $FC
-                dc.b   0
-                dc.b   5
-                dc.b   8
-                dc.b   1
-                dc.b   0
-                dc.b   3
-                dc.b $67 ; g
-                dc.b   4
-                dc.b $14
-                dc.b $FC
-                dc.b   0
-                dc.b   6
-                dc.b   8
-                dc.b   1
-                dc.b   0
-                dc.b   2
-                dc.b $67 ; g
-                dc.b   4
-                dc.b $14
-                dc.b $FC
-                dc.b   0
-                dc.b   7
-                dc.b $14
-                dc.b $BC
-                dc.b   0
-                dc.b $FF
-                dc.b $45 ; E
-                dc.b $FA
-                dc.b   3
-                dc.b $BE
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F9
-                dc.b $28 ; (
-                dc.b $33 ; 3
-                dc.b $48 ; H
-                dc.b   0
-                dc.b $1C
-                dc.b $45 ; E
-                dc.b $FA
-                dc.b   3
-                dc.b $B2
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F9
-                dc.b $1C
-                dc.b $33 ; 3
-                dc.b $48 ; H
-                dc.b   0
-                dc.b $1C
-                dc.b $13
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b $18
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $C6
-                dc.b $C0
-                dc.b   0
-                dc.b   4
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $19
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F9
-                dc.b $3C ; <
-                dc.b   6
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $80
-                dc.b   0
-                dc.b $14
-                dc.b $64 ; d
-                dc.b $EA
-                dc.b $30 ; 0
-                dc.b $28 ; (
-                dc.b   0
-                dc.b  $C
-                dc.b   6
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $20
-                dc.b $31 ; 1
-                dc.b $40 ; @
-                dc.b   0
-                dc.b  $C
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F9
-                dc.b $24 ; $
-                dc.b  $C
-                dc.b $68 ; h
-                dc.b   1
-                dc.b   0
-                dc.b   0
-                dc.b  $C
-                dc.b $65 ; e
-                dc.b $E8
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F9
-                dc.b $18
-                dc.b $45 ; E
-                dc.b $F8
-                dc.b $FA
-                dc.b $10
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b  $F
-                dc.b $45 ; E
-                dc.b $F2
-                dc.b   0
-                dc.b   0
-                dc.b $10
-                dc.b $12
-                dc.b $11
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $18
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   2
-                dc.b $9E
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $FF
-                dc.b $D3
-                dc.b   0
-                dc.b  $C
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F8
-                dc.b $F6
-                dc.b $30 ; 0
-                dc.b $28 ; (
-                dc.b   0
-                dc.b  $C
-                dc.b   6
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $10
-                dc.b $31 ; 1
-                dc.b $40 ; @
-                dc.b   0
-                dc.b  $C
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F8
-                dc.b $E6
-                dc.b $4A ; J
-                dc.b $68 ; h
-                dc.b   0
-                dc.b  $C
-                dc.b $6B ; k
-                dc.b $EA
-                dc.b  $C
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $53 ; S
-                dc.b   0
-                dc.b  $C
-                dc.b $65 ; e
-                dc.b $E2
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $53 ; S
-                dc.b   0
-                dc.b  $C
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $A6
-                dc.b $C0
-                dc.b   0
-                dc.b   4
-                dc.b $60 ; `
-                dc.b   0
-                dc.b   0
-                dc.b $80
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $C6
-                dc.b $C0
-                dc.b   0
-                dc.b   4
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $19
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F8
-                dc.b $BA
-                dc.b   6
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $80
-                dc.b   0
-                dc.b $14
-                dc.b $64 ; d
-                dc.b $EA
-                dc.b $30 ; 0
-                dc.b $28 ; (
-                dc.b   0
-                dc.b  $C
-                dc.b   4
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $20
-                dc.b $31 ; 1
-                dc.b $40 ; @
-                dc.b   0
-                dc.b  $C
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F8
-                dc.b $A2
-                dc.b $4A ; J
-                dc.b $68 ; h
-                dc.b   0
-                dc.b  $C
-                dc.b $6A ; j
-                dc.b $EA
-                dc.b  $C
-                dc.b $68 ; h
-                dc.b $FF
-                dc.b $CB
-                dc.b   0
-                dc.b  $C
-                dc.b $64 ; d
-                dc.b $E2
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F8
-                dc.b $90
-                dc.b $45 ; E
-                dc.b $F8
-                dc.b $FA
-                dc.b $10
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b  $F
-                dc.b $45 ; E
-                dc.b $F2
-                dc.b   0
-                dc.b   0
-                dc.b $10
-                dc.b $12
-                dc.b $11
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $18
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   2
-                dc.b $16
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $D3
-                dc.b   0
-                dc.b  $C
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F8
-                dc.b $6E ; n
-                dc.b $30 ; 0
-                dc.b $28 ; (
-                dc.b   0
-                dc.b  $C
-                dc.b   4
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $10
-                dc.b $31 ; 1
-                dc.b $40 ; @
-                dc.b   0
-                dc.b  $C
-                dc.b  $C
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $53 ; S
-                dc.b   0
-                dc.b  $C
-                dc.b $64 ; d
-                dc.b $E8
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $53 ; S
-                dc.b   0
-                dc.b  $C
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $A6
-                dc.b $C0
-                dc.b   0
-                dc.b   4
-                dc.b $60 ; `
-                dc.b   0
-                dc.b   0
-                dc.b   2
-                dc.b $11
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b $19
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F8
-                dc.b $40 ; @
-                dc.b $45 ; E
-                dc.b $F8
-                dc.b $FA
-                dc.b $10
-                dc.b   8
-                dc.b $38 ; 8
-                dc.b   0
-                dc.b   2
-                dc.b $FA
-                dc.b $1A
-                dc.b $66 ; f
-                dc.b $24 ; $
-                dc.b   8
-                dc.b $38 ; 8
-                dc.b   0
-                dc.b   3
-                dc.b $FA
-                dc.b $1A
-                dc.b $66 ; f
-                dc.b   0
-                dc.b   0
-                dc.b $3E ; >
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b $1B
-                dc.b   2
-                dc.b   0
-                dc.b   0
-                dc.b $F0
-                dc.b $66 ; f
-                dc.b   0
-                dc.b   0
-                dc.b $54 ; T
-                dc.b $4A ; J
-                dc.b $78 ; x
-                dc.b $FA
-                dc.b $42 ; B
-                dc.b $67 ; g
-                dc.b   0
-                dc.b   0
-                dc.b $6E ; n
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F8
-                dc.b $12
-                dc.b $60 ; `
-                dc.b $D0
-                dc.b $31 ; 1
-                dc.b $FC
-                dc.b   1
-                dc.b $E0
-                dc.b $FA
-                dc.b $42 ; B
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b  $F
-                dc.b $53 ; S
-                dc.b   0
-                dc.b $12
-                dc.b $32 ; 2
-                dc.b   0
-                dc.b   0
-                dc.b  $C
-                dc.b   1
-                dc.b   0
-                dc.b $FF
-                dc.b $67 ; g
-                dc.b   8
-                dc.b $11
-                dc.b $C0
-                dc.b $FA
-                dc.b  $F
-                dc.b $60 ; `
-                dc.b   0
-                dc.b $FE
-                dc.b $A8
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $31 ; 1
-                dc.b $FC
-                dc.b   1
-                dc.b $E0
-                dc.b $FA
-                dc.b $42 ; B
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b  $F
-                dc.b $52 ; R
-                dc.b   0
-                dc.b $12
-                dc.b $32 ; 2
-                dc.b   0
-                dc.b   0
-                dc.b  $C
-                dc.b   1
-                dc.b   0
-                dc.b $FF
-                dc.b $67 ; g
-                dc.b   8
-                dc.b $11
-                dc.b $C0
-                dc.b $FA
-                dc.b  $F
-                dc.b $60 ; `
-                dc.b   0
-                dc.b $FF
-                dc.b   8
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $45 ; E
-                dc.b $F8
-                dc.b $FA
-                dc.b $10
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b  $F
-                dc.b $45 ; E
-                dc.b $F2
-                dc.b   0
-                dc.b   0
-                dc.b $10
-                dc.b $12
-                dc.b $53 ; S
-                dc.b   0
-                dc.b $64 ; d
-                dc.b   4
-                dc.b $10
-                dc.b $3C ; <
-                dc.b   0
-                dc.b   1
-                dc.b $11
-                dc.b $C0
-                dc.b $FA
-                dc.b  $E
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F7
-                dc.b $AC
-                dc.b $60 ; `
-                dc.b $FA
-                dc.b $11
-                dc.b $FC
-                dc.b   0
-                dc.b $FF
-                dc.b $FA
-                dc.b  $E
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F7
-                dc.b $A0
-                dc.b $60 ; `
-                dc.b $FA
-                dc.b $11
-                dc.b $C0
-                dc.b $FA
-                dc.b  $E
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F7
-                dc.b $96
-                dc.b $60 ; `
-                dc.b $FA
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $45 ; E
-                dc.b $FA
-                dc.b   0
-                dc.b $42 ; B
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $30 ; 0
-                dc.b $45 ; E
-                dc.b $F2
-                dc.b   0
-                dc.b   0
-                dc.b   8
-                dc.b $38 ; 8
-                dc.b   0
-                dc.b   6
-                dc.b $FA
-                dc.b $1A
-                dc.b $67 ; g
-                dc.b $18
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b $1B
-                dc.b $12
-                dc.b $12
-                dc.b $B0
-                dc.b   1
-                dc.b $66 ; f
-                dc.b  $E
-                dc.b $52 ; R
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $30 ; 0
-                dc.b  $C
-                dc.b $28 ; (
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b $30 ; 0
-                dc.b $67 ; g
-                dc.b  $E
-                dc.b $60 ; `
-                dc.b   8
-                dc.b $4A ; J
-                dc.b   0
-                dc.b $67 ; g
-                dc.b   4
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $30 ; 0
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   0
-                dc.b $EC
-                dc.b $70 ; p
-                dc.b $FF
-                dc.b $11
-                dc.b $C0
-                dc.b $FA
-                dc.b $1C
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b   1
-                dc.b   2
-                dc.b   2
-                dc.b   2
-                dc.b   2
-                dc.b   1
-                dc.b $FF
-                dc.b   0
-                dc.b $4A ; J
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b $1C
-                dc.b $67 ; g
-                dc.b  $C
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b $18
-                dc.b $67 ; g
-                dc.b   6
-                dc.b $31 ; 1
-                dc.b $FC
-                dc.b   1
-                dc.b $E0
-                dc.b $FA
-                dc.b $42 ; B
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $45 ; E
-                dc.b $FA
-                dc.b   0
-                dc.b $36 ; 6
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $34 ; 4
-                dc.b $45 ; E
-                dc.b $F2
-                dc.b   0
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b $1B
-                dc.b $12
-                dc.b $12
-                dc.b $B0
-                dc.b   1
-                dc.b $66 ; f
-                dc.b  $E
-                dc.b $52 ; R
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $34 ; 4
-                dc.b  $C
-                dc.b $28 ; (
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b $34 ; 4
-                dc.b $67 ; g
-                dc.b  $E
-                dc.b $60 ; `
-                dc.b   8
-                dc.b $4A ; J
-                dc.b   0
-                dc.b $67 ; g
-                dc.b   4
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $34 ; 4
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   0
-                dc.b $92
-                dc.b $70 ; p
-                dc.b   7
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b   2
-                dc.b   2
-                dc.b   2
-                dc.b   4
-                dc.b   8
-                dc.b $40 ; @
-                dc.b $FF
-                dc.b   0
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $45 ; E
-                dc.b $FA
-                dc.b   0
-                dc.b $36 ; 6
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $38 ; 8
-                dc.b $45 ; E
-                dc.b $F2
-                dc.b   0
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b $1B
-                dc.b $12
-                dc.b $12
-                dc.b $B0
-                dc.b   1
-                dc.b $66 ; f
-                dc.b  $E
-                dc.b $52 ; R
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $38 ; 8
-                dc.b  $C
-                dc.b $28 ; (
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b $38 ; 8
-                dc.b $67 ; g
-                dc.b  $E
-                dc.b $60 ; `
-                dc.b   8
-                dc.b $4A ; J
-                dc.b   0
-                dc.b $67 ; g
-                dc.b   4
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $38 ; 8
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   0
-                dc.b $50 ; P
-                dc.b $70 ; p
-                dc.b   8
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b   1
-                dc.b   2
-                dc.b   2
-                dc.b   4
-                dc.b   8
-                dc.b $10
-                dc.b $FF
-                dc.b   0
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $45 ; E
-                dc.b $FA
-                dc.b   0
-                dc.b $36 ; 6
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $3C ; <
-                dc.b $45 ; E
-                dc.b $F2
-                dc.b   0
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b $1B
-                dc.b $12
-                dc.b $12
-                dc.b $B0
-                dc.b   1
-                dc.b $66 ; f
-                dc.b  $E
-                dc.b $52 ; R
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $3C ; <
-                dc.b  $C
-                dc.b $28 ; (
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b $3C ; <
-                dc.b $67 ; g
-                dc.b  $E
-                dc.b $60 ; `
-                dc.b   8
-                dc.b $4A ; J
-                dc.b   0
-                dc.b $67 ; g
-                dc.b   4
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $3C ; <
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   0
-                dc.b  $E
-                dc.b $70 ; p
-                dc.b   9
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b   8
-                dc.b   8
-                dc.b   1
-                dc.b   1
-                dc.b   2
-                dc.b $20
-                dc.b $FF
-                dc.b   0
-                dc.b $11
-                dc.b $FC
-                dc.b   0
-                dc.b $95
-                dc.b $FA
-                dc.b $1E
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $18
-                dc.b $11
-                dc.b $40 ; @
-                dc.b   0
-                dc.b  $A
-                dc.b $2F ; /
-                dc.b   8
-                dc.b $D0
-                dc.b $40 ; @
-                dc.b $30 ; 0
-                dc.b $3B ; ;
-                dc.b   0
-                dc.b $18
-                dc.b $41 ; A
-                dc.b $FB
-                dc.b   0
-                dc.b $14
-                dc.b $23 ; #
-                dc.b $FC
-                dc.b $58 ; X
-                dc.b   0
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b $C0
-                dc.b   0
-                dc.b   4
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F4
-                dc.b $6A ; j
-                dc.b $20
-                dc.b $5F ; _
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $50 ; P
-                dc.b $54 ; T
-                dc.b $50 ; P
-                dc.b $54 ; T
-                dc.b $4B ; K
-                dc.b $CE
-                dc.b $4C ; L
-                dc.b $90
-                dc.b $4D ; M
-                dc.b $3A ; :
-                dc.b $4E ; N
-                dc.b   4
-                dc.b $4E ; N
-                dc.b $A8
-                dc.b $4F ; O
-                dc.b $76 ; v
-                dc.b   0
-                dc.b $10
-                dc.b   0
-                dc.b $12
-                dc.b   0
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $38 ; 8
-                dc.b   0
-                dc.b $44 ; D
-                dc.b   0
-                dc.b $54 ; T
-                dc.b   0
-                dc.b $64 ; d
-                dc.b   0
-                dc.b $74 ; t
-                dc.b   0
-                dc.b   0
-                dc.b   4
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   6
-                dc.b $20
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   6
-                dc.b $30 ; 0
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   8
-                dc.b $38 ; 8
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   0
-                dc.b  $A
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   8
-                dc.b $2A ; *
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b $10
-                dc.b $4A ; J
-                dc.b   2
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   8
-                dc.b $2D ; -
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   0
-                dc.b   2
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   8
-                dc.b $22 ; "
-                dc.b   0
-                dc.b   9
-                dc.b   0
-                dc.b $10
-                dc.b $42 ; B
-                dc.b   3
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   8
-                dc.b $2D ; -
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b $10
-                dc.b $4D ; M
-                dc.b   3
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   8
-                dc.b $26 ; &
-                dc.b   0
-                dc.b   5
-                dc.b   0
-                dc.b $10
-                dc.b $46 ; F
-                dc.b   3
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   0
-                dc.b   4
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b   8
-                dc.b $24 ; $
-                dc.b   0
-                dc.b   9
-                dc.b   0
-                dc.b $10
-                dc.b $44 ; D
-                dc.b $21 ; !
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $FF
-                dc.b $39 ; 9
-                dc.b $24 ; $
-                dc.b   0
-                dc.b   6
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b $A6
-                dc.b $E0
-                dc.b   0
-                dc.b   4
-                dc.b $11
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   3
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $B5
-                dc.b   0
-                dc.b $10
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $48 ; H
-                dc.b   0
-                dc.b  $C
-                dc.b $4A ; J
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $18
-                dc.b $67 ; g
-                dc.b $62 ; b
-                dc.b $31 ; 1
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $A8
-                dc.b   0
-                dc.b  $C
-                dc.b $32 ; 2
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $1C
-                dc.b $4A ; J
-                dc.b $29 ; )
-                dc.b   0
-                dc.b $19
-                dc.b $66 ; f
-                dc.b  $E
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b  $A
-                dc.b $42 ; B
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $14
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F5
-                dc.b $66 ; f
-                dc.b $60 ; `
-                dc.b $E8
-                dc.b $45 ; E
-                dc.b $F8
-                dc.b $FA
-                dc.b $10
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b  $F
-                dc.b $52 ; R
-                dc.b   0
-                dc.b $10
-                dc.b $32 ; 2
-                dc.b   0
-                dc.b   0
-                dc.b  $C
-                dc.b   0
-                dc.b   0
-                dc.b $FF
-                dc.b $67 ; g
-                dc.b $DC
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $15
-                dc.b $11
-                dc.b $7B ; {
-                dc.b   0
-                dc.b $22 ; "
-                dc.b   0
-                dc.b  $A
-                dc.b   6
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $10
-                dc.b   0
-                dc.b $14
-                dc.b $64 ; d
-                dc.b $10
-                dc.b $52 ; R
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $15
-                dc.b  $C
-                dc.b $28 ; (
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b $15
-                dc.b $65 ; e
-                dc.b   4
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $15
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F5
-                dc.b $26 ; &
-                dc.b $60 ; `
-                dc.b $A8
-                dc.b   4
-                dc.b   5
-                dc.b   6
-                dc.b   0
-                dc.b $32 ; 2
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $1C
-                dc.b $4A ; J
-                dc.b $29 ; )
-                dc.b   0
-                dc.b $19
-                dc.b $66 ; f
-                dc.b  $E
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b  $A
-                dc.b $42 ; B
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $14
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F5
-                dc.b  $A
-                dc.b $60 ; `
-                dc.b $E8
-                dc.b $45 ; E
-                dc.b $F8
-                dc.b $FA
-                dc.b $10
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $38 ; 8
-                dc.b $FA
-                dc.b  $F
-                dc.b $53 ; S
-                dc.b   0
-                dc.b $10
-                dc.b $32 ; 2
-                dc.b   0
-                dc.b   0
-                dc.b  $C
-                dc.b   0
-                dc.b   0
-                dc.b $FF
-                dc.b $67 ; g
-                dc.b $DC
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $10
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $15
-                dc.b $11
-                dc.b $7B ; {
-                dc.b   0
-                dc.b $22 ; "
-                dc.b   0
-                dc.b  $A
-                dc.b   6
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $10
-                dc.b   0
-                dc.b $14
-                dc.b $64 ; d
-                dc.b $10
-                dc.b $52 ; R
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $15
-                dc.b  $C
-                dc.b $28 ; (
-                dc.b   0
-                dc.b   3
-                dc.b   0
-                dc.b $15
-                dc.b $65 ; e
-                dc.b   4
-                dc.b $42 ; B
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $15
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $F4
-                dc.b $CA
-                dc.b $60 ; `
-                dc.b $A8
-                dc.b   1
-                dc.b   2
-                dc.b   3
-                dc.b   0
-                dc.b   0
-                dc.b  $E
-                dc.b   0
-                dc.b $10
-                dc.b   0
-                dc.b $16
-                dc.b   0
-                dc.b $1C
-                dc.b   0
-                dc.b $22 ; "
-                dc.b   0
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $2E ; .
-                dc.b   0
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   5
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   5
-                dc.b   0
-                dc.b   0
-                dc.b $FE
-                dc.b   1
-                dc.b   0
-                dc.b   5
-                dc.b   0
-                dc.b   0
-                dc.b $FC
-                dc.b   1
-                dc.b   0
-                dc.b   5
-                dc.b   8
-                dc.b   0
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   5
-                dc.b   8
-                dc.b   0
-                dc.b   2
-                dc.b   1
-                dc.b   0
-                dc.b   5
-                dc.b   8
-                dc.b   0
-                dc.b   4
+dword_FF2F90:   dc.l $14006A, $C00102, $15401AA, $214022A, $244025E, $11080D00
+                                        ; DATA XREF: sub_FF2EA8↑o
+                                        ; ROM:loc_FF3208↓o
+                dc.l $80D, $82008, $1001040, $20030012, $38280100, $1640180D
+                dc.l $180818, $6002028, $280E0026, $280000, $32203003
+                dc.l $333040, $1003738, $38070039, $20580300, $41284005
+                dc.l $451058, $6004908, $5002004F, $30600500, $52381110
+                dc.l $7005600, $80D005E, $18080500, $6638180E, $6A1018
+                dc.l $6007630, $2006007C, $40300C00, $82003008, $862038
+                dc.l $8908, $380D008A, $10380700, $92304802, $9A4048, $8009D18
+                dc.l $500A00A0, $8680D00, $A9107804, $B11858, $500B320
+                dc.l $D000C00, $B718080F, $BB0008, $F00CB20, $180200DB
+                dc.l $40280D00, $DE00280F, $E62038, $800F608, $400500F9
+                dc.l $10480D00, $FD204003, $1054058, $E010910, $50000115
+                dc.l $18580101, $16301008, $D011800, $A0120, $20080101
+                dc.l $2938180C, $12B0818, $C012F28, $200D0133, $200D01
+                dc.l $3B202005, $1434030, $E014708, $300A0153, $28380501
+                dc.l $5C404808, $1601048, $E016328, $580A016F, $10700401
+                dc.l $78186005, $17A2800, $11000C01, $7E20080F, $1820008
+                dc.l $F019220, $80101A2, $40180701, $A440280C, $1AC0028
+                dc.l $F01B020, $300B01C0, $8380701, $CC405800, $1D44848
+                dc.l $F01D520, $600E01E5, $500401, $F1105808, $1F30868
+                dc.l $901F620, $680001FC, $382E0F02, $79101518, $E025200
+                dc.l $1806025E, $20300E02, $64083002, $1B52840, $A027020
+                dc.l $C017E, $20080F01, $8200080F, $1922008, $101A240
+                dc.l $180701A4, $40280C01, $AC00280F, $1B02030, $B01C008
+                dc.l $380701CC, $40580001, $D448480F, $1D52060, $E01E500
+                dc.l $500401F1, $10580801, $F3086809, $1F62068, $1FC38
+                dc.l $4D40001, $FDF8DC04, $1FEF8E4, $B0200F8, $405020C
+                dc.l $5D4, $5021000, $EC0011E6, $F8E40B02, $14000408, $220000C
+                dc.l $4022300, $5D40502, $2508E408, $22900EC, $D022C00
+                dc.l $FC090234, $C0402, $3A0005D4, $5023C18, $E40A0240
+                dc.l $8FC0602, $4900FC04, $24F1004, $25110
 ; ---------------------------------------------------------------------------
 
-loc_201A58:                             ; DATA XREF: ROM:002002AE↑o
-                move.l  #$FF397E,6(a0)
+loc_FF3208:                             ; DATA XREF: sub_FF2EA8+9E↑o
+                move.l  #dword_FF2F90,6(a0)
+                move.w  #$E368,4(a0)
+                move.b  #3,3(a0)
+                move.w  #$8C,$C(a0)
+                move.w  #$68,$10(a0) ; 'h'
+                move.b  #9,$A(a0)
+
+loc_FF322E:                             ; CODE XREF: ROM:00FF3238↓j
+                bsr.w   sub_FF2DE6
+                addi.b  #$12,$14(a0)
+                bcc.s   loc_FF322E
+
+loc_FF323A:                             ; CODE XREF: ROM:00FF3256↓j
+                moveq   #0,d0
+                move.b  $18(a0),d0
+                move.b  byte_FF325E(pc,d0.w),$A(a0)
+                addq.b  #1,d0
+                cmpi.b  #$10,d0
+                bcc.s   loc_FF3258
+                move.b  d0,$18(a0)
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF323A
+; ---------------------------------------------------------------------------
+
+loc_FF3258:                             ; CODE XREF: ROM:00FF324C↑j
+                                        ; ROM:00FF325C↓j
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF3258
+; ---------------------------------------------------------------------------
+byte_FF325E:    dc.b 9                  ; DATA XREF: ROM:00FF3240↑r
+                dc.b 8
+; ---------------------------------------------------------------------------
+                btst    d3,d6
+                addi.b  #9,d7
+                movep.w $706(a0),d4
+                addi.b  #9,d7
+
+loc_FF326E:                             ; DATA XREF: sub_FF2EA8+AA↑o
+                move.l  #dword_FF3294,6(a0)
+                move.w  #$A780,4(a0)
+                move.b  #3,3(a0)
+                move.w  #$7F,$C(a0)
+                move.w  #$7F,$10(a0)
+
+loc_FF328E:                             ; CODE XREF: ROM:00FF3292↓j
+                jsr     sub_FF2DE6
+                bra.s   loc_FF328E
+; ---------------------------------------------------------------------------
+dword_FF3294:   dc.l $21000, $30000BC, $30800, $3C200D00, $4A4200D, $8043C30
+                                        ; DATA XREF: ROM:loc_FF326E↑o
+                dc.l $D000CAC, $300D080C, $34400D00, $14A4400D, $8143C00
+                dc.l $F001CC4, $F002C, $E4000F00, $3C04000B, $4C2420, $D0058C4
+                dc.l $200D0060, $E4200D00, $68042009, $702400
+; ---------------------------------------------------------------------------
+
+loc_FF32E8:                             ; DATA XREF: ROM:00FF219C↑o
+                bsr.w   sub_FF2DE6
+                move.l  a0,-(sp)
+                move.l  #$40400002,($C00004).l
+                lea     dword_FF58A4(pc),a0
+                bsr.w   sub_FF2C10
+                movea.l (sp)+,a0
+                move.l  #dword_FF3374,6(a0)
+                move.w  #$6402,4(a0)
+                move.b  #1,3(a0)
+                move.w  #$E2,$C(a0)
+                move.w  #$18,$10(a0)
+                move.w  $10(a0),$1A(a0)
+
+loc_FF3328:                             ; CODE XREF: ROM:00FF3352↓j
+                addi.b  #$40,$15(a0) ; '@'
+                bcc.s   loc_FF334E
+                moveq   #0,d0
+                move.b  $14(a0),d0
+                move.b  byte_FF3354(pc,d0.w),d0
+                ext.w   d0
+                add.w   d0,$10(a0)
+                move.b  $14(a0),d0
+                addq.b  #1,d0
+                andi.b  #$1F,d0
+                move.b  d0,$14(a0)
+
+loc_FF334E:                             ; CODE XREF: ROM:00FF332E↑j
+                jsr     sub_FF2DE6
+                bra.s   loc_FF3328
+; ---------------------------------------------------------------------------
+byte_FF3354:    dc.b 0                  ; DATA XREF: ROM:00FF3336↑r
+                dcb.b 2,0
+                dc.b $FF
+                dcb.l 2,$FF
+                dcb.l 2,0
+                dcb.l 3,$1000000
+dword_FF3374:   dc.l $20CCC, $E0000D8, $CC0E000C, $F8D40500, $1818E40F
+                                        ; DATA XREF: ROM:00FF3302↑o
+                dc.l $1CD0E4, $F002CF0, $E40F003C, $10040F00, $4CD0040F
+                dc.l $5CF004, $F006C10, $240D007C, $D8240D00, $84F82404
+                dc.l $8C1800
+; ---------------------------------------------------------------------------
+
+loc_FF33B4:                             ; DATA XREF: ROM:00FF21A4↑o
+                move.l  #dword_FF37BC,6(a0)
+                move.w  #$A6C0,4(a0)
+                move.b  #1,3(a0)
+                move.w  #$53,$C(a0) ; 'S'
+                move.w  #$B4,$10(a0)
+                move.w  #$1E0,($FFFA42).w
+
+loc_FF33DA:                             ; CODE XREF: ROM:00FF3422↓j
+                addi.b  #$10,$14(a0)
+                bcc.s   loc_FF33E8
+                eori.b  #1,$A(a0)
+
+loc_FF33E8:                             ; CODE XREF: ROM:00FF33E0↑j
+                btst    #7,($FFFA1B).w
+                bne.s   loc_FF3424
+                bsr.w   sub_FF3654
+                bsr.w   sub_FF36A2
+                bsr.w   sub_FF36B6
+                tst.b   d0
+                bne.w   loc_FF364A
+                bsr.w   sub_FF36F8
+                tst.b   d0
+                bne.w   loc_FF364A
+                bsr.w   sub_FF373A
+                tst.b   d0
+                bne.w   loc_FF364A
+                tst.w   ($FFFA42).w
+                beq.w   loc_FF363E
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF33DA
+; ---------------------------------------------------------------------------
+
+loc_FF3424:                             ; CODE XREF: ROM:00FF33EE↑j
+                clr.w   ($FFFA1A).w
+                move.b  #1,$A(a0)
+                move.w  #$1E0,($FFFA42).w
+                lea     ($FFFA10).w,a2
+                move.b  ($FF0F1D).l,d1
+                move.w  #$FF02,(a2)+
+                moveq   #1,d0
+                btst    #6,d1
+                beq.s   loc_FF3450
+                moveq   #2,d0
+                move.b  #3,(a2)+
+
+loc_FF3450:                             ; CODE XREF: ROM:00FF3448↑j
+                move.b  d0,($FFFA0F).w
+                btst    #5,d1
+                beq.s   loc_FF345E
+                move.b  #4,(a2)+
+
+loc_FF345E:                             ; CODE XREF: ROM:00FF3458↑j
+                btst    #4,d1
+                beq.s   loc_FF3468
+                move.b  #5,(a2)+
+
+loc_FF3468:                             ; CODE XREF: ROM:00FF3462↑j
+                btst    #3,d1
+                beq.s   loc_FF3472
+                move.b  #6,(a2)+
+
+loc_FF3472:                             ; CODE XREF: ROM:00FF346C↑j
+                btst    #2,d1
+                beq.s   loc_FF347C
+                move.b  #7,(a2)+
+
+loc_FF347C:                             ; CODE XREF: ROM:00FF3476↑j
+                move.b  #$FF,(a2)
+                lea     loc_FF3840(pc),a2
+                bsr.w   sub_FF2DAE
+                move.w  a0,$1C(a1)
+                lea     loc_FF3840(pc),a2
+                bsr.w   sub_FF2DAE
+                move.w  a0,$1C(a1)
+                move.b  #1,$18(a1)
+
+loc_FF349E:                             ; CODE XREF: ROM:00FF34B2↓j
+                                        ; ROM:00FF35F4↓j
+                move.w  #$C6C0,4(a0)
+                clr.b   $19(a0)
+                bsr.w   sub_FF2DE6
+                addi.b  #-$80,$14(a0)
+                bcc.s   loc_FF349E
+
+loc_FF34B4:                             ; CODE XREF: ROM:00FF34CA↓j
+                move.w  $C(a0),d0
+                addi.w  #$20,d0 ; ' '
+                move.w  d0,$C(a0)
+                bsr.w   sub_FF2DE6
+                cmpi.w  #$100,$C(a0)
+                bcs.s   loc_FF34B4
+                bsr.w   sub_FF2DE6
+                lea     ($FFFA10).w,a2
+                moveq   #0,d0
+                move.b  ($FFFA0F).w,d0
+                lea     (a2,d0.w),a2
+                move.b  (a2),d0
+                move.b  d0,$18(a0)
+                bsr.w   sub_FF3784
+                move.w  #$FFD3,$C(a0)
+                bsr.w   sub_FF2DE6
+
+loc_FF34F2:                             ; CODE XREF: ROM:00FF3506↓j
+                                        ; ROM:00FF350E↓j
+                move.w  $C(a0),d0
+                addi.w  #$10,d0
+                move.w  d0,$C(a0)
+                bsr.w   sub_FF2DE6
+                tst.w   $C(a0)
+                bmi.s   loc_FF34F2
+                cmpi.w  #$53,$C(a0) ; 'S'
+                bcs.s   loc_FF34F2
+                move.w  #$53,$C(a0) ; 'S'
+                move.w  #$A6C0,4(a0)
+                bra.w   loc_FF359E
+; ---------------------------------------------------------------------------
+
+loc_FF3520:                             ; CODE XREF: ROM:00FF3534↓j
+                                        ; ROM:00FF3616↓j
+                move.w  #$C6C0,4(a0)
+                clr.b   $19(a0)
+                bsr.w   sub_FF2DE6
+                addi.b  #-$80,$14(a0)
+                bcc.s   loc_FF3520
+
+loc_FF3536:                             ; CODE XREF: ROM:00FF354A↓j
+                                        ; ROM:00FF3552↓j
+                move.w  $C(a0),d0
+                subi.w  #$20,d0 ; ' '
+                move.w  d0,$C(a0)
+                bsr.w   sub_FF2DE6
+                tst.w   $C(a0)
+                bpl.s   loc_FF3536
+                cmpi.w  #$FFCB,$C(a0)
+                bcc.s   loc_FF3536
+                bsr.w   sub_FF2DE6
+                lea     ($FFFA10).w,a2
+                moveq   #0,d0
+                move.b  ($FFFA0F).w,d0
+                lea     (a2,d0.w),a2
+                move.b  (a2),d0
+                move.b  d0,$18(a0)
+                bsr.w   sub_FF3784
+                move.w  #$D3,$C(a0)
+
+loc_FF3576:                             ; CODE XREF: ROM:00FF358C↓j
+                bsr.w   sub_FF2DE6
+                move.w  $C(a0),d0
+                subi.w  #$10,d0
+                move.w  d0,$C(a0)
+                cmpi.w  #$53,$C(a0) ; 'S'
+                bcc.s   loc_FF3576
+                move.w  #$53,$C(a0) ; 'S'
+                move.w  #$A6C0,4(a0)
+                bra.w   *+4
+; ---------------------------------------------------------------------------
+
+loc_FF359E:                             ; CODE XREF: ROM:00FF351C↑j
+                                        ; ROM:00FF359A↑j
+                move.b  #3,$19(a0)
+                bsr.w   sub_FF2DE6
+
+loc_FF35A8:                             ; CODE XREF: ROM:00FF35D6↓j
+                lea     ($FFFA10).w,a2
+                btst    #2,($FFFA1A).w
+                bne.s   loc_FF35D8
+                btst    #3,($FFFA1A).w
+                bne.w   loc_FF35FA
+                move.b  ($FFFA1B).w,d0
+                andi.b  #$F0,d0
+                bne.w   loc_FF361C
+                tst.w   ($FFFA42).w
+                beq.w   loc_FF363E
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF35A8
+; ---------------------------------------------------------------------------
+
+loc_FF35D8:                             ; CODE XREF: ROM:00FF35B2↑j
+                move.w  #$1E0,($FFFA42).w
+                moveq   #0,d0
+                move.b  ($FFFA0F).w,d0
+                subq.b  #1,d0
+                move.b  (a2,d0.w),d1
+                cmpi.b  #$FF,d1
+                beq.s   locret_FF35F8
+                move.b  d0,($FFFA0F).w
+                bra.w   loc_FF349E
+; ---------------------------------------------------------------------------
+
+locret_FF35F8:                          ; CODE XREF: ROM:00FF35EE↑j
+                rts
+; ---------------------------------------------------------------------------
+
+loc_FF35FA:                             ; CODE XREF: ROM:00FF35BA↑j
+                move.w  #$1E0,($FFFA42).w
+                moveq   #0,d0
+                move.b  ($FFFA0F).w,d0
+                addq.b  #1,d0
+                move.b  (a2,d0.w),d1
+                cmpi.b  #$FF,d1
+                beq.s   locret_FF361A
+                move.b  d0,($FFFA0F).w
+                bra.w   loc_FF3520
+; ---------------------------------------------------------------------------
+
+locret_FF361A:                          ; CODE XREF: ROM:00FF3610↑j
+                rts
+; ---------------------------------------------------------------------------
+
+loc_FF361C:                             ; CODE XREF: ROM:00FF35C6↑j
+                lea     ($FFFA10).w,a2
+                moveq   #0,d0
+                move.b  ($FFFA0F).w,d0
+                lea     (a2,d0.w),a2
+                move.b  (a2),d0
+                subq.b  #1,d0
+                bcc.s   loc_FF3634
+                move.b  #1,d0
+
+loc_FF3634:                             ; CODE XREF: ROM:00FF362E↑j
+                move.b  d0,($FFFA0E).w
+
+loc_FF3638:                             ; CODE XREF: ROM:00FF363C↓j
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF3638
+; ---------------------------------------------------------------------------
+
+loc_FF363E:                             ; CODE XREF: ROM:00FF341A↑j
+                                        ; ROM:00FF35CE↑j
+                move.b  #$FF,($FFFA0E).w
+
+loc_FF3644:                             ; CODE XREF: ROM:00FF3648↓j
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF3644
+; ---------------------------------------------------------------------------
+
+loc_FF364A:                             ; CODE XREF: ROM:00FF33FE↑j
+                                        ; ROM:00FF3408↑j ...
+                move.b  d0,($FFFA0E).w
+
+loc_FF364E:                             ; CODE XREF: ROM:00FF3652↓j
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF364E
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF3654:                             ; CODE XREF: ROM:00FF33F0↑p
+                moveq   #0,d0
+                lea     word_FF369A(pc),a2
+                move.b  $30(a0),d0
+                lea     (a2,d0.w),a2
+                btst    #6,($FFFA1A).w
+                beq.s   loc_FF3682
+                move.b  ($FFFA1B).w,d0
+                move.b  (a2),d1
+                cmp.b   d1,d0
+                bne.s   loc_FF3682
+                addq.b  #1,$30(a0)
+                cmpi.b  #6,$30(a0)
+                beq.s   loc_FF368E
+                bra.s   loc_FF368A
+; ---------------------------------------------------------------------------
+
+loc_FF3682:                             ; CODE XREF: sub_FF3654+14↑j
+                                        ; sub_FF3654+1E↑j
+                tst.b   d0
+                beq.s   loc_FF368A
+                clr.b   $30(a0)
+
+loc_FF368A:                             ; CODE XREF: sub_FF3654+2C↑j
+                                        ; sub_FF3654+30↑j
+                moveq   #0,d0
+                rts
+; ---------------------------------------------------------------------------
+
+loc_FF368E:                             ; CODE XREF: sub_FF3654+2A↑j
+                bsr.w   sub_FF377C
+                moveq   #$FFFFFFFF,d0
+                move.b  d0,($FFFA1C).w
+                rts
+; End of function sub_FF3654
+
+; ---------------------------------------------------------------------------
+word_FF369A:    dc.w $102               ; DATA XREF: sub_FF3654+2↑o
+                dc.l $2020201
+                dc.b $FF, 0
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF36A2:                             ; CODE XREF: ROM:00FF33F4↑p
+                tst.b   ($FFFA1C).w
+                beq.s   locret_FF36B4
+                move.b  ($FFFA18).w,d0
+                beq.s   locret_FF36B4
+                move.w  #$1E0,($FFFA42).w
+
+locret_FF36B4:                          ; CODE XREF: sub_FF36A2+4↑j
+                                        ; sub_FF36A2+A↑j
+                rts
+; End of function sub_FF36A2
+
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF36B6:                             ; CODE XREF: ROM:00FF33F8↑p
+                moveq   #0,d0
+                lea     dword_FF36F0(pc),a2
+                move.b  $34(a0),d0
+                lea     (a2,d0.w),a2
+                move.b  ($FFFA1B).w,d0
+                move.b  (a2),d1
+                cmp.b   d1,d0
+                bne.s   loc_FF36DC
+                addq.b  #1,$34(a0)
+                cmpi.b  #6,$34(a0)
+                beq.s   loc_FF36E8
+                bra.s   loc_FF36E4
+; ---------------------------------------------------------------------------
+
+loc_FF36DC:                             ; CODE XREF: sub_FF36B6+16↑j
+                tst.b   d0
+                beq.s   loc_FF36E4
+                clr.b   $34(a0)
+
+loc_FF36E4:                             ; CODE XREF: sub_FF36B6+24↑j
+                                        ; sub_FF36B6+28↑j
+                moveq   #0,d0
+                rts
+; ---------------------------------------------------------------------------
+
+loc_FF36E8:                             ; CODE XREF: sub_FF36B6+22↑j
+                bsr.w   sub_FF377C
+                moveq   #7,d0
+                rts
+; End of function sub_FF36B6
+
+; ---------------------------------------------------------------------------
+dword_FF36F0:   dc.l $2020204, $840FF00 ; DATA XREF: sub_FF36B6+2↑o
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF36F8:                             ; CODE XREF: ROM:00FF3402↑p
+                moveq   #0,d0
+                lea     word_FF3732(pc),a2
+                move.b  $38(a0),d0
+                lea     (a2,d0.w),a2
+                move.b  ($FFFA1B).w,d0
+                move.b  (a2),d1
+                cmp.b   d1,d0
+                bne.s   loc_FF371E
+                addq.b  #1,$38(a0)
+                cmpi.b  #6,$38(a0)
+                beq.s   loc_FF372A
+                bra.s   loc_FF3726
+; ---------------------------------------------------------------------------
+
+loc_FF371E:                             ; CODE XREF: sub_FF36F8+16↑j
+                tst.b   d0
+                beq.s   loc_FF3726
+                clr.b   $38(a0)
+
+loc_FF3726:                             ; CODE XREF: sub_FF36F8+24↑j
+                                        ; sub_FF36F8+28↑j
+                moveq   #0,d0
+                rts
+; ---------------------------------------------------------------------------
+
+loc_FF372A:                             ; CODE XREF: sub_FF36F8+22↑j
+                bsr.w   sub_FF377C
+                moveq   #8,d0
+                rts
+; End of function sub_FF36F8
+
+; ---------------------------------------------------------------------------
+word_FF3732:    dc.w $102               ; DATA XREF: sub_FF36F8+2↑o
+                dc.l $2040810
+                dc.b $FF, 0
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF373A:                             ; CODE XREF: ROM:00FF340C↑p
+                moveq   #0,d0
+                lea     dword_FF3774(pc),a2
+                move.b  $3C(a0),d0
+                lea     (a2,d0.w),a2
+                move.b  ($FFFA1B).w,d0
+                move.b  (a2),d1
+                cmp.b   d1,d0
+                bne.s   loc_FF3760
+                addq.b  #1,$3C(a0)
+                cmpi.b  #6,$3C(a0)
+                beq.s   loc_FF376C
+                bra.s   loc_FF3768
+; ---------------------------------------------------------------------------
+
+loc_FF3760:                             ; CODE XREF: sub_FF373A+16↑j
+                tst.b   d0
+                beq.s   loc_FF3768
+                clr.b   $3C(a0)
+
+loc_FF3768:                             ; CODE XREF: sub_FF373A+24↑j
+                                        ; sub_FF373A+28↑j
+                moveq   #0,d0
+                rts
+; ---------------------------------------------------------------------------
+
+loc_FF376C:                             ; CODE XREF: sub_FF373A+22↑j
+                bsr.w   sub_FF377C
+                moveq   #9,d0
+                rts
+; End of function sub_FF373A
+
+; ---------------------------------------------------------------------------
+dword_FF3774:   dc.l $8080101, $220FF00 ; DATA XREF: sub_FF373A+2↑o
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF377C:                             ; CODE XREF: sub_FF3654:loc_FF368E↑p
+                                        ; sub_FF36B6:loc_FF36E8↑p ...
+                move.b  #$95,($FFFA1E).w
+                rts
+; End of function sub_FF377C
+
+
+; =============== S U B R O U T I N E =======================================
+
+
+sub_FF3784:                             ; CODE XREF: ROM:00FF34E4↑p
+                                        ; ROM:00FF356C↑p
+                moveq   #0,d0
+                move.b  $18(a0),d0
+                move.b  d0,$A(a0)
+                move.l  a0,-(sp)
+                add.w   d0,d0
+                move.w  word_FF37AC(pc,d0.w),d0
+                lea     word_FF37AC(pc,d0.w),a0
+                move.l  #$58000003,($C00004).l
+                bsr.w   sub_FF2C10
+                movea.l (sp)+,a0
+                rts
+; End of function sub_FF3784
+
+; ---------------------------------------------------------------------------
+word_FF37AC:    dc.w $5054              ; DATA XREF: sub_FF3784+E↑r
+                                        ; sub_FF3784+12↑o
+                dc.w $5054
+                dc.l $4BCE4C90, $4D3A4E04, $4EA84F76
+dword_FF37BC:   dc.l $100012, $280038, $440054, $640074, $400, $D000000
+                                        ; DATA XREF: ROM:loc_FF33B4↑o
+                dc.l $10006, $20000100, $630000D, $83800, $3000D00, $A000D
+                dc.l $82A00, $100104A, $2000D00, $D000D, $82D00, $3000D00
+                dc.l $2000D, $82200, $9001042, $3000D00, $D000D, $82D00
+                dc.l $100104D, $3000D00, $6000D, $82600, $5001046, $3000D00
+                dc.l $4000D, $82400, $9001044
+; ---------------------------------------------------------------------------
+
+loc_FF3840:                             ; DATA XREF: ROM:00FF3480↑o
+                                        ; ROM:00FF348C↑o
+                move.l  #dword_FF3924,6(a0)
+                move.w  #$A6E0,4(a0)
+                move.b  #1,3(a0)
+                move.w  #$B5,$10(a0)
+                move.w  #$48,$C(a0) ; 'H'
+                tst.b   $18(a0)
+                beq.s   loc_FF38C8
+                move.w  #$A8,$C(a0)
+
+loc_FF386C:                             ; CODE XREF: ROM:00FF3882↓j
+                                        ; ROM:00FF38C2↓j
+                movea.w $1C(a0),a1
+                tst.b   $19(a1)
+                bne.s   loc_FF3884
+
+loc_FF3876:                             ; CODE XREF: ROM:00FF3898↓j
+                clr.b   $A(a0)
+                clr.w   $14(a0)
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF386C
+; ---------------------------------------------------------------------------
+
+loc_FF3884:                             ; CODE XREF: ROM:00FF3874↑j
+                lea     ($FFFA10).w,a2
+                moveq   #0,d0
+                move.b  ($FFFA0F).w,d0
+                addq.b  #1,d0
+                move.b  (a2,d0.w),d0
+                cmpi.b  #$FF,d0
+                beq.s   loc_FF3876
+                moveq   #0,d0
+                move.b  $15(a0),d0
+                move.b  byte_FF38C4(pc,d0.w),$A(a0)
+                addi.b  #$10,$14(a0)
+                bcc.s   loc_FF38BE
+                addq.b  #1,$15(a0)
+                cmpi.b  #3,$15(a0)
+                bcs.s   loc_FF38BE
+                clr.b   $15(a0)
+
+loc_FF38BE:                             ; CODE XREF: ROM:00FF38AC↑j
+                                        ; ROM:00FF38B8↑j
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF386C
+; ---------------------------------------------------------------------------
+byte_FF38C4:    dc.b 4                  ; DATA XREF: ROM:00FF38A0↑r
+                dc.b 5, 6, 0
+; ---------------------------------------------------------------------------
+
+loc_FF38C8:                             ; CODE XREF: ROM:00FF3864↑j
+                                        ; ROM:00FF38DE↓j ...
+                movea.w $1C(a0),a1
+                tst.b   $19(a1)
+                bne.s   loc_FF38E0
+
+loc_FF38D2:                             ; CODE XREF: ROM:00FF38F4↓j
+                clr.b   $A(a0)
+                clr.w   $14(a0)
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF38C8
+; ---------------------------------------------------------------------------
+
+loc_FF38E0:                             ; CODE XREF: ROM:00FF38D0↑j
+                lea     ($FFFA10).w,a2
+                moveq   #0,d0
+                move.b  ($FFFA0F).w,d0
+                subq.b  #1,d0
+                move.b  (a2,d0.w),d0
+                cmpi.b  #$FF,d0
+                beq.s   loc_FF38D2
+                moveq   #0,d0
+                move.b  $15(a0),d0
+                move.b  byte_FF3920(pc,d0.w),$A(a0)
+                addi.b  #$10,$14(a0)
+                bcc.s   loc_FF391A
+                addq.b  #1,$15(a0)
+                cmpi.b  #3,$15(a0)
+                bcs.s   loc_FF391A
+                clr.b   $15(a0)
+
+loc_FF391A:                             ; CODE XREF: ROM:00FF3908↑j
+                                        ; ROM:00FF3914↑j
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF38C8
+; ---------------------------------------------------------------------------
+byte_FF3920:    dc.b 1                  ; DATA XREF: ROM:00FF38FC↑r
+                dc.b 2, 3, 0
+dword_FF3924:   dc.l $E0010, $16001C, $220028, $2E0000, $1000500, $100
+                                        ; DATA XREF: ROM:loc_FF3840↑o
+                dc.l $50000FE, $1000500, $FC0100, $5080000, $1000508, $20100
+                dc.l $5080004
+; ---------------------------------------------------------------------------
+
+loc_FF3958:                             ; DATA XREF: ROM:00FF21AE↑o
+                move.l  #word_FF397E,6(a0)
                 move.w  #$E6F0,4(a0)
                 move.b  #1,3(a0)
                 move.w  #$5B,$C(a0) ; '['
                 move.w  #$D0,$10(a0)
 
-loc_201A78:                             ; CODE XREF: ROM:00201A7C↓j
-                bsr.w   sub_200EE6
-                bra.s   loc_201A78
+loc_FF3978:                             ; CODE XREF: ROM:00FF397C↓j
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF3978
 ; ---------------------------------------------------------------------------
-                dc.w 2
-                dc.b   3
-                dc.b   0
-                dc.b  $C
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   4
-                dc.b $20
-                dc.b   0
-                dc.b  $C
-                dc.b   0
-                dc.b   5
-                dc.b $28 ; (
+word_FF397E:    dc.w 2                  ; DATA XREF: ROM:loc_FF3958↑o
 ; ---------------------------------------------------------------------------
+                btst    d1,d0
+                cmpi.b  #0,d0
+                ori.b   #4,d0
+                move.l  d0,d0
+                cmpi.b  #$28,d0 ; '('
 
-loc_201A90:                             ; DATA XREF: ROM:002002B6↑o
-                move.l  #$FF39B6,6(a0)
+loc_FF3990:                             ; DATA XREF: ROM:00FF21B6↑o
+                move.l  #word_FF39B6,6(a0)
                 move.w  #$E6F9,4(a0)
                 move.b  #1,3(a0)
                 move.w  #$C2,$C(a0)
                 move.w  #$83,$10(a0)
 
-loc_201AB0:                             ; CODE XREF: ROM:00201AB4↓j
-                bsr.w   sub_200EE6
-                bra.s   loc_201AB0
+loc_FF39B0:                             ; CODE XREF: ROM:00FF39B4↓j
+                bsr.w   sub_FF2DE6
+                bra.s   loc_FF39B0
 ; ---------------------------------------------------------------------------
-                dc.w 2
-                dc.b   1
-                dc.b   0
-                dc.b   4
-                dc.b   0
-                dc.b   0
-                dc.b   0
+word_FF39B6:    dc.w 2                  ; DATA XREF: ROM:loc_FF3990↑o
+; ---------------------------------------------------------------------------
+                btst    d0,d0
+                subi.b  #0,d0
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_201ABE:                             ; CODE XREF: ROM:00200174↑p
+sub_FF39BE:                             ; CODE XREF: ROM:00FF2074↑p
                 lea     ($C00004).l,a2
                 lea     ($C00000).l,a3
-                lea     unk_201D70(pc),a0
+                lea     (aLmnopqrstuvw+$C)(pc),a0 ; ""
                 move.l  #$42060003,d0
                 moveq   #$19,d1
                 moveq   #$12,d2
-                bsr.s   sub_201B2C
-                lea     unk_201B50(pc),a0
+                bsr.s   sub_FF3A2C
+                lea     aXyxyxyxyxyxyxy(pc),a0 ; "XYXYXYXYXYXYXYXYXYXYXYXYXYXYXYXYZ[Z[Z[Z"...
                 move.l  #$6A000003,d0
                 moveq   #$1F,d1
                 moveq   #7,d2
-                bsr.s   sub_201B08
-                lea     unk_201B50(pc),a0
+                bsr.s   sub_FF3A08
+                lea     aXyxyxyxyxyxyxy(pc),a0 ; "XYXYXYXYXYXYXYXYXYXYXYXYXYXYXYXYZ[Z[Z[Z"...
                 move.l  #$6A400003,d0
                 moveq   #$1F,d1
                 moveq   #7,d2
-                bsr.s   sub_201B08
-                lea     $201C50(pc),a0
+                bsr.s   sub_FF3A08
+                lea     $FF3B50(pc),a0
                 move.l  #$65800003,d0
                 moveq   #$1F,d1
                 moveq   #8,d2
-; End of function sub_201ABE
+; End of function sub_FF39BE
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_201B08:                             ; CODE XREF: sub_201ABE+2A↑p
-                                        ; sub_201ABE+3A↑p
+sub_FF3A08:                             ; CODE XREF: sub_FF39BE+2A↑p
+                                        ; sub_FF39BE+3A↑p
                 move.l  #$800000,d4
 
-loc_201B0E:                             ; CODE XREF: sub_201B08+1E↓j
+loc_FF3A0E:                             ; CODE XREF: sub_FF3A08+1E↓j
                 move.l  d0,(a2)
                 move.w  d1,d3
 
-loc_201B12:                             ; CODE XREF: sub_201B08+18↓j
+loc_FF3A12:                             ; CODE XREF: sub_FF3A08+18↓j
                 move.w  #$300,d6
                 move.b  (a0)+,d6
-                bne.s   loc_201B1E
+                bne.s   loc_FF3A1E
                 move.w  #0,d6
 
-loc_201B1E:                             ; CODE XREF: sub_201B08+10↑j
+loc_FF3A1E:                             ; CODE XREF: sub_FF3A08+10↑j
                 move.w  d6,(a3)
-                dbf     d3,loc_201B12
+                dbf     d3,loc_FF3A12
                 add.l   d4,d0
-                dbf     d2,loc_201B0E
+                dbf     d2,loc_FF3A0E
                 rts
-; End of function sub_201B08
+; End of function sub_FF3A08
 
 
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_201B2C:                             ; CODE XREF: sub_201ABE+1A↑p
+sub_FF3A2C:                             ; CODE XREF: sub_FF39BE+1A↑p
                 move.l  #$800000,d4
 
-loc_201B32:                             ; CODE XREF: sub_201B2C+1E↓j
+loc_FF3A32:                             ; CODE XREF: sub_FF3A2C+1E↓j
                 move.l  d0,(a2)
                 move.w  d1,d3
 
-loc_201B36:                             ; CODE XREF: sub_201B2C+18↓j
+loc_FF3A36:                             ; CODE XREF: sub_FF3A2C+18↓j
                 move.w  (a0)+,d6
-                beq.s   loc_201B3E
+                beq.s   loc_FF3A3E
                 addi.w  #-$3C94,d6
 
-loc_201B3E:                             ; CODE XREF: sub_201B2C+C↑j
+loc_FF3A3E:                             ; CODE XREF: sub_FF3A2C+C↑j
                 addi.w  #0,d6
                 move.w  d6,(a3)
-                dbf     d3,loc_201B36
+                dbf     d3,loc_FF3A36
                 add.l   d4,d0
-                dbf     d2,loc_201B32
+                dbf     d2,loc_FF3A32
                 rts
-; End of function sub_201B2C
+; End of function sub_FF3A2C
 
 ; ---------------------------------------------------------------------------
-unk_201B50:     dc.b $58 ; X            ; DATA XREF: sub_201ABE+1C↑o
-                                        ; sub_201ABE+2C↑o
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $58 ; X
-                dc.b $59 ; Y
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5A ; Z
-                dc.b $5B ; [
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5C ; \
-                dc.b $5D ; ]
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $5E ; ^
-                dc.b $5F ; _
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $62 ; b
-                dc.b $63 ; c
-                dc.b $64 ; d
-                dc.b $65 ; e
-                dc.b $60 ; `
-                dc.b $61 ; a
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b $68 ; h
-                dc.b $69 ; i
-                dc.b $6A ; j
-                dc.b $6B ; k
-                dc.b $66 ; f
-                dc.b $67 ; g
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   2
-                dc.b   3
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   4
-                dc.b   5
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   6
-                dc.b   7
+aXyxyxyxyxyxyxy:dc.b 'XYXYXYXYXYXYXYXYXYXYXYXYXYXYXYXYZ[Z[Z[Z[Z[Z[Z[Z[Z[Z[Z[Z[Z[Z[Z[Z'
+                                        ; DATA XREF: sub_FF39BE+1C↑o
+                                        ; sub_FF39BE+2C↑o
+                dc.b '[\]\]\]\]\]\]\]\]\]\]\]\]\]\]\]\]^_^_^_^_^_^_^_^_^_^_^_^_^_^_^_'
+                dc.b '^_`abcde`abcde`abcde`abcde`abcde`afghijkfghijkfghijkfghijkfghij'
+                dc.b 'kfg`abcde`abcde`abcde`abcde`abcde`afghijkfghijkfghijkfghijkfghi'
+                dc.b 'jkfg',0
+                dcb.b 2,0
+                dc.b 1
+                dcb.l 7,0
+                dc.l $203
+                dcb.l 7,0
+                dc.l $405
+                dcb.l 7,0
+                dc.l $607, $8000000
+                dcb.l 6,0
+                dc.l $90A0B, $C0D0E00
+                dcb.l 6,0
+                dc.l $F101112, $13141516, $17000000
+                dcb.l 5,0
+                dc.l $18191A1B, $1C1D1E1F, $20210000
+                dcb.l 4,0
+                dc.l $22230000, $24252627, $28292A2B, $2C2D2E2F, $30000000
+                dc.l 0
+                dc.b   0
+                dcb.b 2,0
+                dc.b $31
+a23456789Abcdef:dc.b '23456789:;<=>?@ABCDEFGHIJ',0
+                dc.w $4B
+aLmnopqrstuvw:  dc.b 'LMNOPQRSTUVW',0   ; DATA XREF: sub_FF39BE+C↑o
+                align 4
+                dcb.l 4,0
+                dc.l $10002, $30803, $8020801
+                dcb.l 5,0
+                dc.l $40005, $60000
+                dcb.l 2,0
+                dc.l $70008, $9000A, $B080B, $80A0809, $8080807
+                dcb.l 2,0
+                dc.b   0
+                align 2
+                dc.w $806
                 dc.b   8
+                dc.b 5, 8, 4
                 dc.b   0
+                dc.b $C, 0, $D
                 dc.b   0
+                dc.b $E, 0, $F
                 dc.b   0
+                dc.b $10, 0, $11
                 dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   9
-                dc.b  $A
-                dc.b  $B
-                dc.b  $C
-                dc.b  $D
-                dc.b  $E
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b  $F
-                dc.b $10
-                dc.b $11
-                dc.b $12
-                dc.b $13
-                dc.b $14
-                dc.b $15
-                dc.b $16
-                dc.b $17
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $18
-                dc.b $19
-                dc.b $1A
-                dc.b $1B
-                dc.b $1C
-                dc.b $1D
-                dc.b $1E
-                dc.b $1F
-                dc.b $20
-                dc.b $21 ; !
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $22 ; "
-                dc.b $23 ; #
-                dc.b   0
-                dc.b   0
-                dc.b $24 ; $
-                dc.b $25 ; %
-                dc.b $26 ; &
-                dc.b $27 ; '
-                dc.b $28 ; (
-                dc.b $29 ; )
-                dc.b $2A ; *
-                dc.b $2B ; +
-                dc.b $2C ; ,
-                dc.b $2D ; -
-                dc.b $2E ; .
-                dc.b $2F ; /
-                dc.b $30 ; 0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b $32 ; 2
-                dc.b $33 ; 3
-                dc.b $34 ; 4
-                dc.b $35 ; 5
-                dc.b $36 ; 6
-                dc.b $37 ; 7
-                dc.b $38 ; 8
-                dc.b $39 ; 9
-                dc.b $3A ; :
-                dc.b $3B ; ;
-                dc.b $3C ; <
-                dc.b $3D ; =
-                dc.b $3E ; >
-                dc.b $3F ; ?
-                dc.b $40 ; @
-                dc.b $41 ; A
-                dc.b $42 ; B
-                dc.b $43 ; C
-                dc.b $44 ; D
-                dc.b $45 ; E
-                dc.b $46 ; F
-                dc.b $47 ; G
-                dc.b $48 ; H
-                dc.b $49 ; I
-                dc.b $4A ; J
-                dc.b   0
-                dc.b   0
-                dc.b $4B ; K
-                dc.b $4C ; L
-                dc.b $4D ; M
-                dc.b $4E ; N
-                dc.b $4F ; O
-                dc.b $50 ; P
-                dc.b $51 ; Q
-                dc.b $52 ; R
-                dc.b $53 ; S
-                dc.b $54 ; T
-                dc.b $55 ; U
-                dc.b $56 ; V
-                dc.b $57 ; W
-unk_201D70:     dc.b   0                ; DATA XREF: sub_201ABE+C↑o
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   1
-                dc.b   0
-                dc.b   2
-                dc.b   0
-                dc.b   3
-                dc.b   8
-                dc.b   3
-                dc.b   8
-                dc.b   2
-                dc.b   8
-                dc.b   1
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   4
-                dc.b   0
-                dc.b   5
-                dc.b   0
-                dc.b   6
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   7
-                dc.b   0
-                dc.b   8
-                dc.b   0
-                dc.b   9
-                dc.b   0
-                dc.b  $A
-                dc.b   0
-                dc.b  $B
-                dc.b   8
-                dc.b  $B
-                dc.b   8
-                dc.b  $A
-                dc.b   8
-                dc.b   9
-                dc.b   8
-                dc.b   8
-                dc.b   8
-                dc.b   7
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   8
-                dc.b   6
-                dc.b   8
-                dc.b   5
-                dc.b   8
-                dc.b   4
-                dc.b   0
-                dc.b  $C
-                dc.b   0
-                dc.b  $D
-                dc.b   0
-                dc.b  $E
-                dc.b   0
-                dc.b  $F
-                dc.b   0
-                dc.b $10
-                dc.b   0
-                dc.b $11
-                dc.b   0
-                dc.b   0
-                dc.b   0
+                dcb.b 2,0
                 dc.b $12
                 dc.b   0
-                dc.b $13
+                dc.b $13, 0, $14
                 dc.b   0
-                dc.b $14
+                dc.b $15, 0, $16
                 dc.b   0
-                dc.b $15
-                dc.b   0
-                dc.b $16
-                dc.b   0
-                dc.b $17
+                dc.b $17, 8, $17
                 dc.b   8
-                dc.b $17
+                dc.b $16, 8, $15
                 dc.b   8
-                dc.b $16
-                dc.b   8
-                dc.b $15
-                dc.b   8
-                dc.b $14
-                dc.b   8
-                dc.b $13
+                dc.b $14, 8, $13
                 dc.b   8
                 dc.b $12
+                dcb.b 2,0
+                dc.b   8
+                dc.b $11, 8, $10
+                dc.b   8
+                dc.b $F, 8, $E
+                dc.b   8
+                dc.b $D, 8, $C
                 dc.b   0
+                dc.b $18, 0, $19
                 dc.b   0
-                dc.b   8
-                dc.b $11
-                dc.b   8
-                dc.b $10
-                dc.b   8
-                dc.b  $F
-                dc.b   8
-                dc.b  $E
-                dc.b   8
-                dc.b  $D
-                dc.b   8
-                dc.b  $C
-                dc.b   0
-                dc.b $18
-                dc.b   0
-                dc.b $19
-                dc.b   0
-                dc.b $1A
-                dc.b   0
-                dc.b $1B
-                dc.b   0
-                dc.b $1C
-                dc.b   0
-                dc.b $1D
-                dc.b   0
-                dc.b $1E
-                dc.b   0
-                dc.b $1F
-                dc.b   0
-                dc.b $20
-                dc.b   0
-                dc.b $21 ; !
-                dc.b   0
-                dc.b $22 ; "
-                dc.b   0
-                dc.b $23 ; #
-                dc.b   0
-                dc.b $24 ; $
-                dc.b   8
-                dc.b $24 ; $
-                dc.b   8
-                dc.b $23 ; #
-                dc.b   8
-                dc.b $22 ; "
-                dc.b   8
-                dc.b $21 ; !
-                dc.b   8
-                dc.b $20
-                dc.b   8
-                dc.b $1F
-                dc.b   8
-                dc.b $1E
-                dc.b   8
-                dc.b $1D
-                dc.b   8
-                dc.b $1C
-                dc.b   8
-                dc.b $1B
-                dc.b   8
-                dc.b $1A
-                dc.b   8
-                dc.b $19
-                dc.b   8
-                dc.b $18
-                dc.b   0
-                dc.b $25 ; %
-                dc.b   0
-                dc.b $26 ; &
-                dc.b   0
-                dc.b $27 ; '
-                dc.b   0
-                dc.b $28 ; (
-                dc.b   0
-                dc.b $29 ; )
-                dc.b   0
-                dc.b $2A ; *
-                dc.b   0
-                dc.b $2B ; +
-                dc.b   0
-                dc.b $2C ; ,
-                dc.b   0
-                dc.b $2D ; -
-                dc.b   0
-                dc.b $2E ; .
-                dc.b   0
-                dc.b $2F ; /
-                dc.b   0
-                dc.b $30 ; 0
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $30 ; 0
-                dc.b   8
-                dc.b $2F ; /
-                dc.b   8
-                dc.b $2E ; .
-                dc.b   8
-                dc.b $2D ; -
-                dc.b   8
-                dc.b $2C ; ,
-                dc.b   8
-                dc.b $2B ; +
-                dc.b   8
-                dc.b $2A ; *
-                dc.b   8
-                dc.b $29 ; )
-                dc.b   8
-                dc.b $28 ; (
-                dc.b   8
-                dc.b $27 ; '
-                dc.b   8
-                dc.b $26 ; &
-                dc.b   8
-                dc.b $25 ; %
-                dc.b   0
-                dc.b $32 ; 2
-                dc.b   0
-                dc.b $33 ; 3
-                dc.b   0
-                dc.b $34 ; 4
-                dc.b   0
-                dc.b $35 ; 5
-                dc.b   0
-                dc.b $36 ; 6
-                dc.b   0
-                dc.b $37 ; 7
-                dc.b   0
-                dc.b $38 ; 8
-                dc.b   0
-                dc.b $39 ; 9
-                dc.b   0
-                dc.b $3A ; :
-                dc.b   0
-                dc.b $3B ; ;
-                dc.b   0
-                dc.b $3C ; <
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $3C ; <
-                dc.b   8
-                dc.b $3B ; ;
-                dc.b   8
-                dc.b $3A ; :
-                dc.b   8
-                dc.b $39 ; 9
-                dc.b   8
-                dc.b $38 ; 8
-                dc.b   8
-                dc.b $37 ; 7
-                dc.b   8
-                dc.b $36 ; 6
-                dc.b   8
-                dc.b $35 ; 5
-                dc.b   8
-                dc.b $34 ; 4
-                dc.b   8
-                dc.b $33 ; 3
-                dc.b   8
-                dc.b $32 ; 2
-                dc.b   0
-                dc.b $3D ; =
-                dc.b   0
-                dc.b $3E ; >
-                dc.b   0
-                dc.b $3F ; ?
-                dc.b   0
-                dc.b $40 ; @
-                dc.b   0
-                dc.b $41 ; A
-                dc.b   0
-                dc.b $42 ; B
-                dc.b   0
-                dc.b $43 ; C
-                dc.b   0
-                dc.b $44 ; D
-                dc.b   0
-                dc.b $45 ; E
-                dc.b   0
-                dc.b $46 ; F
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $46 ; F
-                dc.b   8
-                dc.b $45 ; E
-                dc.b   8
-                dc.b $44 ; D
-                dc.b   8
-                dc.b $43 ; C
-                dc.b   8
-                dc.b $42 ; B
-                dc.b   8
-                dc.b $41 ; A
-                dc.b   8
-                dc.b $40 ; @
-                dc.b   8
-                dc.b $3F ; ?
-                dc.b   8
-                dc.b $3E ; >
-                dc.b   8
-                dc.b $3D ; =
-                dc.b   0
-                dc.b $47 ; G
-                dc.b   0
-                dc.b $48 ; H
-                dc.b   0
-                dc.b $49 ; I
-                dc.b   0
-                dc.b $4A ; J
-                dc.b   0
-                dc.b $4B ; K
-                dc.b   0
-                dc.b $4C ; L
-                dc.b   0
-                dc.b $4D ; M
-                dc.b   0
-                dc.b $4E ; N
-                dc.b   0
-                dc.b $4F ; O
-                dc.b   0
-                dc.b $50 ; P
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $50 ; P
-                dc.b   8
-                dc.b $4F ; O
-                dc.b   8
-                dc.b $4E ; N
-                dc.b   8
-                dc.b $4D ; M
-                dc.b   8
-                dc.b $4C ; L
-                dc.b   8
-                dc.b $4B ; K
-                dc.b   8
-                dc.b $4A ; J
-                dc.b   8
-                dc.b $49 ; I
-                dc.b   8
-                dc.b $48 ; H
-                dc.b   8
-                dc.b $47 ; G
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $51 ; Q
-                dc.b   0
-                dc.b $52 ; R
-                dc.b   0
-                dc.b $53 ; S
-                dc.b   0
-                dc.b $54 ; T
-                dc.b   0
-                dc.b $55 ; U
-                dc.b   0
-                dc.b $56 ; V
-                dc.b   0
-                dc.b $57 ; W
-                dc.b   0
-                dc.b $58 ; X
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $58 ; X
-                dc.b   8
-                dc.b $57 ; W
-                dc.b   8
-                dc.b $56 ; V
-                dc.b   8
-                dc.b $55 ; U
-                dc.b   8
-                dc.b $54 ; T
-                dc.b   8
-                dc.b $53 ; S
-                dc.b   8
-                dc.b $52 ; R
-                dc.b   8
-                dc.b $51 ; Q
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $59 ; Y
-                dc.b   0
-                dc.b $5A ; Z
-                dc.b   0
-                dc.b $5B ; [
-                dc.b   0
-                dc.b $5C ; \
-                dc.b   0
-                dc.b $5D ; ]
-                dc.b   0
-                dc.b $5E ; ^
-                dc.b   0
-                dc.b $5F ; _
-                dc.b   0
-                dc.b $60 ; `
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $60 ; `
-                dc.b   8
-                dc.b $5F ; _
-                dc.b   8
-                dc.b $5E ; ^
-                dc.b   8
-                dc.b $5D ; ]
-                dc.b   8
-                dc.b $5C ; \
-                dc.b   8
-                dc.b $5B ; [
-                dc.b   8
-                dc.b $5A ; Z
-                dc.b   8
-                dc.b $59 ; Y
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $61 ; a
-                dc.b   0
-                dc.b $62 ; b
-                dc.b   0
-                dc.b $63 ; c
-                dc.b   0
-                dc.b $64 ; d
-                dc.b   0
-                dc.b $65 ; e
-                dc.b   0
-                dc.b $66 ; f
-                dc.b   0
-                dc.b $67 ; g
-                dc.b   0
-                dc.b $68 ; h
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $68 ; h
-                dc.b   8
-                dc.b $67 ; g
-                dc.b   8
-                dc.b $66 ; f
-                dc.b   8
-                dc.b $65 ; e
-                dc.b   8
-                dc.b $64 ; d
-                dc.b   8
-                dc.b $63 ; c
-                dc.b   8
-                dc.b $62 ; b
-                dc.b   8
-                dc.b $61 ; a
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $69 ; i
-                dc.b   0
-                dc.b $6A ; j
-                dc.b   0
-                dc.b $6B ; k
-                dc.b   0
-                dc.b $6C ; l
-                dc.b   0
-                dc.b $6D ; m
-                dc.b   0
-                dc.b $6E ; n
-                dc.b   0
-                dc.b $6F ; o
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $6F ; o
-                dc.b   8
-                dc.b $6E ; n
-                dc.b   8
-                dc.b $6D ; m
-                dc.b   8
-                dc.b $6C ; l
-                dc.b   8
-                dc.b $6B ; k
-                dc.b   8
-                dc.b $6A ; j
-                dc.b   8
-                dc.b $69 ; i
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $70 ; p
-                dc.b   0
-                dc.b $71 ; q
-                dc.b   0
-                dc.b $72 ; r
-                dc.b   0
-                dc.b $73 ; s
-                dc.b   0
-                dc.b $74 ; t
-                dc.b   0
-                dc.b $75 ; u
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $75 ; u
-                dc.b   8
-                dc.b $74 ; t
-                dc.b   8
-                dc.b $73 ; s
-                dc.b   8
-                dc.b $72 ; r
-                dc.b   8
-                dc.b $71 ; q
-                dc.b   8
-                dc.b $70 ; p
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $76 ; v
-                dc.b   0
-                dc.b $77 ; w
-                dc.b   0
-                dc.b $78 ; x
-                dc.b   0
-                dc.b $79 ; y
-                dc.b   0
-                dc.b $7A ; z
-                dc.b   0
-                dc.b $7B ; {
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   0
-                dc.b $31 ; 1
-                dc.b   8
-                dc.b $7B ; {
-                dc.b   8
-                dc.b $7A ; z
-                dc.b   8
-                dc.b $79 ; y
-                dc.b   8
-                dc.b $78 ; x
-                dc.b   8
-                dc.b $77 ; w
-                dc.b   8
-                dc.b $76 ; v
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $7C ; |
-                dc.b   0
-                dc.b $7D ; }
-                dc.b   0
-                dc.b $7E ; ~
-                dc.b   0
-                dc.b $7F ; 
-                dc.b   0
-                dc.b $80
-                dc.b   0
-                dc.b $81
-                dc.b   0
-                dc.b $82
-                dc.b   8
-                dc.b $82
-                dc.b   8
-                dc.b $81
-                dc.b   8
-                dc.b $80
-                dc.b   8
-                dc.b $7F ; 
-                dc.b   8
-                dc.b $7E ; ~
-                dc.b   8
-                dc.b $7D ; }
-                dc.b   8
-                dc.b $7C ; |
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
+                dc.b $1A, 0, $1B
                 dc.b   0
+                dc.b $1C, 0, $1D
                 dc.b   0
+                dc.b $1E, 0, $1F
                 dc.b   0
+                dc.b $20, 0, $21
                 dc.b   0
+                dc.b $22, 0, $23
                 dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $83
-                dc.b   0
-                dc.b $84
-                dc.b   0
-                dc.b $85
-                dc.b   0
-                dc.b $86
-                dc.b   0
-                dc.b $87
-                dc.b   0
-                dc.b $88
-                dc.b   8
-                dc.b $88
-                dc.b   8
-                dc.b $87
-                dc.b   8
-                dc.b $86
-                dc.b   8
-                dc.b $85
-                dc.b   8
-                dc.b $84
-                dc.b   8
-                dc.b $83
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $89
-                dc.b   0
-                dc.b $8A
-                dc.b   0
-                dc.b $8B
-                dc.b   0
-                dc.b $8C
-                dc.b   0
-                dc.b $8D
-                dc.b   8
-                dc.b $8D
-                dc.b   8
-                dc.b $8C
-                dc.b   8
-                dc.b $8B
+                dc.b $24, 8, $24
                 dc.b   8
-                dc.b $8A
+                dc.b $23, 8, $22
                 dc.b   8
-                dc.b $89
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $8E
-                dc.b   0
-                dc.b $8F
-                dc.b   0
-                dc.b $90
-                dc.b   0
-                dc.b $91
+                dc.b $21, 8, $20
                 dc.b   8
-                dc.b $91
+                dc.b $1F, 8, $1E
                 dc.b   8
-                dc.b $90
+                dc.b $1D, 8, $1C
                 dc.b   8
-                dc.b $8F
+                dc.b $1B, 8, $1A
                 dc.b   8
-                dc.b $8E
+                dc.b $19, 8, $18
                 dc.b   0
+                dc.b $25, 0, $26
                 dc.b   0
+                dc.b $27, 0, $28
                 dc.b   0
+                dc.b $29, 0, $2A
                 dc.b   0
+                dc.b $2B, 0, $2C
                 dc.b   0
+                dc.b $2D, 0, $2E
                 dc.b   0
+                dc.b $2F, 0, $30
                 dc.b   0
+                dc.b $31, 0, $31
+                dc.b 8,'0',8,'/',8,'.',8,'-',8,',',8,'+',8,'*',8,')',8,'(',8,$27,8,'&'
+                dc.b 8,'%',0
+                dc.b '2',0
+                dc.b '3',0
+                dc.b '4',0
+                dc.b '5',0
+                dc.b '6',0
+                dc.b '7',0
+a8:             dc.b '8',0
+a9:             dc.b '9',0
+                dc.b ':',0
+                dc.b ';',0
+                dc.b '<',0
+                dc.b '1',0
+                dc.b '1',0
+                dc.b '1',0
+a198765432:     dc.b '1',8,'<',8,';',8,':',8,'9',8,'8',8,'7',8,'6',8,'5',8,'4',8,'3',8
+                dc.b '2',0
+                dc.b '=',0
+                dc.b '>',0
+                dc.b '?',0
+                dc.b '@',0
+aA:             dc.b 'A',0
+aB:             dc.b 'B',0
+                dc.b 'C',0
+aD:             dc.b 'D',0
+aE:             dc.b 'E',0
+aF:             dc.b 'F',0
+                dc.b '1',0
+                dc.b '1',0
+                dc.b '1',0
+                dc.b '1',0
+                dc.b '1',0
+a1FEDCBA:       dc.b '1',8,'F',8,'E',8,'D',8,'C',8,'B',8,'A',8,'@',8,'?',8,'>',8,'=',0
+aG:             dc.b 'G',0
+aH:             dc.b 'H',0
+aI:             dc.b 'I',0
+aJ:             dc.b 'J',0
+aK:             dc.b 'K',0
+aL:             dc.b 'L',0
+aM:             dc.b 'M',0
+aN:             dc.b 'N',0
+aO:             dc.b 'O',0
+aP:             dc.b 'P',0
+                dc.b '1',0
+                dc.b '1',0
+                dc.b '1',0
+                dc.b '1',0
+                dc.b '1',0
+a1PONMLKJIHG:   dc.b '1',8,'P',8,'O',8,'N',8,'M',8,'L',8,'K',8,'J',8,'I',8,'H',8,'G',0
+                dcb.b 2,0
+                dc.b $51
                 dc.b   0
+                dc.b $52, 0, $53
                 dc.b   0
+                dc.b $54, 0, $55
                 dc.b   0
+                dc.b $56, 0, $57
                 dc.b   0
+                dc.b $58, 0, $31
                 dc.b   0
+                dc.b $31, 0, $31
                 dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b   0
-                dc.b $92
-                dc.b   0
-                dc.b $93
-                dc.b   0
-                dc.b $94
-                dc.b   8
-                dc.b $94
-                dc.b   8
-                dc.b $93
-                dc.b   8
-                dc.b $92
+                dc.b $31, 0, $31
                 dc.b   0
+                dc.b $31, 0, $31
                 dc.b   0
+a1XWVUTSRQ:     dc.b '1',8,'X',8,'W',8,'V',8,'U',8,'T',8,'S',8,'R',8,'Q',0
+                align 4
                 dc.b   0
+                dcb.b 2,0
+                dc.b $59
                 dc.b   0
+                dc.b $5A, 0, $5B
                 dc.b   0
+                dc.b $5C, 0, $5D
                 dc.b   0
+                dc.b $5E, 0, $5F
                 dc.b   0
+                dc.b $60, 0, $31
                 dc.b   0
+                dc.b $31, 0, $31
                 dc.b   0
+                dc.b $31, 0, $31
                 dc.b   0
+                dc.b $31, 0, $31
                 dc.b   0
+a1ZY:           dc.b '1',8,'`',8,'_',8,'^',8,']',8,'\',8,'[',8,'Z',8,'Y',0
+                align 4
                 dc.b   0
+                dcb.b 2,0
+                dc.b $61
                 dc.b   0
+                dc.b $62, 0, $63
                 dc.b   0
+                dc.b $64, 0, $65
                 dc.b   0
+                dc.b $66, 0, $67
                 dc.b   0
+                dc.b $68, 0, $31
                 dc.b   0
+                dc.b $31, 0, $31
                 dc.b   0
+                dc.b $31, 0, $31
                 dc.b   0
+                dc.b $31, 0, $31
                 dc.b   0
-dword_20214C:   dc.l $148103, $3151B24, $C351C46, $3C577C68, $FB730282
-                                        ; DATA XREF: sub_200FA8+7A↑o
+a1HGFEDCBA:     dc.b '1',8,'h',8,'g',8,'f',8,'e',8,'d',8,'c',8,'b',8,'a',0
+                align 4
+                dc.l 0
+                dc.l $69, $6A006B, $6C006D, $6E006F
+                dcb.l 3,$310031
+                dc.l $86F086E, $86D086C, $86B086A, $8690000
+                dcb.l 3,0
+                dc.l $700071, $720073, $740075
+                dcb.l 3,$310031
+                dc.l $8750874, $8730872, $8710870
+                dcb.l 4,0
+                dc.l $76, $770078, $79007A, $7B0031, $310031, $31087B
+                dc.l $87A0879, $8780877, $8760000
+                dcb.l 5,0
+                dc.l $7C007D, $7E007F, $800081, $820882, $8810880, $87F087E
+                dc.l $87D087C
+                dcb.l 6,0
+                dc.l $83, $840085, $860087, $880888, $8870886, $8850884
+                dc.l $8830000
+                dcb.l 7,0
+                dc.l $89008A, $8B008C, $8D088D, $88C088B, $88A0889
+                dcb.l 8,0
+                dc.l $8E, $8F0090, $910891, $890088F, $88E0000
+                dcb.l 9,0
+                dc.l $920093, $940894, $8930892
+                dcb.l 5,0
+dword_FF404C:   dc.l $148103, $3151B24, $C351C46, $3C577C68, $FB730282
+                                        ; DATA XREF: sub_FF2EA8+7A↑o
                 dc.l $200151D, $28FA8504, $A860304, $163D8705, $1A88040B
                 dc.l $FF67B4F5, $E4FB30F0, $D6F42F0C, $349D3F5D, $E39C8BC
                 dc.l $35B16772, $182DCA4C, $CEF285CE, $EEEA2C98, $2C1F589C
@@ -6062,7 +2697,7 @@ dword_20214C:   dc.l $148103, $3151B24, $C351C46, $3C577C68, $FB730282
                 dc.l $BE9CA4BE, $CF7B6C4B, $F572B29, $904E97C8, $EFE9CF2D
                 dc.l $E9321A3D, $D2E7D3A6, $4356916E
                 dc.b $2E, 0
-word_20224A:    dc.w $58                ; DATA XREF: sub_200FA8+50↑o
+word_FF414A:    dc.w $58                ; DATA XREF: sub_FF2EA8+50↑o
                 dc.l $80063617, $73263837, $72477457, $78677974, $5890512
                 dc.l $151528F7, $8A051614, $88B0775, $15178C03, $1140725
                 dc.l $13351846, $35563367, $7776328D, $3001406, $26343776
@@ -6133,8 +2768,8 @@ word_20224A:    dc.w $58                ; DATA XREF: sub_200FA8+50↑o
                 dc.l $6256ADBA, $C4A24777, $4059C238, $9A071340, $E0C48622
                 dc.l $A6C6F123, $637B5EAE, $DDC6596B, $5D6D5789, $5AAF1289
                 dc.l $1EB12000
-dword_2027B4:   dc.l $958007, $6D177627, $7038F146, $3458EA75, $14810513
-                                        ; DATA XREF: ROM:0020027C↑o
+dword_FF46B4:   dc.l $958007, $6D177627, $7038F146, $3458EA75, $14810513
+                                        ; DATA XREF: ROM:00FF217C↑o
                 dc.l $16312771, $38F248F6, $68F3776F, $82040315, $12262F38
                 dc.l $EB48F083, $4021407, $2630376C, $477478F4, $84030015
                 dc.l $15276B85, $404162E, $276638F5, $86040517, $6A28EE87
@@ -6286,7 +2921,7 @@ dword_2027B4:   dc.l $958007, $6D177627, $7038F146, $3458EA75, $14810513
                 dc.l $A5294A50, $AE540F79, $CD7F4EC, $793CFAB1, $A5297948
                 dc.l $8D0214B6, $FE2E2D3, $7ACDA647, $89F03C4E
                 dc.b $74, $A0
-word_203372:    dc.w $8076              ; DATA XREF: ROM:002001CA↑o
+word_FF5272:    dc.w $8076              ; DATA XREF: ROM:00FF20CA↑o
                 dc.l $80030114, $6250F35, $12451355, $15651473, $810404
                 dc.l $163538F1, $8208E783, $4081770, $48F58406, $3618E885
                 dc.l $8EA8606, $2F18EF87, $63118EB, $8808E689, $4051633
@@ -6366,7 +3001,8 @@ word_203372:    dc.w $8076              ; DATA XREF: ROM:002001CA↑o
                 dc.l $50A0AB8B, $8B8B99C5, $C5C5C07F, $C7FF34FF, $983BC7F6
                 dc.l $5D7CD1E8, $75C60A14, $95D273DC, $777343DC, $72AA5F0F
                 dc.l $D56259C5, $62B0001F, $95E79000
-                dc.l $8E8006, $34177727, $72376F47, $75577A75, $1381050E
+dword_FF58A4:   dc.l $8E8006, $34177727, $72376F47, $75577A75, $1381050E
+                                        ; DATA XREF: ROM:00FF32F8↑o
                 dc.l $15142630, $36354779, $577468F7, $74088203, $1140525
                 dc.l $12363146, $36577677, $70830300, $14062516, $36334773
                 dc.l $58F68404, $4150F25, $17377185, $6321778, $86051517
@@ -6474,8 +3110,8 @@ word_203372:    dc.w $8076              ; DATA XREF: ROM:002001CA↑o
                 dc.l $E73F511E, $E75C70DB, $5A07764, $938DCB8F, $FD38E9C7
                 dc.l $7DE739CF, $AB97008E, $938BE4FD, $13454CB7, $F1DF7EAF
                 dc.l $F49FE07F, $A49CE739, $CFFC0000
-dword_2041E0:   dc.l $82898004, $4140625, $14351345, $15551266, $2F730081
-                                        ; DATA XREF: ROM:002001DC↑o
+dword_FF60E0:   dc.l $82898004, $4140625, $14351345, $15551266, $2F730081
+                                        ; DATA XREF: ROM:00FF20DC↑o
                 dc.l $3011518, $276F38EA, $82040817, $7028F483, $4051636
                 dc.l $28EF8407, $74850634, $18EE28F6, $86051617, $76870407
                 dc.l $176E28EB, $88077289, $8F38A07, $718B0633, $8C062E18
@@ -6921,7 +3557,7 @@ dword_2041E0:   dc.l $82898004, $4140625, $14351345, $15551266, $2F730081
                 dc.l $1A8B5751, $69580000, $2F5BF6B, $D4000000
                 dcb.l $B,0
                 dc.b $12, 0
-word_206462:    dc.w $10                ; DATA XREF: ROM:002001F6↑o
+word_FF8362:    dc.w $10                ; DATA XREF: ROM:00FF20F6↑o
                 dc.l $8E7100FF
                 dcb.l 4,0
                 dc.l $8012, $80040914, $A251735, $1E440C55, $16651A72
@@ -6982,183 +3618,37 @@ word_206462:    dc.w $10                ; DATA XREF: ROM:002001F6↑o
                 dc.l $F6C802EE, $3231EFF7, $7EAFD880, $2AFE5346, $FB640177
                 dc.l $12D5D57F, $2F7FC100, $55FCA68D, $FDBFB8F4, $73EDFDC7
                 dc.l $A6AEABF9, $7BFE0804, $22EEDEBA, $B2B422E, $EDE02E00
-word_206900:    dc.w $8010              ; DATA XREF: ROM:00200182↑o
-                dc.b $80
-                dc.b   4
-                dc.w $814
-                dc.b   9
-                dc.b $24 ; $
-                dc.w $B35
-                dc.b $1D
-                dc.b $55 ; U
-                dc.w $1A65
-                dc.b $1C
-                dc.b $72 ; r
-                dc.w $81
-                dc.b   3
-                dc.b   2
-                dc.w $251B
-                dc.b $8A
-                dc.b   4
-                dc.w $C15
-                dc.b $1E
-                dc.b $47 ; G
-                dc.w $7C57
-                dc.b $7D ; }
-                dc.b $8B
-                dc.w $303
-                dc.b $14
-                dc.b  $A
-                dc.w $FF23
-                dc.b $E2
-                dc.b $E3
-                dc.w $575C
-                dc.b $5A ; Z
-                dc.b $79 ; y
-                dc.w $C56
-                dc.b $FC
-                dc.b $80
-                dc.w $9AD6
-                dc.b $C0
-                dc.b $3F ; ?
-                dc.w $81F1
-                dc.b $71 ; q
-                dc.b $AB
-                dc.b $AE
-                dc.b $2D ; -
-                dc.b $3C ; <
-                dc.b $86
-                dc.b $2B ; +
-                dc.b $79 ; y
-                dc.b  $D
-                dc.b   1
-                dc.b $15
-                dc.b $35 ; 5
-                dc.b $3B ; ;
-                dc.b $8D
-                dc.b $80
-                dc.b $47 ; G
-                dc.b $D4
-                dc.b $5F ; _
-                dc.b $EE
-                dc.b $FF
-                dc.b $81
-                dc.b $FB
-                dc.b $1B
-                dc.b $7E ; ~
-                dc.b $47 ; G
-                dc.b $7F ; 
-                dc.b $57 ; W
-                dc.b $AD
-                dc.b $F5
-                dc.b $FE
-                dc.b $A9
-                dc.b $11
-                dc.b $FD
-                dc.b $B9
-                dc.b $FF
-                dc.b   8
-                dc.b   4
-                dc.b $FE
-                dc.b $E9
-                dc.b $4E ; N
-                dc.b $75 ; u
-                dc.b $AB
-                dc.b $AD
-                dc.b $38 ; 8
-                dc.b $A5
-                dc.b $19
-                dc.b $2E ; .
-                dc.b $15
-                dc.b $E4
-                dc.b $B5
-                dc.b $DC
-                dc.b $96
-                dc.b $A3
-                dc.b $CB
-                dc.b $34 ; 4
-                dc.b $F3
-                dc.b $B9
-                dc.b $D6
-                dc.b $A7
-                dc.b $F7
-                dc.b $6A ; j
-                dc.b $FF
-                dc.b $62 ; b
-                dc.b   1
-                dc.b $7F ; 
-                dc.b $51 ; Q
-                dc.b $1E
-                dc.b $9A
-                dc.b $E7
-                dc.b $E4
-                dc.b $40 ; @
-                dc.b   2
-                dc.b $EB
-                dc.b $5B ; [
-                dc.b   0
-                dc.b $EF
-                dc.b $EE
-                dc.b $94
-                dc.b $E7
-                dc.b $5A ; Z
-                dc.b $BA
-                dc.b $E2
-                dc.b $D3
-                dc.b $C3
-                dc.b $55 ; U
-                dc.b $C4
-                dc.b $1D
-                dc.b $A9
-                dc.b $A9
-                dc.b $DC
-                dc.b $6C ; l
-                dc.b   2
-                dc.b $3E ; >
-                dc.b $2E ; .
-                dc.b $35 ; 5
-                dc.b $75 ; u
-                dc.b $C5
-                dc.b $A7
-                dc.b $90
-                dc.b $C5
-                dc.b $6F ; o
-                dc.b $21 ; !
-                dc.b $A0
-                dc.b $22 ; "
-                dc.b $A6
-                dc.b $A7
-                dc.b $71 ; q
-                dc.b $B0
-                dc.w $8FA
-                dc.b $88
-                dc.b $F4
-                dc.w $D73F
-                dc.b $22 ; "
-                dc.b 0
-                dc.w $175A
-                dc.b $D8
-                dc.b $12
-word_2069AE:    dc.w 4                  ; DATA XREF: ROM:00200194↑o
+dword_FF8800:   dc.l $80108004, $8140924, $B351D55, $1A651C72, $810302
+                                        ; DATA XREF: ROM:00FF2082↑o
+                dc.l $251B8A04, $C151E47, $7C577D8B, $303140A, $FF23E2E3
+                dc.l $575C5A79, $C56FC80, $9AD6C03F, $81F171AB, $AE2D3C86
+                dc.l $2B790D01, $15353B8D, $8047D45F, $EEFF81FB, $1B7E477F
+                dc.l $57ADF5FE, $A911FDB9, $FF0804FE, $E94E75AB, $AD38A519
+                dc.l $2E15E4B5, $DC96A3CB, $34F3B9D6, $A7F76AFF, $62017F51
+                dc.l $1E9AE7E4, $4002EB5B, $EFEE94, $E75ABAE2, $D3C355C4
+                dc.l $1DA9A9DC, $6C023E2E, $3575C5A7, $90C56F21, $A022A6A7
+                dc.l $71B008FA, $88F4D73F, $2200175A
+                dc.b $D8, $12
+word_FF88AE:    dc.w 4                  ; DATA XREF: ROM:00FF2094↑o
                 dc.l $80320244, $E720081, $2018A23, $6FF0FF0, $7E2BB5FB
                 dc.l $A9DDF91F, $C57F8100, $3F01F9, $A6CD9B36, $6CCFE69E
                 dc.l $FD080010
-dword_2069DC:   dc.l $80098003, $1140824, $9351B45, $1D551A65, $1E730286
-                                        ; DATA XREF: ROM:002001A6↑o
+dword_FF88DC:   dc.l $80098003, $1140824, $9351B45, $1D551A65, $1E730286
+                                        ; DATA XREF: ROM:00FF20A6↑o
                 dc.l $40B8B03, $130325, $1C363E44, $C8D040A, $FF5DE6C1
                 dc.l $720F1290, $79B05F7E
                 dc.b $D0, $23
-                dc.w $408E
+word_FF890E:    dc.w $408E              ; CODE XREF: ROM:00FF898C↓p
                 dc.l $8F0F0234, $3434CE74, $2F0EF129, $1B670B81, $2D409C96
                 dc.l $B4E59CDB, $5E1A6B4D, $4708F039, $3F211F6F, $E4411D08
                 dc.l $83938A72, $711091CD, $FC6FD50E, $2E3915A1, $2281771
                 dc.l $5BA9BED1, $ADD5D1B9, $B366A2B9, $166FC000
-dword_206A5C:   dc.l $28004, $E551E81, $2021306, $8B0100FF, $FF87FAFF
-                                        ; DATA XREF: ROM:002001B8↑o
+dword_FF895C:   dc.l $28004, $E551E81, $2021306, $8B0100FF, $FF87FAFF
+                                        ; DATA XREF: ROM:00FF20B8↑o
                 dc.l $62FD8FE8, $17979797, $B7FC3F41, $F9BBF21F, $9B924924
                 dc.l $9992E5C9, $76E7E87F
-                dc.b $61 ; a
-                dc.b $80
+; ---------------------------------------------------------------------------
+                bsr.s   word_FF890E
 ; end of 'ROM'
 
 
