@@ -28,9 +28,9 @@ word_200000:    dc.w 0                  ; DATA XREF: ROM:002206C8↓o
                                         ; ROM:0022E44C↓o ...
                 dc.l 0
                 dc.w 0
-                dc.l loc_200100
-                dc.l loc_20010C
-                dc.l loc_200112
+                dc.l JmpTo_Entry
+                dc.l JmpTo_HInt
+                dc.l JmpTo_VInt
                 dc.b   0
                 dc.b   0
                 dc.b   0
@@ -269,28 +269,28 @@ word_200000:    dc.w 0                  ; DATA XREF: ROM:002206C8↓o
                 dc.b   0
 ; ---------------------------------------------------------------------------
 
-loc_200100:                             ; DATA XREF: ROM:00200008↑o
-                jmp     loc_20011E
+JmpTo_Entry:                            ; DATA XREF: ROM:00200008↑o
+                jmp     EntryPoint
 ; ---------------------------------------------------------------------------
-                jmp     loc_200118
-; ---------------------------------------------------------------------------
-
-loc_20010C:                             ; DATA XREF: ROM:0020000C↑o
-                jmp     loc_2022DE
+                jmp     ErrorTrap
 ; ---------------------------------------------------------------------------
 
-loc_200112:                             ; DATA XREF: ROM:00200010↑o
-                jmp     loc_201DF8
+JmpTo_HInt:                             ; DATA XREF: ROM:0020000C↑o
+                jmp     H_init
 ; ---------------------------------------------------------------------------
 
-loc_200118:                             ; CODE XREF: ROM:00200106↑j
+JmpTo_VInt:                             ; DATA XREF: ROM:00200010↑o
+                jmp     Vinit
+; ---------------------------------------------------------------------------
+
+ErrorTrap:                              ; CODE XREF: ROM:00200106↑j
                                         ; ROM:0020011C↓j
                 nop
                 nop
-                bra.s   loc_200118
+                bra.s   ErrorTrap
 ; ---------------------------------------------------------------------------
 
-loc_20011E:                             ; CODE XREF: ROM:loc_200100↑j
+EntryPoint:                             ; CODE XREF: ROM:JmpTo_Entry↑j
                 btst    #6,($A1000D).l
                 beq.s   loc_200136
                 cmpi.l  #$696E6974,($FF158A).l
@@ -316,10 +316,10 @@ loc_200166:                             ; CODE XREF: ROM:00200132↑j
                 move.b  #0,($FFF600).w
                 move.b  ($FFF600).w,d0
                 andi.w  #$1C,d0
-                jmp     loc_200180(pc,d0.w)
+                jmp     GameModes(pc,d0.w)
 ; ---------------------------------------------------------------------------
 
-loc_200180:                             ; CODE XREF: ROM:0020017C↑j
+GameModes:                              ; CODE XREF: ROM:0020017C↑j
                 bra.w   Level
 
 ; =============== S U B R O U T I N E =======================================
@@ -327,21 +327,21 @@ loc_200180:                             ; CODE XREF: ROM:0020017C↑j
 
 sub_200184:                             ; CODE XREF: ROM:002018FC↓p
                 tst.b   ($FF1507).l
-                bne.s   loc_20018E
+                bne.s   PalCycle_Do
                 rts
 ; ---------------------------------------------------------------------------
 
-loc_20018E:                             ; CODE XREF: sub_200184+6↑j
+PalCycle_Do:                            ; CODE XREF: sub_200184+6↑j
                 lea     ($FFF7B7).w,a5
                 lea     ($FFF7B0).w,a4
-                lea     (word_20020E).l,a1
-                lea     (dword_20022C).l,a2
-                bsr.w   sub_2001C6
-                lea     (dword_200218).l,a1
-                lea     (dword_20022C).l,a2
-                bsr.w   sub_2001C6
-                lea     (word_200222).l,a1
-                lea     (dword_20022C).l,a2
+                lea     (CycleScript).l,a1
+                lea     (CycleColors).l,a2
+                bsr.w   PalCycle_OneColor
+                lea     (CycleScript2).l,a1
+                lea     (CycleColors).l,a2
+                bsr.w   PalCycle_OneColor
+                lea     (CycleScript3).l,a1
+                lea     (CycleColors).l,a2
                 bra.w   *+4
 ; End of function sub_200184
 
@@ -349,7 +349,7 @@ loc_20018E:                             ; CODE XREF: sub_200184+6↑j
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_2001C6:                             ; CODE XREF: sub_200184+1E↑p
+PalCycle_OneColor:                      ; CODE XREF: sub_200184+1E↑p
                                         ; sub_200184+2E↑p ...
                 subq.b  #1,(a5)
                 bpl.s   loc_2001FA
@@ -366,7 +366,7 @@ sub_2001C6:                             ; CODE XREF: sub_200184+1E↑p
                 bcs.s   loc_2001E6
                 moveq   #0,d0
 
-loc_2001E6:                             ; CODE XREF: sub_2001C6+1C↑j
+loc_2001E6:                             ; CODE XREF: PalCycle_OneColor+1C↑j
                 move.b  d0,(a4)
                 add.w   d0,d0
                 move.b  (a1,d0.w),(a5)
@@ -375,23 +375,58 @@ loc_2001E6:                             ; CODE XREF: sub_2001C6+1C↑j
                 add.w   d0,d0
                 move.w  (a2,d0.w),(a3)
 
-loc_2001FA:                             ; CODE XREF: sub_2001C6+2↑j
+loc_2001FA:                             ; CODE XREF: PalCycle_OneColor+2↑j
                 adda.w  #1,a4
                 adda.w  #1,a5
                 rts
-; End of function sub_2001C6
+; End of function PalCycle_OneColor
 
 ; ---------------------------------------------------------------------------
-                dc.l $31040200, $2010202
-                dc.b 2, 3
-word_20020E:    dc.w $3204              ; DATA XREF: sub_200184+12↑o
-                dc.l $2010202, $2030200
-dword_200218:   dc.l $33040202, $2030200 ; DATA XREF: sub_200184+22↑o
-                dc.b 2, 1
-word_200222:    dc.w $3404              ; DATA XREF: sub_200184+32↑o
-                dc.l $2030200, $2010202
-dword_20022C:   dc.l $CCC0C82, $EA60ECA ; DATA XREF: sub_200184+18↑o
+                dc.b $31 ; 1
+                dc.b   4
+                dc.b   2
+                dc.b   0
+                dc.b   2
+                dc.b   1
+                dc.b   2
+                dc.b   2
+                dc.b   2
+                dc.b   3
+CycleScript:    dc.b $32 ; 2            ; DATA XREF: sub_200184+12↑o
+                dc.b   4
+                dc.b   2
+                dc.b   1
+                dc.b   2
+                dc.b   2
+                dc.b   2
+                dc.b   3
+                dc.b   2
+                dc.b   0
+CycleScript2:   dc.b $33 ; 3            ; DATA XREF: sub_200184+22↑o
+                dc.b   4
+                dc.b   2
+                dc.b   2
+                dc.b   2
+                dc.b   3
+                dc.b   2
+                dc.b   0
+                dc.b   2
+                dc.b   1
+CycleScript3:   dc.b $34 ; 4            ; DATA XREF: sub_200184+32↑o
+                dc.b   4
+                dc.b   2
+                dc.b   3
+                dc.b   2
+                dc.b   0
+                dc.b   2
+                dc.b   1
+                dc.b   2
+                dc.b   2
+CycleColors:    dc.w $CCC               ; DATA XREF: sub_200184+18↑o
                                         ; sub_200184+28↑o ...
+                dc.w $C82
+                dc.w $EA6
+                dc.w $ECA
 ; ---------------------------------------------------------------------------
 
 loc_200234:                             ; CODE XREF: ROM:002017D8↓p
@@ -2477,7 +2512,7 @@ loc_2013B2:                             ; CODE XREF: sub_20137E+1A↑j
 
 ; ---------------------------------------------------------------------------
 
-Level:                                  ; CODE XREF: ROM:loc_200180↑j
+Level:                                  ; CODE XREF: ROM:GameModes↑j
                                         ; ROM:0020189A↓j ...
                 clr.w   ($FF1580).l
                 cmpi.b  #$7F,($FF0F20).l
@@ -3404,7 +3439,7 @@ locret_201DF6:                          ; CODE XREF: sub_201DBC+6↑j
 
 ; ---------------------------------------------------------------------------
 
-loc_201DF8:                             ; CODE XREF: ROM:loc_200112↑j
+Vinit:                                  ; CODE XREF: ROM:JmpTo_VInt↑j
                 bset    #0,($A12000).l
                 movem.l d0-d7/a0-a6,-(sp)
                 tst.b   ($FFF62A).w
@@ -3810,7 +3845,7 @@ loc_202290:                             ; CODE XREF: sub_202236+34↑j
 
 ; ---------------------------------------------------------------------------
 
-loc_2022DE:                             ; CODE XREF: ROM:loc_20010C↑j
+H_init:                                 ; CODE XREF: ROM:JmpTo_HInt↑j
                 move    #$2700,sr
                 tst.w   ($FFF6FC).w
                 beq.s   locret_20235C
