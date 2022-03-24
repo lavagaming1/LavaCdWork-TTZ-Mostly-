@@ -401,8 +401,10 @@ word_200316:    dc.w $3303              ; DATA XREF: sub_200184+88↑o
                 dc.l $5000501
                 dc.b 5, 2
 word_20031E:    dc.w $EE                ; DATA XREF: sub_200184+8E↑o
-; ---------------------------------------------------------------------------
-                ori.b   #0,a6
+                dc.b   0
+                dc.b  $E
+                dc.b   0
+                dc.b   0
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -22775,11 +22777,17 @@ word_20CF66:    dc.w $300               ; DATA XREF: ROM:0020CE84↑o
                 dc.l $180803E0, $18080320
                 dc.b $18, 8
 word_20CF72:    dc.w $234               ; DATA XREF: ROM:0020CEA4↑o
+                dc.b $1C
+                dc.b   8
+                dc.b   5
+                dc.b $24 ; $
+                dc.b $2C ; ,
+                dc.b   8
+                dc.b   4
+                dc.b $44 ; D
+                dc.b  $C
+                dc.b   8
 ; ---------------------------------------------------------------------------
-                move.b  a0,d6
-                btst    d2,-(a4)
-                move.l  a0,d6
-                subi.w  #$C08,d4
                 lea     ($FFD000).w,a1
                 move.w  $C(a1),d0
                 sub.w   $C(a0),d0
@@ -24138,8 +24146,8 @@ sub_20E87E:                             ; DATA XREF: ROM:00203A4E↑o
 loc_20E8AA:                             ; CODE XREF: sub_20E87E+4↑j
                 moveq   #0,d0
                 move.b  $24(a0),d0
-                move.w  word_20E8D0(pc,d0.w),d0
-                jsr     word_20E8D0(pc,d0.w)
+                move.w  off_20E8D0(pc,d0.w),d0
+                jsr     off_20E8D0(pc,d0.w)
                 jsr     sub_203660
                 tst.b   $28(a0)
                 bmi.s   locret_20E8CE
@@ -24150,12 +24158,17 @@ loc_20E8AA:                             ; CODE XREF: sub_20E87E+4↑j
 locret_20E8CE:                          ; CODE XREF: sub_20E87E+44↑j
                 rts
 ; ---------------------------------------------------------------------------
-word_20E8D0:    dc.w $A                 ; CODE XREF: sub_20E87E+36↑p
-                                        ; DATA XREF: sub_20E87E+32↑r
-                dc.w $AC
+off_20E8D0:     dc.w loc_20E8DA-*       ; CODE XREF: sub_20E87E+36↑p
+                                        ; DATA XREF: sub_20E87E+32↑r ...
+                dc.w loc_20E97C-off_20E8D0
+                dc.w loc_20E98A-off_20E8D0
+                dc.w loc_20E9A6-off_20E8D0
+                dc.w loc_20E9D4-off_20E8D0
 ; ---------------------------------------------------------------------------
-                ori.l   #$D60104,dword_2134D4(pc)
-                andi.w  #$7000,d6
+
+loc_20E8DA:                             ; DATA XREF: sub_20E87E:off_20E8D0↑o
+                lea     $20EB22(pc),a5
+                moveq   #0,d0
                 move.b  $28(a0),d0
                 add.w   d0,d0
                 adda.w  (a5,d0.w),a5
@@ -24165,9 +24178,9 @@ word_20E8D0:    dc.w $A                 ; CODE XREF: sub_20E87E+36↑p
                 move.w  (a5)+,d6
                 bra.s   loc_20E930
 ; ---------------------------------------------------------------------------
-word_20E8F6:    dc.w $4EB9              ; CODE XREF: sub_20E87E:loc_20E930↓j
-                dc.l Create_New_Sprite
-; ---------------------------------------------------------------------------
+
+loc_20E8F6:                             ; CODE XREF: sub_20E87E:loc_20E930↓j
+                jsr     Create_New_Sprite
                 beq.s   loc_20E904
                 jmp     sub_20370C
 ; ---------------------------------------------------------------------------
@@ -24187,7 +24200,7 @@ loc_20E904:                             ; CODE XREF: sub_20E87E+7E↑j
                 bsr.s   loc_20E936
 
 loc_20E930:                             ; CODE XREF: sub_20E87E+76↑j
-                dbf     d6,word_20E8F6
+                dbf     d6,loc_20E8F6
                 rts
 ; ---------------------------------------------------------------------------
 
@@ -24206,6 +24219,8 @@ loc_20E936:                             ; CODE XREF: sub_20E87E+72↑p
                 move.w  $C(a0),$30(a6)
                 rts
 ; ---------------------------------------------------------------------------
+
+loc_20E97C:                             ; DATA XREF: sub_20E87E+54↑o
                 addi.w  #-1,$2A(a0)
                 bne.s   locret_20E988
                 addq.b  #2,$24(a0)
@@ -24213,6 +24228,8 @@ loc_20E936:                             ; CODE XREF: sub_20E87E+72↑p
 locret_20E988:                          ; CODE XREF: sub_20E87E+104↑j
                 rts
 ; ---------------------------------------------------------------------------
+
+loc_20E98A:                             ; DATA XREF: sub_20E87E+56↑o
                 lea     word_20EA56(pc),a1
                 jsr     AnimateObject
                 tst.b   $1A(a0)
@@ -24223,6 +24240,8 @@ locret_20E988:                          ; CODE XREF: sub_20E87E+104↑j
 locret_20E9A4:                          ; CODE XREF: sub_20E87E+11A↑j
                 rts
 ; ---------------------------------------------------------------------------
+
+loc_20E9A6:                             ; DATA XREF: sub_20E87E+58↑o
                 lea     ($FFD000).w,a1
                 jsr     sub_208A3A
                 sne     $3F(a0)
@@ -24239,6 +24258,8 @@ locret_20E9D2:                          ; CODE XREF: sub_20E87E+13C↑j
                                         ; sub_20E87E+14C↑j
                 rts
 ; ---------------------------------------------------------------------------
+
+loc_20E9D4:                             ; DATA XREF: sub_20E87E+5A↑o
                 lea     word_20EA56(pc),a1
                 jsr     AnimateObject
                 tst.b   $1A(a0)
@@ -24262,8 +24283,8 @@ dword_20E9F8:   dc.l $100025, $3A0045, $500056, $5C0010, $4F00300, $4F0F003
                 dc.l $F0030000, $F00300, $802F0, $30004F8, $F0030004, $2F003
                 dc.l $F8F0, $3000000, $1F00300, $4FC01F0, $30000FC
                 dcb.b 2,0
-word_20EA56:    dc.w 4                  ; DATA XREF: sub_20E87E+10C↑o
-                                        ; sub_20E87E+156↑o
+word_20EA56:    dc.w 4                  ; DATA XREF: sub_20E87E:loc_20E98A↑o
+                                        ; sub_20E87E:loc_20E9D4↑o
                 dc.l $330005, $5050505, $4040405, $5050505, $4040403, $3030303
                 dc.l $2020203, $3030303, $2020201, $1010101, $7070701
                 dc.l $1010101, $101, $1010107, $7070101, $1010102, $2020303
@@ -26222,7 +26243,7 @@ aIJJK:          dc.b '`I J J`K',0
                 dc.l $B94094
                 dcb.l 2,$800
                 dc.l $8000800
-dword_2134D4:   dc.l $18000061          ; DATA XREF: sub_20E87E+56↑w
+                dc.l $18000061
                 dc.l $5F005F, $4055500F, $409400B2, $B14094
                 dcb.l 3,$10001800
                 dc.l $18000061, $5F005F, $4055500F, $409400BD, $B94094
