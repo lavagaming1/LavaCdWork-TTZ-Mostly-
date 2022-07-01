@@ -1344,7 +1344,7 @@ unk_20079C:     dc.b   0                ; DATA XREF: ROM:00200614↑o
                 sub.w   d1,d0
                 cmpi.w  #$280,d0
                 bhi.w   loc_20081E
-                bra.w   RenderSprite
+                bra.w   RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20081E:                             ; CODE XREF: ROM:00200816↑j
@@ -6308,14 +6308,14 @@ sub_20360A:                             ; CODE XREF: sub_204114+4C↓p
                 move.l  $C(a0),d3
                 move.w  $10(a0),d0
                 btst    #3,$22(a0)
-                beq.s   loc_203646
+                beq.s   loc_203646      ; this is simillar to ObjectMove
                 moveq   #0,d1
                 move.b  $3D(a0),d1
                 lsl.w   #6,d1
                 addi.l  #$FFD000,d1
                 movea.l d1,a1
                 cmpi.b  #$1E,0(a1)
-                bne.s   loc_203646
+                bne.s   loc_203646      ; this is simillar to ObjectMove
                 move.w  #$FF00,d1
                 btst    #0,$22(a1)
                 beq.s   loc_203644
@@ -6326,7 +6326,7 @@ loc_203644:                             ; CODE XREF: sub_20360A+36↑j
 
 loc_203646:                             ; CODE XREF: sub_20360A+12↑j
                                         ; sub_20360A+2A↑j
-                ext.l   d0
+                ext.l   d0              ; this is simillar to ObjectMove
                 asl.l   #8,d0
                 add.l   d0,d2
                 move.w  $12(a0),d0
@@ -6341,6 +6341,7 @@ loc_203646:                             ; CODE XREF: sub_20360A+12↑j
 
 ; =============== S U B R O U T I N E =======================================
 
+; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 
 RenderSprite:                           ; CODE XREF: ROM:0020081A↑j
                                         ; sub_203DB8+1E↓p ...
@@ -7168,7 +7169,7 @@ sub_203DB8:                             ; CODE XREF: ROM:loc_203D64↑p
 loc_203DCE:                             ; CODE XREF: sub_203DB8+C↑j
                 btst    #6,$2C(a0)
                 bne.s   loc_203DDC
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 
 loc_203DDC:                             ; CODE XREF: sub_203DB8+6↑j
                                         ; sub_203DB8+14↑j ...
@@ -9094,7 +9095,7 @@ loc_204F88:                             ; CODE XREF: ROM:00204F80↑j
                 bsr.w   sub_2049D6
                 bsr.w   sub_203E78
                 bsr.w   Sonic_Animate
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -9124,7 +9125,7 @@ locret_204FDE:                          ; CODE XREF: sub_204FA4+1A↑j
                 jsr     sub_2035A8
                 bsr.w   sub_203E78
                 bsr.w   Sonic_Animate
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -10532,7 +10533,7 @@ loc_2059DA:                             ; DATA XREF: ROM:002039EA↑o
                 move.b  $24(a0),d0
                 move.w  off_2059F4(pc,d0.w),d0
                 jsr     off_2059F4(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
 off_2059F4:     dc.w loc_2059FC-*       ; CODE XREF: ROM:002059E4↑p
@@ -10683,7 +10684,7 @@ loc_205B92:                             ; DATA XREF: ROM:00205B5C↑o
                 bhi.w   DeleteObject
                 lea     (off_2390EC).l,a1
                 bsr.w   AnimateObject
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -10749,7 +10750,7 @@ loc_205C56:                             ; CODE XREF: ROM:00205C4E↑j
                                         ; DATA XREF: ROM:00205C02↑o
                 lea     (off_239326).l,a1
                 bsr.w   AnimateObject
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_205C66:                             ; DATA XREF: ROM:00205C04↑o
@@ -10771,7 +10772,7 @@ sub_205C80:                             ; DATA XREF: ROM:00203A1A↑o
                 move.b  $24(a0),d0
                 move.w  off_205C94(pc,d0.w),d0
                 jsr     off_205C94(pc,d0.w)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; End of function sub_205C80
 
 ; ---------------------------------------------------------------------------
@@ -10915,7 +10916,7 @@ loc_205DF0:                             ; CODE XREF: ROM:00205DE8↑j
 loc_205DF6:                             ; DATA XREF: ROM:00205DC6↑o
                 lea     (off_239326).l,a1
                 bsr.w   AnimateObject
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_205E06:                             ; DATA XREF: ROM:00205DC8↑o
@@ -10927,7 +10928,7 @@ loc_205E0C:                             ; DATA XREF: ROM:002039D2↑o
                 move.b  $24(a0),d0
                 move.w  off_205E26(pc,d0.w),d0
                 jsr     off_205E26(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
 off_205E26:     dc.w loc_205E7E-*       ; CODE XREF: ROM:00205E16↑p
@@ -11071,7 +11072,7 @@ loc_205F66:                             ; CODE XREF: ROM:00205F60↑j
 loc_205F6C:                             ; DATA XREF: ROM:00205F2C↑o
                 lea     (off_239326).l,a1
                 bsr.w   AnimateObject
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_205F7C:                             ; DATA XREF: ROM:00205F2E↑o
@@ -11218,7 +11219,7 @@ loc_2060DE:                             ; CODE XREF: ROM:002060DA↑j
                 bset    #7,($FF156B).l
 
 loc_2060F4:                             ; CODE XREF: ROM:002060E2↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -11262,7 +11263,7 @@ off_20614A:     dc.l word_23141E        ; DATA XREF: sub_2060FA+16↑r
                 jsr     off_206180(pc,d0.w)
                 tst.b   ($FF1588).l
                 beq.s   loc_20617A
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 
 loc_20617A:                             ; CODE XREF: ROM:00206172↑j
                 jmp     MarkObjGone
@@ -11436,7 +11437,7 @@ loc_2062FE:                             ; DATA XREF: ROM:002039C2↑o
                 move.b  $24(a0),d0
                 move.w  off_206318(pc,d0.w),d0
                 jsr     off_206318(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
 off_206318:     dc.w loc_20631C-*       ; CODE XREF: ROM:00206308↑p
@@ -12658,7 +12659,7 @@ loc_20701A:                             ; CODE XREF: ROM:00206FD2↑j
                 move.b  #4,1(a0)
 
 loc_20704A:                             ; CODE XREF: ROM:00207020↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 dword_207050:   dc.l $4000              ; DATA XREF: ROM:00206ECA↑w
                                         ; ROM:loc_206ED6↑w ...
@@ -18506,7 +18507,7 @@ sub_208DD6:                             ; DATA XREF: ROM:00203A0A↑o
                 move.b  $24(a0),d0
                 move.w  word_208DF0(pc,d0.w),d0
                 jsr     word_208DF0(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; End of function sub_208DD6
 
@@ -18585,7 +18586,7 @@ loc_208F34:                             ; CODE XREF: ROM:00208F2E↑j
                 jsr     AnimateObject
 
 loc_208F46:                             ; CODE XREF: ROM:00208F16↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_208F4C:                             ; CODE XREF: ROM:00208FA0↓j
@@ -18616,7 +18617,7 @@ loc_208FB0:                             ; CODE XREF: ROM:00208FA8↑j
                 jsr     off_20900A(pc,d1.w)
 
 loc_208FB8:                             ; CODE XREF: ROM:00208FAE↑j
-                bsr.w   RenderSprite
+                bsr.w   RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 move.l  #$FFFF0000,d1
                 move.w  $34(a0),d1
                 beq.s   loc_208FEA
@@ -19519,7 +19520,7 @@ loc_20967A:                             ; CODE XREF: ROM:0020965A↑j
                 move.b  ($FF1913).l,$1A(a0)
 
 loc_20968A:                             ; CODE XREF: ROM:00209680↑j
-                bra.w   RenderSprite
+                bra.w   RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20968E:                             ; DATA XREF: ROM:0020947C↑o
@@ -19561,7 +19562,7 @@ loc_2096DA:                             ; CODE XREF: ROM:002096C0↑j
 loc_2096E6:                             ; DATA XREF: ROM:0020947E↑o
                 lea     (off_2098DE).l,a1
                 bsr.w   AnimateObject
-                bra.w   RenderSprite
+                bra.w   RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_2096F4:                             ; CODE XREF: ROM:00209676↑j
@@ -19715,7 +19716,7 @@ loc_20989E:                             ; CODE XREF: ROM:00209872↑j
                 addi.w  #$E0,d0
                 cmp.w   $C(a0),d0
                 bcs.s   loc_2098DA
-                bra.w   RenderSprite
+                bra.w   RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_2098B8:                             ; DATA XREF: ROM:00209760↑o
@@ -19727,7 +19728,7 @@ loc_2098B8:                             ; DATA XREF: ROM:00209760↑o
 loc_2098CC:                             ; DATA XREF: ROM:00209762↑o
                 lea     (off_2098DE).l,a1
                 bsr.w   AnimateObject
-                bra.w   RenderSprite
+                bra.w   RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_2098DA:                             ; CODE XREF: ROM:002098A4↑j
@@ -20145,7 +20146,7 @@ loc_209A70:                             ; CODE XREF: sub_209C8C-1A4↓j
                 bne.s   locret_209A9C
 
 loc_209A96:                             ; CODE XREF: sub_209C8C-202↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 locret_209A9C:                          ; CODE XREF: sub_209C8C-20A↑j
@@ -20189,7 +20190,7 @@ loc_209AE2:                             ; CODE XREF: sub_209C8C-1B2↑j
                 move.b  $24(a0),d0
                 move.w  off_209B06(pc,d0.w),d0
                 jsr     off_209B06(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; END OF FUNCTION CHUNK FOR sub_209C8C
 ; ---------------------------------------------------------------------------
@@ -20449,7 +20450,7 @@ loc_209D76:                             ; CODE XREF: ROM:00209D54↑j
 loc_209D88:                             ; CODE XREF: ROM:00209D3E↑j
                                         ; ROM:00209D7C↑j
                                         ; DATA XREF: ...
-                bsr.w   RenderSprite
+                bsr.w   RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
 
@@ -20480,7 +20481,7 @@ loc_209DF4:                             ; CODE XREF: ROM:00209DCE↑j
                 bsr.w   sub_209C20
                 bset    #0,2(a2,d0.w)
                 move.b  #$11,$1A(a0)
-                bra.w   RenderSprite
+                bra.w   RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 
 ; =============== S U B R O U T I N E =======================================
 
@@ -20490,7 +20491,7 @@ sub_209E08:                             ; DATA XREF: ROM:00203A06↑o
                 move.b  $24(a0),d0
                 move.w  off_209E1A(pc,d0.w),d1
                 jsr     off_209E1A(pc,d1.w)
-                bra.w   RenderSprite
+                bra.w   RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; End of function sub_209E08
 
 ; ---------------------------------------------------------------------------
@@ -21224,7 +21225,7 @@ loc_20A23A:                             ; CODE XREF: sub_20A2E0+4↓j
                 move.b  $24(a0),d0
                 move.w  off_20A24E(pc,d0.w),d0
                 jsr     off_20A24E(pc,d0.w)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; END OF FUNCTION CHUNK FOR sub_20A2E0
 ; ---------------------------------------------------------------------------
 off_20A24E:     dc.w loc_20A252-*       ; CODE XREF: sub_20A2E0-9C↑p
@@ -21402,7 +21403,7 @@ loc_20A376:                             ; CODE XREF: ROM:0020A350↑j
 
 loc_20A38A:                             ; CODE XREF: ROM:0020A34A↑j
                                         ; ROM:0020A360↑j ...
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 off_20A390:     dc.w unk_20A398-*       ; DATA XREF: ROM:0020A2FE↑o
                                         ; ROM:0020A392↓o ...
@@ -22136,7 +22137,7 @@ sub_20A8DE:                             ; DATA XREF: ROM:002039F2↑o
                 bcc.s   locret_20A908
 
 loc_20A902:                             ; CODE XREF: sub_20A8DE+1A↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 locret_20A908:                          ; CODE XREF: sub_20A8DE+12↑j
@@ -22147,7 +22148,7 @@ locret_20A908:                          ; CODE XREF: sub_20A8DE+12↑j
 ; ---------------------------------------------------------------------------
 off_20A90A:     dc.w loc_20A916-*       ; CODE XREF: sub_20A8DE+A↑p
                                         ; DATA XREF: sub_20A8DE+6↑r ...
-                dc.w loc_20A946-off_20A90A
+                dc.w loc_20A946-off_20A90A ; tf animation isnt supposed to be like this
                 dc.w sub_20A9AA-off_20A90A
                 dc.w sub_20AEF6-off_20A90A
                 dc.w locret_20AFBC-off_20A90A
@@ -22158,14 +22159,14 @@ loc_20A916:                             ; DATA XREF: ROM:off_20A90A↑o
                 ori.b   #4,1(a0)
                 addq.b  #2,$24(a0)
                 move.b  #4,$18(a0)
-                move.l  #unk_239558,4(a0)
+                move.l  #NemMMZDoor,4(a0) ; no idea why this is like this
                 move.w  #$2481,2(a0)
                 move.b  #$20,$17(a0) ; ' '
                 move.b  #$20,$19(a0) ; ' '
                 move.b  #$18,$16(a0)
 
 loc_20A946:                             ; DATA XREF: ROM:0020A90C↑o
-                lea     (unk_239558).l,a1
+                lea     (NemMMZDoor).l,a1 ; tf animation isnt supposed to be like this
                 jsr     AnimateObject
                 lea     ($FFD000).w,a6
                 bsr.w   sub_20AAD0
@@ -22267,7 +22268,7 @@ loc_20AA3C:                             ; CODE XREF: sub_20AA26+5E↓j
                 move.w  8(a0),8(a1)
                 move.w  $C(a0),$C(a1)
                 move.b  #$A,$24(a1)
-                move.l  #unk_239558,4(a1)
+                move.l  #NemMMZDoor,4(a1)
                 move.w  #$2481,2(a1)
                 move.b  #1,$1C(a1)
                 move.w  #$FA00,$12(a1)
@@ -22294,7 +22295,7 @@ word_20AA8A:    dc.w 0                  ; DATA XREF: sub_20AA26+56↑r
 ; ---------------------------------------------------------------------------
 
 loc_20AAA0:                             ; DATA XREF: ROM:0020A914↑o
-                lea     (unk_239558).l,a1
+                lea     (NemMMZDoor).l,a1
                 jsr     AnimateObject
                 jsr     sub_2035A8
                 jsr     loc_20672A
@@ -22350,7 +22351,7 @@ loc_20AB18:                             ; CODE XREF: ROM:0020AB60↓j
                 move.b  $24(a0),d0
                 move.w  off_20AB2C(pc,d0.w),d0
                 jsr     off_20AB2C(pc,d0.w)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 off_20AB2C:     dc.w loc_20AB32-*       ; CODE XREF: ROM:0020AB22↑p
                                         ; DATA XREF: ROM:0020AB1E↑r ...
@@ -22388,7 +22389,7 @@ loc_20AB72:                             ; CODE XREF: ROM:0020AB6A↑j
                 jsr     off_20AB90(pc,d0.w)
                 cmpi.b  #4,$24(a0)
                 beq.s   locret_20AB8E
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 locret_20AB8E:                          ; CODE XREF: ROM:0020AB86↑j
@@ -22499,7 +22500,7 @@ sub_20AC94:                             ; DATA XREF: ROM:002039F6↑o
                 jsr     off_20ACBC(pc,d0.w)
                 cmpi.b  #2,($FF1507).l
                 beq.s   loc_20ACB6
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 
 loc_20ACB6:                             ; CODE XREF: sub_20AC94+1A↑j
                 jmp     MarkObjGone
@@ -22658,7 +22659,7 @@ sub_20AE18:                             ; DATA XREF: ROM:002039FA↑o
                 move.b  $24(a0),d0
                 move.w  off_20AE2C(pc,d0.w),d0
                 jsr     off_20AE2C(pc,d0.w)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; End of function sub_20AE18
 
 ; ---------------------------------------------------------------------------
@@ -23667,7 +23668,7 @@ sub_20B45A:                             ; DATA XREF: ROM:00203A12↑o
                 move.b  $24(a0),d0
                 move.w  word_20B478(pc,d0.w),d0
                 jsr     word_20B478(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; End of function sub_20B45A
 
@@ -23847,7 +23848,7 @@ sub_20B6E6:                             ; DATA XREF: ROM:00203A92↑o
                 move.b  $24(a0),d0
                 move.w  off_20B700(pc,d0.w),d0
                 jsr     off_20B700(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; End of function sub_20B6E6
 
@@ -23952,7 +23953,7 @@ sub_20B7D2:                             ; DATA XREF: ROM:00203A96↑o
                 jsr     off_20B80E(pc,d0.w)
                 tst.b   $24(a0)
                 beq.s   loc_20B808
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 cmpi.b  #8,$24(a0)
                 bcs.s   loc_20B802
                 move.w  $2A(a0),d0
@@ -24355,7 +24356,7 @@ loc_20BBC0:                             ; CODE XREF: ROM:0020BBBC↑j
                 add.w   d0,8(a0)
 
 loc_20BBC4:                             ; CODE XREF: ROM:0020BBBA↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 off_20BBCA:     dc.w unk_20BBD2-*       ; DATA XREF: ROM:0020BB1E↑o
                                         ; ROM:0020BBCC↓o
@@ -24481,12 +24482,12 @@ loc_20BCBE:                             ; DATA XREF: ROM:0020BC12↑o
 
 loc_20BCCE:                             ; CODE XREF: ROM:0020BCCA↑j
                 add.w   d0,$A(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20BCD8:                             ; CODE XREF: ROM:0020BCC8↑j
                 addq.b  #4,$24(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20BCE2:                             ; DATA XREF: ROM:0020BC14↑o
@@ -24499,19 +24500,19 @@ loc_20BCE2:                             ; DATA XREF: ROM:0020BC14↑o
 
 loc_20BCF2:                             ; CODE XREF: ROM:0020BCEE↑j
                 add.w   d0,8(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20BCFC:                             ; CODE XREF: ROM:0020BCEC↑j
                 addq.b  #4,$24(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20BD06:                             ; DATA XREF: ROM:0020BC16↑o
                 tst.b   $1E(a0)
                 beq.s   loc_20BD16
                 subq.b  #1,$1E(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20BD16:                             ; CODE XREF: ROM:0020BD0A↑j
@@ -24524,7 +24525,7 @@ loc_20BD16:                             ; CODE XREF: ROM:0020BD0A↑j
 
 loc_20BD26:                             ; CODE XREF: ROM:0020BD22↑j
                 add.w   d0,$A(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20BD30:                             ; CODE XREF: ROM:0020BD20↑j
@@ -24538,7 +24539,7 @@ loc_20BD42:                             ; DATA XREF: ROM:0020BC18↑o
                 tst.b   $1E(a0)
                 beq.s   loc_20BD52
                 subq.b  #1,$1E(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20BD52:                             ; CODE XREF: ROM:0020BD46↑j
@@ -24551,7 +24552,7 @@ loc_20BD52:                             ; CODE XREF: ROM:0020BD46↑j
 
 loc_20BD62:                             ; CODE XREF: ROM:0020BD5E↑j
                 add.w   d0,8(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20BD6C:                             ; CODE XREF: ROM:0020BD5C↑j
@@ -24689,7 +24690,7 @@ loc_20BE9E:                             ; CODE XREF: sub_20BE80+32↓j
                                         ; sub_20BE80+38↓j
                 cmpi.w  #$160,$32(a0)
                 bcc.s   locret_20BEAC
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 locret_20BEAC:                          ; CODE XREF: sub_20BE80+24↑j
@@ -24728,7 +24729,7 @@ loc_20BED8:                             ; CODE XREF: sub_20BEBA+18↑j
 
 loc_20BEF2:                             ; CODE XREF: sub_20BEBA+24↑j
                                         ; sub_20BEBA+2C↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20BEF8:                             ; CODE XREF: sub_20BEBA+C↑j
@@ -24772,7 +24773,7 @@ loc_20BF60:                             ; CODE XREF: sub_20BEBA+80↑j
                                         ; sub_20BEBA+88↑j ...
                 move.l  d1,d0
                 jsr     sub_20A438
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; End of function sub_20BEBA
 
 
@@ -24811,7 +24812,7 @@ loc_20BFE4:                             ; CODE XREF: sub_20BF6E+68↑j
                 move.w  d0,($FF1506).l
                 jsr     sub_2070E6
                 jsr     sub_205842
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 move.b  ($FF1507).l,d0
                 subq.b  #1,d0
                 bpl.s   loc_20C00E
@@ -25776,7 +25777,7 @@ sub_20C414:                             ; DATA XREF: ROM:00203A72↑o
                 move.b  $24(a0),d0
                 move.w  off_20C44E(pc,d0.w),d0
                 jsr     off_20C44E(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 move.w  8(a0),d0
                 andi.w  #$FF80,d0
                 move.w  ($FFF700).w,d1
@@ -26567,7 +26568,7 @@ sub_20C98E:                             ; DATA XREF: ROM:00203A6E↑o
                 move.b  $24(a0),d0
                 move.w  off_20C9A8(pc,d0.w),d0
                 jsr     off_20C9A8(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; End of function sub_20C98E
 
@@ -27016,7 +27017,7 @@ sub_20CDA8:                             ; DATA XREF: ROM:00203A6A↑o
                 move.w  off_20CDD0(pc,d0.w),d0
                 jsr     off_20CDD0(pc,d0.w)
                 bsr.s   sub_20CDD8
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 move.w  $36(a0),d0
                 jmp     MarkObjGone2
 ; End of function sub_20CDA8
@@ -27374,7 +27375,7 @@ loc_20D0BE:                             ; CODE XREF: sub_20CDA8+4↑j
                 move.b  $3C(a0),d0
                 move.b  byte_20D114(pc,d0.w),d0
                 move.b  d0,$20(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20D10E:                             ; CODE XREF: sub_20CDA8+334↑j
@@ -27506,7 +27507,7 @@ sub_20D188:                             ; DATA XREF: ROM:00203A76↑o
                 move.b  $24(a0),d0
                 move.w  off_20D1B8(pc,d0.w),d0
                 jsr     off_20D1B8(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 move.w  $36(a0),d0
                 jmp     MarkObjGone2
 ; ---------------------------------------------------------------------------
@@ -27585,7 +27586,7 @@ loc_20D282:                             ; CODE XREF: sub_20D188+E↑j
                 move.b  $24(a0),d0
                 move.w  off_20D2D6(pc,d0.w),d0
                 jsr     off_20D2D6(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 moveq   #0,d1
                 move.w  $34(a0),d1
                 beq.s   loc_20D2C6
@@ -27733,7 +27734,7 @@ loc_20D408:                             ; CODE XREF: sub_20D188+6↑j
                 move.b  $24(a0),d0
                 move.w  off_20D422(pc,d0.w),d0
                 jsr     off_20D422(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; End of function sub_20D188
 
@@ -27997,7 +27998,7 @@ sub_20D6BA:                             ; DATA XREF: ROM:0020D49A↑o
                 bne.s   loc_20D6E6
                 move.w  8(a0),8(a1)
                 move.w  $C(a0),$C(a1)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20D6E6:                             ; CODE XREF: sub_20D6BA+18↑j
@@ -28425,7 +28426,7 @@ loc_20D9D4:                             ; DATA XREF: ROM:0020D49C↑o
                 move.b  $24(a0),d0
                 move.w  off_20D9E8(pc,d0.w),d0
                 jsr     off_20D9E8(pc,d0.w)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 off_20D9E8:     dc.w loc_20D9F0-*       ; CODE XREF: ROM:0020D9DE↑p
                                         ; DATA XREF: ROM:0020D9DA↑r ...
@@ -28504,7 +28505,7 @@ loc_20DA86:                             ; DATA XREF: ROM:0020D49E↑o
                 move.b  $24(a0),d0
                 move.w  off_20DA9A(pc,d0.w),d0
                 jsr     off_20DA9A(pc,d0.w)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 off_20DA9A:     dc.w loc_20DA9E-*       ; CODE XREF: ROM:0020DA90↑p
                                         ; DATA XREF: ROM:0020DA8C↑r ...
@@ -28642,7 +28643,7 @@ loc_20DB48:                             ; DATA XREF: ROM:0020D4A0↑o
                 move.b  $24(a0),d0
                 move.w  loc_20DB5C(pc,d0.w),d0
                 jsr     loc_20DB5C(pc,d0.w)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20DB5C:                             ; CODE XREF: ROM:0020DB52↑p
@@ -28725,7 +28726,7 @@ loc_20DC12:                             ; CODE XREF: sub_20DC08+4↑j
                 move.b  $24(a0),d0
                 move.w  off_20DC36(pc,d0.w),d0
                 jsr     off_20DC36(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 move.w  $30(a0),d0
                 jmp     MarkObjGone2
 ; ---------------------------------------------------------------------------
@@ -28812,7 +28813,7 @@ loc_20DD36:                             ; CODE XREF: sub_20DC08+6↑j
                 move.b  $24(a0),d0
                 move.w  off_20DD4A(pc,d0.w),d0
                 jsr     off_20DD4A(pc,d0.w)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; End of function sub_20DC08
 
 ; ---------------------------------------------------------------------------
@@ -29006,7 +29007,7 @@ loc_20DED6:                             ; CODE XREF: sub_20DE36+9C↑j
                 jsr     PlaySFX
 
 loc_20DEE4:                             ; CODE XREF: sub_20DE36+86↑j
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
 
@@ -29018,7 +29019,7 @@ loc_20DEF0:                             ; DATA XREF: sub_20DE36+1A↑o
                 addq.b  #2,$24(a0)
 
 loc_20DF04:                             ; CODE XREF: sub_20DE36+C8↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20DF0A:                             ; DATA XREF: sub_20DE36+1C↑o
@@ -29069,13 +29070,13 @@ loc_20DF7C:                             ; CODE XREF: sub_20DE36+13E↑j
                 add.w   d0,8(a0)
                 lea     ($FFD000).w,a1
                 jsr     sub_208A3A
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20DFB2:                             ; DATA XREF: sub_20DE36+1E↑o
                 lea     ($FFD000).w,a1
                 jsr     sub_208A40
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
 
@@ -29096,7 +29097,7 @@ off_20DFD6:     dc.w loc_20DFDC-*       ; CODE XREF: sub_20DE36+19C↑j
 loc_20DFDC:                             ; DATA XREF: ROM:off_20DFD6↑o
                 addq.b  #2,$24(a0)
                 move.l  #$8080308,$16(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20DFEE:                             ; DATA XREF: ROM:0020DFD8↑o
@@ -29105,7 +29106,7 @@ loc_20DFEE:                             ; DATA XREF: ROM:0020DFD8↑o
                 addq.b  #2,$24(a0)
 
 loc_20DFF8:                             ; CODE XREF: ROM:0020DFF2↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20DFFE:                             ; DATA XREF: ROM:0020DFDA↑o
@@ -29120,7 +29121,7 @@ loc_20DFFE:                             ; DATA XREF: ROM:0020DFDA↑o
 loc_20E01C:                             ; CODE XREF: ROM:0020E014↑j
                 move.l  d0,$2C(a0)
                 add.l   d0,$C(a0)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 ; START OF FUNCTION CHUNK FOR sub_20DE36
 
@@ -29592,25 +29593,25 @@ loc_20E278:                             ; CODE XREF: sub_20E1C0+12C↓j
                 move.w  a0,-(sp)
                 movea.w (sp),a0
                 movea.w $30(a0),a0
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 movea.w (sp),a0
                 movea.w $32(a0),a0
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 movea.w (sp),a0
                 movea.w $34(a0),a0
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 movea.w (sp),a0
                 movea.w $36(a0),a0
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 movea.w (sp),a0
                 movea.w $38(a0),a0
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 movea.w (sp),a0
                 movea.w $3A(a0),a0
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 movea.w (sp),a0
                 movea.w $3C(a0),a0
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 movea.w (sp)+,a0
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
@@ -29659,7 +29660,7 @@ loc_20E32C:                             ; CODE XREF: sub_20E1C0+1F2↓j
                                         ; DATA XREF: sub_20E1C0:off_20E326↑o
                 lea     ($FFD000).w,a1
                 jsr     sub_208A3A
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20E33C:                             ; DATA XREF: sub_20E1C0+168↑o
@@ -29734,13 +29735,13 @@ loc_20E3C8:                             ; DATA XREF: sub_20E1C0:off_20E3C4↑o
 
 loc_20E3F2:                             ; CODE XREF: sub_20E1C0+212↑j
                                         ; sub_20E1C0+21C↑j
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 
 loc_20E3F8:                             ; DATA XREF: sub_20E1C0+206↑o
                 lea     ($FFD000).w,a1
                 bsr.w   loc_20E454
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 movea.w $2E(a0),a1
                 move.w  $2C(a1),d0
                 addi.w  #$4000,d0
@@ -29966,9 +29967,9 @@ loc_20E5D0:                             ; CODE XREF: sub_20E4D8+DE↑j
                 move.b  $1A(a0),$1A(a1)
                 move.w  a0,-(sp)
                 movea.w a1,a0
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 movea.w (sp)+,a0
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
 
@@ -30120,7 +30121,7 @@ loc_20E766:                             ; CODE XREF: ROM:0020E760↑j
 loc_20E786:                             ; CODE XREF: ROM:0020E76E↑j
                 lea     dword_20E7A0(pc),a1
                 jsr     AnimateObject
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 move.w  $30(a0),d0
                 jmp     MarkObjGone2
 ; ---------------------------------------------------------------------------
@@ -30363,7 +30364,7 @@ loc_20E8AA:                             ; CODE XREF: sub_20E87E+4↑j
                 move.b  $24(a0),d0
                 move.w  off_20E8D0(pc,d0.w),d0
                 jsr     off_20E8D0(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 tst.b   $28(a0)
                 bmi.s   locret_20E8CE
                 move.w  $2E(a0),d0
@@ -30643,7 +30644,7 @@ loc_20EBC6:                             ; CODE XREF: sub_20EB46+72↑j
                 move.b  d0,$2E(a0)
                 lea     off_20ECC0(pc),a1
                 jsr     AnimateObject
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 move.w  $2A(a0),d0
                 jmp     MarkObjGone2
 ; ---------------------------------------------------------------------------
@@ -30702,7 +30703,7 @@ loc_20EC46:                             ; DATA XREF: ROM:0020EC14↑o
                 bsr.s   sub_20EC94
 
 loc_20EC82:                             ; CODE XREF: ROM:0020EC6E↑j
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
                 jmp     DeleteObject
@@ -30794,7 +30795,7 @@ sub_20ECFC:                             ; DATA XREF: ROM:00203A52↑o
                 move.b  $24(a0),d0
                 move.w  off_20ED1C(pc,d0.w),d0
                 jsr     off_20ED1C(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; End of function sub_20ECFC
 
@@ -31395,7 +31396,7 @@ loc_20F0F8:                             ; CODE XREF: sub_20F0DC+C↑j
                 move.b  $24(a0),d0
                 move.w  off_20F11E(pc,d0.w),d0
                 jsr     off_20F11E(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 tst.b   $28(a0)
                 bmi.s   locret_20F11C
                 move.w  $2A(a0),d0
@@ -31489,7 +31490,7 @@ loc_20F21C:                             ; CODE XREF: sub_20F0DC+4↑j
                 move.b  $24(a0),d0
                 move.w  off_20F23E(pc,d0.w),d0
                 jsr     off_20F23E(pc,d0.w)
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 off_20F23E:     dc.w loc_20F24C-*       ; CODE XREF: sub_20F0DC+158↑p
                                         ; DATA XREF: sub_20F0DC+154↑r ...
@@ -31769,7 +31770,7 @@ loc_20F49C:                             ; CODE XREF: sub_20F3E8+8C↑j
                 addq.b  #4,$16(a0)
 
 loc_20F4B6:                             ; CODE XREF: sub_20F3E8+BA↑j
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 jmp     MarkObjGone
 ; End of function sub_20F3E8
 
@@ -31851,7 +31852,7 @@ sub_20F556:                             ; DATA XREF: ROM:00203AAA↑o
                 move.b  $24(a0),d0
                 move.w  off_20F57A(pc,d0.w),d0
                 jsr     off_20F57A(pc,d0.w)
-                jsr     RenderSprite
+                jsr     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
                 cmpi.b  #2,$24(a0)
                 bgt.s   locret_20F578
                 jmp     MarkObjGone
@@ -32195,7 +32196,7 @@ loc_20F894:                             ; CODE XREF: ROM:0020F88E↑j
                 jsr     sub_20360A
                 lea     word_20F8AA(pc),a1
                 jsr     AnimateObject
-                jmp     RenderSprite
+                jmp     RenderSprite    ; sprite rendering seems optimized here because the Draw_Sprite routine isnt used here to tell s1,s2,s3k build sprite routine the object addr to draw its manually set by the main object run routine
 ; ---------------------------------------------------------------------------
 word_20F8AA:    dc.w 2                  ; DATA XREF: ROM:0020F89A↑o
                 dc.l $80001FF, $4000A, $1F80500, $F801F8, $50004F8
@@ -32371,20 +32372,20 @@ word_20FABC:    dc.w 1                  ; DATA XREF: ROM:off_20FA96↑o
                                         ; ROM:0020FA9C↑o
                 dc.l dword_2364E4+$57E
                 dc.w 0
-                dc.l dword_23378C+$12C
+                dc.l NemHud+$12C
                 dc.w $D960
 word_20FACA:    dc.w $E                 ; DATA XREF: ROM:0020FA98↑o
-                dc.l unk_22FBCC
+                dc.l NemGoal
                 dc.w $4940
                 dc.l dword_230FE0+$92
                 dc.w $6C00
-                dc.l unk_21DE4E
+                dc.l NemTitleCards      ;  ig these are title cards
                 dc.w $7A00
-                dc.l unk_239558
+                dc.l NemMMZDoor
                 dc.w $8FC0
-                dc.l unk_23962A
+                dc.l NemSpikes
                 dc.w $9100
-                dc.l unk_2396C4
+                dc.l NemS1SBZStomperCDReplica
                 dc.w $9300
                 dc.l dword_239918+$3C
                 dc.w $9B00
@@ -32392,7 +32393,7 @@ word_20FACA:    dc.w $E                 ; DATA XREF: ROM:0020FA98↑o
                 dc.w $9E40
                 dc.l dword_2320FC+$30E
                 dc.w $A400
-                dc.l dword_23378C
+                dc.l NemHud
                 dc.w $AD00
                 dc.l dword_2320FC+$530
                 dc.w $B500
@@ -39050,7 +39051,7 @@ NemFlower:      dc.b $80                ; DATA XREF: ROM:0020FB1A↑o
                 dc.b $DE
                 dc.b $6C ; l
                 dc.b $60 ; `
-unk_21DE4E:     dc.b $80                ; DATA XREF: ROM:0020FAD8↑o
+NemTitleCards:  dc.b $80                ; DATA XREF: ROM:0020FAD8↑o
                 dc.b $47 ; G
                 dc.b $80
                 dc.b   5
@@ -47586,7 +47587,7 @@ dword_22F340:   dc.l $5017201D, $35020, $50172026, $38029, $200B200E, $35032
                 dc.b $6F ; o
                 dc.b $40 ; @
                 dc.b   0
-unk_22FBCC:     dc.b $80                ; DATA XREF: ROM:0020FACC↑o
+NemGoal:        dc.b $80                ; DATA XREF: ROM:0020FACC↑o
                 dc.b $18
                 dc.b $80
                 dc.b   3
@@ -49232,7 +49233,7 @@ dword_23338C:   dc.l 0                  ; DATA XREF: sub_20A67C:loc_20A698↑o
                 dcb.l 3,$6610000
                 dc.l $1110000
                 dcb.l 4,0
-dword_23378C:   dc.l $801B8004, $7140924, $A340B46, $3A551A66, $36720081
+NemHud:         dc.l $801B8004, $7140924, $A340B46, $3A551A66, $36720081
                                         ; DATA XREF: ROM:0020FB02↑o
                 dc.l $302163C, $2637363D, $8618FB87, $63B8E04, $6140C37
                 dc.l $7C8F0408, $151C38FA, $FF27E94C, $5B2ACD33, $E2789675
@@ -51791,7 +51792,7 @@ unk_239542:     dc.b   4                ; DATA XREF: ROM:002394E4↑o
                 dc.b $15
                 dc.b $F4
                 dc.b   0
-unk_239558:     dc.b   0                ; DATA XREF: ROM:0020A926↑o
+NemMMZDoor:     dc.b   0                ; DATA XREF: ROM:0020A926↑o
                                         ; ROM:loc_20A946↑o ...
                 dc.b  $A
                 dc.b $80
@@ -52002,7 +52003,7 @@ unk_239558:     dc.b   0                ; DATA XREF: ROM:0020A926↑o
                 dc.b  $F
                 dc.b $16
                 dc.b $4C ; L
-unk_23962A:     dc.b $80                ; DATA XREF: ROM:0020FAE4↑o
+NemSpikes:      dc.b $80                ; DATA XREF: ROM:0020FAE4↑o
                 dc.b $10
                 dc.b $80
                 dc.b   4
@@ -52156,8 +52157,8 @@ unk_23962A:     dc.b $80                ; DATA XREF: ROM:0020FAE4↑o
                 dc.b $91
                 dc.b $80
                 dc.b   0
-unk_2396C4:     dc.b $80                ; DATA XREF: ROM:0020FAEA↑o
-                dc.b $40 ; @
+NemS1SBZStomperCDReplica:dc.b $80       ; DATA XREF: ROM:0020FAEA↑o
+                dc.b $40 ; @            ; this is sonic CD Stomper Object from MMZ
                 dc.b $80
                 dc.b   3
                 dc.b   2
