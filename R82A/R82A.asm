@@ -32406,120 +32406,120 @@ word_20FACA:    dc.w $E                 ; DATA XREF: ROM:0020FA98↑o
                 dc.l NemRings
                 dc.w $F5C0
 word_20FB26:    dc.w 0                  ; DATA XREF: ROM:0020FAB6↑o
-                dc.l unk_230368
+                dc.l NemGotThrough
                 dc.w $7880
 word_20FB2E:    dc.w 9                  ; DATA XREF: ROM:0020FA9A↑o
                                         ; ROM:0020FAAC↑o ...
-                dc.l unk_23B320
+                dc.l GFSheepAnimal      ; GF from fnf uwu
                 dc.w $6000
-                dc.l unk_23AE02
+                dc.l NemTwinStompers
                 dc.w $6300
-                dc.l unk_239EEC
+                dc.l NemLevelSprites
                 dc.w $6580
-                dc.l unk_23B2BE
+                dc.l NemTubeGates
                 dc.w $6780
-                dc.l unk_2399BC
+                dc.l NemGiantWalkingBomb
                 dc.w $6800
-                dc.l unk_21DD32
+                dc.l NemShrinkLazers
                 dc.w $7C00
-                dc.l unk_23AC52
+                dc.l NemSpikeCrushingPts
                 dc.w $8000
-                dc.l unk_23B07A
+                dc.l NemSawEnemy
                 dc.w $89C0
-                dc.l unk_23AF72
+                dc.l NemGateSwitch
                 dc.w $9C80
-                dc.l unk_23AFC4
+                dc.l NemWheels
                 dc.w $9D40
 word_20FB6C:    dc.w 9                  ; DATA XREF: ROM:0020FA9E↑o
                 dc.l unk_23B8A4
                 dc.w $5FC0
-                dc.l unk_23AE02
+                dc.l NemTwinStompers
                 dc.w $6300
-                dc.l unk_239EEC
+                dc.l NemLevelSprites
                 dc.w $6580
-                dc.l unk_23B2BE
+                dc.l NemTubeGates
                 dc.w $6780
-                dc.l unk_2399BC
+                dc.l NemGiantWalkingBomb
                 dc.w $6800
-                dc.l unk_21DD32
+                dc.l NemShrinkLazers
                 dc.w $7C00
-                dc.l unk_23AC52
+                dc.l NemSpikeCrushingPts
                 dc.w $8000
                 dc.l unk_23B4B0
                 dc.w $85E0
-                dc.l unk_23AF72
+                dc.l NemGateSwitch
                 dc.w $9C80
-                dc.l unk_23AFC4
+                dc.l NemWheels
                 dc.w $9D40
 word_20FBAA:    dc.w 9                  ; DATA XREF: ROM:0020FAA0↑o
-                dc.l unk_23B320
+                dc.l GFSheepAnimal
                 dc.w $6000
-                dc.l unk_23AE02
+                dc.l NemTwinStompers
                 dc.w $6300
-                dc.l unk_239EEC
+                dc.l NemLevelSprites
                 dc.w $6580
-                dc.l unk_23B2BE
+                dc.l NemTubeGates
                 dc.w $6780
-                dc.l unk_2399BC
+                dc.l NemGiantWalkingBomb
                 dc.w $6800
                 dc.l unk_239FE0
                 dc.w $7400
                 dc.l $23C660
                 dc.w $8360
-                dc.l unk_23B07A
+                dc.l NemSawEnemy
                 dc.w $89C0
-                dc.l unk_23AF72
+                dc.l NemGateSwitch
                 dc.w $9C80
-                dc.l unk_23AFC4
+                dc.l NemWheels
                 dc.w $9D40
 word_20FBE8:    dc.w 9                  ; DATA XREF: ROM:0020FAA2↑o
-                dc.l unk_23B320
+                dc.l GFSheepAnimal
                 dc.w $6000
-                dc.l unk_23AE02
+                dc.l NemTwinStompers
                 dc.w $6300
-                dc.l unk_239EEC
+                dc.l NemLevelSprites
                 dc.w $6580
-                dc.l unk_23B2BE
+                dc.l NemTubeGates
                 dc.w $6780
-                dc.l unk_2399BC
+                dc.l NemGiantWalkingBomb
                 dc.w $6800
-                dc.l unk_21DD32
+                dc.l NemShrinkLazers
                 dc.w $7C00
-                dc.l unk_23AC52
+                dc.l NemSpikeCrushingPts
                 dc.w $8000
                 dc.l unk_23B4B0
                 dc.w $85E0
-                dc.l unk_23AF72
+                dc.l NemGateSwitch
                 dc.w $9C80
-                dc.l unk_23AFC4
+                dc.l NemWheels
                 dc.w $9D40
 word_20FC26:    dc.w 1                  ; DATA XREF: ROM:0020FAA4↑o
-                dc.l unk_23B320
+                dc.l GFSheepAnimal
                 dc.w $6000
-                dc.l unk_23B07A
+                dc.l NemSawEnemy
                 dc.w $89C0
 word_20FC34:    dc.w 3                  ; DATA XREF: ROM:0020FAA6↑o
                 dc.l unk_23B8A4
                 dc.w $5FC0
-                dc.l unk_21DD32
+                dc.l NemShrinkLazers
                 dc.w $7C00
-                dc.l unk_23AC52
+                dc.l NemSpikeCrushingPts
                 dc.w $8000
                 dc.l unk_23B4B0
                 dc.w $85E0
 word_20FC4E:    dc.w 3                  ; DATA XREF: ROM:0020FAA8↑o
                 dc.l unk_23C660
                 dc.w $8360
-                dc.l unk_23B07A
+                dc.l NemSawEnemy
                 dc.w $89C0
-                dc.l unk_23B320
+                dc.l GFSheepAnimal
                 dc.w $6000
                 dc.l unk_239FE0
                 dc.w $7400
 word_20FC68:    dc.w 2                  ; DATA XREF: ROM:0020FAAA↑o
-                dc.l unk_21DD32
+                dc.l NemShrinkLazers
                 dc.w $7C00
-                dc.l unk_23AC52
+                dc.l NemSpikeCrushingPts
                 dc.w $8000
                 dc.l unk_23B4B0
                 dc.w $85E0
@@ -38529,7 +38529,7 @@ NemFlower:      dc.b $80                ; DATA XREF: ROM:0020FB1A↑o
                 dc.b $16
                 dc.b   0
                 dc.b   0
-unk_21DD32:     dc.b $80                ; DATA XREF: ROM:0020FB4E↑o
+NemShrinkLazers:dc.b $80                ; DATA XREF: ROM:0020FB4E↑o
                                         ; ROM:0020FB8C↑o ...
                 dc.b $10
                 dc.b $80
@@ -51249,7 +51249,7 @@ unk_22FD8C:     dc.b $80                ; DATA XREF: ROM:0020FC7E↑o
                 dc.b $EE
                 dc.b $6F ; o
                 dc.b   0
-unk_230368:     dc.b $80                ; DATA XREF: ROM:0020FB28↑o
+NemGotThrough:  dc.b $80                ; DATA XREF: ROM:0020FB28↑o
                 dc.b $78 ; x
                 dc.b $80
                 dc.b   5
@@ -62720,7 +62720,7 @@ NemUnkLevelArt: dc.b $80                ; DATA XREF: ROM:0020FAF0↑o
                 dc.b   4
                 dc.b   0
                 dc.b   0
-unk_2399BC:     dc.b $80                ; DATA XREF: ROM:0020FB48↑o
+NemGiantWalkingBomb:dc.b $80            ; DATA XREF: ROM:0020FB48↑o
                                         ; ROM:0020FB86↑o ...
                 dc.b $5E ; ^
                 dc.b $80
@@ -62933,7 +62933,7 @@ unk_2399BC:     dc.b $80                ; DATA XREF: ROM:0020FB48↑o
                 dc.b   0
                 dc.b $40 ; @
                 dc.b   0
-unk_239EEC:     dc.b   0                ; DATA XREF: ROM:0020FB3C↑o
+NemLevelSprites:dc.b   0                ; DATA XREF: ROM:0020FB3C↑o
                                         ; ROM:0020FB7A↑o ...
                 dc.b $10
                 dc.b $81
@@ -64708,7 +64708,7 @@ unk_239FE0:     dc.b $80                ; DATA XREF: ROM:0020FBCA↑o
                 dc.b $65 ; e
                 dc.b $70 ; p
                 dc.b   0
-unk_23AC52:     dc.b   0                ; DATA XREF: ROM:0020FB54↑o
+NemSpikeCrushingPts:dc.b   0            ; DATA XREF: ROM:0020FB54↑o
                                         ; ROM:0020FB92↑o ...
                 dc.b $1B
                 dc.b $80
@@ -65141,7 +65141,7 @@ unk_23AC52:     dc.b   0                ; DATA XREF: ROM:0020FB54↑o
                 dc.b $8B
                 dc.b $90
                 dc.b   0
-unk_23AE02:     dc.b $80                ; DATA XREF: ROM:0020FB36↑o
+NemTwinStompers:dc.b $80                ; DATA XREF: ROM:0020FB36↑o
                                         ; ROM:0020FB74↑o ...
                 dc.b $11
                 dc.b $80
@@ -65510,7 +65510,7 @@ unk_23AE02:     dc.b $80                ; DATA XREF: ROM:0020FB36↑o
                 dc.b $EC
                 dc.b $18
                 dc.b $80
-unk_23AF72:     dc.b $80                ; DATA XREF: ROM:0020FB60↑o
+NemGateSwitch:  dc.b $80                ; DATA XREF: ROM:0020FB60↑o
                                         ; ROM:0020FB9E↑o ...
                 dc.b   6
                 dc.b $80
@@ -65593,7 +65593,7 @@ unk_23AF72:     dc.b $80                ; DATA XREF: ROM:0020FB60↑o
                 dc.b $E6
                 dc.b $80
                 dc.b   0
-unk_23AFC4:     dc.b   0                ; DATA XREF: ROM:0020FB66↑o
+NemWheels:      dc.b   0                ; DATA XREF: ROM:0020FB66↑o
                                         ; ROM:0020FBA4↑o ...
                 dc.b   8
                 dc.b $80
@@ -65776,7 +65776,7 @@ unk_23AFC4:     dc.b   0                ; DATA XREF: ROM:0020FB66↑o
                 dc.b $C3
                 dc.b $C0
                 dc.b   0
-unk_23B07A:     dc.b $80                ; DATA XREF: ROM:0020FB5A↑o
+NemSawEnemy:    dc.b $80                ; DATA XREF: ROM:0020FB5A↑o
                                         ; ROM:0020FBD6↑o ...
                 dc.b $30 ; 0
                 dc.b $80
@@ -66357,7 +66357,7 @@ unk_23B07A:     dc.b $80                ; DATA XREF: ROM:0020FB5A↑o
                 dc.b   3
                 dc.b $80
                 dc.b   0
-unk_23B2BE:     dc.b   0                ; DATA XREF: ROM:0020FB42↑o
+NemTubeGates:   dc.b   0                ; DATA XREF: ROM:0020FB42↑o
                                         ; ROM:0020FB80↑o ...
                 dc.b   4
                 dc.b $81
@@ -66456,7 +66456,7 @@ unk_23B2BE:     dc.b   0                ; DATA XREF: ROM:0020FB42↑o
                 dc.b $F0
                 dc.b $20
                 dc.b   0
-unk_23B320:     dc.b   0                ; DATA XREF: ROM:0020FB30↑o
+GFSheepAnimal:  dc.b   0                ; DATA XREF: ROM:0020FB30↑o
                                         ; ROM:0020FBAC↑o ...
                 dc.b $14
                 dc.b $80
