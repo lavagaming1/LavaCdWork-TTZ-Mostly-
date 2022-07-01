@@ -2701,7 +2701,7 @@ loc_201726:                             ; CODE XREF: ROM:00201728↓j
                 move.l  d0,(a1)+
                 dbf     d1,loc_201726
                 move    #$2700,sr
-                move.l  #unk_216C00,($FFF78A).w
+                move.l  #DemoMMZ2,($FFF78A).w
                 move.w  #0,($FFF78E).w
                 bsr.w   loc_202250
                 lea     ($C00004).l,a6
@@ -2800,7 +2800,7 @@ loc_2018DC:                             ; CODE XREF: ROM:002018D4↑j
 
 loc_2018EA:                             ; CODE XREF: ROM:002018DA↑j
                 bclr    #7,($FFF600).w
-                move.b  #1,($FF1957).l
+                move.b  #1,($FF1957).l  ; set level started flag
 
 loc_2018F8:                             ; CODE XREF: ROM:00201938↓j
                                         ; ROM:0020196A↓j ...
@@ -3784,7 +3784,7 @@ sub_2022F2:                             ; CODE XREF: ROM:00201D92↑p
 
 
 PlaySFX:                                ; CODE XREF: sub_201BF6+4↑p
-                                        ; ROM:0020446C↓p ...
+                                        ; ROM:00204352↓p ...
                 tst.b   ($FFF00A).w
                 bne.s   loc_20234A
                 move.b  d0,($FFF00A).w
@@ -6776,7 +6776,7 @@ off_2039A2:     dc.l ObjSonic           ; DATA XREF: sub_203580+10↑o
                 dc.l ObjRings
                 dc.l loc_20974E
                 dc.l ClearID
-                dc.l loc_2059DA
+                dc.l ObjLampPost
                 dc.l loc_20AB5C
                 dc.l sub_20A8DE
                 dc.l sub_20AC94
@@ -6819,7 +6819,7 @@ off_2039A2:     dc.l ObjSonic           ; DATA XREF: sub_203580+10↑o
                 dc.l sub_20BAE6         ;  seems simillar to a tidal card obj
                 dc.l sub_20BC02
                 dc.l sub_20B6E6
-                dc.l sub_20B7D2
+                dc.l ObjLayerSwap
                 dc.l ClearID
                 dc.l ClearID
                 dc.l ClearID
@@ -6988,10 +6988,7 @@ loc_203C14:                             ; CODE XREF: sub_203CFC+2↓p
                 bcc.s   locret_203C7A
                 tst.b   $2C(a0)
                 beq.s   locret_203C7A
-; ---------------------------------------------------------------------------
-                dc.w $4EB9
-                dc.l Create_New_Sprite
-; ---------------------------------------------------------------------------
+                jsr     Create_New_Sprite
                 bne.s   locret_203C7A
                 move.b  #$E,0(a1)
                 move.w  8(a0),8(a1)
@@ -7600,7 +7597,7 @@ sub_20421C:                             ; CODE XREF: sub_204114:loc_204144↑p
                 add.w   d1,d0
                 lea     ($FFA000).w,a1
                 move.b  (a1,d0.w),d1
-                lea     (word_20428A).l,a2
+                lea     (unk_20428A).l,a2
 
 loc_204250:                             ; CODE XREF: sub_20421C+3A↓j
                 move.b  (a2)+,d0
@@ -7629,8 +7626,12 @@ locret_204288:                          ; CODE XREF: sub_20421C+8↑j
 ; End of function sub_20421C
 
 ; ---------------------------------------------------------------------------
-word_20428A:    dc.w $607               ; DATA XREF: sub_20421C+2E↑o
-                dc.l $8494CFF
+unk_20428A:     dc.b   6                ; DATA XREF: sub_20421C+2E↑o
+                dc.b   7
+                dc.b   8
+                dc.b $49 ; I
+                dc.b $4C ; L
+                dc.b $FF
 ; ---------------------------------------------------------------------------
 
 loc_204290:                             ; CODE XREF: sub_204114+40↑p
@@ -7702,10 +7703,7 @@ loc_204342:                             ; CODE XREF: ROM:002042F6↑j
                 cmpi.w  #$C,d1
                 blt.s   loc_20439A
                 move.w  #$AB,d0
-; ---------------------------------------------------------------------------
-                dc.w $4EB9
-                dc.l PlaySFX
-; ---------------------------------------------------------------------------
+                jsr     PlaySFX
                 move.b  #0,$2A(a0)
                 move.w  #0,$14(a0)
                 cmpi.b  #3,$36(a0)
@@ -10562,7 +10560,7 @@ loc_2059C8:                             ; CODE XREF: sub_205932+8E↑j
 
 ; ---------------------------------------------------------------------------
 
-loc_2059DA:                             ; DATA XREF: ROM:002039EA↑o
+ObjLampPost:                            ; DATA XREF: ROM:002039EA↑o
                 moveq   #0,d0
                 move.b  $24(a0),d0
                 move.w  off_2059F4(pc,d0.w),d0
@@ -10579,7 +10577,7 @@ off_2059F4:     dc.w loc_2059FC-*       ; CODE XREF: ROM:002059E4↑p
 
 loc_2059FC:                             ; DATA XREF: ROM:off_2059F4↑o
                 addq.b  #2,$24(a0)
-                move.l  #unk_2393D2,4(a0)
+                move.l  #off_2393D2,4(a0)
                 move.w  #$6CB,2(a0)
                 move.b  #4,1(a0)
                 move.b  #8,$19(a0)
@@ -10605,7 +10603,7 @@ loc_205A40:                             ; CODE XREF: ROM:00205A38↑j
                 addq.b  #2,$24(a1)
 
 loc_205A5C:                             ; CODE XREF: ROM:00205A56↑j
-                move.l  #$2393D2,4(a1)
+                move.l  #off_2393D2,4(a1)
                 move.w  #$6CB,2(a1)
                 move.b  #4,1(a1)
                 move.b  #8,$19(a1)
@@ -10680,7 +10678,7 @@ locret_205B3E:                          ; CODE XREF: sub_205AEE+E↑j
 ; ---------------------------------------------------------------------------
 
 loc_205B40:                             ; DATA XREF: ROM:002059FA↑o
-                lea     ($2393CC).l,a1
+                lea     (unk_2393CC).l,a1
                 bra.w   AnimateObject
 ; [00000002 BYTES: COLLAPSED FUNCTION nullsub_3. PRESS CTRL-NUMPAD+ TO EXPAND]
 ; ---------------------------------------------------------------------------
@@ -12139,7 +12137,7 @@ loc_206A10:                             ; CODE XREF: sub_2069C6+42↑j
 loc_206A1C:                             ; CODE XREF: sub_2069C6+48↑j
                 andi.w  #$3F,d0 ; '?'
                 add.w   d0,d0
-                lea     ($206E42).l,a2
+                lea     (word_206E42).l,a2
                 lea     locret_206E40-word_206E42(a2,d0.w),a2
                 moveq   #0,d1
                 move.b  (a2)+,d1
@@ -12570,7 +12568,8 @@ locret_206E40:                          ; CODE XREF: sub_2069C6+452↑j
                 rts
 ; END OF FUNCTION CHUNK FOR sub_2069C6
 ; ---------------------------------------------------------------------------
-word_206E42:    dc.w $1414              ; DATA XREF: sub_2069C6+62↑o
+word_206E42:    dc.w $1414              ; DATA XREF: sub_2069C6+5C↑o
+                                        ; sub_2069C6+62↑o
                 dc.l $120C0C10, $4100C12, $10100606, $180C0C10, $100C0808
                 dc.l $14101408, $E0E1818, $28101018, $8102070, $40208020
                 dc.l $20200808, $4042008, $C0C0804, $18042804, $4080418
@@ -12986,8 +12985,8 @@ locret_2072F6:                          ; CODE XREF: sub_207290+1C↑j
 ; =============== S U B R O U T I N E =======================================
 
 
-Create_New_Sprite:                      ; CODE XREF: sub_203E92:loc_203F2C↑p
-                                        ; sub_204FF8:loc_205046↑p ...
+Create_New_Sprite:                      ; CODE XREF: ROM:00203C4E↑p
+                                        ; sub_203E92:loc_203F2C↑p ...
                 lea     ($FFD800).w,a1
                 move.w  #$5F,d0 ; '_'
 
@@ -13032,7 +13031,7 @@ locret_20732C:                          ; CODE XREF: Create_New_Sprite3+10↑j
 ;   ADDITIONAL PARENT FUNCTION sub_209C8C
 ;   ADDITIONAL PARENT FUNCTION sub_20B45A
 ;   ADDITIONAL PARENT FUNCTION sub_20B6E6
-;   ADDITIONAL PARENT FUNCTION sub_20B7D2
+;   ADDITIONAL PARENT FUNCTION ObjLayerSwap
 ;   ADDITIONAL PARENT FUNCTION sub_20C98E
 ;   ADDITIONAL PARENT FUNCTION sub_20D188
 ;   ADDITIONAL PARENT FUNCTION sub_20DE36
@@ -13047,7 +13046,7 @@ MarkObjGone:                            ; CODE XREF: ROM:002059EE↑j
                                         ; ROM:00205E20↑j ...
                 move.w  8(a0),d0
 
-MarkObjGone2:                           ; CODE XREF: sub_20B7D2+2A↓j
+MarkObjGone2:                           ; CODE XREF: ObjLayerSwap+2A↓j
                                         ; sub_20CDA8+22↓j ...
                 tst.b   1(a0)
                 bmi.s   loc_20739C
@@ -24194,7 +24193,7 @@ locret_20B7D0:                          ; CODE XREF: ROM:0020B7CA↑j
 ; =============== S U B R O U T I N E =======================================
 
 
-sub_20B7D2:                             ; DATA XREF: ROM:00203A96↑o
+ObjLayerSwap:                           ; DATA XREF: ROM:00203A96↑o
 
 ; FUNCTION CHUNK AT 0020732E SIZE 0000007C BYTES
 
@@ -24212,17 +24211,17 @@ sub_20B7D2:                             ; DATA XREF: ROM:00203A96↑o
                 jmp     MarkObjGone2
 ; ---------------------------------------------------------------------------
 
-loc_20B802:                             ; CODE XREF: sub_20B7D2+24↑j
+loc_20B802:                             ; CODE XREF: ObjLayerSwap+24↑j
                 jmp     MarkObjGone
 ; ---------------------------------------------------------------------------
 
-loc_20B808:                             ; CODE XREF: sub_20B7D2+16↑j
+loc_20B808:                             ; CODE XREF: ObjLayerSwap+16↑j
                 jmp     loc_207350
-; End of function sub_20B7D2
+; End of function ObjLayerSwap
 
 ; ---------------------------------------------------------------------------
-off_20B80E:     dc.w loc_20B81A-*       ; CODE XREF: sub_20B7D2+E↑p
-                                        ; DATA XREF: sub_20B7D2+A↑r ...
+off_20B80E:     dc.w loc_20B81A-*       ; CODE XREF: ObjLayerSwap+E↑p
+                                        ; DATA XREF: ObjLayerSwap+A↑r ...
                                         ; save og addr
                 dc.w loc_20B928-off_20B80E
                 dc.w loc_20B99C-off_20B80E
@@ -24352,7 +24351,7 @@ loc_20B9B6:                             ; DATA XREF: ROM:0020B814↑o
                 eori.b  #1,($FF1956).l
                 eori.b  #1,1(a6)
                 eori.b  #1,$22(a6)
-                ori.w   #$8000,2(a6)
+                ori.w   #$8000,2(a6)    ; change sonic's priority
                 tst.b   ($FF1956).l
                 beq.s   loc_20B9E8
                 andi.w  #$7FFF,2(a6)
@@ -24697,7 +24696,7 @@ loc_20BC1C:                             ; DATA XREF: ROM:off_20BC10↑o
                 move.b  #4,$18(a0)
                 moveq   #0,d1
                 moveq   #7,d6
-                lea     ($20C2CE).l,a2
+                lea     (unk_20C2CE).l,a2
 
 loc_20BC5E:                             ; CODE XREF: ROM:0020BCB8↓j
                 jsr     Create_New_Sprite
@@ -25702,7 +25701,7 @@ unk_20C286:     dc.b  $E                ; DATA XREF: ROM:0020C06C↑o
                 dc.b $97
                 dc.b $60 ; `
                 dc.b   0
-                dc.b   1
+unk_20C2CE:     dc.b   1                ; DATA XREF: ROM:0020BC58↑o
                 dc.b $30 ; 0
                 dc.b   2
                 dc.b $28 ; (
@@ -36053,7 +36052,7 @@ aD:             dc.b 'd',0
                 dc.b $3F ; ?
                 dc.b $60 ; `
                 dc.b $3F ; ?
-unk_216C00:     dc.b $40 ; @            ; DATA XREF: ROM:00201730↑o
+DemoMMZ2:       dc.b $40 ; @            ; DATA XREF: ROM:00201730↑o
                 dc.b $42 ; B
                 dc.b   0
 aL_12:          dc.b 'L',0
@@ -63861,21 +63860,18 @@ unk_2393B6:     dc.b   4                ; DATA XREF: ROM:00239346↑o
                 dc.b $3A ; :
                 dc.b   0
                 dc.b   0
-                dc.b   0
+unk_2393CC:     dc.b   0                ; DATA XREF: ROM:loc_205B40↑o
                 dc.b   2
                 dc.b   3
                 dc.b   2
                 dc.b   3
                 dc.b $FF
-unk_2393D2:     dc.b   0                ; DATA XREF: ROM:00205A00↑o
-                dc.b   8
-                dc.b   0
-                dc.b $1E
-                dc.b   0
-                dc.b $2A ; *
-                dc.b   0
-                dc.b $36 ; 6
-                dc.b   4
+off_2393D2:     dc.w unk_2393DA-*       ; DATA XREF: ROM:00205A00↑o
+                                        ; ROM:loc_205A5C↑o ...
+                dc.w unk_2393F0-off_2393D2
+                dc.w unk_2393FC-off_2393D2
+                dc.w unk_239408-off_2393D2
+unk_2393DA:     dc.b   4                ; DATA XREF: ROM:off_2393D2↑o
                 dc.b $E8
                 dc.b   3
                 dc.b   0
@@ -63897,7 +63893,7 @@ unk_2393D2:     dc.b   0                ; DATA XREF: ROM:00205A00↑o
                 dc.b   4
                 dc.b   0
                 dc.b   0
-                dc.b   2
+unk_2393F0:     dc.b   2                ; DATA XREF: ROM:002393D4↑o
                 dc.b $F8
                 dc.b   1
                 dc.b   0
@@ -63909,7 +63905,7 @@ unk_2393D2:     dc.b   0                ; DATA XREF: ROM:00205A00↑o
                 dc.b   6
                 dc.b   0
                 dc.b   0
-                dc.b   2
+unk_2393FC:     dc.b   2                ; DATA XREF: ROM:002393D6↑o
                 dc.b $F8
                 dc.b   1
                 dc.b   0
@@ -63921,7 +63917,7 @@ unk_2393D2:     dc.b   0                ; DATA XREF: ROM:00205A00↑o
                 dc.b   8
                 dc.b   0
                 dc.b   0
-                dc.b   2
+unk_239408:     dc.b   2                ; DATA XREF: ROM:002393D8↑o
                 dc.b $F8
                 dc.b   1
                 dc.b   0
