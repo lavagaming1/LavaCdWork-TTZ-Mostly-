@@ -32377,7 +32377,7 @@ word_20FABC:    dc.w 1                  ; DATA XREF: ROM:off_20FA96↑o
 word_20FACA:    dc.w $E                 ; DATA XREF: ROM:0020FA98↑o
                 dc.l NemGoal
                 dc.w $4940
-                dc.l unk_231072
+                dc.l NemTitlecardBanner
                 dc.w $6C00
                 dc.l NemTitleCards      ;  ig these are title cards
                 dc.w $7A00
@@ -32387,19 +32387,19 @@ word_20FACA:    dc.w $E                 ; DATA XREF: ROM:0020FA98↑o
                 dc.w $9100
                 dc.l NemS1SBZStomperCDReplica
                 dc.w $9300
-                dc.l unk_239954
+                dc.l NemUnkLevelArt
                 dc.w $9B00
-                dc.l unk_2320FE
+                dc.l NemDiaSprgs
                 dc.w $9E40
-                dc.l unk_23240A
+                dc.l NemSprings
                 dc.w $A400
                 dc.l NemHud
                 dc.w $AD00
-                dc.l unk_23262C
+                dc.l NemMonitors
                 dc.w $B500
-                dc.l unk_232C30
+                dc.l NemExploationAndBossExploation
                 dc.w $D000
-                dc.l unk_22F75E
+                dc.l NemNumbers
                 dc.w $D8C0
                 dc.l NemFlower
                 dc.w $DAE0
@@ -48344,7 +48344,7 @@ dword_22F1B0:   dc.l $178017A, $184018C, $194019C, $1A401A4, $1AC01B2
                 dc.b $2C ; ,
                 dc.b $27 ; '
                 dc.b $38 ; 8
-unk_22F75E:     dc.b   0                ; DATA XREF: ROM:0020FB14↑o
+NemNumbers:     dc.b   0                ; DATA XREF: ROM:0020FB14↑o
                 dc.b   5
                 dc.b $80
                 dc.b   4
@@ -50302,7 +50302,7 @@ word_230C72:    dc.w 0                  ; DATA XREF: ROM:00206156↑o
                 dc.b $11
                 dc.b $10
                 dc.b   0
-unk_231072:     dc.b $80                ; DATA XREF: ROM:0020FAD2↑o
+NemTitlecardBanner:dc.b $80             ; DATA XREF: ROM:0020FAD2↑o
                 dc.b $6D ; m
                 dc.b $80
                 dc.b   3
@@ -50798,7 +50798,7 @@ aEuu:           dc.b 'eUU',0
                 dc.l $6660000, 0
                 dc.b   0
                 dc.b   0
-unk_2320FE:     dc.b   0                ; DATA XREF: ROM:0020FAF6↑o
+NemDiaSprgs:    dc.b   0                ; DATA XREF: ROM:0020FAF6↑o
                 dc.b $2E ; .
                 dc.b $80
                 dc.b   5
@@ -51578,7 +51578,7 @@ unk_2320FE:     dc.b   0                ; DATA XREF: ROM:0020FAF6↑o
                 dc.b $8F
                 dc.b $20
                 dc.b   0
-unk_23240A:     dc.b $80                ; DATA XREF: ROM:0020FAFC↑o
+NemSprings:     dc.b $80                ; DATA XREF: ROM:0020FAFC↑o
                 dc.b $24 ; $
                 dc.b $80
                 dc.b   3
@@ -52124,7 +52124,7 @@ unk_23240A:     dc.b $80                ; DATA XREF: ROM:0020FAFC↑o
                 dc.b $83
                 dc.b $D8
                 dc.b $5E ; ^
-unk_23262C:     dc.b $80                ; DATA XREF: ROM:0020FB08↑o
+NemMonitors:    dc.b $80                ; DATA XREF: ROM:0020FB08↑o
                 dc.b $52 ; R
                 dc.b $80
                 dc.b   4
@@ -53664,7 +53664,7 @@ unk_23262C:     dc.b $80                ; DATA XREF: ROM:0020FB08↑o
                 dc.b $95
                 dc.b $A9
                 dc.b $EA
-unk_232C30:     dc.b   0                ; DATA XREF: ROM:0020FB0E↑o
+NemExploationAndBossExploation:dc.b   0 ; DATA XREF: ROM:0020FB0E↑o
                 dc.b $46 ; F
                 dc.b $80
                 dc.b   4
@@ -61077,7 +61077,7 @@ NemS1SBZStomperCDReplica:dc.b $80       ; DATA XREF: ROM:0020FAEA↑o
                 dc.b $79 ; y
                 dc.b $7A ; z
                 dc.b $60 ; `
-unk_239954:     dc.b $80                ; DATA XREF: ROM:0020FAF0↑o
+NemUnkLevelArt: dc.b $80                ; DATA XREF: ROM:0020FAF0↑o
                 dc.b   8
                 dc.b $80
                 dc.b   3
